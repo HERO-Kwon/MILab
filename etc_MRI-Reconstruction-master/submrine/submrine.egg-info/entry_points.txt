@@ -1,0 +1,5 @@
+[console_scripts]
+submrine-eval = submrine.eval.eval_net:main
+submrine-test = submrine.test.test_net:main
+submrine-train = submrine.train.train_net:main
+
