@@ -95,7 +95,7 @@ ui <- pageWithSidebar(
         radioButtons("process",label=h4("Design Process"),
                     choices=list("1. File Input(*.csv)"=1,
                                  "2. Blending"=2,
-                                 "3. N/P Ration"=3,
+                                 "3. N/P Ratio"=3,
                                  "4. Full Cell Voltage"=4,
                                  "5. Current Voltage Capacity"=5),
                                  selected=1),
@@ -288,9 +288,9 @@ server <- function(input,output,session){
         curr_row <- 2*(input$go_upload[[1]]+input$go_ratio[[1]])-1
 
         names(curr_data_char) <- c("capa","volt")
-        curr_data_char <- curr_data_char[complete.case(curr_data_char),]
-        files_list <<- append(files_ist,list(curr_data_char))
-        files_unit <<- append(files_unit,setUnit(list(curr_data_char),digit_volt,"volt","cat"))
+        curr_data_char <- curr_data_char[complete.cases(curr_data_char),]
+        files_list <<- append(files_list,list(curr_data_char))
+        files_unit <<- append(files_unit,SetUnit(list(curr_data_char),digit_volt,"volt","cat"))
 
         files_info[curr_row,"mat"] <<- input$mat
         files_info[curr_row,"name"] <<- input$mat_name
@@ -299,9 +299,9 @@ server <- function(input,output,session){
         files_info <<- files_info[complete.cases(files_info),]
 
         names(curr_data_disc) <- c("capa","volt")
-        curr_data_disc <- curr_data_disc[complete.case(curr_data_disc),]
-        files_list <<- append(files_ist,list(curr_data_disc))
-        files_unit <<- append(files_unit,setUnit(list(curr_data_disc),digit_volt,"volt","cat"))
+        curr_data_disc <- curr_data_disc[complete.cases(curr_data_disc),]
+        files_list <<- append(files_list,list(curr_data_disc))
+        files_unit <<- append(files_unit,SetUnit(list(curr_data_disc),digit_volt,"volt","cat"))
 
         files_info[curr_row+1,"mat"] <<- input$mat
         files_info[curr_row+1,"name"] <<- input$mat_name
@@ -331,11 +331,16 @@ server <- function(input,output,session){
         for(c_d in unique(files_info$mode)){
             files_ratio <- files_info[files_info$mat==input$mat,]
             mat_selected <- (files_info$type=="Orig")&(files_info$mode==c_d)&(files_info$mat==input$mat)
-            ratio_selected <- blending_ratio[1:length(mat_selected[mat_selected=TRUE])]
+
+            files_selected <- files_unit[mat_selected]
+            name_selected <- files_info[mat_selected,"name"]
+
+
+            ratio_selected <- blending_ratio[1:length(mat_selected[mat_selected==TRUE])]
             ratio_selected <- ratio_selected*(100/sum(ratio_selected))
 
             # Blending
-            name_blended <- paste(c(paste(name_selected,collapse=":"),paste(ratio_selected,collapse=":")),collapse=" : ")
+            name_blended <- paste(c(paste(name_selected,collapse=":"),paste(ratio_selected,collapse=":")),collapse=" = ")
             data_blended <- BlendActive(files_selected,ratio_selected)
             data_blended$mode <- c_d
             
@@ -348,15 +353,15 @@ server <- function(input,output,session){
         output$value <- renderPrint({print(unique(files_info[,1:3]))})
         table_data_melt <- melt(table_data,id.vars=c("mode","volt"))
 
-        table_data1 <<- table_data %>% filter(mode="Char")
-        table_data2 <<- table_data %>% filter(mode="Disc")
+        table_data1 <<- table_data %>% filter(mode=="Char")
+        table_data2 <<- table_data %>% filter(mode=="Disc")
 
         output$contents1 <- renderDataTable({table_data1},options=list(pageLength=10))
         output$contents2 <- renderDataTable({table_data2},options=list(pageLength=10))
         output$cv_graph <- renderPlot({
             ggplot(data=table_data_melt %>% filter(mode=="Char"),aes(x=value,y=volt,group=variable,color=variable)) +
                 geom_point() +
-                geom_point(data=table_data_melt %>% filter(mode="Disc"))
+                geom_point(data=table_data_melt %>% filter(mode=="Disc"))
         })
     })
 
@@ -385,15 +390,15 @@ server <- function(input,output,session){
         table_data_cat$variable <- "Cathode"
 
         data_ano_char <<- data.frame("volt"=volt_ano_char,"capa"=capa_np_char)
-        data_cat_char <<- data.frame("volt"=volt_cat_disc,"capa"=capa_cat_char)
-        data_ano_disc <<- data.frame("volt"=volt_ano_char,"capa"=capa_np_disc)
+        data_cat_char <<- data.frame("volt"=volt_cat_char,"capa"=capa_cat_char)
+        data_ano_disc <<- data.frame("volt"=volt_ano_disc,"capa"=capa_np_disc)
         data_cat_disc <<- data.frame("volt"=volt_cat_disc,"capa"=capa_cat_disc)
 
         # Output
         output$contents1 <- renderDataTable({table_data1},options=list(pageLength=10))
         output$contents2 <- renderDataTable({})
         output$cv_graph <- renderPlot({
-            ggplt(data=table_data_melt,aes(x=value,y=volt,group=variable,color=variable))+
+            ggplot(data=table_data_melt,aes(x=value,y=volt,group=variable,color=variable))+
                 geom_point(shape=3)+
                 geom_point(data=table_data_cat,aes(x=value,y=volt))
         })
@@ -420,22 +425,22 @@ server <- function(input,output,session){
             brushed_cat_char <- brushedPoints(cat_unit_capa[[1]],input$plot_brush)
             brushed_ano_char <- brushedPoints(ano_unit_capa[[1]],input$plot_brush)
             brushed_cat_disc <- brushedPoints(cat_unit_capa[[2]],input$plot_brush)
-            brushed_ano_disc <- brushedPoints(cat_unit_capa[[2]],input$plot_brush)
+            brushed_ano_disc <- brushedPoints(ano_unit_capa[[2]],input$plot_brush)
             brushed_pnt <<- list(brushed_cat_char,brushed_ano_char,brushed_cat_disc,brushed_ano_disc)
 
             char_left_cat <- brushed_cat_char[brushed_cat_char$capa==min(brushed_cat_char$capa),"volt"]
-            char_right_cat <- brushed_cat_char[brushed_cat_char$capa==min(brushed_cat_char$capa),"volt"]
+            char_right_cat <- brushed_cat_char[brushed_cat_char$capa==max(brushed_cat_char$capa),"volt"]
             char_left_ano <- brushed_ano_char[brushed_ano_char$capa==min(brushed_ano_char$capa),"volt"]
-            char_right_ano <- brushed_ano_char[brushed_ano_char$capa==min(brushed_ano_char$capa),"volt"]
+            char_right_ano <- brushed_ano_char[brushed_ano_char$capa==max(brushed_ano_char$capa),"volt"]
             disc_left_cat <- brushed_cat_disc[brushed_cat_disc$capa==min(brushed_cat_disc$capa),"volt"]
-            disc_right_cat <- brushed_cat_disc[brushed_cat_disc$capa==min(brushed_cat_disc$capa),"volt"]
+            disc_right_cat <- brushed_cat_disc[brushed_cat_disc$capa==max(brushed_cat_disc$capa),"volt"]
             disc_left_ano <- brushed_ano_disc[brushed_ano_disc$capa==min(brushed_ano_disc$capa),"volt"]
-            disc_right_ano <- brushed_ano_disc[brushed_ano_disc$capa==min(brushed_ano_disc$capa),"volt"]
+            disc_right_ano <- brushed_ano_disc[brushed_ano_disc$capa==max(brushed_ano_disc$capa),"volt"]
 
             char_left_fullcell <- char_left_cat - char_left_ano
             char_right_fullcell <- char_right_cat - char_right_ano
-            char_left_fullcell <- disc_left_cat - disc_left_ano
-            char_right_fullcell <- disc_right_cat - disc_right_ano
+            disc_left_fullcell <- disc_left_cat - disc_left_ano
+            disc_right_fullcell <- disc_right_cat - disc_right_ano
 
             print(paste("Voltage Range:",round(char_right_fullcell,3),"~",round(disc_left_fullcell,3)))
             print(paste("Capacity:",round((input$plot_brush$xmax-input$plot_brush$xmin),3)))
