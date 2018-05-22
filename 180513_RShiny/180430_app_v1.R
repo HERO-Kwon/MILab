@@ -201,11 +201,11 @@ mainPanel(
     tabsetPanel(id="theTabs",
         tabPanel("Data",
                 fluidRow(#Button
-                    downloadButton("downloadData1","Download"),
                     dataTableOutput("contents1"),
+                    downloadButton("downloadData1","Download"),
                     br(),
-                    downloadButton("downloadData2","Download"),
-                    dataTableOutput("contents2")
+                    dataTableOutput("contents2"),
+                    downloadButton("downloadData2","Download")
                 )),
         tabPanel("Graph",
                 fluidRow(
@@ -260,15 +260,19 @@ server <- function(input,output,session){
 
     # Downloadable csv of selected dataset
     output$downloadData1 <- downloadHandler(
-        filename="table_data1.csv",
+        filename=function(){
+            "table_data1.csv"
+        },
         content=function(file){
-            write.csv(table_data1,file,row.names=FALSE)
+            write.csv(table_data1,file)
         }
     )
     output$downloadData2 <- downloadHandler(
-        filename="table_data2.csv",
+        filename=function(){
+            "table_data2.csv"
+        },
         content=function(file){
-            write.csv(table_data2,file,row.names=FALSE)
+            write.csv(table_data2,file)
         }
     )
     # Draw Graph
@@ -309,8 +313,8 @@ server <- function(input,output,session){
         files_info[curr_row+1,"mode"] <<- "Disc"
         
         # Output
-        table_data1 <- curr_data_char
-        table_data2 <- curr_data_disc
+        table_data1 <<- curr_data_char
+        table_data2 <<- curr_data_disc
 
         output$value <- renderPrint({print(unique(files_info[,1:3]))})
         output$contents1 <- renderDataTable({table_data1},options=list(pageLength=10))
@@ -382,7 +386,7 @@ server <- function(input,output,session){
         capa_np_char <- (capa_ano_char/np_data)*input$selected_np
         capa_np_disc <- (capa_ano_disc/np_data)*input$selected_np
 
-        table_data1 = data.frame("volt"=volt_ano_char,"capa_ano_raw"=capa_ano_char,"capa_ano_np"=capa_np_char$capa)
+        table_data1 <<- data.frame("volt"=volt_ano_char,"capa_ano_raw"=capa_ano_char,"capa_ano_np"=capa_np_char$capa)
 
         # melting for ggplot grouping
         table_data_melt <- melt(table_data1,id.vars="volt")
