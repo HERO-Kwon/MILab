@@ -52,15 +52,15 @@ import os
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_integer('max_steps', 10,
+tf.app.flags.DEFINE_integer('max_steps', 300,
                             """Number of batches to run.""")
 tf.app.flags.DEFINE_boolean('log_device_placement', False,
                             """Whether to log device placement.""")
-tf.app.flags.DEFINE_integer('log_frequency', 10,
+tf.app.flags.DEFINE_integer('log_frequency', 1,
                             """How often to log results to the console.""")
 
 
-def train(eval_data):
+def train():
   """Train CIFAR-10 for a number of steps."""
   with tf.Graph().as_default():
     global_step = tf.train.get_or_create_global_step()
@@ -69,7 +69,7 @@ def train(eval_data):
     # Force input pipeline to CPU:0 to avoid operations sometimes ending up on
     # GPU and resulting in a slow down.
     with tf.device('/cpu:0'):
-      images, labels = orldb.inputs(eval_data) #cifar10.distorted_inputs()
+      images, labels = orldb.inputs(eval_data=False) #cifar10.distorted_inputs()
 
     # Build a Graph that computes the logits predictions from the
     # inference model.
@@ -123,35 +123,7 @@ def train(eval_data):
 
 
 def main(argv=None):  # pylint: disable=unused-argument
-    # For Windows
-    file_path = 'D:\Matlab_Drive\Data\ORLDB'
-
-    # For Linux
-    # file_path = '/home/hero/Matlab_Drive/Data/ORLDB'
-
-    file_list = os.listdir(file_path)
-    file_list = [s for s in file_list if ".bmp" in s]
-
-    image_raw = pd.DataFrame(columns = ['image','person','person_num'])
-
-    for file in file_list:
-        image_read = imageio.imread(os.path.join(file_path,file),flatten=True)
-        [person,person_num] = re.findall('\d\d',file)
-
-        data_read = {'image':image_read,'person':person,'person_num':person_num}
-        image_raw = image_raw.append(data_read,ignore_index=True)
-
-    # Train-Test Split
-
-    image_train = pd.DataFrame()
-    image_test = pd.DataFrame()
-
-    for person in image_raw.person.unique():
-        data_train, data_test = train_test_split(image_raw[image_raw.person == person],test_size = 0.5)
-        image_train = image_train.append(data_train)
-        image_test = image_test.append(data_test)
-
-    train(image_train)
+    train()
 
 if __name__ == '__main__':
   tf.app.run()

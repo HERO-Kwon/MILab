@@ -8,15 +8,16 @@ import re
 import sys
 import tensorflow as tf
 import numpy as np
+import orldb_input
 
 FLAGS = tf.app.flags.FLAGS
 
 # Basic model parameters.
-tf.app.flags.DEFINE_integer('batch_size', 128,
+tf.app.flags.DEFINE_integer('batch_size', 10,
                             """Number of images to process in a batch.""")
 
-IMAGE_SIZE = (56,46)
-NUM_CLASSES = 40                            
+IMAGE_SIZE = orldb_input.IMAGE_SIZE
+NUM_CLASSES = orldb_input.NUM_CLASSES                      
 TOWER_NAME = 'tower'
 INITIAL_LEARNING_RATE = 0.1 
 MOVING_AVERAGE_DECAY = 0.9999 
@@ -40,13 +41,8 @@ def _activation_summary(x):
                                        tf.nn.zero_fraction(x))
 
 def inputs(eval_data):
-    mat_train = [np.array(img.reshape(1,56*46)) for img in eval_data['image']]
-    mat_train = np.vstack(mat_train)
-
-    images, labels = mat_train, eval_data['person'].values
-    
-    images = tf.cast(images, tf.float32)
-    labels = np.array(list(map(int,labels)))
+    images, labels = orldb_input.inputs(eval_data=eval_data,
+                                        batch_size=FLAGS.batch_size)
     return images, labels                     
 
 def _variable_on_cpu(name, shape, initializer):
