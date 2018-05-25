@@ -95,10 +95,10 @@ def inputs(eval_data,batch_size):
         labels: Labels. 1D tensor of [batch_size] size.
     """
     # For Windows
-    file_path = 'D:\Matlab_Drive\Data\ORLDB'
+    #file_path = 'D:\\Matlab_Drive\\Data\\ORLDB'
 
     # For Linux
-    # file_path = '/home/hero/Matlab_Drive/Data/ORLDB'
+    file_path = '/home/herokwon/data/ORLDB'
 
     file_list = os.listdir(file_path)
     file_list = [s for s in file_list if ".bmp" in s]

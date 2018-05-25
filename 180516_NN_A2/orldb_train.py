@@ -52,7 +52,7 @@ import os
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_integer('max_steps', 300,
+tf.app.flags.DEFINE_integer('max_steps', 30,
                             """Number of batches to run.""")
 tf.app.flags.DEFINE_boolean('log_device_placement', False,
                             """Whether to log device placement.""")
@@ -100,7 +100,7 @@ def train():
           self._start_time = current_time
 
           loss_value = run_values.results
-          examples_per_sec = FLAGS.log_frequency * FLAGS.batch_size / duration
+          examples_per_sec = FLAGS.log_frequency * FLAGS.batch_size / (duration+0.001)
           sec_per_batch = float(duration / FLAGS.log_frequency)
 
           format_str = ('%s: step %d, loss = %.2f (%.1f examples/sec; %.3f '
