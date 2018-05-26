@@ -14,7 +14,7 @@
 # ==============================================================================
 
 """Routine for decoding the CIFAR-10 binary file format."""
-
+ 
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -78,7 +78,7 @@ def _generate_image_and_label_batch(image, label, min_queue_examples,
         capacity=min_queue_examples + 3 * batch_size)
   
   # Display the training images in the visualizer.
-  tf.summary.image('images', images)
+  #tf.summary.image('images', images)
 
   return images, tf.reshape(label_batch, [batch_size])
 
@@ -94,11 +94,12 @@ def inputs(eval_data,batch_size):
         images: Images. 4D tensor of [batch_size, IMAGE_SIZE, IMAGE_SIZE, 3] size.
         labels: Labels. 1D tensor of [batch_size] size.
     """
-    # For Windows
-    #file_path = 'D:\\Matlab_Drive\\Data\\ORLDB'
-
+    try:
+    #For Windows
+        file_path = 'D:\\Matlab_Drive\\Data\\ORLDB'
+    except:
     # For Linux
-    file_path = '/home/herokwon/data/ORLDB'
+        file_path = '/home/herokwon/data/ORLDB'
 
     file_list = os.listdir(file_path)
     file_list = [s for s in file_list if ".bmp" in s]
