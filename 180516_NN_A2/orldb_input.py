@@ -81,6 +81,40 @@ def _generate_image_and_label_batch(image, label, min_queue_examples,
   #tf.summary.image('images', images)
 
   return images, tf.reshape(label_batch, [batch_size])
+def read_my_file_format(filename_queue,label_queue):
+    reader_image = tf.WholeFileReader()
+    
+    #df_data = pd.DataFrame()
+#    filename_list = list(filename_queue)
+#    for file in filename_list:
+    fname,image = reader_image.read(filename_queue)
+    image_decode = tf.image.decode_bmp(image)
+    
+    image.set_shape([1,56*46])
+    
+    label = label_queue.dequeue()
+    #imageio.imread(filename_queue,flatten=True)
+    #[person,person_num] = re.findall('\d\d',filename_queue)
+    #data_read = {'image':image_read,'person':person,'person_num':person_num}
+    #df_data = df_data.append(data_read,ignore_index=True)
+
+    # Train-Test Split
+
+#    image_train = pd.DataFrame()
+#    image_test = pd.DataFrame()
+
+#    for person in image_raw.person.unique():
+#        data_train, data_test = train_test_split(image_raw[image_raw.person == person],test_size = 0.2)
+#        image_train = image_train.append(data_train)
+#        image_test = image_test.append(data_test)
+
+#    image_train = image_train.sample(frac=1)
+#    image_test = image_test.sample(frac=1)
+    #mat_data = [np.array(img.reshape(1,56*46)) for img in df_data['image']]
+    #mat_data = np.vstack(mat_data)
+    #labels_person = map(int,df_data['person'].values)
+
+    return image,label
 
 def inputs(eval_data,batch_size):
     """Construct input for CIFAR evaluation using the Reader ops.
@@ -102,55 +136,40 @@ def inputs(eval_data,batch_size):
         file_path = '/home/herokwon/data/ORLDB'
 
     file_list = os.listdir(file_path)
-    file_list = [s for s in file_list if ".bmp" in s]
+    file_list = [os.path.join(file_path,s) for s in file_list if ".bmp" in s]
 
-    image_raw = pd.DataFrame(columns = ['image','person','person_num'])
-
-    for file in file_list:
-        image_read = imageio.imread(os.path.join(file_path,file),flatten=True)
-        [person,person_num] = re.findall('\d\d',file)
-        data_read = {'image':image_read,'person':person,'person_num':person_num}
-        image_raw = image_raw.append(data_read,ignore_index=True)
-
-    # Train-Test Split
-
-    image_train = pd.DataFrame()
-    image_test = pd.DataFrame()
-
-    for person in image_raw.person.unique():
-        data_train, data_test = train_test_split(image_raw[image_raw.person == person],test_size = 0.2)
-        image_train = image_train.append(data_train)
-        image_test = image_test.append(data_test)
-
-    image_train = image_train.sample(frac=1)
-    image_test = image_test.sample(frac=1)
-    mat_train = [np.array(img.reshape(1,56*46)) for img in image_train['image']]
-    mat_train = np.vstack(mat_train)
-    mat_test = [np.array(img.reshape(1,56*46)) for img in image_test['image']]
-    mat_test = np.vstack(mat_test)
-
+    file_train, file_test = train_test_split(file_list,test_size = 0.2)
+    
     if not eval_data:
         num_examples_per_epoch = NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN
-        data_df = image_train
-        data_mat = mat_train
+        filenames = file_train
     else:
         num_examples_per_epoch = NUM_EXAMPLES_PER_EPOCH_FOR_EVAL
-        data_df = image_test
-        data_mat = mat_test
-    data_mat = list(data_mat)
-    labels_person = data_df['person'].values
-    labels_person = list(map(int,labels_person))
+        filenames = file_test
 
     with tf.name_scope('input'):
-
         
-        read_input = data_mat.pop(0)
-        label = labels_person.pop(0)
+        labels = [int(re.findall('\d\d',f)[0]) for f in filenames]
 
+        # Create a queue that produces the filenames to read.
+        label_queue = tf.FIFOQueue(len(filenames),tf.int32,shapes=[[]])
+        label_enqueue = label_queue.enqueue_many([tf.constant(labels)])
+        filename_queue = tf.train.string_input_producer(filenames,shuffle=False)
+
+        # Read examples from files in the filename queue.
+        #read_input,label = read_my_file_format(filename_queue,label_queue)
+        reader_image = tf.WholeFileReader()
+        fname,image = reader_image.read(filename_queue)
+        image_decode = tf.image.decode_bmp(image)
+        reshaped_image = tf.cast(image_decode, tf.float32)
+    
+        resized_image = tf.image.resize_image_with_crop_or_pad(image_decode,
+                                                           56, 46)
+        #image_decode.set_shape([1,56*46])
+    
+        label = label_queue.dequeue()
     #    images, labels = data_mat , data_df['person'].values
     #    labels = np.array(list(map(int,labels)))
-
-        reshaped_image = tf.cast(read_input, tf.float32)
         
         #label.set_shape([1])
         
@@ -160,6 +179,6 @@ def inputs(eval_data,batch_size):
                                 min_fraction_of_examples_in_queue)
 
     # Generate a batch of images and labels by building up a queue of examples.
-    return _generate_image_and_label_batch(reshaped_image, label,
+    return _generate_image_and_label_batch(resized_image, label,
                                             min_queue_examples,batch_size,
                                             shuffle=True)
