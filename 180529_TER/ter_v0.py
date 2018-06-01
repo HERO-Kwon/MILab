@@ -39,14 +39,13 @@ for target in list(set(data['target'])):
     l_train = np.full(shape=len(v_train),fill_value=target)
     l_test = np.full(shape=len(v_test),fill_value=target)
     data_train = np.concatenate((data_train,v_train))
-    data_test = np.concatenate((data_train,v_test))
+    data_test = np.concatenate((data_test,v_test))
     label_train = np.concatenate((label_train,l_train))
     label_test = np.concatenate((label_test,l_test))
 
 ## TER Algorithm
 # Basis : RM2
 def RMmodel(order,X):
-    #order = 2
     m,l = X.shape
     
     M1 = []
@@ -78,16 +77,57 @@ def RMmodel(order,X):
 
     return(P)
 
+def TERmodel(rank,r,n,X,Y):
+    alpha = []
+    for k in list(set(Y)):
+
+        P_n = RMmodel(rank,X[Y!=k])
+        P_p = RMmodel(rank,X[Y==k])
+
+        mk_n = X[Y!=k].shape[0]
+        mk_p = X[Y==k].shape[0]
+
+        yk_n = (r-n) * np.ones(shape=Y[Y!=k].shape)
+        yk_p = (r+n) * np.ones(shape=Y[Y==k].shape)
+
+        I = np.eye(P_n.shape[1])
+        b = 10**(-4)
+
+        first_eq = np.linalg.pinv(b*I + (1/mk_n)*(P_n.T).dot(P_n) + (1/mk_p)*(P_p.T).dot(P_p))
+        second_eq = (1/mk_n)*(P_n.T).dot(yk_n) + (1/mk_p)*(P_p.T).dot(yk_p)
+        ak = np.dot(first_eq,second_eq)
+
+        alpha.append(ak)
+    return(np.array(alpha).T)
+
+alpha = TERmodel(6,0.5,0.5,data_train,label_train)
+
+P_t = RMmodel(6,data_test)
+yt = P_t.dot(alpha)
+yt1 = np.argmax(yt,axis=1)
+plt.plot(yt1)
+
 # Training
+''' 
+# RM training
 P = RMmodel(6,data_train)
 I = np.eye(P.shape[1])
 b = 10**(-4)
 
 alpha = np.linalg.pinv((P.T).dot(P)+b*I).dot(P.T).dot(label_train)
+
+# Testing
+P = RMmodel(6,data_test)
+I = np.eye(P.shape[1])
+b = 10**(-4)
+alpha = np.linalg.pinv((P.T).dot(P)+b*I).dot(P.T).dot(label_test)
+
 y_train = P.dot(alpha)
 
 '''
 
+
+'''
 # Functions
 ## Functiobn : LDA
 def LDA_ORLDB(image_data,array_len,num_eigvec):
