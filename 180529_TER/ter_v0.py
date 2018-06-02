@@ -1,17 +1,133 @@
-import numpy as np
-import tensorflow as tf
-
 ##########################################
 ## Made by : HERO Kwon
-## Title : LDA 
-## Date : 2018.03.09.
-## Description : LDA
+## Title : TER
+## Version : v0
+## Date : 2018.05.29.
+## Description : TER-RM Algorithm
 ##########################################
 
-# 2018.03.25 : LDA1 finished
-# 2018.03.26~ : LDA2 - cross-val, train-test split
-# 2018.03.29~ : LDA3 - graphic, functionalize
 
+# Main
+
+# packages
+
+import numpy as np
+import pandas as pd
+import scipy as sp
+import os
+import re
+import imageio
+from matplotlib import pyplot as plt
+from sklearn.model_selection import train_test_split
+import random
+from sklearn.metrics import confusion_matrix
+import time
+
+from sklearn.datasets import load_iris
+ 
+data = load_iris()
+data_v = data['data']
+data_l = data['target']
+
+data_train = np.array([]).reshape(0,4)
+data_test = np.array([]).reshape(0,4)
+label_train = np.array([])
+label_test = np.array([])
+
+for target in list(set(data['target'])):
+    v_train, v_test = train_test_split(data_v[data_l==target],test_size = 0.5)
+    l_train = np.full(shape=len(v_train),fill_value=target)
+    l_test = np.full(shape=len(v_test),fill_value=target)
+    data_train = np.concatenate((data_train,v_train))
+    data_test = np.concatenate((data_test,v_test))
+    label_train = np.concatenate((label_train,l_train))
+    label_test = np.concatenate((label_test,l_test))
+
+## TER Algorithm
+# Basis : RM2
+def RMmodel(order,X):
+    m,l = X.shape
+    
+    M1 = []
+    M2 = []
+    M3 = []
+    MM1 = []
+    MM3 = []
+
+    Msum = np.sum(X,axis=1)
+
+    for i in range(order):
+        for k in range(l):
+            M1.append(X[:,k]**(i+1))
+            if (i>0):
+                M3.append(X[:,k]*Msum**(i)) 
+        M2.append(Msum**(i+1))
+        MM1.append(M1)
+        if (i>0):
+            MM3.append(M3)
+
+    MM1 = np.array(MM1).T
+    MM1 = MM1.reshape((m,-1,1)).squeeze(axis=2)
+    M2 = np.array(M2).T
+    if (len(MM3)):
+        MM3 = np.array(MM3).T
+        MM3 = MM3.reshape((m,-1,1)).squeeze(axis=2)
+        P = np.concatenate((np.ones((m,1)),MM1,M2,MM3),axis=1)
+    else : P = np.concatenate((np.ones((m,1)),MM1,M2),axis=1)
+
+    return(P)
+
+def TERmodel(rank,r,n,X,Y):
+    alpha = []
+    for k in list(set(Y)):
+
+        P_n = RMmodel(rank,X[Y!=k])
+        P_p = RMmodel(rank,X[Y==k])
+
+        mk_n = X[Y!=k].shape[0]
+        mk_p = X[Y==k].shape[0]
+
+        yk_n = (r-n) * np.ones(shape=Y[Y!=k].shape)
+        yk_p = (r+n) * np.ones(shape=Y[Y==k].shape)
+
+        I = np.eye(P_n.shape[1])
+        b = 10**(-4)
+
+        first_eq = np.linalg.pinv(b*I + (1/mk_n)*(P_n.T).dot(P_n) + (1/mk_p)*(P_p.T).dot(P_p))
+        second_eq = (1/mk_n)*(P_n.T).dot(yk_n) + (1/mk_p)*(P_p.T).dot(yk_p)
+        ak = np.dot(first_eq,second_eq)
+
+        alpha.append(ak)
+    return(np.array(alpha).T)
+
+alpha = TERmodel(6,0.5,0.5,data_train,label_train)
+
+P_t = RMmodel(6,data_test)
+yt = P_t.dot(alpha)
+yt1 = np.argmax(yt,axis=1)
+plt.plot(yt1)
+
+# Training
+''' 
+# RM training
+P = RMmodel(6,data_train)
+I = np.eye(P.shape[1])
+b = 10**(-4)
+
+alpha = np.linalg.pinv((P.T).dot(P)+b*I).dot(P.T).dot(label_train)
+
+# Testing
+P = RMmodel(6,data_test)
+I = np.eye(P.shape[1])
+b = 10**(-4)
+alpha = np.linalg.pinv((P.T).dot(P)+b*I).dot(P.T).dot(label_test)
+
+y_train = P.dot(alpha)
+
+'''
+
+
+'''
 # Functions
 ## Functiobn : LDA
 def LDA_ORLDB(image_data,array_len,num_eigvec):
@@ -163,10 +279,10 @@ start_time = time.time()
 array_len = 56*46
 
 # For Windows
-#file_path = 'D:\Matlab_Drive\Data\ORLDB'
+file_path = 'D:\Matlab_Drive\Data\ORLDB'
 
 # For Linux
-file_path = '/home/herokwon/data/ORLDB'
+# file_path = '/home/hero/Matlab_Drive/Data/ORLDB'
 
 file_list = os.listdir(file_path)
 file_list = [s for s in file_list if ".bmp" in s]
@@ -234,91 +350,4 @@ print("Accuracy : " + str(acc) + " [" + str(sum(acc_tflist)) + "/" + str(len(acc
 
 print("Elapsed Time : " + str(time.time() - start_time))
 
-
-
-
-
-FLAGS = tf.app.flags.FLAGS
-
-tf.app.flags.DEFINE_string('train_dir', '/tmp/cifar10_train',
-                           """Directory where to write event logs """
-                           """and checkpoint.""")
-tf.app.flags.DEFINE_integer('max_steps', 390,
-                            """Number of batches to run.""")
-tf.app.flags.DEFINE_boolean('log_device_placement', False,
-                            """Whether to log device placement.""")
-tf.app.flags.DEFINE_integer('log_frequency', 10,
-                            """How often to log results to the console.""")
-
-def train():
-  """Train CIFAR-10 for a number of steps."""
-  with tf.Graph().as_default():
-    global_step = tf.train.get_or_create_global_step()
-
-    # Get images and labels for CIFAR-10.
-    # Force input pipeline to CPU:0 to avoid operations sometimes ending up on
-    # GPU and resulting in a slow down.
-    with tf.device('/cpu:0'):
-      images, labels = inputs(eval_data) #cifar10.distorted_inputs()
-
-    # Build a Graph that computes the logits predictions from the
-    # inference model.
-    logits = inference(images)
-
-    # Calculate loss.
-    loss = loss(logits, labels)
-    tf.summary.scalar('loss', loss)
-    # Build a Graph that trains the model with one batch of examples and
-    # updates the model parameters.
-    train_op = train(loss, global_step)
-
-    class _LoggerHook(tf.train.SessionRunHook):
-      """Logs loss and runtime."""
-
-      def begin(self):
-        self._step = -1
-        self._start_time = time.time()
-
-      def before_run(self, run_context):
-        self._step += 1
-        return tf.train.SessionRunArgs(loss)  # Asks for loss value.
-
-      def after_run(self, run_context, run_values):
-        if self._step % FLAGS.log_frequency == 0:
-          current_time = time.time()
-          duration = current_time - self._start_time
-          self._start_time = current_time
-
-          loss_value = run_values.results
-          examples_per_sec = FLAGS.log_frequency * FLAGS.batch_size / duration
-          sec_per_batch = float(duration / FLAGS.log_frequency)
-
-          format_str = ('%s: step %d, loss = %.2f (%.1f examples/sec; %.3f '
-                        'sec/batch)')
-          print (format_str % (datetime.now(), self._step, loss_value,
-                               examples_per_sec, sec_per_batch))
-          cifar10_eval.evaluate()
-
-    with tf.train.MonitoredTrainingSession(
-        checkpoint_dir=FLAGS.train_dir,
-        save_summaries_steps = 10,
-        save_checkpoint_secs = 1,
-        hooks=[tf.train.StopAtStepHook(last_step=FLAGS.max_steps),
-               tf.train.NanTensorHook(loss),
-               _LoggerHook()],
-        config=tf.ConfigProto(
-            log_device_placement=FLAGS.log_device_placement)) as mon_sess:
-      while not mon_sess.should_stop():
-        mon_sess.run(train_op)
-
-
-def main(argv=None):  # pylint: disable=unused-argument
-  cifar10.maybe_download_and_extract()
-  if tf.gfile.Exists(FLAGS.train_dir):
-    tf.gfile.DeleteRecursively(FLAGS.train_dir)
-  tf.gfile.MakeDirs(FLAGS.train_dir)
-  train()
-
-
-if __name__ == '__main__':
-  tf.app.run()
+'''
