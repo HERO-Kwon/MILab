@@ -6,11 +6,12 @@ from sklearn.model_selection import train_test_split
 try:
 # For Windows
     file_path = 'D:\\Matlab_Drive\\Data\\WIFI\\180_100_DCout'
+    file_list = os.listdir(file_path)
 except:
 # For Linux
-    file_path = '/home/hero/Data/WIFI/180_100_DCout'
+    file_path = '~/data/WIFI/180_100_DCout'
+    file_list = os.listdir(file_path)
 
-file_list = os.listdir(file_path)
 file_list_data = [os.path.join(file_path,s) for s in file_list if not "_idx.npy" in s]
 file_list_idx = [os.path.join(file_path,s) for s in file_list if "_idx.npy" in s]
 
