@@ -9,7 +9,7 @@ try:
     file_list = os.listdir(file_path)
 except:
 # For Linux
-    file_path = '~/data/WIFI/180_100_DCout'
+    file_path = '/home/herokwon/data/WIFI/180_100_DCout'
     file_list = os.listdir(file_path)
 
 file_list_data = [os.path.join(file_path,s) for s in file_list if not "_idx.npy" in s]
