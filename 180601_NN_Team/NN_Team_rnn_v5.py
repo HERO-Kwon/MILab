@@ -62,7 +62,11 @@ Y = tf.placeholder(tf.float32,[None,n_class])
 W = tf.Variable(tf.random_normal([n_hidden,n_class]))
 b = tf.Variable(tf.random_normal([n_class]))
 
+<<<<<<< HEAD
+cell = tf.contrib.rnn.LayerNormBasicLSTMCell(n_hidden)
+=======
 cell = tf.nn.rnn_cell.BasicLSTMCell(n_hidden)
+>>>>>>> a1541a6e1dda26371b2b6fd55e826d3cf5b577ef
 
 outputs, states = tf.nn.dynamic_rnn(cell,X,dtype=tf.float32)
 
