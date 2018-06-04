@@ -386,11 +386,11 @@ server <- function(input,output,session){
         capa_np_char <- (capa_ano_char/np_data)*input$selected_np
         capa_np_disc <- (capa_ano_disc/np_data)*input$selected_np
 
-        table_data1 <<- data.frame("volt"=volt_ano_char,"capa_ano_raw"=capa_ano_char,"capa_ano_np"=capa_np_char$capa)
+        table_data1 <<- data.frame("volt"=volt_ano_disc,"capa_ano_raw"=capa_ano_disc,"capa_ano_np"=capa_np_disc$capa)
 
         # melting for ggplot grouping
         table_data_melt <- melt(table_data1,id.vars="volt")
-        table_data_cat <- data.frame("volt"=volt_cat_char,"value"=capa_cat_char$capa)
+        table_data_cat <- data.frame("volt"=volt_cat_disc,"value"=capa_cat_disc$capa)
         table_data_cat$variable <- "Cathode"
 
         data_ano_char <<- data.frame("volt"=volt_ano_char,"capa"=capa_np_char)
