@@ -45,8 +45,8 @@ SetUnit <- function(list_item,k_digit,mode1,mode2){
 
             df <- df %>% group_by(volt) %>% summarize(capa = mean(capa))
             df_new <- merge(volt_unit, df, by="volt", all=TRUE)
-            if (mode2=="cat") df_new$capa[1] <- capa_min
-            else if (mode2 == "ano") df_new$capa[1] <- capa_max
+            #if (mode2=="cat") df_new$capa[1] <- capa_min
+            #else if (mode2 == "ano") df_new$capa[1] <- capa_max
         }
         else if (mode1 == "capa"){
             df$capa <- round(df$capa,digit=k_digit)
