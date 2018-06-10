@@ -100,12 +100,42 @@ def TERmodel(rank,r,n,X,Y):
         alpha.append(ak)
     return(np.array(alpha).T)
 
-alpha = TERmodel(6,0.5,0.5,data_train,label_train)
+def TERmodel_new(rank,r,n,X,Y):
+    alpha = []
+    for k in list(set(Y)):
+        P = RMmodel(rank,X)
+        mk_n = X[Y!=k].shape[0]
+        mk_p = X[Y==k].shape[0]
+
+        w_n = 1/mk_n
+        w_p = 1/mk_p
+
+        ones_mkn = 1*(Y!=k)*w_n
+        ones_mkp = 1*(Y==k)*w_p
+
+        W = np.zeros((len(Y), len(Y)), float)
+        np.fill_diagonal(W,ones_mkn+ones_mkp)
+        yk = ((r-n)*ones_mkn+(r+n)*ones_mkp).T
+        ak = np.linalg.pinv((P.T).dot(W).dot(P)).dot(P.T).dot(W).dot(yk)
+
+        alpha.append(ak)
+    return(np.array(alpha).T)
+
+
+rank_acc = pd.DataFrame()
+
+alpha = TERmodel_new(6,0.5,0.5,data_train,label_train)
 
 P_t = RMmodel(6,data_test)
 yt = P_t.dot(alpha)
 yt1 = np.argmax(yt,axis=1)
-plt.plot(yt1)
+# plt.plot(yt1)
+
+pred_true = np.equal(label_test,yt1)
+acc = np.count_nonzero(pred_true) / len(pred_true)
+
+
+
 
 # Training
 ''' 
