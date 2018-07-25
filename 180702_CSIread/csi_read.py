@@ -5,7 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # For Windows
-file_path = 'D:\\Matlab_Drive\\Data\\WIFI\\csi_0703_1503'
+dateid = 'csi201807231653'
+file_path = '\\\\192.168.10.51\\hdd1tb\\Data\\CSI\\' + dateid
 file_list = os.listdir(file_path)
 
 abs_csi = {}
@@ -18,12 +19,12 @@ for file in file_list:
 list_abs = []
 for i in range(len(abs_csi)):
     abs_val = np.mean(abs_csi[str(i+1)],axis=2)
-    if abs_val.shape==(2,3):
+    if abs_val.shape==(1,2):
         list_abs.append(abs_val)
 
 arr_abs = np.stack(list_abs, axis=-1)
 
-for i in range(2):
-    for j in range(3):
+for i in range(1):
+    for j in range(2):
         plt.plot(arr_abs[i,j,:],label=str((i,j)))
         plt.legend(bbox_to_anchor=(1.01, 1.01))
