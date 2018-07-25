@@ -3,10 +3,15 @@ import os
 import re
 import numpy as np
 import matplotlib.pyplot as plt
-
+'''
 # For Windows
 dateid = 'csi201807231653'
 file_path = '\\\\192.168.10.51\\hdd1tb\\Data\\CSI\\' + dateid
+file_list = os.listdir(file_path)
+'''
+# For Linux
+dateid = 'csi201807231653'
+file_path = '/home/mint/Drv/HDD1TB/Data/CSI' + dateid
 file_list = os.listdir(file_path)
 
 abs_csi = {}
