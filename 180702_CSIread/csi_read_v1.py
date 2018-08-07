@@ -2,6 +2,7 @@ import scipy.io as sio
 import os
 import re
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 '''
 # For Windows
@@ -10,17 +11,28 @@ file_path = '\\\\192.168.10.51\\hdd1tb\\Data\\CSI\\' + dateid
 file_list = os.listdir(file_path)
 '''
 # For Linux
-dateid = 'csi201807282057'
+dateid = 'csi201808011506'
 file_path = '/home/mint/Drv/HDD1TB/Data/CSI/' + dateid
 file_list = os.listdir(file_path)
 
 print("CSI:Abs value")
-abs_csi = {}
+abs_csi = pd.DataFrame()
 for file in file_list:
     data_read = sio.loadmat(os.path.join(file_path,file))
     num_search = re.search('\d+',file)
-    csi_num = num_search.group(0)
-    abs_csi[csi_num] = np.abs(data_read['csi_entry']['csi_scaled'][0][0])
+    csi_num = int(num_search.group(0))
+    data_df = pd.DataFrame(data_read['csi_entry'][0],index=[csi_num])
+    abs_csi = abs_csi.append(data_df)
+
+scalar_col = ['timestamp_low','bfee_count','Nrx','Ntx','rssi_a','rssi_b','rssi_c','noise','agc','rate']
+
+abs_csi['perm'] = abs_csi['perm'].str[0]
+for col in scalar_col:
+    abs_csi[col] = abs_csi[col].str[0].str[0]
+
+abs_csi = abs_csi.sort_index()
+
+
 
 print("CSI:to array")
 list_abs = []
