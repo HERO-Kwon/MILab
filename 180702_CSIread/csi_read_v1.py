@@ -4,6 +4,7 @@ import re
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from PIL import Image
 '''
 # For Windows
 dateid = 'csi201807231653'
@@ -11,7 +12,7 @@ file_path = '\\\\192.168.10.51\\hdd1tb\\Data\\CSI\\' + dateid
 file_list = os.listdir(file_path)
 '''
 # For Linux
-dateid = 'csi201808011647'
+dateid = 'csi201808061647'
 file_path = '/home/mint/Drv/HDD1TB/Data/CSI/' + dateid
 file_list = os.listdir(file_path)
 
@@ -52,3 +53,27 @@ for i in range(ntx):
     for j in range(nrx):
         plt.plot(data_csi.bfee_count.values,arr_abs[i,j,:],label=str((i,j)))
         plt.legend(bbox_to_anchor=(1.01, 1.01))
+
+
+# plot2 : subcarrier plot
+
+print("CSI:subcarrier")
+
+max_abs = 30
+
+abs_list = []
+ph_list = []
+for i in range(len(data_csi)):
+    abs_list.append(np.abs(data_csi.iloc[i].csi_scaled))
+    ph_list.append(np.angle(data_csi.iloc[i].csi_scaled))
+abs_arr = np.array(abs_list)
+ph_arr = np.array(ph_list)
+
+abs_int = (abs_arr / max_abs * 255).astype('uint8')
+abs_img = np.zeros((abs_int.shape[0],abs_int.shape[3],3),'uint8')
+for i in range(abs_int.shape[0]):
+    for j in range(abs_int.shape[3]):
+        abs_img[i][j] = abs_int[i,0,:,j]
+
+im = Image.fromarray(abs_img)
+im.save('im.jpeg')
