@@ -97,8 +97,11 @@ for i in range(ntx):
         plt.plot(df_sc.index,arr_abs[i,j,:],label=str((i,j)))
         plt.legend(bbox_to_anchor=(1.01, 1.01))
 
+# plot2 : subcarrier stdev
 
-# plot2 : subcarrier plot
+
+
+# plot3 : subcarrier plot
 
 print("CSI:subcarrier")
 
