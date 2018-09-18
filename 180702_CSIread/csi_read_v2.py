@@ -5,25 +5,45 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
-'''
+
 # For Windows.;.;
-dateid = 'csi201807231653'
-file_path = '\\\\192.168.10.51\\hdd1tb\\Data\\CSI\\' + dateid
+dateid = 'csi201809112003'
+file_path = 'D:\\CSI\\' + dateid
 file_list = os.listdir(file_path)
-'''
-# For Linux
-dateid = 'csi201809041502'
-file_path = '/home/mint/Drv/HDD1TB/Data/CSI/' + dateid
-file_list = os.listdir(file_path)
+label_path = 'D:\\imacros'
+label_list = os.listdir(label_path)
+label_list = [f for f in label_list if f.endswith('.csv')]
+phone_list = pd.read_csv('D:\\known_phone_list.csv')
+
+# Label Processing
+datepeople_df = pd.DataFrame()
+for i, label_file in enumerate(label_list):
+    match_dt = re.match("Extract_(?P<day>\d\d)(?P<month>\d\d)(?P<year>\d\d)_(?P<hour>\d\d)(?P<minute>\d\d)(?P<second>\d\d)\.csv",label_file)
+    datetimes = match_dt.groupdict()
+    datetimes = dict((k, int(v)) for k, v in datetimes.items())
+    datetimes['year'] += 2000
+    datetimes_ser = pd.Series(datetimes)
+
+    read_df = pd.read_csv(label_path+'\\'+label_file)
+    people_ser = pd.Series()
+    #ff = re.match(phone_list.loc[3].values[0],f.loc[9].values[0])
+    for j in range(len(phone_list)):
+        mac_addr = phone_list.loc[j].mac
+        mac_name = phone_list.loc[j].owner
+        people_ser[mac_name] = len(read_df[read_df['내부 네트워크 정보'].str.contains(mac_addr)])
+    people_ser['total_people'] = sum(people_ser)
+    datepeople_ser = pd.concat((datetimes_ser,people_ser))
+    datepeople_df = datepeople_df.append(datepeople_ser,ignore_index=True)
+datepeople_df = datepeople_df.astype('int')
+col_sequence = ['year','month','day','hour','minute','second','total_people','HERO','Zaynab','SI','JY','JS','SC']
+datepeople_df = datepeople_df.reindex(columns=col_sequence)
+
+# CSI Processing
+
+print("CSI:Abs value")
 
 file_list.sort()
 file_list.sort(key=len)
-
-#file_list_1m = file_list[]
-
-# New Processing code
-
-print("CSI:Abs value")
 list_10th = [file_list[i] for i in (np.arange(0,1,0.1) * len(file_list)).astype('int')]
 
 df_sc = pd.DataFrame()
