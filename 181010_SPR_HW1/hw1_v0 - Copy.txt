@@ -1,0 +1,50 @@
+##########################
+## 1-2 SPR HW 1         ##
+## Made by: HERO Kwon   ##
+## Date : 20181010      ##
+##########################
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import math
+
+# Read Data
+train = pd.read_table('D:\\Data\\pattern\\train.txt',delim_whitespace=True,names=['d1','d2','d3'])
+test= pd.read_table('D:\\Data\\pattern\\test.txt',delim_whitespace=True,names=['d1','d2','d3'])
+
+#(ii) plotting
+
+train.plot(kind='scatter',x='d1',y='d2',c='d3',colormap='Accent')
+test.plot(kind='scatter',x='d1',y='d2',c='d3',colormap='Accent')
+train[['d1','d2']].plot(kind='kde')
+plt.legend(loc='upper left')
+test[['d1','d2']].plot(kind='kde')
+plt.legend(loc='upper left')
+
+#(iii) compute bayesian decision
+
+def NormalDens(x, mean, std):
+    exponent = math.exp(-(math.pow(x-mean,2)/(2*math.pow(std,2))))
+    return (1 / (math.sqrt(2*math.pi) * std)) * exponent
+def Prob_d(x,train_data,cls,var):
+    train_mean = train_data.groupby(['d3']).mean()
+    train_std = train_data.groupby(['d3']).std()
+    return NormalDens(x,train_mean[var].loc[cls],train_std[var].loc[cls])
+def BayesDecision(df_row,train_data):
+    p_cls0 = 0.5*Prob_d(df_row['d1'],train_data,0,'d1')*Prob_d(df_row['d2'],train_data,0,'d2') 
+    p_cls1 = 0.5*Prob_d(df_row['d1'],train_data,1,'d1')*Prob_d(df_row['d2'],train_data,1,'d2')
+    return int(p_cls0<p_cls1)
+
+
+#(iv) sample data
+train_sampled = train.sample(100,random_state=1)
+train_sampled.plot(kind='scatter',x='d1',y='d2',c='d3',colormap='Accent')
+
+#(v) cls error rate
+pred_y = [BayesDecision(test.loc[i],train_sampled) for i in range(len(test))]
+true_y= list(test['d3'].values.astype('int'))
+from sklearn.metrics import confusion_matrix
+cls_result = confusion_matrix(true_y,pred_y)
+print(cls_result)
+print(np.sum(np.diag(cls_result)) / np.sum(cls_result))
