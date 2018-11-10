@@ -41,7 +41,7 @@ selected_label = datepeople_df[(datepeople_df.day==20)|(datepeople_df.day==21)|(
 csi_list = ['csi'+str(selected_label.iloc[i].year)+str(selected_label.iloc[i].month).zfill(2)+str(selected_label.iloc[i].day)+str(selected_label.iloc[i].hour).zfill(2)+'03' for i in range(len(selected_label))]
 
 selected_label = selected_label.set_index([csi_list])
-label = selected_label.total_people.groupby(label.index).mean()
+label = selected_label.total_people.groupby(selected_label.index).mean()
 csi_list=list(set(csi_list))
 
 # CSI Processing
@@ -116,9 +116,9 @@ for dateid in csi_list:
     csi_summ = csi_summ.append(csi_summ1)
 
 #label set
-csi_list1 = ['csi'+str(selected_label.iloc[i].year)+str(selected_label.iloc[i].month).zfill(2)+str(selected_label.iloc[i].day)+str(selected_label.iloc[i].hour).zfill(2)+'03' for i in range(len(selected_label))]
-selected_label = selected_label.set_index([csi_list1])
-label = selected_label.total_people
+#csi_list1 = ['csi'+str(selected_label.iloc[i].year)+str(selected_label.iloc[i].month).zfill(2)+str(selected_label.iloc[i].day)+str(selected_label.iloc[i].hour).zfill(2)+'03' for i in range(len(selected_label))]
+#selected_label = selected_label.set_index([csi_list1])
+#label = selected_label.total_people
 
 # SVM
 from sklearn.svm import SVC
