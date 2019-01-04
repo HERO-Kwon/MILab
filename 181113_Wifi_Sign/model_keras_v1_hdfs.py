@@ -2,14 +2,15 @@ import os
 import tensorflow as tf
 import numpy as np
 import pandas as pd
-import pickle
-import gzip
+import h5py
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+from keras.utils.io_utils import HDF5Matrix
 
 # data path
 path_csi =  'J:\\Data\\Wi-Fi_processed\\'
 path_csi_hc = 'J:\\Data\\Wi-Fi_HC\\180_100\\'
+path_csi_hdfs = 'J:\\Data\\Wi-Fi_Processed_HDFS\\'
 
 # data info
 df_info = pd.read_csv('data_subc_sig_v1.csv')
@@ -18,45 +19,31 @@ df_info = pd.read_csv('data_subc_sig_v1.csv')
 person_uid = np.unique(df_info['id_person'])
 dict_id = dict(zip(person_uid,np.arange(len(person_uid))))
 
-# parameters
+# Parameters
 max_value = np.max(df_info['max'].values)
-#no_classes = len(np.unique(df_info['id_person']))
 no_classes = len(dict_id)
-csi_time = int(np.max(df_info['len']))
+num_csi = 15000
+csi_time = 500 #data_csi.shape[1]
 csi_subc = 30
-input_shape = (csi_time, csi_subc, 6)
+input_shape = (csi_time,csi_subc,6)
 
-# make data generator
-def gen_csi(df_info,id_num,len_num):
-    for file in np.unique(df_info.id.values):
-        # read sample data
-        # load and uncompress.
-        with gzip.open(path_csi+file+'.pickle.gz','rb') as f:
-            data1 = pickle.load(f)
-        '''
-        abs_sub = np.mean(np.abs(data1),axis=(0,2,3))
-        data1_norm = data1/abs_sub[np.newaxis,:,np.newaxis,np.newaxis]
+# nomalization function
+def prep_data(array):
+    arr_abs = np.abs(array)[:,:csi_time,:,:,:] / max_value
+    return arr_abs.reshape([-1,csi_time,csi_subc,6])
+def prep_label(array):
+    arr_label = array[:,0]
+    # Label
+    label = np.array([dict_id[arr] for arr in arr_label])
+    return tf.keras.utils.to_categorical(label, no_classes)
 
-        data1_abs = np.abs(data1_norm)
-        data1_ph = np.angle(data1_norm)
-        '''
-        data1_diff = np.abs(data1)
-        
-        # differentiation
-        #data1_diff = np.diff(data1_abs,axis=0)
-        
-        # zero pad
-        pad_len = len_num - data1_diff.shape[0]
-        data1_pad = np.pad(data1_diff,((0,pad_len),(0,0),(0,0),(0,0)),'constant',constant_values=0)
+# Prepare data
+x_train = HDF5Matrix(path_csi_hdfs+'csi_label.hdf5','csi',start=0,end=1000,normalizer=prep_data)
+x_test = HDF5Matrix(path_csi_hdfs+'csi_label.hdf5','csi',start=1000,end=1100,normalizer=prep_data)
+y_train = HDF5Matrix(path_csi_hdfs+'csi_label.hdf5','label',start=0,end=1000,normalizer=prep_label)
+y_test = HDF5Matrix(path_csi_hdfs+'csi_label.hdf5','label',start=1000,end=1100,normalizer=prep_label)
 
-        # Label
-        id_key = df_info[df_info.id==file]['id_person'].values[0].astype('int')
-        data1_y = dict_id[id_key]
 
-        x_input = data1_pad.reshape([-1,len_num,30,6]).astype('float32') / max_value
-        y_input = tf.keras.utils.to_categorical(data1_y, no_classes).reshape([1,-1]).astype('float32')
-        
-        yield(x_input ,y_input)
 #models
 def simple_cnn(input_shape):
     model = tf.keras.models.Sequential()
@@ -71,7 +58,7 @@ def simple_cnn(input_shape):
         kernel_size=(3, 3),
         activation='relu'
     ))
-    model.add(tf.keras.layers.MaxPooling2D(pool_size=(2,2),strides=10))
+    model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
     model.add(tf.keras.layers.Dropout(rate=0.3))
     model.add(tf.keras.layers.Flatten())
     model.add(tf.keras.layers.Dense(units=256, activation='relu'))
@@ -82,19 +69,9 @@ def simple_cnn(input_shape):
                   metrics=['accuracy'])
     return model
 
-#Train Test Split
-tr_idx,te_idx = train_test_split(df_info.index,test_size=0.2,random_state=10)
-df_train = df_info.loc[tr_idx]
-df_test = df_info.loc[te_idx]
-
-gen_train = gen_csi(df_train,no_classes,csi_time)
-gen_test = gen_csi(df_test,no_classes,csi_time)
-
-#trining
+#Fit
 simple_cnn_model = simple_cnn(input_shape)
-simple_cnn_model.fit_generator(gen_train,steps_per_epoch=10,epochs=30,
-                              validation_data=gen_test,validation_steps=10)
-
+simple_cnn_model.fit(x_train, y_train, epochs=10,batch_size=100,shuffle='batch')
 
 # Plot
 def plot_loss(history):

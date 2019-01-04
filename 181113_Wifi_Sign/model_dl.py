@@ -23,7 +23,6 @@ batch_size = 300
 
 # make data generator
 def gen_csi(df_info,id_num,len_num):
-
     for file in set(df_info.id.values):
         # read sample data
         # load and uncompress.
