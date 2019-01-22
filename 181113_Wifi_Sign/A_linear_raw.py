@@ -212,5 +212,5 @@ for train_index,test_index in skf.split(data_v,data_l):
     print('Data:' + '/ Split:'+ str(split))
     split += 1
 
-    df_acc.groupby('Model').mean()
+df_acc.groupby('Model').mean()
     
