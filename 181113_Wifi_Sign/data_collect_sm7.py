@@ -73,38 +73,39 @@ for exp_id in folder_list:
     #df_sc.to_csv(save_path+exp_id+'_df_sc.csv')
     try:
         arr_scaled = np.array(list_scaled).reshape(-1,30,2,3)
+        #Data Save
+        with gzip.open(save_path+exp_id+'.pickle.gz', 'wb') as f:
+            pickle.dump(arr_scaled, f, pickle.HIGHEST_PROTOCOL)
+        '''
+        #animated plot
+        plot_animated(save_path,exp_id,arr_scaled)
+        #heatmap
+        fig_len = len(arr_scaled)/50
+        for t in range(2):
+            for r in range(3):
+                arr_abs = np.abs(arr_scaled[:,:,t,r])
+                arr_ph = np.cos(np.angle(arr_scaled[:,:,t,r]))
+                
+                heatmap_array(save_path,(10,fig_len),exp_id+'_abs'+str((t,r)),arr_abs,50,0)
+                heatmap_array(save_path,(10,fig_len),exp_id+'_ph'+str((t,r)),arr_ph,np.pi/2,-np.pi/2)
+        '''
+        # calc mean, var
+        ser_subc = pd.Series(name=exp_id)
+        mean_subc = np.mean(np.abs(arr_scaled))
+        std_subc = np.std(np.abs(arr_scaled))
+        len_subc = len(arr_scaled)
+
+        ser_subc['mean'] = mean_subc
+        ser_subc['std'] = std_subc
+        ser_subc['len'] = len_subc
+
+        df_subc = df_subc.append(ser_subc)
+        df_subc.to_csv(save_path+exp_id+'_df_subc.csv')        
     except:
         pass
     #dict_scaled[exp_id] = arr_scaled
 
-    #Data Save
-    with gzip.open(save_path+exp_id+'.pickle.gz', 'wb') as f:
-        pickle.dump(arr_scaled, f, pickle.HIGHEST_PROTOCOL)
-    '''
-    #animated plot
-    plot_animated(save_path,exp_id,arr_scaled)
-    #heatmap
-    fig_len = len(arr_scaled)/50
-    for t in range(2):
-        for r in range(3):
-            arr_abs = np.abs(arr_scaled[:,:,t,r])
-            arr_ph = np.cos(np.angle(arr_scaled[:,:,t,r]))
-            
-            heatmap_array(save_path,(10,fig_len),exp_id+'_abs'+str((t,r)),arr_abs,50,0)
-            heatmap_array(save_path,(10,fig_len),exp_id+'_ph'+str((t,r)),arr_ph,np.pi/2,-np.pi/2)
-    '''
-    # calc mean, var
-    ser_subc = pd.Series(name=exp_id)
-    mean_subc = np.mean(np.abs(arr_scaled))
-    std_subc = np.std(np.abs(arr_scaled))
-    len_subc = len(arr_scaled)
 
-    ser_subc['mean'] = mean_subc
-    ser_subc['std'] = std_subc
-    ser_subc['len'] = len_subc
-
-    df_subc = df_subc.append(ser_subc)
-    df_subc.to_csv(save_path+exp_id+'_df_subc.csv')
 
 #with gzip.open(save_path+exp_id+'.pickle.gz', 'wb') as f:
 #    pickle.dump(dict_scaled, f, pickle.HIGHEST_PROTOCOL)
