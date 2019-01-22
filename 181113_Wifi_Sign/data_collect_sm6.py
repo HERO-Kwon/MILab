@@ -23,7 +23,7 @@ def search_int_in_filename(filename):
     return int(num_search.group(0))
 
 
-folder_path = 'D:\Data\Wi_Fi Dataset\Wi-Fi dataset_CSI\\'
+folder_path = 'D:\Data\Wi_Fi Dataset\Wi-Fi dataset_CSI_sm\\'
 folder_list = os.listdir(folder_path)
 save_path = 'D:\Data\Wi_Fi Dataset\Wi-Fi_processed_sm\\'
 #file_finished = [re.search('S\d+_\d+_\d+_\d+',row).group(0) for row in os.listdir(save_path)]
@@ -68,7 +68,7 @@ for exp_id in folder_list:
         #csi_scaled = data_read['csi_entry'][0][0][12]
 
         # aggregate
-        df_sc = df_sc.append(data_sc)
+        #df_sc = df_sc.append(data_sc)
         list_scaled.append(csi_sm)
     #df_sc.to_csv(save_path+exp_id+'_df_sc.csv')
     try:
