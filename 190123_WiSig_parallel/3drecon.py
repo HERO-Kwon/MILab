@@ -204,4 +204,5 @@ print(time.time()-t1)
 #print(f)
 
 f = 'sm_' +str(ch) + '_S035_1_1_1'
-ani_frame(sig_mat,f)
+ani_frame(sig_mat.swapaxes(1,2),f)
+#ani_frame(sig_mat,f)
