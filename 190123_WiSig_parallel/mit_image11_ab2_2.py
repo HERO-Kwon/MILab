@@ -34,7 +34,7 @@ from numba import vectorize
 def Recon3d(sig,theta,sigma,m,n,lam,d,r,c):
     #above_eq1 = 1j * (2*math.pi) * k * r * t / c
     #above_eq1 = 1j * (2*math.pi) * c * dt * 0.000001 / lam
-    above_eq1 = 1# 1j * (2*math.pi) * r / lam
+    above_eq1 = 1j * (2*math.pi) * r / lam
     above_eq2 = 1j * (2*math.pi/lam) * math.sin(theta) * ((n+1)*d*math.cos(sigma) + (m+1)*d*math.sin(sigma))
     eq_res = sig* cmath.exp(above_eq1) * cmath.exp(above_eq2)
     #eq_res = cmath.exp(above_eq1) * cmath.exp(above_eq2)
@@ -76,8 +76,8 @@ for filename in [os.listdir(path_file)[data_num]]:
 
 arr_read = np.array(list_read)[:,200*data_i:200*(data_i+1),:]
 target_data = arr_read[0]
-target_xs = target_data[:,4:].astype('float32').reshape([-1,500,30,6])
-data_xs = np.mean(target_xs,axis=2).reshape([-1,500*6])
+target_xs = target_data[:,4:].astype('float32').reshape([-1,2,3,30,500])
+data_xs = np.mean(target_xs,axis=3).reshape([-1,500*6])
 
 # make label
 label_data = target_data[:,0].astype('int')
@@ -88,7 +88,8 @@ data_y = np.array([label_table[num] for num in label_data])
 target_string = target_data[:,:4].astype('int')
 list_filename = ['_'.join([str(target_string[i,0]),str(target_string[i,1]),str(target_string[i,2]),str(target_string[i,3])]) for i in range(len(target_string))]
 
-target_sig = target_xs.reshape([-1,500,30,2,3])
+target_sig = target_xs.swapaxes(1,4).swapaxes(2,3).swapaxes(3,4)
+#target_sig = target_xs.reshape([-1,500,30,2,3])
 
 csi_time = 500
 th_range,si_range = (5,5)
@@ -101,7 +102,7 @@ c =  299792458 # speed of light
 #r = (160 + 160 + 164) * 0.01 # meter
 r = 1.64 #meter
 d = 45 * 0.01 # meter
-ch = 6#3
+ch = 7#3
 max_subc = 30
 
 infiles = set([file.replace(".npy","") for file in os.listdir(path_mit_image)])
