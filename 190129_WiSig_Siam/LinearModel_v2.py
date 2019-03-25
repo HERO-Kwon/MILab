@@ -22,10 +22,15 @@ def get_key(val,my_dict):
   
     return "key doesn't exist"
 
-def ReadDataHalf(PATH,locs,dirs):
+def ReadCSIData(PATH,ratio,locs,dirs):
     print("loading data from {}".format(PATH))
     list_csi = []
     list_lab = []
+    list_res_csi = []
+    list_res_lab = []
+    
+    ids = int(ratio * 100)
+    res_ids = int((1-ratio)*100)
 
     # Filter Loc,Dir
     file_list = []
@@ -46,16 +51,25 @@ def ReadDataHalf(PATH,locs,dirs):
         data_y = np.array([label_table[num] for num in lab_read]).reshape([-1,10])
         
         # use half of the dataset
-        idx_half = (data_y[:,0] < 50)
-        list_csi.append(data_x[idx_half])
-        list_lab.append(data_y[idx_half])
+        idx_ids = (data_y[:,0] < ids)
+        list_csi.append(data_x[idx_ids])
+        list_lab.append(data_y[idx_ids])
+        
+        reserve_ids = (data_y[:,0] >= ids)
+        list_res_csi.append(data_x[reserve_ids])
+        list_res_lab.append(data_y[reserve_ids])
 
-    arr_csi = np.array(list_csi).swapaxes(0,1).reshape([50*len(file_list),10,500,30,6])
-    arr_lab = np.array(list_lab).swapaxes(0,1).reshape([50*len(file_list),10])
+    arr_csi = np.array(list_csi).swapaxes(0,1).reshape([ids*len(file_list),10,500,30,6])
+    arr_lab = np.array(list_lab).swapaxes(0,1).reshape([ids*len(file_list),10])
     Xs = arr_csi.reshape([-1,1,500,30,6])
     Ys = arr_lab.reshape([-1,1])
 
-    return([Xs,Ys])
+    reserve_csi = np.array(list_res_csi).swapaxes(0,1).reshape([res_ids*len(file_list),10,500,30,6])
+    reserve_lab = np.array(list_res_lab).swapaxes(0,1).reshape([res_ids*len(file_list),10])
+    reserve_Xs = reserve_csi.reshape([-1,1,500,30,6])
+    reserve_Ys = reserve_lab.reshape([-1,1])
+
+    return([Xs,Ys,reserve_Xs,reserve_Ys])
 
 class LinearModels:
     isdual = 1 #prim:0,dual:1
@@ -258,13 +272,26 @@ class TERdual(LinearModels):
 ## Main
 
 # Prep Method
-prep_method = 1 # 0:none,1:pca_HC
+def PCA_HC(prep_xs,c,s,num_eig):
+    M = c*s
+    X = prep_xs.T
+    ones_vec = np.ones([M,1])
+    u = (1/M * X).dot(ones_vec)
+    A = X - u.dot(ones_vec.T)
+    Z = A.dot(A.T)
+    W,V= np.linalg.eigh(Z)
+    return(V[:,-num_eig:].T,u)
 
+
+prep_method = 1 # 0:none,1:pca_HC
+locs = [1]
+dirs = [1]
+use_ratio = 0.7
 ## Data
 PATH = "/home/herokwon/mount_data/Data/Wi-Fi_HC/180_100/"
 #PATH = "D:\\Matlab_Drive\\Data\\WIFI\\180_100\\"
 
-Xs,Ys = ReadDataHalf(PATH,[1],[1,2,3,4])
+Xs,Ys,resXs,resYs = ReadCSIData(PATH,use_ratio,locs,dirs)
 prep_xs = np.mean(np.squeeze(Xs),axis=2).reshape([-1,500*6])
 prep_ys = np.squeeze(Ys)
 
@@ -292,7 +319,7 @@ for n_splits in list_cv:
                 pca_c = len(np.unique(Y))
                 pca_s = int(Y.shape[0] / pca_c)
 
-                pca_v,pca_u = PCA_HC(prep_xs,pca_c,pca_s,40)
+                pca_v,pca_u = PCA_HC(X,pca_c,pca_s,40)
                 X = np.dot(pca_v,X.T-pca_u).T
                 Xval = np.dot(pca_v,Xval.T-pca_u).T
 
