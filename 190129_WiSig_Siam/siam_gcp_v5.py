@@ -212,7 +212,7 @@ class Siamese_Loader:
             pairs = [test_images,support_images]
             val_score = self.get_score(model,pairs)
 
-            score_list = [[i,ti,int(get_key(i,cval) == get_key(ti,cval)),val_score[0][0]] for ti in range(n_classes)]
+            score_list = [[i,ti,int(get_key(i,cval) == get_key(ti,cval)),val_score[ti][0]] for ti in range(n_classes)]
             [res_list.append(score_list[ii]) for ii in range(len(score_list))]
 
         res_df = pd.DataFrame(res_list,columns=['i','ti','truth','score'])
@@ -266,13 +266,13 @@ list_cv = [2]
 
 prep_method = 0 # 0:none,1:pca_HC
 locs = [1]
-dirs = [1]
+dirs = [1,2,3,4]
 use_ratio = 0.5
 
 #Training var
 loss_every=10 # interval for printing loss (iterations)
 batch_size = 32
-n_iter = 5000
+n_iter = 5
 
 ## Data
 PATH = "/home/herokwon/mount_data/Data/Wi-Fi_HC/180_100/"
@@ -308,10 +308,6 @@ for n_splits in list_cv:
 
             # validate
 
-            loss=siamese_net.train_on_batch(inputs,targets)
-            if i % loss_every == 0:
-                print("iteration {}, training loss: {:.2f},".format(i,loss))
-            
             dist_lsep = loader.val_dist(siamese_net)
             eer_siam = loader.eer_graphs(dist_lsep.truth,dist_lsep.score,0)
 
