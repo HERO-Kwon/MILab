@@ -26,11 +26,11 @@ int main(void) {
     v1.push_back("7");
     cout << "v1.capacity() = " << v1.capacity() << endl;
     cout << "v1.size() = " << v1.size() << endl;
-
+    /*
     // Print v1 elements using [] operator. *ADDED*
     for(size_t i = 0; i < v1.size(); i++) {
         cout << "v1[" << i << "] = " << v1[i] << endl;
-    }
+    }*/
     cout << endl;
 
     // Insert into v1 using begin().
