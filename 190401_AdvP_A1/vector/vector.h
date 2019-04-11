@@ -91,7 +91,7 @@ typename vector_t<T>::iterator vector_t<T>::insert(const iterator &it, const T &
     /* Assignment */
     
     //get array index number of the iterator
-    int index = it.ptr - array;
+    size_t index = it.ptr - array;
     
     // Double up the array when full
     if(num_elements == array_size) {
@@ -111,7 +111,9 @@ typename vector_t<T>::iterator vector_t<T>::insert(const iterator &it, const T &
     // shift array elements
     for(size_t j=num_elements; j != index ; --j)
     {
+        // erase array elements in shifting position
         array[j].~T();
+        // shift array elements to right
         new(&array[j]) T(array[j-1]);
     }
     
@@ -119,7 +121,8 @@ typename vector_t<T>::iterator vector_t<T>::insert(const iterator &it, const T &
     new(&array[index]) T(t);
     // increment number of elements
     num_elements ++; 
-
+    // return iterator pointing to the inserted element
+    return iterator(&array[index]);
 }
 
 // Erase
@@ -127,37 +130,23 @@ template <typename T>
 typename vector_t<T>::iterator vector_t<T>::erase(const iterator &it) {
 
     /* Assignment */
-    /*
-    size_t i;
-    for(i=0; &array[i]<it.ptr;i++);
-    num_elements--;
-    //shift
-    for(size_t j=i;j<num_elements;j++){
-        array[j].~T();
-        new(&array)
-        ...
-    }
-    */
     
     //get array index number of the iterator
-    int index = it.ptr - array;
-    
+    int index = it.ptr - array;    
 
     // shift array elements
     for(size_t j=index; j != num_elements-1 ; ++j)
     {
+        // erase array elements in shifting position
         array[j].~T();
+        // shift array elements to left
         new(&array[j]) T(array[j+1]);
     }
     //delete last element
     pop_back();
     
-    // decrement number of elements
-    //num_elements --;
-
     //set pointer of the iterator to next of removed one
-    //it.ptr++; 
-    
+    return iterator(&array[index+1]);
 }
 
 // Reserve

@@ -1,0 +1,6 @@
+PWD d:/Git/MILab/190410_Paper_ACPR
+INPUT c:/texlive/2018/texmf.cnf
+INPUT c:/texlive/2018/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT d:/Git/MILab/190410_Paper_ACPR/ver0.tex
+OUTPUT d:/Git/MILab/190410_Paper_ACPR/ver0.log
