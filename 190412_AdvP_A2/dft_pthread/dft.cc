@@ -60,5 +60,21 @@ void dft2d() {
     // Step 9: Destroy pthread-related variables.
     // Step 10: Deallocated heap memory blocks if any.
     /* Assignment */
+
+    // Step1: Pre-Calc
+    cout << "Step1" << endl;
+    // Allocate data.
+    unsigned N = 1024;
+    complex_t *w_data[N];
+    // Pre-Calc Weights.
+    for(unsigned r = 0; r < N; r++) {      // Rows
+        complex_t *w_val = new complex_t(cos(2*M_PI/N), -1 * sin(2*M_PI/N));
+        new (&w_data[r]) complex_t &w_val; 
+    }
+    //cout << "wdata[0].re:"<< &w_data[0].re << endl;
+    //cout << "wdata[0].im:"<< &w_data[0].im << endl;
+    //cout << "wdata[N-1].re:"<< &w_data[N-1].re << endl;
+    //cout << "wdata[N-1].im:"<< &w_data[N-1].im << endl;
+    
 }
 
