@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.4.16)  17 APR 2019 09:25
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  17 APR 2019 14:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Git/MILab/190410_Paper_ACPR/paper_v0.tex
+**d:/Git/MILab/190410_Paper_ACPR/paper_v0
 (d:/Git/MILab/190410_Paper_ACPR/paper_v0.tex
 LaTeX2e <2018-12-01>
-(d:/Git/MILab/190410_Paper_ACPR/llncs.cls
+(./llncs.cls
 Document Class: llncs 2018/03/10 v2.20 
  LaTeX document class for Lecture Notes in Computer Science
 (c:/texlive/2018/texmf-dist/tex/latex/base/article.cls
@@ -138,13 +138,13 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 ) (c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
- (c:/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+Package graphics Info: Driver file: xetex.def on input line 99.
+ (c:/texlive/2018/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen125
 \Gin@req@width=\dimen126
-) (d:/Git/MILab/190410_Paper_ACPR/paper_v0.aux)
+) (./paper_v0.aux)
 \openout1 = `paper_v0.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -155,64 +155,12 @@ LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
- (c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count117
-\scratchdimen=\dimen127
-\scratchbox=\box55
-\nofMPsegments=\count118
-\nofMParguments=\count119
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count120
-\MPscratchDim=\dimen128
-\MPnumerator=\count121
-\makeMPintoPDFobject=\count122
-\everyMPtoPDFconversion=\toks20
-) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-))) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-))) (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
- (c:/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-))
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 37.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -221,187 +169,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 37.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 37.
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 37.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 37.
-
-
-LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 37.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 43.
-(c:/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 43.
-Package epstopdf Info: Source file: <methods1.eps>
-(epstopdf)                    date: 2019-04-16 05:19:40
-(epstopdf)                    size: 3308678 bytes
-(epstopdf)             Output file: <methods1-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-17 09:24:54
-(epstopdf)                    size: 20518 bytes
-(epstopdf)             Command: <repstopdf --outfile=methods1-eps-converted-to.pdf methods1.eps>
-(epstopdf)             \includegraphics on input line 80.
-Package epstopdf Info: Output file is already uptodate.
-<methods1-eps-converted-to.pdf, id=1, 419.5675pt x 301.125pt>
-File: methods1-eps-converted-to.pdf Graphic file (type pdf)
-<use methods1-eps-converted-to.pdf>
-Package pdftex.def Info: methods1-eps-converted-to.pdf  used on input line 80.
-(pdftex.def)             Requested size: 347.12354pt x 249.12958pt.
+File: methods1.eps Graphic file (type eps)
+<methods1.eps>
  [1
 
-{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <d:/Git/MILab/190410_Paper_ACPR/methods1-eps-converted-to.pdf>]
-
-d:/Git/MILab/190410_Paper_ACPR/paper_v0.tex:114: Package inputenc Error: Unicode character ∗ (U+2217)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.114 ...g layers. Each convolution layer has f∗
-                                                   filters to be trained, wh...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-d:/Git/MILab/190410_Paper_ACPR/paper_v0.tex:114: Package inputenc Error: Unicode character ∗ (U+2217)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.114 ...has f∗ filters to be trained, where ∗
-                                                   = 1, ..., i. In a similar...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
-
-d:/Git/MILab/190410_Paper_ACPR/paper_v0.tex:123: Package inputenc Error: Unicode character − (U+2212)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.123 ...ro-mean and a standard deviation of 10−
-                                                  2. Biases were also initia...
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-d:/Git/MILab/190410_Paper_ACPR/paper_v0.tex:123: Package inputenc Error: Unicode character − (U+2212)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.123 ...ith mean 0.5 and standard deviation 10−
-                                                  2.
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-Package epstopdf Info: Source file: <network1.eps>
-(epstopdf)                    date: 2019-04-16 05:19:40
-(epstopdf)                    size: 599384 bytes
-(epstopdf)             Output file: <network1-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-17 09:24:56
-(epstopdf)                    size: 283376 bytes
-(epstopdf)             Command: <repstopdf --outfile=network1-eps-converted-to.pdf network1.eps>
-(epstopdf)             \includegraphics on input line 125.
-Package epstopdf Info: Output file is already uptodate.
-<network1-eps-converted-to.pdf, id=22, 845.1575pt x 423.5825pt>
-File: network1-eps-converted-to.pdf Graphic file (type pdf)
-<use network1-eps-converted-to.pdf>
-Package pdftex.def Info: network1-eps-converted-to.pdf  used on input line 125.
-(pdftex.def)             Requested size: 347.12354pt x 173.98018pt.
-[3]
-
-LaTeX Warning: Reference `tab1' on page 4 undefined on input line 147.
-
-[4 <d:/Git/MILab/190410_Paper_ACPR/network1-eps-converted-to.pdf>]
-
-LaTeX Warning: Reference `fig1' on page 5 undefined on input line 173.
-
-Package epstopdf Info: Source file: <fig1.eps>
-(epstopdf)                    date: 2019-04-16 05:19:40
-(epstopdf)                    size: 357553 bytes
-(epstopdf)             Output file: <fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-17 09:25:02
-(epstopdf)                    size: 36486 bytes
-(epstopdf)             Command: <repstopdf --outfile=fig1-eps-converted-to.pdf fig1.eps>
-(epstopdf)             \includegraphics on input line 176.
-Package epstopdf Info: Output file is already uptodate.
-<fig1-eps-converted-to.pdf, id=41, 345.29pt x 142.5325pt>
-File: fig1-eps-converted-to.pdf Graphic file (type pdf)
-<use fig1-eps-converted-to.pdf>
-Package pdftex.def Info: fig1-eps-converted-to.pdf  used on input line 176.
-(pdftex.def)             Requested size: 347.12354pt x 143.29115pt.
-
-LaTeX Warning: Citation `ref_article1' on page 5 undefined on input line 199.
-
-
-LaTeX Warning: Citation `ref_lncs1' on page 5 undefined on input line 199.
-
-
-LaTeX Warning: Citation `ref_book1' on page 5 undefined on input line 200.
-
-
-LaTeX Warning: Citation `ref_proc1' on page 5 undefined on input line 200.
-
-
-LaTeX Warning: Citation `ref_url1' on page 5 undefined on input line 201.
-
-
-LaTeX Warning: Citation `ref_article1' on page 5 undefined on input line 202.
-
-
-LaTeX Warning: Citation `ref_lncs1' on page 5 undefined on input line 202.
-
-
-LaTeX Warning: Citation `ref_book1' on page 5 undefined on input line 202.
-
-
-LaTeX Warning: Citation `ref_article1' on page 5 undefined on input line 203.
-
-
-LaTeX Warning: Citation `ref_book1' on page 5 undefined on input line 203.
-
-
-LaTeX Warning: Citation `ref_proc1' on page 5 undefined on input line 203.
-
-
-LaTeX Warning: Citation `ref_url1' on page 5 undefined on input line 203.
-
-[5 <d:/Git/MILab/190410_Paper_ACPR/fig1-eps-converted-to.pdf>] [6] (d:/Git/MILab/190410_Paper_ACPR/paper_v0.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] [2]
+File: network1.eps Graphic file (type eps)
+<network1.eps>
+ [3] [4] (./paper_v0.aux) ) 
 Here is how much of TeX's memory you used:
- 1909 strings out of 492616
- 26620 string characters out of 6132768
- 99219 words of memory out of 5000000
- 5809 multiletter control sequences out of 15000+600000
- 8147 words of font info for 29 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 41i,8n,25p,479b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on d:/Git/MILab/190410_Paper_ACPR/paper_v0.pdf (6 pages, 506556 bytes).
-PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1061 strings out of 492933
+ 13075 string characters out of 6136537
+ 90300 words of memory out of 5000000
+ 5129 multiletter control sequences out of 15000+600000
+ 5535 words of font info for 29 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 28i,5n,21p,452b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+Output written on paper_v0.pdf (4 pages).

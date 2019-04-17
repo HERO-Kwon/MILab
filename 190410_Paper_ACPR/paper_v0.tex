@@ -68,9 +68,6 @@ b. Siamese Networks
 
 \subsection{WIFI CSI}
 - An In-Air Signature Verification System Using Wi-Fi Signals 
-\subsection{Siamese Networks}
-i. Signature Verification using a "Siamese" Time Delay Neural Network
-Siamese Neural Networks for One-Shot Image Recognition
 
 \section{Proposed System}
 \subsection{Data Acquisition and Preprocessing}
@@ -98,8 +95,15 @@ Second, all inputs must be arranged of same size.
 Since all signals have different length, the gradient operation with respect to the time instance is adopted to measure the short time energy. 
 Data points with the highest short-time energy within the time period are regarded as the starting and the ending points of the in-air signature.
 And they are re-sampled uniformly based on Fast Fourier Transform (FFT) [16] to normalize the length of the data. 
+% Methods 
 
 \subsection{Siamese Network For Verification}
+Siamese nets were first introduced in the early 1990s by Bromley and LeCun to solve signature verification as an image matching problem (Bromley et al., 1993)
+Siamese neural networks employ a unique structure to naturally rank similarity between inputs.[1] 
+It can discriminate between the class-identity of image pairs[1]
+The verification model learns to identify input pairs according to the probability that they belong to the same class or different classes.[1]
+
+
 The model receives two processed CSI signals as inputs, and outputs the probability that the two signals are of the same class as the output.
 
 Even if a signal belongs to the same class, the shape of the input is very different if the signal is oriented differently.
@@ -129,6 +133,29 @@ This objective is combined with standard backpropagation algorithm, where the gr
 \section{Experiments}
 \section{Conclusion}
 
+%
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+% \bibliographystyle{splncs04}
+% \bibliography{mybibliography}
+%
+\begin{thebibliography}{8}
+\bibitem{ref_article1}
+Koch, Gregory, Richard Zemel, and Ruslan Salakhutdinov.
+ "Siamese neural networks for one-shot image recognition." 
+ ICML deep learning workshop. Vol. 2. 2015.
+
+
+\end{thebibliography}
+\end{document}
+
+
+
+
+%% Template End
 \section{*** Template ***}
 \section{First Section}
 \subsection{A Subsection Sample}
