@@ -8,7 +8,7 @@
 using namespace std;
         
 unsigned turn  = 0;
-unsigned running = 0;
+unsigned running = 1;
 pthread_mutex_t lock;
 pthread_cond_t cond;
 pthread_mutex_t lock_join;
@@ -43,8 +43,10 @@ void thread_join() {
     //use condition variable to wait for thread's turn.
     while(running == 1)
     {
+        printf("run 1\n");
         pthread_cond_wait(&cond_join, &lock_join);
     }    
+    printf("run 0\n");
     pthread_mutex_unlock(&lock_join);
 }
 
@@ -166,13 +168,13 @@ void* dft_thread(void *arg) {
 
     //printf() is in the critical section only for demonstration purpose.
     printf("thread %d:\n",tid);
-    thread_exit();
+
 
     //wake up all other threads to check if they are the next one to go.
     pthread_cond_broadcast(&cond);
     pthread_mutex_unlock(&lock);
     
-    
+    thread_exit();
     return 0;
     
 }
@@ -258,7 +260,7 @@ void dft2d() {
         thread_join();
         printf("thread %u done\n",t);
     }
-    
+    /*
     // deallocate pthreads.
     delete [] threads;
     delete [] tid;
@@ -266,7 +268,7 @@ void dft2d() {
     // destroy mutex lock
     assert(!pthread_mutex_destroy(&lock));
     assert(!pthread_cond_destroy(&cond));
-    
+    */
     cout << "Step 5: Transpose the data matrix so that column-wise DFT can be performed" << endl;
     
     //transpose array
