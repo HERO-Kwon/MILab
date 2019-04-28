@@ -15,7 +15,7 @@ pthread_mutex_t lock_join;
 pthread_cond_t cond_join;
 
 //make w array
-complex_t *w_arr = (complex_t*)malloc(511 * sizeof(complex_t));
+complex_t *w_arr = (complex_t*)malloc(512 * sizeof(complex_t));
 
 
             
