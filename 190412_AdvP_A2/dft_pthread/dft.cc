@@ -146,22 +146,11 @@ void* dft_thread(void *arg) {
         pthread_cond_wait(&cond, &lock);
     }    
 
-    //accumulate thread ID values
-    //sum += tid;
 
     //dft calc
-
     int n_start = width*(height/num_threads)*tid;
-            
-    //printf("tid: %d\n",tid);
-    //printf("n_st: %d\n",n_start);
-    /*
-    for(int p=1; p<=10; p++)
-    {
-        dft1d(&data[n_start],pow(2,p));
-    }
-    */
     dft1d(&data[n_start],width);
+
     //update the turn
     turn++;
     
@@ -169,12 +158,12 @@ void* dft_thread(void *arg) {
     //printf() is in the critical section only for demonstration purpose.
     printf("thread %d:\n",tid);
 
-
+    thread_exit();
     //wake up all other threads to check if they are the next one to go.
     pthread_cond_broadcast(&cond);
     pthread_mutex_unlock(&lock);
     
-    thread_exit();
+    
     return 0;
     
 }
