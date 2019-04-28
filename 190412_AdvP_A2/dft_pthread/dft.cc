@@ -40,7 +40,7 @@ void dft1d(complex_t *h, const unsigned N) {
     // Step 2: Follow Danielson-Lanczos Lemma to perform the DFT.
     /* Assignment */
     
-
+    printf("h[5]: %f\n",h[5].re);
     // Step 2
     //block
     for(int r = 0; r < int(width*(height/num_threads)/N) ; r++)
@@ -58,8 +58,15 @@ void dft1d(complex_t *h, const unsigned N) {
             h1_new = h[r*N+k] + wval * h[r*N+k + int(N/2)];
             h2_new = h[r*N+k] - wval * h[r*N+k + int(N/2)];
 
-            h[r*N+k] = h1_new;
-            h[r*N+k + int(N/2)] = h2_new;
+//            h[r*N+k] = h1_new;
+//            h[r*N+k + int(N/2)] = h2_new;
+
+            h[r*N+k].~complex_t();
+            new (&h[r*N+k]) complex_t(h1_new);
+            h[r*N+k + int(N/2)].~complex_t();
+            new (&h[r*N+k + int(N/2)]) complex_t(h2_new);
+
+
         }
     }
 
@@ -89,6 +96,9 @@ void* dft_thread(void *arg) {
     //dft calc
 
     int n_start = width*(height/num_threads)*tid;
+            
+    printf("tid: %d\n",tid);
+    printf("n_st: %d\n",n_start);
     for(int p=1; p<=10; p++)
     {
         dft1d(&data[n_start],pow(2,p));
@@ -143,7 +153,7 @@ void dft2d() {
     complex_t *old_data = data;
     data = new complex_t[width * height];
     
-    for(unsigned row=0; row<height/num_threads; row++) // Do it for every row
+    for(unsigned row=0; row<height; row++) // Do it for every row
     {
         for(unsigned r=0; r<width; r++) // do it for every value
         {
