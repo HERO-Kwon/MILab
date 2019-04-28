@@ -8,15 +8,17 @@
 using namespace std;
         
 unsigned turn  = 0;
-unsigned running = 1;
+unsigned running = 0;
 pthread_mutex_t lock;
 pthread_cond_t cond;
 pthread_mutex_t lock_join;
 pthread_cond_t cond_join;
 
 //make w array
-complex_t *w_arr = (complex_t*)malloc(width * sizeof(complex_t));
+complex_t *w_arr = (complex_t*)malloc(511 * sizeof(complex_t));
 
+
+            
 void thread_exit() {
     // Use pthread mutex and condition variables to exit the child function,
     // and signal the parent thread that this thread is done.
@@ -43,10 +45,8 @@ void thread_join() {
     //use condition variable to wait for thread's turn.
     while(running == 1)
     {
-        printf("run 1\n");
         pthread_cond_wait(&cond_join, &lock_join);
     }    
-    printf("run 0\n");
     pthread_mutex_unlock(&lock_join);
 }
 
@@ -89,7 +89,7 @@ void dft1d(complex_t *h, const unsigned N) {
             //old_data[height*row + r].~complex_t();
         }
     }
-
+    
     // Step 2
     //block
     for(int p=1; p<=int(log2(N)); p++)
@@ -114,17 +114,17 @@ void dft1d(complex_t *h, const unsigned N) {
                 dft_data[r*size+k + int(size/2)] = h2_new;
                 h[r*size+k] = h1_new;
                 h[r*size+k + int(size/2)] = h2_new;
-/*
-                h[r*N+k].~complex_t();
-                new (&h[r*N+k]) complex_t(h1_new);
-                h[r*N+k + int(N/2)].~complex_t();
-                new (&h[r*N+k + int(N/2)]) complex_t(h2_new);
-*/
+
+                //h[r*N+k].~complex_t();
+                //new (&h[r*N+k]) complex_t(h1_new);
+                //h[r*N+k + int(N/2)].~complex_t();
+                //new (&h[r*N+k + int(N/2)]) complex_t(h2_new);
+
 
             }
         }
     }
-
+   
 }
 
 // 1-D DFT Thread function
@@ -202,40 +202,15 @@ void dft2d() {
     /* Assignment */
 
     cout << "Step1-1: Pre-Calc Weight" << endl;
-
     
-    for(unsigned r = 0; r < width/2-1; r++) //Loop for N/2-1 times
+    for(unsigned r = 0; r < unsigned(width/2-1); r++) //Loop for N/2-1 times
     {
         w_arr[r] = * new complex_t(cos(2*r*M_PI/width),-1*sin(2*r*M_PI/width)); //make w value.
+
+        //new (&w_arr[r]) complex_t(cos(2*r*M_PI/width),-1*sin(2*r*M_PI/width));
+        
     }
-    /*
-    // Step 1
-    cout << "DFT:Step1: Shuffle inputs to binary order" << endl;
-    //make new data array
-    complex_t *old_data = data;
-    data = new complex_t[width * height];
-    
-    for(unsigned row=0; row<height; row++) // Do it for every row
-    {
-        for(unsigned r=0; r<width; r++) // do it for every value
-        {
-            //calc shuffle order
-            int quo_2 = r;
-            int rem_2 = 0;
-            int new_ind = 0;
-            for(int k = int(log2(width))-1; k>=0 ; k--)
-            {
-                rem_2 = quo_2 % 2;
-                quo_2 = int(quo_2 / 2);
-                new_ind += pow(2,k) * rem_2;
-            }
-            //put reordered data to array
-            data[height*row + new_ind] = old_data[height*row + r];
-            old_data[height*row + r].~complex_t();
-        }
-    }
-    delete[] old_data;
-    */
+
     cout << "Step2: Initialize thread variables" << endl;
     // number of threads to create -> main
     //initialize mutex lock and condition variable.
@@ -260,15 +235,7 @@ void dft2d() {
         thread_join();
         printf("thread %u done\n",t);
     }
-    /*
-    // deallocate pthreads.
-    delete [] threads;
-    delete [] tid;
 
-    // destroy mutex lock
-    assert(!pthread_mutex_destroy(&lock));
-    assert(!pthread_cond_destroy(&cond));
-    */
     cout << "Step 5: Transpose the data matrix so that column-wise DFT can be performed" << endl;
     
     //transpose array
@@ -289,33 +256,7 @@ void dft2d() {
     // Deallocate the old array.
     delete[] old_data1;
     
-    /*
-    // Shuffle input to binary
-    //make new data array
-    complex_t *old_data2 = data;
-    data = new complex_t[width * height];
-    
-    for(unsigned row=0; row<height; row++) // Do it for every row
-    {
-        for(unsigned r=0; r<width; r++) // do it for every value
-        {
-            //calc shuffle order
-            int quo_2 = r;
-            int rem_2 = 0;
-            int new_ind = 0;
-            for(int k = int(log2(width))-1; k>=0 ; k--)
-            {
-                rem_2 = quo_2 % 2;
-                quo_2 = int(quo_2 / 2);
-                new_ind += pow(2,k) * rem_2;
-            }
-            //put reordered data to array
-            data[height*row + new_ind] = old_data2[height*row + r];
-            old_data2[height*row + r].~complex_t();
-        }
-    }
-    delete[] old_data2;
-    */
+
     cout << "Step 6: Create threads to run dft_thread() for row-wise DFTs." << endl;
     //create pthreads and make each thread run func() above.
     for(unsigned t=0; t<num_threads; t++)
@@ -360,8 +301,11 @@ void dft2d() {
     // destroy mutex lock
     assert(!pthread_mutex_destroy(&lock));
     assert(!pthread_cond_destroy(&cond));
+    assert(!pthread_mutex_destroy(&lock_join));
+    assert(!pthread_cond_destroy(&cond_join));
     
     // Step 10: Deallocated heap memory blocks if any.
-    
+    free(w_arr);
+
 }
 
