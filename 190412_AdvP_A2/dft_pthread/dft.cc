@@ -7,28 +7,46 @@
 
 using namespace std;
         
-
-unsigned sum = 0;
 unsigned turn  = 0;
+unsigned running = 0;
 pthread_mutex_t lock;
 pthread_cond_t cond;
+pthread_mutex_t lock_join;
+pthread_cond_t cond_join;
+
 //make w array
 complex_t *w_arr = (complex_t*)malloc(width * sizeof(complex_t));
 
-// Custom thread exit function.
-
-//void thread_exit() {
+void thread_exit() {
     // Use pthread mutex and condition variables to exit the child function,
     // and signal the parent thread that this thread is done.
     /* Assignment */
-//}
+    
+    pthread_mutex_lock(&lock_join); //beginning of the critical section
+    running = 0; // condition variable to check whether this thread is running
+    pthread_cond_broadcast(&cond_join); //signal the parent thread that this thread is done
+    pthread_mutex_unlock(&lock_join); //ending of the critical section
+
+}
 
 // Custom thread join function.
-//void thread_join() {
+void thread_join() {
     // Use pthread mutex and condition variables to wait until all children
     // threads complete their executions.
     /* Assignment */
-//}
+    //beginning of the critical section
+    //pthread_mutex_lock(&lock);
+    //printf("thread join\n");
+
+    //beginning of the critical section
+    pthread_mutex_lock(&lock_join);
+    //use condition variable to wait for thread's turn.
+    while(running == 1)
+    {
+        pthread_cond_wait(&cond_join, &lock_join);
+    }    
+    pthread_mutex_unlock(&lock_join);
+}
 
 
 
@@ -40,8 +58,8 @@ void dft1d(complex_t *h, const unsigned N) {
     // Step 2: Follow Danielson-Lanczos Lemma to perform the DFT.
     /* Assignment */
     
-    printf("h[5]: %f\n",h[5].re);
-    printf("N: %d\n",N);
+    //printf("h[5]: %f\n",h[5].re);
+    //printf("N: %d\n",N);
     // Step 2
     //block
     for(int r = 0; r < int(width*(height/num_threads)/N) ; r++)
@@ -85,6 +103,7 @@ void* dft_thread(void *arg) {
 
     //beginning of the critical section
     pthread_mutex_lock(&lock);
+    running=1;
     //use condition variable to wait for thread's turn.
     while(tid > turn)
     {
@@ -98,8 +117,8 @@ void* dft_thread(void *arg) {
 
     int n_start = width*(height/num_threads)*tid;
             
-    printf("tid: %d\n",tid);
-    printf("n_st: %d\n",n_start);
+    //printf("tid: %d\n",tid);
+    //printf("n_st: %d\n",n_start);
     for(int p=1; p<=10; p++)
     {
         dft1d(&data[n_start],pow(2,p));
@@ -107,12 +126,16 @@ void* dft_thread(void *arg) {
     
     //update the turn
     turn++;
+    
+
     //printf() is in the critical section only for demonstration purpose.
     printf("thread %d:\n",tid);
+    thread_exit();
 
     //wake up all other threads to check if they are the next one to go.
     pthread_cond_broadcast(&cond);
     pthread_mutex_unlock(&lock);
+    
     
     return 0;
     
@@ -196,7 +219,7 @@ void dft2d() {
     //join pthreads/
     for(unsigned t=0; t<num_threads; t++)
     {
-        pthread_join(threads[t],0);
+        thread_join();
         printf("thread %u done\n",t);
     }
     
