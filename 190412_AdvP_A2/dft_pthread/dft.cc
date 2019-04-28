@@ -4,7 +4,7 @@
 #include <cstring>
 #include <pthread.h>
 #include "dft.h"
-
+#include <stdio.h>
 using namespace std;
         
 unsigned turn  = 0;
@@ -260,12 +260,12 @@ void dft2d() {
     }
     
     // deallocate pthreads.
-    //delete [] threads;
-    //delete [] tid;
+    delete [] threads;
+    delete [] tid;
 
     // destroy mutex lock
-    //assert(!pthread_mutex_destroy(&lock));
-    //assert(!pthread_cond_destroy(&cond));
+    assert(!pthread_mutex_destroy(&lock));
+    assert(!pthread_cond_destroy(&cond));
     
     cout << "Step 5: Transpose the data matrix so that column-wise DFT can be performed" << endl;
     
