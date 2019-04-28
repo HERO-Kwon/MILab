@@ -41,6 +41,7 @@ void dft1d(complex_t *h, const unsigned N) {
     /* Assignment */
     
     printf("h[5]: %f\n",h[5].re);
+    printf("N: %d\n",N);
     // Step 2
     //block
     for(int r = 0; r < int(width*(height/num_threads)/N) ; r++)
