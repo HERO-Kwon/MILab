@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  17 APR 2019 14:34
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  29 APR 2019 18:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -173,17 +173,20 @@ File: methods1.eps Graphic file (type eps)
 <methods1.eps>
  [1
 
-] [2]
+] [2] [3]
 File: network1.eps Graphic file (type eps)
 <network1.eps>
- [3] [4] (./paper_v0.aux) ) 
+
+Underfull \vbox (badness 3029) has occurred while \output is active []
+
+ [4] [5] (./paper_v0.aux) ) 
 Here is how much of TeX's memory you used:
- 1061 strings out of 492933
- 13075 string characters out of 6136537
- 90300 words of memory out of 5000000
- 5129 multiletter control sequences out of 15000+600000
+ 1057 strings out of 492933
+ 13032 string characters out of 6136537
+ 89300 words of memory out of 5000000
+ 5125 multiletter control sequences out of 15000+600000
  5535 words of font info for 29 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 28i,5n,21p,452b,257s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,5n,21p,452b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on paper_v0.pdf (4 pages).
+Output written on paper_v0.pdf (5 pages).

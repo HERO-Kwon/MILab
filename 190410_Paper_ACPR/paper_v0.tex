@@ -70,22 +70,18 @@ b. Siamese Networks
 - An In-Air Signature Verification System Using Wi-Fi Signals 
 
 \section{Proposed System}
-\subsection{Data Acquisition and Preprocessing}
+
 In this section, we introduce a system for recognition of Wi-Fi based in-air signature which utilizes the Siamese network learning for validation.
 An overview of the proposed scheme is shown in Fig.1.
+The main purpose of this system is to receive two csi signals as input, to determine if the two signals are the same signature.
+Since signals may differ in the direction in which they are entered, our system must be capable of extracting non-direction-related characteristics from two signals.
+% Figure 1
 \begin{figure}
 \includegraphics[width=\textwidth]{methods1.eps}
 \caption{...} \label{method1}
 \end{figure}
 
- Two preprocessed signals enter the Siamese network and the network 
-extracts non-directional characteristics from two signals and calculates how similar the two extracted characteristics are.
- The output of the Siamese network is 1 when the distance of the characteristic vector is close, and 0 when it is far.
-the network is learned by the back-propagation.
-
-The main purpose of this system is to receive two csi signals as input, to determine if the two signals are the same signature.
-Since signals may differ in the direction in which they are entered, our system must be capable of extracting non-direction-related characteristics from two signals.
-
+\subsection{Data Acquisition and Preprocessing}
 In order to be used as an input to a siamese network, the data must be pre-processed.
 
 First, the signal have to converted to non-complex form.
@@ -95,27 +91,58 @@ Second, all inputs must be arranged of same size.
 Since all signals have different length, the gradient operation with respect to the time instance is adopted to measure the short time energy. 
 Data points with the highest short-time energy within the time period are regarded as the starting and the ending points of the in-air signature.
 And they are re-sampled uniformly based on Fast Fourier Transform (FFT) [16] to normalize the length of the data. 
+
 % Methods 
 
 \subsection{Siamese Network For Verification}
+
+% From Ref1 start
 Siamese nets were first introduced in the early 1990s by Bromley and LeCun to solve signature verification as an image matching problem (Bromley et al., 1993)
 Siamese neural networks employ a unique structure to naturally rank similarity between inputs.[1] 
-It can discriminate between the class-identity of image pairs[1]
+It can discriminate between the class-identity of image pairs
 The verification model learns to identify input pairs according to the probability that they belong to the same class or different classes.[1]
+% From Ref1 End
 
+Two preprocessed signals enter the Siamese network and the network 
+extracts non-directional characteristics from two signals and calculates how similar the two extracted characteristics are.
+ The output of the Siamese network is 1 when the distance of the characteristic vector is close, and 0 when it is far.
+the network is learned by the back-propagation.
 
 The model receives two processed CSI signals as inputs, and outputs the probability that the two signals are of the same class as the output.
 
 Even if a signal belongs to the same class, the shape of the input is very different if the signal is oriented differently.
 To classify regardless of the direction of the signal, the model shall be capable of extracting features unrelated to the direction.
+
+% Section: Feature Extraction
 \subsection{Feature Extraction}
 When two processed signals come as the input, they are put to 2 symmetric CNN network.
 
+% CNN: purpose
 Purpose of CNN is to extract features from signal.
 By sharing their feature map, this CNN networks is trainin to learn characteristics regardless of the direction only.
 
+% how to extract feature using CNN
 To perform the feature extraction, we firstly need to have a convolutional neural networks  to serve as the feature extractor
 Based on the ConvNet structure [17] the feature extractor of the proposed pretraining model consists of i convolution layers and activation functions followed by i max-pooling layers. Each convolution layer has f∗ filters to be trained, where ∗ = 1, ..., i. In a similar manner, j fully connected layers constitute the classifier of pretraining model where each layer has g•,(•=1,...,j) neurons to be trained. 
+
+%Symmetric Architecture
+
+Some of the features CNN extracted are related to the shape of the signature, but CNN's features are not just those that helpful to classify signatures.
+some may be heavily influenced by the direction in which the signature was entered.
+We aim to classify the signature in a direction that is not related to the direction in which it was entered. This type of property interferes with the classification of signatures.
+
+To focus on characteristics conducive to classification, The two CNN networks are arranged side by side symmetrically.
+It was also designed to have the same weight on the symmetrical CNN network as on a symmetrical CNN network. % weight sharing
+
+
+
+%Symetric : Share Weights
+% To extract the same characteristics from signals in different directions.
+% CNN: Feature Extractor
+%Automatically extract feature vector from CSI image
+
+
+
 
 \subsection{Feature Matching}
 Output of the CNN are feature vectors extracted from two samples. The Euclidean distance between the two features can be calculated.
