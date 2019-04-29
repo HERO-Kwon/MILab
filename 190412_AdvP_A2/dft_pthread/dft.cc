@@ -38,16 +38,19 @@ void thread_join() {
     /* Assignment */
     //beginning of the critical section
     //pthread_mutex_lock(&lock);
-    //printf("thread join\n");
+    printf("thread join\n");
 
     //beginning of the critical section
-    pthread_mutex_lock(&lock_join);
+    //pthread_mutex_lock(&lock_join);
+    printf("thread join lock: changing condition\n");
+    //pthread_mutex_unlock(&lock_join);
     //use condition variable to wait for thread's turn.
     while(running == 1)
     {
+        printf("thread join waiting\n");
         pthread_cond_wait(&cond_join, &lock_join);
     }    
-    pthread_mutex_unlock(&lock_join);
+    
 }
 
 
@@ -139,14 +142,14 @@ void* dft_thread(void *arg) {
 
     //beginning of the critical section
     pthread_mutex_lock(&lock);
-    running=1;
+    
     //use condition variable to wait for thread's turn.
     while(tid > turn)
     {
         pthread_cond_wait(&cond, &lock);
     }    
 
-
+    running=1;
     //dft calc
     int n_start = width*(height/num_threads)*tid;
     dft1d(&data[n_start],width);
@@ -158,12 +161,12 @@ void* dft_thread(void *arg) {
     //printf() is in the critical section only for demonstration purpose.
     printf("thread %d:\n",tid);
 
-    thread_exit();
+    
     //wake up all other threads to check if they are the next one to go.
     pthread_cond_broadcast(&cond);
     pthread_mutex_unlock(&lock);
     
-    
+    thread_exit();
     return 0;
     
 }
