@@ -23,10 +23,10 @@ void thread_exit() {
     // and signal the parent thread that this thread is done.
     /* Assignment */
     
-    pthread_mutex_lock(&lock); //beginning of the critical section
+    pthread_mutex_lock(&lock_join); //beginning of the critical section
     running = 0; // condition variable to check whether this thread is running
     pthread_cond_broadcast(&cond_join); //signal the parent thread that this thread is done
-    pthread_mutex_unlock(&lock); //ending of the critical section
+    pthread_mutex_unlock(&lock_join); //ending of the critical section
 
 }
 
@@ -44,11 +44,11 @@ void thread_join() {
     {
         pthread_cond_wait(&cond_join, &lock_join);
     }
-
     //ending of critical section
     pthread_mutex_unlock(&lock_join);
     //broadcast other thread to run
     thread_exit();
+    
 }
 
 // Perform 1-D DFT.
@@ -129,14 +129,17 @@ void* dft_thread(void *arg) {
     unsigned tid = * (unsigned*) arg;
 
     //beginning of the critical section
+    
     pthread_mutex_lock(&lock);
+    
     //use condition variable to wait for thread's turn.
     while(tid > turn)
     {
         pthread_cond_wait(&cond, &lock);
     }
-    
-    running=1; //notice join that this thread is running
+
+    pthread_mutex_lock(&lock_join);
+    //running=1; //notice join that this thread is running
     
     int n_start = width*(height/num_threads)*tid; //starting position of this data block
     dft1d(&data[n_start],width); // calculate DFT
@@ -149,7 +152,9 @@ void* dft_thread(void *arg) {
     
     //wake up all other threads to check if they are the next one to go.
     pthread_cond_broadcast(&cond);
+    pthread_mutex_unlock(&lock_join); 
     pthread_mutex_unlock(&lock);
+       
     
     thread_exit(); // inform join that this thread is finished
     return 0;    
