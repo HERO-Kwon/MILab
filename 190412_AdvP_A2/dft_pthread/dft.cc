@@ -9,7 +9,8 @@ using namespace std;
         
 // conditional variables
 unsigned turn  = 0;
-unsigned running = 0;
+unsigned running = 1;
+unsigned exit_var = 0;
 pthread_mutex_t lock;
 pthread_cond_t cond;
 pthread_mutex_t lock_join;
@@ -22,12 +23,16 @@ void thread_exit() {
     // Use pthread mutex and condition variables to exit the child function,
     // and signal the parent thread that this thread is done.
     /* Assignment */
-    
+
     pthread_mutex_lock(&lock_join); //beginning of the critical section
     running = 0; // condition variable to check whether this thread is running
     pthread_cond_broadcast(&cond_join); //signal the parent thread that this thread is done
+    while(exit_var == 0) // wait for response of join function
+    {
+        pthread_cond_wait(&cond_join, &lock_join);
+    }
+    exit_var = 0; // lock condition variable
     pthread_mutex_unlock(&lock_join); //ending of the critical section
-
 }
 
 // Custom thread join function.
@@ -38,15 +43,16 @@ void thread_join() {
 
     //beginning of the critical section
     pthread_mutex_lock(&lock_join);
-
     // if thread is already running, wait for it.
     while(running == 1)
     {
         pthread_cond_wait(&cond_join, &lock_join);
     }
-    //ending of critical section
-    pthread_mutex_unlock(&lock_join);
-    
+  
+    exit_var = 1;
+    running = 1;
+    pthread_cond_broadcast(&cond_join); // broadcast for thread function to exit
+    pthread_mutex_unlock(&lock_join);  //ending of critical section
 }
 
 // Perform 1-D DFT.
@@ -126,8 +132,6 @@ void* dft_thread(void *arg) {
     //cast and dereference the input argument.
     unsigned tid = * (unsigned*) arg;
 
-    //beginning of the critical section
-    
     pthread_mutex_lock(&lock);
     
     //use condition variable to wait for thread's turn.
@@ -135,25 +139,18 @@ void* dft_thread(void *arg) {
     {
         pthread_cond_wait(&cond, &lock);
     }
-
-    pthread_mutex_lock(&lock_join);
-    running=1; //notice join that this thread is running
+    //printf() is in the critical section only for demonstration.
+    printf("thread %d:\n",tid);
     
     int n_start = width*(height/num_threads)*tid; //starting position of this data block
     dft1d(&data[n_start],width); // calculate DFT
-
     //update the turn
     turn++;
-
-    //printf() is in the critical section only for demonstration purpose.
-    printf("thread %d:\n",tid);
     
-    //wake up all other threads to check if they are the next one to go.
-    pthread_mutex_unlock(&lock_join); 
-    pthread_cond_broadcast(&cond);
+    thread_exit(); // inform join that this thread is finished
+    // unlock condition variable    
     pthread_mutex_unlock(&lock);
-       
-    if(tid==num_threads-1) thread_exit(); // inform join that this thread is finished
+    pthread_cond_broadcast(&cond);
     return 0;    
 }
 
@@ -190,11 +187,10 @@ void dft2d() {
     assert(!pthread_mutex_init(&lock,0));
     assert(!pthread_cond_init(&cond,0));
 
+    cout << "Step 3: Create threads to run dft_thread() for row-wise DFTs." << endl;
     //allocate pthreads.
     pthread_t *threads = new pthread_t[num_threads];
     unsigned *tid = new unsigned[num_threads];
-
-    cout << "Step 3: Create threads to run dft_thread() for row-wise DFTs." << endl;
     //create pthreads and make each thread run func() above.
     for(unsigned t=0; t<num_threads; t++)
     {
@@ -207,9 +203,7 @@ void dft2d() {
         thread_join();
         printf("thread %u done\n",t);
     }
-    // deallocate pthreads.
-    delete [] threads;
-    delete [] tid;
+
     cout << "Step 5: Transpose the data matrix so that column-wise DFT can be performed" << endl;
     // make copy of old array
     complex_t *old_data1 = data;
@@ -275,7 +269,7 @@ void dft2d() {
     assert(!pthread_mutex_destroy(&lock_join));
     assert(!pthread_cond_destroy(&cond_join));
     
-    // Step 10: Deallocated heap memory blocks if any.
+    cout << "Step 10: Deallocated heap memory blocks if any." << endl;
     //delete w values
     free(w_arr);
 
