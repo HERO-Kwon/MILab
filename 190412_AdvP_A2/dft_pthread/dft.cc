@@ -8,7 +8,7 @@
 using namespace std;
         
 unsigned turn  = 0;
-unsigned running = 0;
+unsigned running = 1;
 pthread_mutex_t lock;
 pthread_cond_t cond;
 pthread_mutex_t lock_join;
@@ -24,10 +24,10 @@ void thread_exit() {
     // and signal the parent thread that this thread is done.
     /* Assignment */
     
-    pthread_mutex_lock(&lock_join); //beginning of the critical section
+    pthread_mutex_lock(&lock); //beginning of the critical section
     running = 0; // condition variable to check whether this thread is running
     pthread_cond_broadcast(&cond_join); //signal the parent thread that this thread is done
-    pthread_mutex_unlock(&lock_join); //ending of the critical section
+    pthread_mutex_unlock(&lock); //ending of the critical section
 
 }
 
@@ -39,17 +39,21 @@ void thread_join() {
     //beginning of the critical section
     //pthread_mutex_lock(&lock);
     printf("thread join\n");
-
+    //running=1;
     //beginning of the critical section
     //pthread_mutex_lock(&lock_join);
-    printf("thread join lock: changing condition\n");
     //pthread_mutex_unlock(&lock_join);
     //use condition variable to wait for thread's turn.
+    pthread_mutex_lock(&lock_join);
+
     while(running == 1)
     {
         printf("thread join waiting\n");
         pthread_cond_wait(&cond_join, &lock_join);
-    }    
+    }
+    printf("thread join waking\n");
+    pthread_mutex_unlock(&lock_join);
+    thread_exit();
     
 }
 
@@ -142,14 +146,18 @@ void* dft_thread(void *arg) {
 
     //beginning of the critical section
     pthread_mutex_lock(&lock);
-    
     //use condition variable to wait for thread's turn.
     while(tid > turn)
     {
         pthread_cond_wait(&cond, &lock);
-    }    
-
+        //pthread_cond_wait(&cond_join, &lock_join);
+    }
     running=1;
+    
+    //while(running==0)
+    //{
+    //    pthread_cond_wait(&cond_join, &lock_join);
+    //}    
     //dft calc
     int n_start = width*(height/num_threads)*tid;
     dft1d(&data[n_start],width);
