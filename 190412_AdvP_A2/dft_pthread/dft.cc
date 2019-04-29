@@ -149,8 +149,8 @@ void* dft_thread(void *arg) {
     printf("thread %d:\n",tid);
     
     //wake up all other threads to check if they are the next one to go.
-    pthread_cond_broadcast(&cond);
     pthread_mutex_unlock(&lock_join); 
+    pthread_cond_broadcast(&cond);
     pthread_mutex_unlock(&lock);
        
     if(tid==num_threads-1) thread_exit(); // inform join that this thread is finished
