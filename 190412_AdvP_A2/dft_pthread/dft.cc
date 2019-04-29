@@ -9,7 +9,7 @@ using namespace std;
         
 // conditional variables
 unsigned turn  = 0;
-unsigned running = 1;
+unsigned running = 0;
 pthread_mutex_t lock;
 pthread_cond_t cond;
 pthread_mutex_t lock_join;
@@ -46,8 +46,6 @@ void thread_join() {
     }
     //ending of critical section
     pthread_mutex_unlock(&lock_join);
-    //broadcast other thread to run
-    thread_exit();
     
 }
 
@@ -139,7 +137,7 @@ void* dft_thread(void *arg) {
     }
 
     pthread_mutex_lock(&lock_join);
-    //running=1; //notice join that this thread is running
+    running=1; //notice join that this thread is running
     
     int n_start = width*(height/num_threads)*tid; //starting position of this data block
     dft1d(&data[n_start],width); // calculate DFT
@@ -155,8 +153,7 @@ void* dft_thread(void *arg) {
     pthread_mutex_unlock(&lock_join); 
     pthread_mutex_unlock(&lock);
        
-    
-    thread_exit(); // inform join that this thread is finished
+    if(tid==num_threads-1) thread_exit(); // inform join that this thread is finished
     return 0;    
 }
 
