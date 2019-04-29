@@ -205,7 +205,9 @@ void dft2d() {
         thread_join();
         printf("thread %u done\n",t);
     }
-
+    // deallocate pthreads.
+    delete [] threads;
+    delete [] tid;
     cout << "Step 5: Transpose the data matrix so that column-wise DFT can be performed" << endl;
     // make copy of old array
     complex_t *old_data1 = data;
@@ -272,6 +274,7 @@ void dft2d() {
     assert(!pthread_cond_destroy(&cond_join));
     
     // Step 10: Deallocated heap memory blocks if any.
+    //delete w values
     free(w_arr);
 
 }
