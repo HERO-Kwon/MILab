@@ -7,6 +7,7 @@
 #include <stdio.h>
 using namespace std;
         
+// conditional variables
 unsigned turn  = 0;
 unsigned running = 1;
 pthread_mutex_t lock;
@@ -14,11 +15,9 @@ pthread_cond_t cond;
 pthread_mutex_t lock_join;
 pthread_cond_t cond_join;
 
-//make w array
+//make global w array
 complex_t *w_arr = (complex_t*)malloc(512 * sizeof(complex_t));
 
-
-            
 void thread_exit() {
     // Use pthread mutex and condition variables to exit the child function,
     // and signal the parent thread that this thread is done.
@@ -36,28 +35,21 @@ void thread_join() {
     // Use pthread mutex and condition variables to wait until all children
     // threads complete their executions.
     /* Assignment */
+
     //beginning of the critical section
-    //pthread_mutex_lock(&lock);
-    printf("thread join\n");
-    //running=1;
-    //beginning of the critical section
-    //pthread_mutex_lock(&lock_join);
-    //pthread_mutex_unlock(&lock_join);
-    //use condition variable to wait for thread's turn.
     pthread_mutex_lock(&lock_join);
 
+    // if thread is already running, wait for it.
     while(running == 1)
     {
-        printf("thread join waiting\n");
         pthread_cond_wait(&cond_join, &lock_join);
     }
-    printf("thread join waking\n");
+
+    //ending of critical section
     pthread_mutex_unlock(&lock_join);
+    //broadcast other thread to run
     thread_exit();
-    
 }
-
-
 
 // Perform 1-D DFT.
 void dft1d(complex_t *h, const unsigned N) {
@@ -67,71 +59,63 @@ void dft1d(complex_t *h, const unsigned N) {
     // Step 2: Follow Danielson-Lanczos Lemma to perform the DFT.
     /* Assignment */
     
-    //printf("h[5]: %f\n",h[5].re);
-    //printf("N: %d\n",N);
-
     // Step 1
     //cout << "DFT:Step1: Shuffle inputs to binary order" << endl;
     //make new data array
     complex_t *dft_data;
     dft_data = new complex_t[width * height/num_threads];
     
-    for(unsigned row=0; row<height/num_threads; row++) // Do it for every row
+    for(unsigned c=0; c<height/num_threads; c++) // Do it for every row
     {
         for(unsigned r=0; r<width; r++) // do it for every value
         {
-            //calc shuffle order
-            int quo_2 = r;
+            // initialize variables
+            int quo_2 = r; 
             int rem_2 = 0;
             int new_ind = 0;
+            //calc binary shuffle order by dividing 2
             for(int k = int(log2(width))-1; k>=0 ; k--)
             {
                 rem_2 = quo_2 % 2;
                 quo_2 = int(quo_2 / 2);
-                new_ind += pow(2,k) * rem_2;
+                new_ind += pow(2,k) * rem_2; //order number in decimal value
             }
             //put reordered data to array
-            new (&dft_data[height*row + new_ind]) complex_t(h[height*row + r]);
-            //dft_data[height*row + new_ind] = h[height*row + r];
-            //old_data[height*row + r].~complex_t();
+            new (&dft_data[height*c + new_ind]) complex_t(h[height*c + r]);
         }
     }
     
     // Step 2
-    //block
+    //cout << "DFT:Step2: Perform DFT" << endl;
+    // iterate power of 2
     for(int p=1; p<=int(log2(N)); p++)
     {
         int size = pow(2,p);
-            for(int r = 0; r < int(width*(height/num_threads)/size) ; r++)
-            {
-            //int n_start = 1024*1024*(tid/num_threads)*(r/N);
-            //calc
+        // do it for every row
+        for(int r = 0; r < int(width*(height/num_threads)/size) ; r++)
+        {
+            // calculation of DFT value
             for(int k=0; k < int(size/2); k++)
             {
                 complex_t h1_new, h2_new, wval;
 
+                //get w index
                 int w_num = k*int(1024/size);
                 if(w_num >= 512) wval =  complex_t(-1.0,0.0) * w_arr[w_num-512];
                 else wval = w_arr[w_num];
 
+                //perform DFT
                 h1_new = dft_data[r*size+k] + wval * dft_data[r*size+k + int(size/2)];
                 h2_new = dft_data[r*size+k] - wval * dft_data[r*size+k + int(size/2)];
 
+                //put new value into data array
                 dft_data[r*size+k] = h1_new;
                 dft_data[r*size+k + int(size/2)] = h2_new;
                 h[r*size+k] = h1_new;
                 h[r*size+k + int(size/2)] = h2_new;
-
-                //h[r*N+k].~complex_t();
-                //new (&h[r*N+k]) complex_t(h1_new);
-                //h[r*N+k + int(N/2)].~complex_t();
-                //new (&h[r*N+k + int(N/2)]) complex_t(h2_new);
-
-
             }
         }
     }
-   
 }
 
 // 1-D DFT Thread function
@@ -150,33 +134,25 @@ void* dft_thread(void *arg) {
     while(tid > turn)
     {
         pthread_cond_wait(&cond, &lock);
-        //pthread_cond_wait(&cond_join, &lock_join);
     }
-    running=1;
     
-    //while(running==0)
-    //{
-    //    pthread_cond_wait(&cond_join, &lock_join);
-    //}    
-    //dft calc
-    int n_start = width*(height/num_threads)*tid;
-    dft1d(&data[n_start],width);
+    running=1; //notice join that this thread is running
+    
+    int n_start = width*(height/num_threads)*tid; //starting position of this data block
+    dft1d(&data[n_start],width); // calculate DFT
 
     //update the turn
     turn++;
-    
 
     //printf() is in the critical section only for demonstration purpose.
     printf("thread %d:\n",tid);
-
     
     //wake up all other threads to check if they are the next one to go.
     pthread_cond_broadcast(&cond);
     pthread_mutex_unlock(&lock);
     
-    thread_exit();
-    return 0;
-    
+    thread_exit(); // inform join that this thread is finished
+    return 0;    
 }
 
 // Perform 2-D DFT.
@@ -202,17 +178,12 @@ void dft2d() {
     /* Assignment */
 
     cout << "Step1-1: Pre-Calc Weight" << endl;
-    
     for(unsigned r = 0; r < unsigned(width/2-1); r++) //Loop for N/2-1 times
     {
-        w_arr[r] = * new complex_t(cos(2*r*M_PI/width),-1*sin(2*r*M_PI/width)); //make w value.
-
-        //new (&w_arr[r]) complex_t(cos(2*r*M_PI/width),-1*sin(2*r*M_PI/width));
-        
+        w_arr[r] = * new complex_t(cos(2*r*M_PI/width),-1*sin(2*r*M_PI/width)); //make w value.        
     }
 
     cout << "Step2: Initialize thread variables" << endl;
-    // number of threads to create -> main
     //initialize mutex lock and condition variable.
     assert(!pthread_mutex_init(&lock,0));
     assert(!pthread_cond_init(&cond,0));
@@ -226,10 +197,9 @@ void dft2d() {
     for(unsigned t=0; t<num_threads; t++)
     {
         tid[t] = t;
-        assert(!pthread_create(&threads[t],0,&dft_thread,&tid[t]));
+        assert(!pthread_create(&threads[t],0,&dft_thread,&tid[t])); // make thread
     }
     cout << "Step 4: Call thread_join() to wait for all threads to complete." << endl;
-    //join pthreads/
     for(unsigned t=0; t<num_threads; t++)
     {
         thread_join();
@@ -237,33 +207,32 @@ void dft2d() {
     }
 
     cout << "Step 5: Transpose the data matrix so that column-wise DFT can be performed" << endl;
-    
-    //transpose array
+    // make copy of old array
     complex_t *old_data1 = data;
-    //data = (complex_t*)malloc(N*N * sizeof(complex_t));
+    // make new data array
     data = new complex_t[width * height];
     
-    // Copy elements from the old array.
+    // Copy elements from the transposed value from old array
     for(unsigned i=0; i<height; i++)
     {
         for(unsigned j=0; j<width; j++)
         {
+            //transpose
             new (&data[i*height+j]) complex_t(old_data1[i+j*width]);
             old_data1[i+j*width].~complex_t();
         }
-
     }
     // Deallocate the old array.
     delete[] old_data1;
     
-
     cout << "Step 6: Create threads to run dft_thread() for row-wise DFTs." << endl;
     //create pthreads and make each thread run func() above.
     for(unsigned t=0; t<num_threads; t++)
     {
         tid[t] = t;
-        assert(!pthread_create(&threads[t],0,&dft_thread,&tid[t]));
+        assert(!pthread_create(&threads[t],0,&dft_thread,&tid[t])); //make thread
     }
+
     cout << "Step 7: Call thread_join() to wait for all threads to complete." << endl;
     //join pthreads/
     for(unsigned t=0; t<num_threads; t++)
@@ -272,12 +241,9 @@ void dft2d() {
         printf("thread %u done\n",t);
     }
 
-
-    
     cout << "Step 8: Transpose the data matrix back to the original orientation." << endl;
     // transpose again
     complex_t *old_data3 = data;
-    //data = (complex_t*)malloc(N*N * sizeof(complex_t));
     data = new complex_t[width * height];
     
     // Copy elements from the old array.
@@ -285,6 +251,7 @@ void dft2d() {
     {
         for(unsigned j=0; j<width; j++)
         {
+            //transpose
             new (&data[i*height+j]) complex_t(old_data3[i+j*width]);
             old_data3[i+j*width].~complex_t();
         }
