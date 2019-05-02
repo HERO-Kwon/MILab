@@ -71,9 +71,12 @@ b. Siamese Networks
 
 \section{Proposed System}
 
+%system overview
 In this section, we introduce a system for recognition of Wi-Fi based in-air signature which utilizes the Siamese network learning for validation.
 An overview of the proposed scheme is shown in Fig.1.
-The main purpose of this system is to receive two csi signals as input, to determine if the two signals are the same signature.
+% main purpose
+The main purpose of this system is to receive two csi signals as input, to 
+determine if the two signals are the same signature.
 Since signals may differ in the direction in which they are entered, our system must be capable of extracting non-direction-related characteristics from two signals.
 % Figure 1
 \begin{figure}
@@ -81,40 +84,45 @@ Since signals may differ in the direction in which they are entered, our system 
 \caption{...} \label{method1}
 \end{figure}
 
-\subsection{Data Acquisition and Preprocessing}
-In order to be used as an input to a siamese network, the data must be pre-processed.
+\subsection{Data Preprocessing}
+% preprocessing
+In order to be used as an input to a siamese network, the signal must be pre-processed.
 
-First, the signal have to converted to non-complex form.
-Since the Wi-Fi signature signals in CSI packets in 2.4Ghz has firmware issues in their phase[ref] we used absolute of signal only.
+First, the signal have to be converted to non-complex form.
+Since the Wi-Fi signature signals in CSI packets in 2.4Ghz has firmware issues in their phase[ref]. so we used absolute of signal only.
 
+% From HC's Papaer
 Second, all inputs must be arranged of same size.
 Since all signals have different length, the gradient operation with respect to the time instance is adopted to measure the short time energy. 
 Data points with the highest short-time energy within the time period are regarded as the starting and the ending points of the in-air signature.
 And they are re-sampled uniformly based on Fast Fourier Transform (FFT) [16] to normalize the length of the data. 
+% HC's end
 
 % Methods 
 
 \subsection{Siamese Network For Verification}
 
+% Introduce Siamese Net
 % From Ref1 start
 Siamese nets were first introduced in the early 1990s by Bromley and LeCun to solve signature verification as an image matching problem (Bromley et al., 1993)
-Siamese neural networks employ a unique structure to naturally rank similarity between inputs.[1] 
+Siamese neural networks employ a unique structure to naturally rank similarity between inputs.
 It can discriminate between the class-identity of image pairs
 The verification model learns to identify input pairs according to the probability that they belong to the same class or different classes.[1]
 % From Ref1 End
 
-Two preprocessed signals enter the Siamese network and the network 
-extracts non-directional characteristics from two signals and calculates how similar the two extracted characteristics are.
- The output of the Siamese network is 1 when the distance of the characteristic vector is close, and 0 when it is far.
+% Functions of Siamese in our system
+The model receives two processed CSI signals as inputs, and outputs the probability that the two signals are of the same class as the output. 
+The output of the Siamese network is 1 when the distance of the characteristic vector is close, and 0 when it is far.
 the network is learned by the back-propagation.
 
-The model receives two processed CSI signals as inputs, and outputs the probability that the two signals are of the same class as the output.
+Two preprocessed signals enter the Siamese network and the network extracts non-directional characteristics from two signals and calculates how similar the two extracted characteristics are.
 
 Even if a signal belongs to the same class, the shape of the input is very different if the signal is oriented differently.
 To classify regardless of the direction of the signal, the model shall be capable of extracting features unrelated to the direction.
 
+
 % Section: Feature Extraction
-\subsection{Feature Extraction}
+\subsubsection{Feature Extraction}
 When two processed signals come as the input, they are put to 2 symmetric CNN network.
 
 % CNN: purpose
@@ -126,14 +134,13 @@ To perform the feature extraction, we firstly need to have a convolutional neura
 Based on the ConvNet structure [17] the feature extractor of the proposed pretraining model consists of i convolution layers and activation functions followed by i max-pooling layers. Each convolution layer has f∗ filters to be trained, where ∗ = 1, ..., i. In a similar manner, j fully connected layers constitute the classifier of pretraining model where each layer has g•,(•=1,...,j) neurons to be trained. 
 
 %Symmetric Architecture
-
-Some of the features CNN extracted are related to the shape of the signature, but CNN's features are not just those that helpful to classify signatures.
-some may be heavily influenced by the direction in which the signature was entered.
+Some of the features CNN extracted are related to the shape of the signature, but CNN's features are not just those that helpful to classify signatures. some may be heavily influenced by the direction in which the signature was entered.
 We aim to classify the signature in a direction that is not related to the direction in which it was entered. This type of property interferes with the classification of signatures.
 
 To focus on characteristics conducive to classification, The two CNN networks are arranged side by side symmetrically.
-It was also designed to have the same weight on the symmetrical CNN network as on a symmetrical CNN network. % weight sharing
+It was also designed to have the same weight on the symmetrical CNN network as on a symmetrical CNN network. 
 
+% tied weights
 
 
 %Symetric : Share Weights
@@ -143,12 +150,32 @@ It was also designed to have the same weight on the symmetrical CNN network as o
 
 
 
+\subsubsection{Feature Matching}
 
-\subsection{Feature Matching}
+% Use L1 distances of Feature vector of 2 input images
+% From HC's In-Air paper below:
+Let $\mathbf{m}\in{\mathrm{R}}^{d\times1}$ and $\mathbf{n}\in{\mathrm{R}}^{d\times1}$ be feature vectors extracted from two samples.
+The L-1 distance between the two features can be calculated as  follows:
+Where $\mathbf{p}$ denotes the L-1 distance. In the Siamese networks, this L-1 distance is utilized to match between two feature vectors.
+
+% From HC's End
+% From Oneshot paper below
+\begin{equation}
+    \mathbf{p} = 
+    \sigma(\sum_j\alpha_{j}\mid
+    \mathbf{m}_{1,L-1}^{(j)} - 
+    \mathbf{n}_{1,L-1}^{(j)}\mid)  
+\end{equation}
+where σ is the sigmoidal
+activation function. This final layer induces a metric on the learned feature space of the (L − 1)th hidden layer and scores the similarity between the two feature vec- tors. The αj are additional parameters that are learned by the model during training, weighting the importance of the component-wise distance. This defines a final Lth fully-connected layer for the network which joins the two siamese twins.
+% From oneshot end
+
+
+
 Output of the CNN are feature vectors extracted from two samples. The Euclidean distance between the two features can be calculated.
 In the proposed system, this Euclidean distance is utilized to match between two feature vectors.
 
-\subsection{Loss and Backpropagation}
+\subsubsection{Loss and Backpropagation}
  We impose a regularized cross-entropy objective on our binary classifier.
 This objective is combined with standard backpropagation algorithm, where the gradient is additive across the twin networks due to the tied weights.
  We initialized all network weights in the convolutional layers from a normal distribution with zero-mean and a standard deviation of 10−2. Biases were also initialized from a normal distribution, but with mean 0.5 and standard deviation 10−2.
