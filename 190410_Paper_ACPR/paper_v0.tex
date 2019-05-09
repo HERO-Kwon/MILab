@@ -69,6 +69,29 @@ b. Siamese Networks
 \subsection{WIFI CSI}
 - An In-Air Signature Verification System Using Wi-Fi Signals 
 
+% Meaning of CSI
+%[From Halperin paper]
+CSI captures signal strength and phase information for OFDM subcarriers and between each pair of transmit-receive antennas.
+It runs on a commodity 802.11n NIC, and records Channel State Information (CSI) based on the 802.11 standard.
+The CSI contains information about the channel between sender and receiver at the level of individual data subcarriers, for each pair of transmit and receive antennas.
+%[From Halperin End]
+
+% Structure of CSI
+%[From HC's ELM paper]
+In a frequency domain, the CSI of sub-carrier $\mathbf{c}$ between transmitter(Tx) and receiver(Rx) can be modeled as 
+$\mathnormal{R}_{c} = \mathbf{H}_{c}\mathnormal{T}_{c} +\mathnormal{N}$ where the $\mathnormal{R}_{c}$ and $\mathnormal{T}_{c}$  denote the received and the transmitted signal vector of dimension $\mathnormal{r}$ and $\mathnormal{t}$, respectively. The $\mathnormal{N}$ is the additive channel noise and $\mathbf{H}_{c}$ is the $\mathnormal{r}\times\mathnormal{t}$ channel matrix. The CSI of sub-carrier $\mathnormal{c}$ can be modeled as follows:
+\begin{equation}
+    \mathnormal{h}_{c} = \mid\mathnormal{h}_{c}\mid\mathnormal{e}^{\angle\theta},
+\end{equation}
+where $\mid\mathnormal{h}_{c}\mid$ and $\theta$ represent the amplitude and the phase of the sub-carrier, respectively.
+%[From HC's ELM end]
+
+\subsection{Siamese Networks}
+- An In-Air Signature Verification System Using Wi-Fi Signals 
+
+
+
+
 \section{Proposed System}
 
 %system overview
@@ -83,6 +106,7 @@ Since signals may differ in the direction in which they are entered, our system 
 \includegraphics[width=\textwidth]{methods1.eps}
 \caption{...} \label{method1}
 \end{figure}
+
 
 \subsection{Data Preprocessing}
 % preprocessing
@@ -197,10 +221,22 @@ This objective is combined with standard backpropagation algorithm, where the gr
 % \bibliography{mybibliography}
 %
 \begin{thebibliography}{8}
+% Deep Learning Siamese Paper
 \bibitem{ref_article1}
 Koch, Gregory, Richard Zemel, and Ruslan Salakhutdinov.
  "Siamese neural networks for one-shot image recognition." 
  ICML deep learning workshop. Vol. 2. 2015.
+% HC's Conference Paper
+ \bibitem{ref_article2}
+Moon, Han-Cheol, et al. "An In-Air Signature Verification System Using Wi-Fi Signals." Proceedings of the 2017 4th International Conference on Biomedical and Bioinformatics Engineering. ACM, 2017.
+% JS's Conf Paper
+\bibitem{ref_article3}
+JS's Conf Paper
+% Halperin CSI tool paper
+\bibitem{ref_article4}
+Halperin, Daniel, et al. "Tool release: Gathering 802.11 n traces with channel state information." ACM SIGCOMM Computer Communication Review 41.1 (2011): 53-53.
+
+
 
 
 \end{thebibliography}
