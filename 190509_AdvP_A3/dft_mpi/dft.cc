@@ -23,6 +23,24 @@ void mpi_allgather(complex_t *m_send_buffer, int m_send_count,
 // Transpose a matrix.
 void transpose_matrix(complex_t *h, const unsigned m_width, const unsigned m_height) {
     // Transpose the matrix h that has the dimension of m_width * m_height.
+    
+    // make copy of old array
+    complex_t *old_data1 = h;
+    // make new data array
+    h = new complex_t[width * height];
+    
+    // Copy elements from the transposed value from old array
+    for(unsigned i=0; i<height; i++)
+    {
+        for(unsigned j=0; j<width; j++)
+        {
+            //transpose
+            new (&h[i*height+j]) complex_t(old_data1[i+j*width]);
+            old_data1[i+j*width].~complex_t();
+        }
+    }
+    // Deallocate the old array.
+    delete[] old_data1;
 }
 
 // Perform 1-D DFT.
