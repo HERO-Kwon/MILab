@@ -85,9 +85,16 @@ where $\mid\mathnormal{h}_{c}\mid$ and $\theta$ represent the amplitude and the 
 %[From HC's ELM end]
 
 \subsection{Siamese Networks}
-Siamese nets were first introduced in the early 1990s by Bromley and LeCun to solve signature verification as an image matching problem.\cite{koch2015siamese}
 
-
+% description of siamese net
+In \cite{bromley1994signature}, LeCun et al. Introduced Siamese nets as parts of their handwritten signature verification system. 
+A siamese neural network consists of twin networks which accept distinct inputs but are joined by an energy function at the top.\cite{koch2015siamese}
+% differences in feature extractor
+They proposed a feature extractor based on Time Delay Neural Networks\cite{lang1990time} and feature matcher based on cosine distance of feature vector. Apart from this work based on ConvNet as feature extractor and L1 distance as feature matcher.
+In this paper, we propose a for signature verification system that is applicable for WIFI CSI signal, which is more complex and larger than handwritten images. 
+% advantages of using Convnet filter
+Based on Convnets as feature extractor, we are able to make feature vector from CSI signal reflecting local connectivity between signals at a near frequency range and closer measurement time. 
+The proposed method achieved better performance because it is applicable to all points of CSI signals. This is due to the weight sharing the property of the Convnet filter.
 
 \section{Proposed System}
 
@@ -124,16 +131,15 @@ To classify regardless of the direction of the signal, we focused on the model s
 In order to be used as an input to a siamese network, the signal must be pre-processed.
 
 % used only abs value
-First, the signal have to be converted to non-complex form.
+First, the signal has to be converted to non-complex form.
 Since the Wi-Fi signature signals in CSI packets in 2.4Ghz has firmware issues in their phase \cite{wang2015understanding}. we used only absolute value.
 
 % preprocessing
 % From HC's Papaer
-Second, all inputs must be arranged of same size.
-Since all signals have different length, the gradient operation with respect to the time instance is adopted to measure the short time energy. 
+Second, all inputs must be arranged of the same size.
+Since all signals have different length, the gradient operation with respect to the time instance is adapted to measure the short time energy. 
 Data points with the highest short-time energy within the time period are regarded as the starting and the ending points of the in-air signature.
-And they are re-sampled uniformly based on Fast Fourier Transform (FFT)  to normalize the length of the data. \cite{moon2017air}
-% HC's end
+And they are re-sampled uniformly based on Fast Fourier Transform (FFT)  to normalize the length of the data. \cite{moon2017air}% HC's end
 
 % Methods 
 
@@ -152,13 +158,13 @@ This network consists of feature extraction and feature matching part.
 \subsubsection{Feature Extraction}
 
 % structure of siamese network
-To perform the feature extraction, we firstly need to have a convolutional neural networks to serve as the feature extractor
-Based on the ConvNet structure. \cite{lecun1998gradient} 
+To perform the feature extraction, we first need to have convolutional neural networks to serve as the feature extractor
+Based on the ConvNet structure.\cite{lecun1998gradient} 
 
 % structure of siamese network
 When two processed signals come as the input, they are put to 2 symmetric ConvNet. 
 %Symmetric Architecture
-Some of the features CNN extracted are related to the shape of the signature, but CNN's features are not just those that helpful to classify signatures. some may be heavily influenced by the direction in which the signature was entered.Structure of the network is shown in Fig.2.
+Some of the features CNN extracted are related to the shape of the signature, but CNN's features are not just those that help to classify signatures. some may be heavily influenced by the direction in which the signature was entered. Structure of the network is shown in Fig.2.
 % Figure 2
 \begin{figure}
     \includegraphics[width=\textwidth]{network1.eps}
@@ -174,14 +180,7 @@ It was also designed to have the same weight on the symmetrical CNN network.
 This feature extractor is composed of two sister network, which are identical ConvNets with the exact same weights
 
 % CNN: purpose
-Purpose of ConvNet in our model is to extract a feature vector from CSI signal. 
-%Local Connectivity – image is locally correlated.
-Because each CSI signal has a locally related characteristic, the convolution filters apply local connectivity between inputs.
-and it helps to extract the feature vector.
-and by weight of feature output is shared through all feature map.
-%Weight Sharing – overcome enormous weights problem
-so it helps to reduce number of weights and can be appliable to CSI signal, which is relatively large size.
-
+Purpose of ConvNet in our model is to extract a feature vector from the CSI signal. 
 
 % parameters of convnet
 this ConvNets are consists of a number of consecutive convolution layers with active functions, and a pooling layer in the end.
@@ -189,10 +188,10 @@ the Convolution Layer has n convolution filters in it.
 
 % functions of convnet
 Their weights are tied to extract the same characteristics from signals in different directions.
-By sharing their feature map, this ConvNet is train to learn characteristics regardless of the direction.
+By sharing their feature map, this ConvNet is trained to learn characteristics regardless of the direction.
 
 % outputs feature vector
-Through a convolution filter, each CSI signal is transformed to a feature vector. this entire process is jointly optimized by backpropagation.
+Through a convolution filter, each CSI signal is transformed into a feature vector. this entire process is jointly optimized by backpropagation.
 
 
 \subsubsection{Feature Matching}
@@ -212,10 +211,10 @@ Where $\mathbf{p}$ denotes the L-1 distance. In the Siamese networks, this L-1 d
     \mathbf{n}_{1,L-1}^{(j)}\mid)  
 \end{equation}
 where σ is the sigmoidal
-activation function. This final layer induces a metric on the learned feature space of the (L − 1)th hidden layer and scores the similarity between the two feature vec- tors. The αj are additional parameters that are learned by the model during training, weighting the importance of the component-wise distance. This defines a final Lth fully-connected layer for the network which joins the two siamese twins.
+activation function. This final layer induces a metric on the learned feature space of the (L − 1)th hidden layer and scores the similarity between the two feature vectors. The αj are additional parameters that are learned by the model during training, weighting the importance of the component-wise distance. This defines a final Lth fully-connected layer for the network which joins the two Siamese twins.
 % From oneshot end
 
-Output of the CNN are feature vectors extracted from two samples. The Euclidean distance between the two features can be calculated.
+The output of the CNN is feature vectors extracted from two samples. The Euclidean distance between the two features can be calculated.
 In the proposed system, this Euclidean distance is utilized to match between two feature vectors.
 
 

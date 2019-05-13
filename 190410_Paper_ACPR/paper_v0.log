@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  11 MAY 2019 13:57
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  13 MAY 2019 13:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -174,20 +174,20 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ]
 File: methods1.eps Graphic file (type eps)
 <methods1.eps>
- [2]
+ [2] [3]
 File: network1.eps Graphic file (type eps)
 <network1.eps>
- [3] [4]
+ [4]
 Missing character: There is no σ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no α in font [lmroman10-regular]:mapping=tex-text;!
- (./paper_v0.bbl) [5] (./paper_v0.aux) ) 
+ (./paper_v0.bbl [5]) [6] (./paper_v0.aux) ) 
 Here is how much of TeX's memory you used:
- 1070 strings out of 492933
- 13188 string characters out of 6136537
- 90300 words of memory out of 5000000
- 5132 multiletter control sequences out of 15000+600000
+ 1072 strings out of 492933
+ 13224 string characters out of 6136537
+ 89300 words of memory out of 5000000
+ 5134 multiletter control sequences out of 15000+600000
  6462 words of font info for 32 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 28i,8n,21p,494b,255s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,8n,21p,494b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on paper_v0.pdf (5 pages).
+Output written on paper_v0.pdf (6 pages).

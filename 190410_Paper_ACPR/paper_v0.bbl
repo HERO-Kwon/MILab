@@ -3,9 +3,19 @@
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
 
+\bibitem{bromley1994signature}
+Bromley, J., Guyon, I., LeCun, Y., S{\"a}ckinger, E., Shah, R.: Signature
+  verification using a" siamese" time delay neural network. In: Advances in
+  neural information processing systems. pp. 737--744 (1994)
+
 \bibitem{koch2015siamese}
 Koch, G., Zemel, R., Salakhutdinov, R.: Siamese neural networks for one-shot
   image recognition. In: ICML deep learning workshop. vol.~2 (2015)
+
+\bibitem{lang1990time}
+Lang, K.J., Waibel, A.H., Hinton, G.E.: A time-delay neural network
+  architecture for isolated word recognition. Neural networks  \textbf{3}(1),
+  23--43 (1990)
 
 \bibitem{lecun1998gradient}
 LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., et~al.: Gradient-based learning
