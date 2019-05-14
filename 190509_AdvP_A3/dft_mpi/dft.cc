@@ -30,12 +30,9 @@ void mpi_allgather(complex_t *m_send_buffer, int m_send_count,
 
 // Transpose a matrix.
 void transpose_matrix(complex_t *h, const unsigned m_width, const unsigned m_height) {
-    // Transpose the matrix h that has the dimension of m_width * m_height.
     
-    // make copy of old array
-    complex_t *old_data1 = h;
     // make new data array
-    h = new complex_t[width * height];
+    data = new complex_t[width * height];
     
     // Copy elements from the transposed value from old array
     for(unsigned i=0; i<height; i++)
@@ -43,12 +40,9 @@ void transpose_matrix(complex_t *h, const unsigned m_width, const unsigned m_hei
         for(unsigned j=0; j<width; j++)
         {
             //transpose
-            new (&h[i*height+j]) complex_t(old_data1[i+j*width]);
-            old_data1[i+j*width].~complex_t();
+            new (&data[i*height+j]) complex_t(h[i+j*width]);
         }
     }
-    // Deallocate the old array.
-    delete[] old_data1;
 }
 
 // Perform 1-D DFT.
@@ -143,36 +137,45 @@ void dft2d() {
     cout << "Temp: Number of ranks = " << num_ranks
     << ", rank ID = " << rank_id << endl;
 
-    // temp
-    //unsigned buffer_size = num_ranks;
-    //int recv_buffer[buffer_size];
-
-    //MPI_Allgather(&data[0].re,1,MPI_FLOAT,recv_buffer,1,MPI_FLOAT,
-    //MPI_COMM_WORLD);
-
     unsigned buffer_size = width*height;
     complex_t *recv_buffer = (complex_t*)malloc(buffer_size * sizeof(complex_t));
-    //recv_buffer = new complex_t[buffer_size];
     
     printf("rank %d:\n",rank_id);
     
     int n_start = width*(height/num_ranks)*rank_id; //starting position of this data block
 
-    //data_mpi = data[n_start];
     dft1d(&data[n_start],width); // calculate DFT
 
     // the message is gathered across all process
-    //mpi_allgather(&rank_id,buffer_size,recv_buffer,buffer_size,MPI_COMM_WORLD);
-    //MPI_Allgather(&rank_id,1,MPI_INT,recv_buffer,1,MPI_INT,MPI_COMM_WOR LD);
     MPI_Allgather(&data[n_start],width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,
     recv_buffer,width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,MPI_COMM_WORLD);
 
-
-    //transpose_matrix(data,width,height);
-
-    //MPI_Allgather(data,sizeof(complex_t),MPI_BYTE,recv_buffer,sizeof(complex_t),MPI_BYTE,MPI_COMM_WORLD);
+    // copy recv buffer to data
+    for(size_t i = 0; i < width*height; i++) {
+        data[i].~complex_t();
+        new (&data[i]) complex_t(recv_buffer[i]);   
+        recv_buffer[i].~complex_t();
+    }
     
+    // transpose
+    transpose_matrix(data,width,height);
+    
+    // do dft
+    dft1d(&data[n_start],width); // calculate DFT
 
+    // the message is gathered across all process
+    MPI_Allgather(&data[n_start],width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,
+    recv_buffer,width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,MPI_COMM_WORLD);
+    
+    // copy recv buffer to data
+    for(size_t i = 0; i < width*height; i++) {
+        data[i].~complex_t();
+        new (&data[i]) complex_t(recv_buffer[i]);   
+        recv_buffer[i].~complex_t();
+    }
+
+    // transpose
+    transpose_matrix(data,width,height);
 
     // print the information of gathered message.
     cout << "MPI Rank " << rank_id << " has the array of [";
@@ -181,6 +184,9 @@ void dft2d() {
         cout << recv_buffer[rank_id*width*(height/num_ranks)].im << " " ;
         cout << "\b]" << endl;
     //}
-    //data = recv_buffer;
+
+    //delete variables
+    delete(recv_buffer);
+    free(w_arr);
 }
 
