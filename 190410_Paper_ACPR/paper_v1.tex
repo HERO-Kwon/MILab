@@ -59,30 +59,18 @@ b) Hard to set exactly same direction as authentication before
 Size of signature can varies
 
 \subsection{Contribution}
-- Overcome cons of WIFI signature system
+- Overcome cons of WIFI signature systems
 - Robust to signal direction, size
 
 \section{Related Works}
 
-\subsection{WIFI CSI}
-- An In-Air Signature Verification System Using Wi-Fi Signals 
-
-% Meaning of CSI
-%[From Halperin paper]
-CSI captures signal strength and phase information for OFDM subcarriers and between each pair of transmit-receive antennas.
-It runs on a commodity 802.11n NIC, and records Channel State Information (CSI) based on the 802.11 standard.
-The CSI contains information about the channel between sender and receiver at the level of individual data subcarriers, for each pair of transmit and receive antennas.
-%[From Halperin End]
-
-% Structure of CSI
-%[From HC's ELM paper]
-In a frequency domain, the CSI of sub-carrier $\mathbf{c}$ between transmitter(Tx) and receiver(Rx) can be modeled as 
-$\mathnormal{R}_{c} = \mathbf{H}_{c}\mathnormal{T}_{c} +\mathnormal{N}$ where the $\mathnormal{R}_{c}$ and $\mathnormal{T}_{c}$  denote the received and the transmitted signal vector of dimension $\mathnormal{r}$ and $\mathnormal{t}$, respectively. The $\mathnormal{N}$ is the additive channel noise and $\mathbf{H}_{c}$ is the $\mathnormal{r}\times\mathnormal{t}$ channel matrix. The CSI of sub-carrier $\mathnormal{c}$ can be modeled as follows:
-\begin{equation}
-    \mathnormal{h}_{c} = \mid\mathnormal{h}_{c}\mid\mathnormal{e}^{\angle\theta},
-\end{equation}
-where $\mid\mathnormal{h}_{c}\mid$ and $\theta$ represent the amplitude and the phase of the sub-carrier, respectively.
-%[From HC's ELM end]
+\subsection{ConvNets}
+% description of convnet
+Convolutional Neural Networks is a specal case of MLP and it has unified feature extractor and classifier in one network. It has been widely applied to visual objects such as image or video or 2D array input. Several factors make ConvNets attractive in image related tasks.
+Local connectivity captures local correlation property of image. It is applycable by using ConvNet filter.
+Weight sharing helps to reduce the number of weights in feature maps.
+Also, CUDA libraries makes the tranining feature maps easier to reduce training time.
+%
 
 \subsection{Siamese Networks}
 
@@ -90,11 +78,9 @@ where $\mid\mathnormal{h}_{c}\mid$ and $\theta$ represent the amplitude and the 
 In \cite{bromley1994signature}, LeCun et al. Introduced Siamese nets as parts of their handwritten signature verification system. 
 A siamese neural network consists of twin networks which accept distinct inputs but are joined by an energy function at the top.\cite{koch2015siamese}
 % differences in feature extractor
-They proposed a feature extractor based on Time Delay Neural Networks\cite{lang1990time} and feature matcher based on cosine distance of feature vector. Apart from this work based on ConvNet as feature extractor and L1 distance as feature matcher.
-In this paper, we propose a for signature verification system that is applicable for WIFI CSI signal, which is more complex and larger than handwritten images. 
-% advantages of using Convnet filter
-Based on Convnets as feature extractor, we are able to make feature vector from CSI signal reflecting local connectivity between signals at a near frequency range and closer measurement time. 
-The proposed method achieved better performance because it is applicable to all points of CSI signals. This is due to the weight sharing the property of the Convnet filter.
+They proposed a feature extractor based on Time Delay Neural Networks\cite{lang1990time} and feature matcher based on cosine distance of feature vector. 
+
+
 
 \section{Proposed System}
 
@@ -256,3 +242,34 @@ This objective is combined with standard backpropagation algorithm, where the gr
 %\end{thebibliography}
 
 \end{document}
+
+
+
+
+
+
+% old parts
+
+% Meaning of CSI
+%[From Halperin paper]
+CSI captures signal strength and phase information for OFDM subcarriers and between each pair of transmit-receive antennas.
+It runs on a commodity 802.11n NIC, and records Channel State Information (CSI) based on the 802.11 standard.
+The CSI contains information about the channel between sender and receiver at the level of individual data subcarriers, for each pair of transmit and receive antennas.
+%[From Halperin End]
+
+% Structure of CSI
+%[From HC's ELM paper]
+In a frequency domain, the CSI of sub-carrier $\mathbf{c}$ between transmitter(Tx) and receiver(Rx) can be modeled as 
+$\mathnormal{R}_{c} = \mathbf{H}_{c}\mathnormal{T}_{c} +\mathnormal{N}$ where the $\mathnormal{R}_{c}$ and $\mathnormal{T}_{c}$  denote the received and the transmitted signal vector of dimension $\mathnormal{r}$ and $\mathnormal{t}$, respectively. The $\mathnormal{N}$ is the additive channel noise and $\mathbf{H}_{c}$ is the $\mathnormal{r}\times\mathnormal{t}$ channel matrix. The CSI of sub-carrier $\mathnormal{c}$ can be modeled as follows:
+\begin{equation}
+    \mathnormal{h}_{c} = \mid\mathnormal{h}_{c}\mid\mathnormal{e}^{\angle\theta},
+\end{equation}
+where $\mid\mathnormal{h}_{c}\mid$ and $\theta$ represent the amplitude and the phase of the sub-carrier, respectively.
+%[From HC's ELM end]
+
+
+% description of siamese
+In this paper, we propose a for signature verification system that is applicable for WIFI CSI signal, which is more complex and larger than handwritten images. 
+% advantages of using Convnet filter
+Based on Convnets as feature extractor, we are able to make feature vector from CSI signal reflecting local connectivity between signals at a near frequency range and closer measurement time. 
+The proposed method achieved better performance because it is applicable to all points of CSI signals. This is due to the weight sharing the property of the Convnet filter.
