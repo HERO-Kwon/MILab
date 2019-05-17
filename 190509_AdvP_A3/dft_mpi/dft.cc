@@ -23,21 +23,42 @@ void mpi_allgather(complex_t *m_send_buffer, int m_send_count,
     //MPI_Allgather(&data[n_start],width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,
     //recv_buffer,width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,MPI_COMM_WORLD);
     
-    //int n_start = width*(height/num_ranks)*rank_id; //starting position of this data block
-    complex_t *temp_recv_buffer = (complex_t*)malloc(m_recv_count * sizeof(complex_t));
+    int n_start = width*(height/num_ranks) * rank_id; //starting position of this data block
+    //complex_t *temp_recv_buffer = (complex_t*)malloc(m_recv_count * sizeof(complex_t));
+
+    // copy recv buffer to data
+    for(int i = 0; i < int(m_send_count/sizeof(complex_t)); i++) {
+        m_recv_buffer[n_start+i].~complex_t();
+        new (&m_recv_buffer[n_start+i]) complex_t(m_send_buffer[i]);   
+    }
 
     MPI_Request mpi_recv_request;
-    // receive a message from the previous process
-    MPI_Irecv(temp_recv_buffer,m_recv_count,MPI_BYTE,MPI_ANY_SOURCE,
-    rank_id, MPI_COMM_WORLD, &mpi_recv_request);
-    // send the message to the next process
-    MPI_Send(m_send_buffer,m_send_count,MPI_BYTE,
-            (rank_id+1)%num_ranks,(rank_id+1)%num_ranks, MPI_COMM_WORLD);
-    // receive a message from the last process
-    MPI_Status mpi_status;
-    MPI_Wait(&mpi_recv_request, &mpi_status);
+    for(int r = 0; r < num_ranks; r++) 
+    {
+        if(r!=rank_id)
+        {
+            // receive a message from the previous process
+            MPI_Irecv(&m_recv_buffer[width*(height/num_ranks)*r],m_recv_count,MPI_BYTE,MPI_ANY_SOURCE,
+            r, MPI_COMM_WORLD, &mpi_recv_request);
+            // send the message to the next process
+            MPI_Send(m_send_buffer,m_send_count,MPI_BYTE,
+            r,rank_id, MPI_COMM_WORLD);
+        }
+        
+    }
     
-    int temp_start = m_recv_count*mpi_status.MPI_SOURCE; //starting position of this data block
+    for(int k = 0; k < num_ranks-1 ; k++)
+    {
+        // receive a message from the last process
+        MPI_Status mpi_status;    
+        MPI_Wait(&mpi_recv_request, &mpi_status);
+        
+        cout << "MPI Rank " << rank_id << " start from "<< n_start << " received a message from rank "
+        << mpi_status.MPI_SOURCE << ": " << m_recv_buffer[n_start].re << endl;
+    }
+
+    
+    //int temp_start = m_recv_count*mpi_status.MPI_SOURCE; //starting position of this data block
     /*
     for(int i = 0; i < m_recv_count; i++) {
         m_recv_buffer[temp_start+i].~complex_t();
@@ -45,10 +66,6 @@ void mpi_allgather(complex_t *m_send_buffer, int m_send_count,
         temp_recv_buffer[i].~complex_t();
     }
     */
-
-    cout << "MPI Rank " << rank_id << " start from "<< temp_start << " received a message from rank "
-    << mpi_status.MPI_SOURCE << ": " << temp_recv_buffer[0].re << endl;
-
 }
 
 // Transpose a matrix.
@@ -82,7 +99,7 @@ void dft1d(complex_t *h, const unsigned N) {
     complex_t *dft_data;
     dft_data = new complex_t[width * height/num_ranks];
     
-    for(unsigned c=0; c<height/num_ranks; c++) // Do it for every row
+    for(unsigned c=0; c<unsigned(height/num_ranks); c++) // Do it for every row
     {
         for(unsigned r=0; r<width; r++) // do it for every value
         {
@@ -151,7 +168,7 @@ void dft2d() {
 
 
     cout << "Step0: Pre-Calc Weight" << endl;
-    for(unsigned r = 0; r < unsigned(width/2-1); r++) //Loop for N/2-1 times
+    for(unsigned r = 0; r < unsigned(width/2); r++) //Loop for N/2-1 times
     {
         w_arr[r] = * new complex_t(cos(2*r*M_PI/width),-1*sin(2*r*M_PI/width)); //make w value.        
     }
@@ -178,14 +195,14 @@ void dft2d() {
                    recv_buffer, width*(height/num_ranks)*sizeof(complex_t),
                    MPI_COMM_WORLD);
 
-
+    
     // copy recv buffer to data
     for(size_t i = 0; i < width*height; i++) {
         data[i].~complex_t();
         new (&data[i]) complex_t(recv_buffer[i]);   
         recv_buffer[i].~complex_t();
     }
-    /*
+
     // transpose
     transpose_matrix(data,width,height);
     
@@ -193,8 +210,13 @@ void dft2d() {
     dft1d(&data[n_start],width); // calculate DFT
 
     // the message is gathered across all process
-    MPI_Allgather(&data[n_start],width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,
-    recv_buffer,width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,MPI_COMM_WORLD);
+    //MPI_Allgather(&data[n_start],width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,
+    //recv_buffer,width*(height/num_ranks)*sizeof(complex_t),MPI_BYTE,MPI_COMM_WORLD);
+    
+    mpi_allgather(&data[n_start], width*(height/num_ranks)*sizeof(complex_t),
+                recv_buffer, width*(height/num_ranks)*sizeof(complex_t),
+                MPI_COMM_WORLD);
+
     
     // copy recv buffer to data
     for(size_t i = 0; i < width*height; i++) {
@@ -202,10 +224,10 @@ void dft2d() {
         new (&data[i]) complex_t(recv_buffer[i]);   
         recv_buffer[i].~complex_t();
     }
-
+    
     // transpose
     transpose_matrix(data,width,height);
-    */
+    
     // print the information of gathered message.
     cout << "MPI Rank " << rank_id << " has the array of [";
     //for(unsigned i=0; i<buffer_size; i++){

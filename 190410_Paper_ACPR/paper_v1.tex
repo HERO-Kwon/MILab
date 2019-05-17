@@ -66,9 +66,8 @@ Size of signature can varies
 
 \subsection{ConvNets}
 % description of convnet
-Convolutional Neural Networks is a specal case of MLP and it has unified feature extractor and classifier in one network. It has been widely applied to visual objects such as image or video or 2D array input. Several factors make ConvNets attractive in image related tasks.
-Local connectivity captures local correlation property of image. It is applycable by using ConvNet filter.
-Weight sharing helps to reduce the number of weights in feature maps.
+Convolutional Neural Networks is a specal case of Multi Layer Perceptron and it has unified feature extractor and classifier in one network. It has been widely applied to visual objects such as image, video or 2D array input. Several factors make ConvNets attractive in image related tasks.
+Local connectivity captures local correlation property of image. It is applycable by using ConvNet filter.Weight sharing helps to reduce the number of weights in feature maps.
 Also, CUDA libraries makes the tranining feature maps easier to reduce training time.
 %
 
@@ -88,25 +87,21 @@ They proposed a feature extractor based on Time Delay Neural Networks\cite{lang1
 
 %system overview
 
-In this section, we introduce a system for recognition of Wi-Fi based in-air signature which utilizes the Siamese network learning for validation.
+In this section, we propose a direction-free identify verification system based on the Wi-Fi based in-air handwritten signature which utilizes the Siamese network learning.
+\iffalse
 An overview of the proposed system is shown in Fig.1.
 % Figure 1
 \begin{figure}
     \includegraphics[width=\textwidth]{methods1.eps}
     \caption{Overview of the proposed system} \label{method1}
 \end{figure}
+\fi
+Essentially, we train the verification model to identify the input pairs according to the probability on whether they belong to the same class or different classes.\cite{koch2015siamese} Subsequently, the 
 
-% purpose of the system
-This system receives two Wi-Fi CSI signals as input.
-The main purpose of the system is to verify if two input signals are of the same signature.
-
-% main purpose1: interpreting CSI 
-Our system must have the ability to distinguish signatures by reading Wi-Fi CSI signals.
-% verification model
-The verification model learns to identify input pairs according to the probability that they belong to the same class or different classes.\cite{koch2015siamese}
-
+\iffalse
 % main purpose2: direction free
 Since signals may differ in the direction in which they are entered, our system must be capable of extracting non-direction-related characteristics from two signals.
+\fi
 
 Even if a signal belongs to the same class, the shape of the input is very different if the signal is oriented differently.
 To classify regardless of the direction of the signal, we focused on the model shall be capable of extracting features unrelated to the direction.
@@ -153,8 +148,8 @@ When two processed signals come as the input, they are put to 2 symmetric ConvNe
 Some of the features CNN extracted are related to the shape of the signature, but CNN's features are not just those that help to classify signatures. some may be heavily influenced by the direction in which the signature was entered. Structure of the network is shown in Fig.2.
 % Figure 2
 \begin{figure}
-    \includegraphics[width=\textwidth]{network1.eps}
-    \caption{Structure of Siamese network} \label{network1}
+    \includegraphics[width=\textwidth]{network2.eps}
+    \caption{Structure of Siamese network} \label{network2}
 \end{figure}
 % weight tying
 We aim to classify the signature in a direction that is not related to the direction in which it was entered. This type of property interferes with the classification of signatures.
@@ -202,7 +197,6 @@ activation function. This final layer induces a metric on the learned feature sp
 
 The output of the CNN is feature vectors extracted from two samples. The Euclidean distance between the two features can be calculated.
 In the proposed system, this Euclidean distance is utilized to match between two feature vectors.
-
 
 \section{Experiments}
 % Dataset
