@@ -21,10 +21,10 @@
 % an abbreviated paper title here
 %
 \author{YoungWoong KWON\inst{1} \and
-JooYoung KIM\inst{1} \and
-Kar-Ann TOH\inst{1}}
+Jooyoung Kim\inst{1} \and
+Kar-Ann Toh\inst{1}}
 %
-\authorrunning{F. Author et al.}
+\authorrunning{Y. Kwon et al.}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
@@ -59,7 +59,7 @@ b) Hard to set exactly same direction as authentication before
 Size of signature can varies
 
 \subsection{Contribution}
-- Overcome cons of WIFI signature systems
+- Overcome cons of WIFI signature system
 - Robust to signal direction, size
 
 \section{Related Works}
@@ -79,23 +79,19 @@ A siamese neural network consists of twin networks which accept distinct inputs 
 % differences in feature extractor
 They proposed a feature extractor based on Time Delay Neural Networks\cite{lang1990time} and feature matcher based on cosine distance of feature vector. 
 
-
-
 \section{Proposed System}
-
-\subsection{System Overview}
 
 %system overview
 
 In this section, we propose a direction-free identify verification system based on the Wi-Fi based in-air handwritten signature which utilizes the Siamese network learning.
-\iffalse
+
 An overview of the proposed system is shown in Fig.1.
 % Figure 1
 \begin{figure}
-    \includegraphics[width=\textwidth]{methods1.eps}
-    \caption{Overview of the proposed system} \label{method1}
+    \includegraphics[width=\textwidth]{network2.eps}
+    \caption{Structure of Siamese network} \label{network2}
 \end{figure}
-\fi
+
 Essentially, we train the verification model to identify the input pairs according to the probability on whether they belong to the same class or different classes.\cite{koch2015siamese} Subsequently, the 
 
 \iffalse
@@ -123,20 +119,8 @@ Data points with the highest short-time energy within the time period are regard
 And they are re-sampled uniformly based on Fast Fourier Transform (FFT)  to normalize the length of the data. \cite{moon2017air}% HC's end
 
 % Methods 
-
-\subsection{Siamese Network For Verification}
-
-% Functions of Siamese in our system
-% Introduce Siamese Net
-
-Siamese neural networks employ a unique structure to naturally rank similarity between inputs. It can discriminate between the class-identity of image pairs.
-\cite{koch2015siamese}
-
-Two preprocessed signals enter the Siamese network and the network extracts non-directional characteristics from two signals and calculates how similar the two extracted characteristics are. The model outputs the probability that the two signals are of the same class. %it is learned by the back-propagation.
-This network consists of feature extraction and feature matching part.
-
 % Section: Feature Extraction
-\subsubsection{Feature Extraction}
+\subsubsection{Convolutional Neural Network for Feature Extraction}
 
 % structure of siamese network
 To perform the feature extraction, we first need to have convolutional neural networks to serve as the feature extractor
@@ -147,10 +131,7 @@ When two processed signals come as the input, they are put to 2 symmetric ConvNe
 %Symmetric Architecture
 Some of the features CNN extracted are related to the shape of the signature, but CNN's features are not just those that help to classify signatures. some may be heavily influenced by the direction in which the signature was entered. Structure of the network is shown in Fig.2.
 % Figure 2
-\begin{figure}
-    \includegraphics[width=\textwidth]{network2.eps}
-    \caption{Structure of Siamese network} \label{network2}
-\end{figure}
+
 % weight tying
 We aim to classify the signature in a direction that is not related to the direction in which it was entered. This type of property interferes with the classification of signatures.
 To focus on characteristics conducive to classification, The two CNN networks are arranged side by side symmetrically.
@@ -175,6 +156,18 @@ By sharing their feature map, this ConvNet is trained to learn characteristics r
 Through a convolution filter, each CSI signal is transformed into a feature vector. this entire process is jointly optimized by backpropagation.
 
 
+
+\subsection{Siamese Network For.}
+
+% Functions of Siamese in our system
+% Introduce Siamese Net
+
+Siamese neural networks employ a unique structure to naturally rank similarity between inputs. It can discriminate between the class-identity of image pairs.
+\cite{koch2015siamese}
+
+Two preprocessed signals enter the Siamese network and the network extracts non-directional characteristics from two signals and calculates how similar the two extracted characteristics are. The model outputs the probability that the two signals are of the same class. %it is learned by the back-propagation.
+This network consists of feature extraction and feature matching part.
+
 \subsubsection{Feature Matching}
 
 % Use L1 distances of Feature vector of 2 input images
@@ -198,18 +191,9 @@ activation function. This final layer induces a metric on the learned feature sp
 The output of the CNN is feature vectors extracted from two samples. The Euclidean distance between the two features can be calculated.
 In the proposed system, this Euclidean distance is utilized to match between two feature vectors.
 
+
 \section{Experiments}
-% Dataset
-\subsubsection{Dataset}
- To evaluate validation performance of proposed system, Wi-Fi CSI signature dataset from \cite{moon2017air} was used.
- % description
- we utilized 2000 Wi-Fi CSI signature signals (4 directions $\times$ 50 identities $\times$ 10 samples) which is dimension of (500 packets $\times$ 30 subcarriers $\times$ 6 antennas). 
- 
-% network shape
 
-% network parameters
-
-% Network Learning
 \subsubsection{Loss and Backpropagation}
  We impose a regularized cross-entropy objective on our binary classifier.
 This objective is combined with standard backpropagation algorithm, where the gradient is additive across the twin networks due to the tied weights.
@@ -238,6 +222,112 @@ This objective is combined with standard backpropagation algorithm, where the gr
 \end{document}
 
 
+
+
+%% Template End
+\section{*** Template ***}
+\section{First Section}
+\subsection{A Subsection Sample}
+Please note that the first paragraph of a section or subsection is
+not indented. The first paragraph that follows a table, figure,
+equation etc. does not need an indent, either.
+
+Subsequent paragraphs, however, are indented.
+
+\subsubsection{Sample Heading (Third Level)} Only two levels of
+headings should be numbered. Lower level headings remain unnumbered;
+they are formatted as run-in headings.
+
+\paragraph{Sample Heading (Fourth Level)}
+The contribution should contain no more than four levels of
+headings. Table~\ref{tab1} gives a summary of all heading levels.
+
+\begin{table}
+\caption{Table captions should be placed above the
+tables.}\label{tab1}
+\begin{tabular}{|l|l|l|}
+\hline
+Heading level &  Example & Font size and style\\
+\hline
+Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
+1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
+2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
+3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
+4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\noindent Displayed equations are centered and set on a separate
+line.
+\begin{equation}
+x + y = z
+\end{equation}
+Please try to avoid rasterized images for line-art diagrams and
+schemas. Whenever possible, use vector graphics instead (see
+Fig.~\ref{fig1}).
+
+\begin{figure}
+\includegraphics[width=\textwidth]{fig1.eps}
+\caption{A figure caption is always placed below the illustration.
+Please note that short captions are centered, while long ones are
+justified by the macro package automatically.} \label{fig1}
+\end{figure}
+
+\begin{theorem}
+This is a sample theorem. The run-in heading is set in bold, while
+the following text appears in italics. Definitions, lemmas,
+propositions, and corollaries are styled the same way.
+\end{theorem}
+%
+% the environments 'definition', 'lemma', 'proposition', 'corollary',
+% 'remark', and 'example' are defined in the LLNCS documentclass as well.
+%
+\begin{proof}
+Proofs, examples, and remarks have the initial word in italics,
+while the following text appears in normal font.
+\end{proof}
+For citations of references, we prefer the use of square brackets
+and consecutive numbers. Citations using labels or the author/year
+convention are also acceptable. The following bibliography provides
+a sample reference list with entries for journal
+articles~\cite{ref_article1}, an LNCS chapter~\cite{ref_lncs1}, a
+book~\cite{ref_book1}, proceedings without editors~\cite{ref_proc1},
+and a homepage~\cite{ref_url1}. Multiple citations are grouped
+\cite{ref_article1,ref_lncs1,ref_book1},
+\cite{ref_article1,ref_book1,ref_proc1,ref_url1}.
+%
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+% \bibliographystyle{splncs04}
+% \bibliography{mybibliography}
+%
+\begin{thebibliography}{8}
+\bibitem{ref_article1}
+Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
+
+\bibitem{ref_lncs1}
+Author, F., Author, S.: Title of a proceedings paper. In: Editor,
+F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
+Springer, Heidelberg (2016). \doi{10.10007/1234567890}
+
+\bibitem{ref_book1}
+Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
+Location (1999)
+
+\bibitem{ref_proc1}
+Author, A.-B.: Contribution title. In: 9th International Proceedings
+on Proceedings, pp. 1--2. Publisher, Location (2010)
+
+\bibitem{ref_url1}
+LNCS Homepage, \url{http://www.springer.com/lncs}. Last accessed 4
+Oct 2017
+\end{thebibliography}
+\end{document}
 
 
 
