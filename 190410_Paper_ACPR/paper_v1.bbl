@@ -17,10 +17,20 @@ Lang, K.J., Waibel, A.H., Hinton, G.E.: A time-delay neural network
   architecture for isolated word recognition. Neural networks  \textbf{3}(1),
   23--43 (1990)
 
+\bibitem{Leal-Taixe_2016_CVPR_Workshops}
+Leal-Taixe, L., Canton-Ferrer, C., Schindler, K.: Learning by tracking: Siamese
+  cnn for robust target association. In: The IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR) Workshops (June 2016)
+
 \bibitem{lecun1998gradient}
 LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., et~al.: Gradient-based learning
   applied to document recognition. Proceedings of the IEEE  \textbf{86}(11),
   2278--2324 (1998)
+
+\bibitem{maheshwary2018matching}
+Maheshwary, S., Misra, H.: Matching resumes to jobs via deep siamese network.
+  In: Companion of the The Web Conference 2018 on The Web Conference 2018. pp.
+  87--88. International World Wide Web Conferences Steering Committee (2018)
 
 \bibitem{moon2017air}
 Moon, H.C., Jang, S.I., Oh, K., Toh, K.A.: An in-air signature verification
@@ -28,10 +38,8 @@ Moon, H.C., Jang, S.I., Oh, K., Toh, K.A.: An in-air signature verification
   Conference on Biomedical and Bioinformatics Engineering. pp. 133--138. ACM
   (2017)
 
-\bibitem{wang2015understanding}
-Wang, W., Liu, A.X., Shahzad, M., Ling, K., Lu, S.: Understanding and modeling
-  of wifi signal based human activity recognition. In: Proceedings of the 21st
-  annual international conference on mobile computing and networking. pp.
-  65--76. ACM (2015)
+\bibitem{mukherjee2018object}
+Mukherjee, P., Lall, B., Lattupally, S.: Object cosegmentation using deep
+  siamese network. arXiv preprint arXiv:1803.02555  (2018)
 
 \end{thebibliography}
