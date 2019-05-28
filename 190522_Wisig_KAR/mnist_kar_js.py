@@ -15,7 +15,7 @@ from keras import models
 # import mnist data
 
 from keras.datasets import mnist
-from keras.utils import to_categorical
+from keras.utils import to_categorical 
 
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
 

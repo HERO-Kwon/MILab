@@ -27,7 +27,7 @@ for i, label_file in enumerate(label_list):
     people_ser = pd.Series()
     #ff = re.match(phone_list.loc[3].values[0],f.loc[9].values[0])
     for j in range(len(phone_list)):
-        mac_addr = phone_list.loc[j].mac
+        mac_addr = phone_list.loc[j].mac        
         mac_name = phone_list.loc[j].owner
         people_ser[mac_name] = len(read_df[read_df[0].str.contains(mac_addr)])
     people_ser['total_people'] = sum(people_ser)
