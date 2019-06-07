@@ -318,52 +318,39 @@ eer_graph = eer_graphs(res_df1.TF,1-res_df1.score,0)
 
 
 #make karnet data
-splits=0
+data1 = loader.data['train'].squeeze()
+data2 = loader.data['val'].squeeze()
 
-n_samples = loader.data['train'].shape[0]
-imp_image = []
+fc_input = [data1,data2]
+
+model = siamese_net  # create the original model
+layer_name = 'sequential_1'
+
+fc1 = Model(inputs=model.input,outputs=model.get_layer(layer_name).get_output_at(1))
+fc2 = Model(inputs=model.input,outputs=model.get_layer(layer_name).get_output_at(2))
+lam = Model(inputs=model.input,outputs=model.get_layer('lambda_1').output)
+dense = Model(inputs=model.input,outputs=model.get_layer('dense_2').output)
+
+fc1_output = fc1.predict(fc_input)
+fc2_output = fc2.predict(fc_input)
+lam_output = lam.predict(fc_input)
+dense_output = dense.predict(fc_input)
+
+dict1 = loader.categories['train']
+dict2 = loader.categories['val']
+
 res_list = []
-fc1_list = []
-fc2_list = []
-
-for i in range(n_samples):
-    gen_image = []
-    for j in range(n_samples):
-        gen_image.append(loader.data['train'][i,0])
-    gen_images = np.array(gen_image)
-    imp_images = loader.data['train'][:,0]
-    
-    score_list = [[i,ti,int(get_key(i,loader.categories['train']) == get_key(ti,loader.categories['train']))] for ti in range(1000)]#sampled_idx]
-    [res_list.append(score_list[ii]) for ii in range(len(score_list))]
-
-    # export output from model
-    x_trn = [gen_images, imp_images]
-    model = siamese_net  # create the original model
-
-    layer_name = 'sequential_1'
-    fc1 = Model(inputs=model.input,outputs=model.get_layer(layer_name).get_output_at(1))
-    fc2 = Model(inputs=model.input,outputs=model.get_layer(layer_name).get_output_at(2))
-    lam = Model(inputs=model.input,outputs=model.get_layer('lambda_1').output)
-    dense = Model(inputs=model.input,outputs=model.get_layer('dense_2').output)
-
-    fc1_output = fc1.predict(x_trn)
-    fc2_output = fc2.predict(x_trn)
-    lam_output = lam.predict(x_trn)
-    dense_output = dense.predict(x_trn)
-    
-    fc1_list.append(fc1_output)
-    fc2_list.append(fc2_output)
-    
-    print(i)
+for i in range(data1.shape[0]):
+    res_list.append([get_key(i,dict1),get_key(i,dict2), int(get_key(i,dict1)==get_key(i,dict2))])
+arr_res = np.array(res_list)q1
 
 import pickle
 import gzip
 
 #Data Save
-with gzip.open('fc1_list'+'.pickle.gz', 'wb') as f:
-    pickle.dump(fc1_list, f, pickle.HIGHEST_PROTOCOL)
-with gzip.open('fc2_list'+'.pickle.gz', 'wb') as f:
-    pickle.dump(fc2_list, f, pickle.HIGHEST_PROTOCOL)
-#Data Save
-with gzip.open('res_list'+'.pickle.gz', 'wb') as f:
-    pickle.dump(res_list, f, pickle.HIGHEST_PROTOCOL)
+with gzip.open('arr_fc1'+'.pickle.gz', 'wb') as f:
+    pickle.dump(fc1_output, f, pickle.HIGHEST_PROTOCOL)
+with gzip.open('arr_fc2'+'.pickle.gz', 'wb') as f:
+    pickle.dump(fc2_output, f, pickle.HIGHEST_PROTOCOL)
+with gzip.open('arr_res'+'.pickle.gz', 'wb') as f:
+    pickle.dump(arr_res, f, pickle.HIGHEST_PROTOCOL)
