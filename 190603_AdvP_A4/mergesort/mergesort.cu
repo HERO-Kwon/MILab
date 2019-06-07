@@ -9,15 +9,32 @@ __global__ void vector_mul(int *a_dev, int *b_dev, int *c_dev){
     unsigned idx = blockIdx.x * blockDim.x + threadIdx.x;
     c_dev[idx] = a_dev[idx] + b_dev[idx];
 }
+//
+// Finally, sort something
+// gets called by gpu_mergesort() for each slice
+//
+__device__ void gpu_bottomUpMerge(int* source, int* dest, int start, int middle, int end) {
+    int i = start;
+    int j = middle;
+    for (int k = start; k < end; k++) {
+        if (i < middle && (j >= end || source[i] < source[j])) {
+            dest[k] = source[i];
+            i++;
+        } else {
+            dest[k] = source[j];
+            j++;
+        }
+    }
+}
 // Perform a full mergesort on our section of the data.
 //
-__global__ void gpu_mergesort(long* source, long* dest, long size, long width, long slices, dim3* threads, dim3* blocks) {
+__global__ void gpu_mergesort(int* source, int* dest, int size, int width, int slices) {
     unsigned idx = blockIdx.x * blockDim.x + threadIdx.x;
-    long start = width*idx*slices, 
+    int start = width*idx*slices, 
          middle, 
          end;
 
-    for (long slice = 0; slice < slices; slice++) {
+    for (int slice = 0; slice < slices; slice++) {
         if (start >= size)
             break;
 
@@ -28,23 +45,7 @@ __global__ void gpu_mergesort(long* source, long* dest, long size, long width, l
     }
 }
 
-//
-// Finally, sort something
-// gets called by gpu_mergesort() for each slice
-//
-__device__ void gpu_bottomUpMerge(long* source, long* dest, long start, long middle, long end) {
-    long i = start;
-    long j = middle;
-    for (long k = start; k < end; k++) {
-        if (i < middle && (j >= end || source[i] < source[j])) {
-            dest[k] = source[i];
-            i++;
-        } else {
-            dest[k] = source[j];
-            j++;
-        }
-    }
-}
+
 
 void mergesort(unsigned *m_data) {
     /* Assignment */
@@ -85,10 +86,10 @@ void mergesort(unsigned *m_data) {
     //gpu_mergesort<<<blocksPerGrid, threadsPerBlock>>>(A, B, size, width, slices, D_threads, D_blocks);
 
     for (int width = 2; width < num_data*2; width *= 2) {
-        long slices = num_data / (block_size * width) + 1;
+        int slices = num_data / (block_size * width) + 1;
 
         // Actually call the kernel
-        gpu_mergesort<<<blocksPerGrid, threadsPerBlock>>>(a_dev, c_dev, num_data, width, slices);
+        gpu_mergesort<<<num_data/block_size, block_size>>>(a_dev, c_dev, num_data, width, slices);
 
         // memory copy from device to host memory
         cudaMemcpy(c,c_dev,vector_size * sizeof(int), cudaMemcpyDeviceToHost);
