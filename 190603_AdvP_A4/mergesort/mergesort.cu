@@ -85,15 +85,18 @@ void mergesort(unsigned *m_data) {
     // Actually call the kernel
     //gpu_mergesort<<<blocksPerGrid, threadsPerBlock>>>(A, B, size, width, slices, D_threads, D_blocks);
 
+    int blocksPerGrid = 8;
     for (int width = 2; width < num_data*2; width *= 2) {
-        int slices = num_data / (block_size * width) + 1;
+        int slices = num_data / (blocksPerGrid*block_size * width)+1;
 
         // Actually call the kernel
-        gpu_mergesort<<<num_data/block_size, block_size>>>(a_dev, c_dev, num_data, width, slices);
+        gpu_mergesort<<<blocksPerGrid, block_size>>>(a_dev, c_dev, num_data, width, slices);
 
         // memory copy from device to host memory
         cudaMemcpy(c,c_dev,vector_size * sizeof(int), cudaMemcpyDeviceToHost);
 
+        cout << "c = [";
+	for(unsigned i=0;i<10;i++) {cout << c[i] << "\b]" << endl;}
         for(unsigned i = 0; i < vector_size; i++){
             a[i] = c[i];
         }
@@ -103,7 +106,9 @@ void mergesort(unsigned *m_data) {
     // memory copy from device to host memory
     cudaMemcpy(c,c_dev,vector_size * sizeof(int), cudaMemcpyDeviceToHost);
 
-   
+    for(unsigned i=0; i< vector_size; i++){
+        data[i] = c[i];
+    }
     
     // print vector add results
     cout << "a = [";
@@ -118,6 +123,8 @@ void mergesort(unsigned *m_data) {
     for(unsigned i=0; i<10; i++) {cout << c[i] << " "; }
     cout << "\b]" << endl;
     
+
+
 
     // Host memory deallocation
     free(a);free(b);free(c);
