@@ -36,7 +36,7 @@ __global__ void SetMerge(int* source, int* dest, int size, int width, int slices
         middle = min(start + (width / 2), size);
         end = min(start + width, size);
         // call merge function
-        GpuMerge(source, dest, start, middle, end);
+        Merge(source, dest, start, middle, end);
         // set starting points for next target vector
         start += width;
     }
@@ -54,6 +54,7 @@ void mergesort(unsigned *m_data) {
     unsigned vector_size = num_data;
 
     // Host code
+    int *source_vec = 0, *dest_vec = 0;
     int *source_dev = 0, *dest_dev = 0;
 
     // Host data
@@ -77,10 +78,10 @@ void mergesort(unsigned *m_data) {
         int slices = num_data / (blocksPerGrid*block_size * width)+1;
 
         // call the kernel
-        gpu_mergesort<<<blocksPerGrid, block_size>>>(source_dev, dest_dev, num_data, width, slices);
+        SetMerge<<<blocksPerGrid, block_size>>>(source_dev, dest_dev, num_data, width, slices);
 
         // swap values of dest vector to source vector
-        cudaMemcpy(c,c_dev,vector_size * sizeof(int), cudaMemcpyDeviceToHost);
+        cudaMemcpy(dest_vec,dest_dev,vector_size * sizeof(int), cudaMemcpyDeviceToHost);
 
         // copy dest values to source
         for(unsigned i = 0; i < vector_size; i++){

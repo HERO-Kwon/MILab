@@ -83,7 +83,12 @@ class LinearModels:
         LinearModels.train_time = time.time()-t1
         print("Training Time: " + str(LinearModels.train_time))
         return(alpha_mat)
-
+    def predict(self,alpha_mat):
+        if self.isdual:
+            res_mat = np.dot(self.Xval,self.X.T).dot(alpha_mat)
+        else:
+            res_mat = self.Xval.dot(alpha_mat)
+        return(res_mat)
     def val_dist(self,alpha_mat):
         if self.isdual:
             val_mat = np.dot(self.Xval,self.X.T).dot(alpha_mat)
@@ -379,56 +384,16 @@ def RMmodel(X,order):
         P = np.concatenate((np.ones((m,1)),MM1,M2,MM3),axis=1)
     else : P = np.concatenate((np.ones((m,1)),MM1,M2),axis=1)
     return(P)
-'''
-X = arr_fc1.squeeze()
-Y = arr_score[:,1]
-Xval = arr_fc2.squeeze()
-Yval = arr_score[:,2]
-'''
-def make_validation(x,y,num_arr):
-    n_samples,n_features = x.shape
-    list_xs = []
-    list_ys = []
-    for i in np.arange(0,n_samples-1,1):
-        x1 = []
-        y1 = []
-        for j in np.arange(i+1,n_samples,1):
-            x1.append(x[i])
-            y1.append(int(y[i]==y[j]))
-        x2 = x[(i+1):]
-
-        arr_x1 = np.array(x1)
-        arr_x2 = np.array(x2)
-        arr_x = np.concatenate([arr_x1,arr_x2],axis=1)
-        #arr_y = np.array([int(np.all(arr_x1[i] == arr_x2[i])) for i in range(n_samples)]).reshape(-1,1)
-        arr_y = np.array(y1).reshape([-1,1])
-
-        list_xs.append(arr_x)
-        list_ys.append(arr_y)
-    
-    arr_xs = np.vstack(list_xs)
-    arr_ys = np.vstack(list_ys)
-
-    idx_0 = np.where(arr_ys==0)[0]
-    idx_1 = np.where(arr_ys==1)[0]
-    idx_0s = np.random.choice(idx_0,num_arr,replace=False)
-    idx_1s = np.random.choice(idx_1,num_arr,replace=False)
-    #idx_0s = idx_0
-    #idx_1s = idx_1
-    idx_s = np.concatenate([idx_0s,idx_1s])
-    
-    return(arr_xs[idx_s],arr_ys[idx_s])
 
 fc1 = arr_fc1.squeeze()
-fc1lab= arr_score[:,1]
+fc1lab= arr_score[:,0]
 fc2 = arr_fc2.squeeze()
-fc2lab = arr_score[:,2]
+fc2lab = arr_score[:,1]
 
-num_arr = 9500
-X,Y = make_validation(fc1,fc1lab,num_arr)
-Xval,Yval = make_validation(fc2,fc2lab,num_arr)
-Y = Y.squeeze()
-Yval = Yval.squeeze()
+X = fc1
+Y = fc1lab
+Xval = fc2
+Yval = fc2lab
 
 m_results = pd.DataFrame(columns = ['name','splits','splits_number','random_state','eer','param0','tr_time'])
 #list_cv = [2]
@@ -436,6 +401,7 @@ list_rs = [10]
 
 n_splits = 0
 i=0
+
 for rs_num in list_rs:
     print('RandomState:' + str(rs_num))
 
@@ -453,7 +419,7 @@ for rs_num in list_rs:
     # LSE Prim
     m_lsep = LSEprim([X,Y,Xval,Yval])
     # LSE Dual
-    #m_lsed = LSEdual([X,Y,Xval,Yval])
+    m_lsed = LSEdual([X,Y,Xval,Yval])
     #dist_lsed = m_lsed.val_dist(m_lsed.train()) 
     #eer_lsed = m_lsed.eer_graphs(dist_lsed.truth,dist_lsed.score,0)
 
@@ -466,25 +432,11 @@ for rs_num in list_rs:
 import time
 t1 = time.time()
 #LSE output
-lse_a = m_lsep.accuracy(m_lsep.train())
+lse_a = m_lsep.predict(m_lsep.train())
 print(time.time()-t1)
-plt.plot(lse_a)
-plt.title("LSE output")
 
-res_df = pd.DataFrame({"l1d":l1d,"l2d":l2d,"lse":lse_a.squeeze(),"truth":Yval})
+lse_aa = np.argmax(lse_a,axis=1)
 
-#plot_l1d = res_df['l1d'].groupby(res_df.truth).plot(kind='kde')#,alpha=0.5)
-plot_l1d = res_df['l1d'].groupby(res_df.truth).plot(kind='hist',alpha=0.7)
-plt.title('L1 Distance:Histogram')
-
-#plot_l1d = res_df['l2d'].groupby(res_df.truth).plot(kind='kde')#,alpha=0.5)
-plot_l1d = res_df['l2d'].groupby(res_df.truth).plot(kind='hist',alpha=0.7)
-plt.title('L2 Distance:Histogram')
-
-#plot_l1d = res_df['lse'].groupby(res_df.truth).plot(kind='kde')#,alpha=0.5)
-plot_l1d = res_df['lse'].groupby(res_df.truth).plot(kind='hist',alpha=0.7)
-plt.title('LSE Predict:Histogram')
-
-
-
+lse_tf = [int(lse_aa[i]==Yval[i]) for i in range(len(Yval))]
+np.sum(lse_tf) / len(lse_tf)
 
