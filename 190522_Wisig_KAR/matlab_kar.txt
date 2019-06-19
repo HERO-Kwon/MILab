@@ -1,0 +1,65 @@
+x=X_trn';
+y=Y_trn;
+h=H;
+r=rseed;
+
+
+
+bias = ones(length(x(:,1)),1);
+X = [bias,x]; % add bias to inputs
+[nrow,ncol] = size(X);
+prestr = []; poststr = [];  sigstr = []; pinvstr = [];
+yfinv = [finv{length(h)+1},'(y)'];  
+slopeinv = 1./slope;
+
+
+
+%--- initialize hidden weights without bias ---%
+lenh = length(h);
+if (lenh<1)
+    Wstr1{1} = 'pinv(X)*'; 
+    Wstr2{1} = [finv{1},sprintf('(%f',slope(1)),'*y)'];
+    Wstr{1} = [Wstr1{1},Wstr2{1}]; 
+    %W{1} = eval(Wstr{1});
+else
+    Wstr1{1} = 'pinv(X)*'; 
+    %rng(r); % fix randomness for reproducibility
+    rand('state',r); % fix randomness for reproducibility, Octave
+    w{lenh+1} = rand(h(lenh),length(y(1,:)));
+    rand('state',r); % fix randomness for reproducibility, Octave
+    v{lenh+1} = rand(1,length(y(1,:)));
+    for k=1:lenh
+        if (k>1)
+            %rng(r); % fix randomness for reproducibility
+            rand('state',r); % fix randomness for reproducibility, Octave
+            w{k} = rand(h(k-1),h(k)); % weights excluding bias
+            rand('state',r); % fix randomness for reproducibility, Octave
+            v{k} = rand(1,h(k)); % weights for bias
+        end
+        for m=lenh:-1:k
+            prestr2 = ['[bias,',f{lenh-m+1},sprintf('(%f*',slope(lenh-m+1))]; % add bias to each layer
+            prestr = [prestr2,prestr];  
+            poststr2 = sprintf('*W{%d})]',lenh-m+1); % weights for each layer
+            poststr = [poststr,poststr2]; 
+            sigstr2 = [finv{m},'((']; % sigmoid for each layer
+            sigstr = [sigstr2,sigstr];
+            pinvstr2 = sprintf('-%f*bias*v{%d})*%f*pinv(w{%d}))',slope(m+1),m+1,slopeinv(m+1),m+1); % pseudoinverse for each layer
+            pinvstr = [pinvstr,pinvstr2];
+        end
+        Wstr1{lenh-k+2} = ['pinv(',prestr,'X',poststr,')*'];
+        Wstr2{k} = [sigstr,finv{lenh+1},'(y)',pinvstr];
+        prestr = []; poststr = [];  
+        sigstr = []; pinvstr = [];   
+    end 
+    Wstr2{lenh+1} = yfinv; 
+    for k=1:lenh+1
+        Lam = sprintf('%f*',slopeinv(k));
+        Wstr{k} = [Lam,Wstr1{k},Wstr2{k}]; 
+        %W{k} = eval(Wstr{k});
+    end
+end
+
+
+
+
+
