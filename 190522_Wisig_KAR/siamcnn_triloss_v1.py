@@ -5,7 +5,9 @@ from keras.regularizers import l2
 from keras import backend as K
 from keras.optimizers import SGD,Adam
 from keras.losses import binary_crossentropy
-
+from siam_utils import get_key
+import numpy.random as rng
+import numpy as np
 
 def triplet_loss(y_true, y_pred):
     fc_size = 1024
