@@ -141,9 +141,8 @@ class Siamese_Loader:
         model.fit_generator(self.generate(batch_size),steps_per_epoch=epochs//batch_size)
 
 class SiamKar_Loader(Siamese_Loader):
-    def __init__(self,data_list,data_subsets,kar):
+    def __init__(self,data_list,kar,data_subsets = ["train", "val"]):
         super(SiamKar_Loader, self).__init__(data_list)
-        super(SiamKar_Loader, self).__init__(data_subsets)
         self.kar = kar
 
         X,c,Xval,cval = data_list
