@@ -68,80 +68,7 @@ siamese_net.compile(loss=triplet_loss,optimizer=optimizer)
 #siamese_net.count_params()
 siamese_net.summary()
 
-class SiamKar_Loader(Siamese_Loader):
-    def __init__(self,data_list,data_subsets,kar):
-        super(SiamKar_Loader, self).__init__(data_list)
-        super(SiamKar_Loader, self).__init__(data_subsets)
-        self.kar = kar
 
-        X,c,Xval,cval = data_list
-
-        self.data["train"] = X
-        self.data["val"] = Xval
-        self.categories["train"] = c
-        self.categories["val"] = cval
-
-    def kar_fc(self):
-        kar_x = np.squeeze(self.data["train"]).reshape([-1,500*30*6])
-        bias = np.ones(kar_x.shape[0],1)
-        x_calc = kar_x
-        for i in range(len(self.kar.W)-1):
-            x_calc = 1*self.kar.f(np.hstack([bias,x_calc]).dot(self.kar.W[i]))
-        kar_fc = x_calc
-        return(kar_fc)
-
-    def get_batch(self,batch_size,s='train'):
-        """Create batch of n pairs, half same class, half different class"""
-        X=self.data[s]
-        c=self.categories[s]
-        n_classes, n_examples, w, h, ch = X.shape
-
-        #randomly sample several classes to use in the batch
-        categories = rng.choice(n_classes,size=(batch_size,),replace=False)
-        #initialize 2 empty arrays for the input image batch
-        pairs=[np.zeros((batch_size, w,h,ch)) for i in range(3)]
-        #initialize vector for the targets, and make one half of it '1's, so 2nd half of batch has same class
-        targets=np.zeros((batch_size,))
-
-        for i in range(batch_size):
-            category = categories[i]
-            cat_key = get_key(category,c)
-            cat_same = list(set(c[cat_key]) - set([category]))
-            cat_diff = list(set(range(n_classes)) - set(cat_same) - set([category]))
-            idx_1 = rng.randint(0, n_examples)
-            # anker
-            category = categories[i]
-            pairs[0][i,:,:,:] = X[category, idx_1].reshape(w, h, ch)
-            # same class
-            category_s = rng.choice(cat_same,size=1,replace=False)[0]
-            pairs[1][i,:,:,:] = X[category_s, idx_1].reshape(w, h, ch)
-            
-            # diff class
-
-            # Kar distance
-            kar_ank = kar_fc[category]
-            kar_diff = kar_fc[cat_diff]
-            dist_diff = [np.linalg.norm([kar_diff[i] - kar_ank],ord=2) for i in range(len(kar_diff))]
-            # select hard samples
-            dist25p = np.percentile(dist_diff, 25, interpolation='nearest')
-            hard_samples = dist_diff < dist25p
-            cat_diff_hard = list(np.array(cat_diff)[hard_samples])
-
-            category_d = rng.choice(cat_diff_hard,size=1,replace=False)[0]
-            pairs[2][i,:,:,:] = X[category_d, idx_1].reshape(w, h, ch)
-            
-            #pick images of same class for 1st half, different for 2nd
-            #if i >= batch_size // 2:
-                #category_2 = category  
-                #category_2 = rng.choice(cat_same,size=1,replace=False)[0]
-            #else: 
-                #add a random number to the category modulo n classes to ensure 2nd image has
-                # ..different category
-                #category_2 = (category + rng.randint(1,n_classes)) % n_classes
-                #category_2 = rng.choice(cat_diff,size=1,replace=False)[0]
-                
-            #pairs[2][i,:,:,:] = X[category_2,idx_2]
-        return pairs, targets
 
 class Siamese_Loader:
     """For loading batches and testing tasks to a siamese net"""
@@ -213,3 +140,78 @@ class Siamese_Loader:
     def train(self, model, epochs, verbosity):
         model.fit_generator(self.generate(batch_size),steps_per_epoch=epochs//batch_size)
 
+class SiamKar_Loader(Siamese_Loader):
+    def __init__(self,data_list,data_subsets,kar):
+        super(SiamKar_Loader, self).__init__(data_list)
+        super(SiamKar_Loader, self).__init__(data_subsets)
+        self.kar = kar
+
+        X,c,Xval,cval = data_list
+
+        self.data["train"] = X
+        self.data["val"] = Xval
+        self.categories["train"] = c
+        self.categories["val"] = cval
+
+    def dist_kar(self):
+        kar_x = np.squeeze(self.data["train"]).reshape([-1,500*30*6])
+        bias = np.ones(kar_x.shape[0],1)
+        x_calc = kar_x
+        for i in range(len(self.kar.W)-1):
+            x_calc = 1*self.kar.f(np.hstack([bias,x_calc]).dot(self.kar.W[i]))
+        kar_fc = x_calc
+        return(kar_fc)
+
+    def get_batch(self,batch_size,s='train'):
+        """Create batch of n pairs, half same class, half different class"""
+        X=self.data[s]
+        c=self.categories[s]
+        n_classes, n_examples, w, h, ch = X.shape
+
+        #randomly sample several classes to use in the batch
+        categories = rng.choice(n_classes,size=(batch_size,),replace=False)
+        #initialize 2 empty arrays for the input image batch
+        pairs=[np.zeros((batch_size, w,h,ch)) for i in range(3)]
+        #initialize vector for the targets, and make one half of it '1's, so 2nd half of batch has same class
+        targets=np.zeros((batch_size,))
+
+        for i in range(batch_size):
+            category = categories[i]
+            cat_key = get_key(category,c)
+            cat_same = list(set(c[cat_key]) - set([category]))
+            cat_diff = list(set(range(n_classes)) - set(cat_same) - set([category]))
+            idx_1 = rng.randint(0, n_examples)
+            # anker
+            category = categories[i]
+            pairs[0][i,:,:,:] = X[category, idx_1].reshape(w, h, ch)
+            # same class
+            category_s = rng.choice(cat_same,size=1,replace=False)[0]
+            pairs[1][i,:,:,:] = X[category_s, idx_1].reshape(w, h, ch)
+            
+            # diff class
+
+            # Kar distance
+            kar_fc = dist_kar()
+            kar_ank = kar_fc[category]
+            kar_diff = kar_fc[cat_diff]
+            dist_diff = [np.linalg.norm([kar_diff[i] - kar_ank],ord=2) for i in range(len(kar_diff))]
+            # select hard samples
+            dist25p = np.percentile(dist_diff, 25, interpolation='nearest')
+            hard_samples = dist_diff < dist25p
+            cat_diff_hard = list(np.array(cat_diff)[hard_samples])
+
+            category_d = rng.choice(cat_diff_hard,size=1,replace=False)[0]
+            pairs[2][i,:,:,:] = X[category_d, idx_1].reshape(w, h, ch)
+            
+            #pick images of same class for 1st half, different for 2nd
+            #if i >= batch_size // 2:
+                #category_2 = category  
+                #category_2 = rng.choice(cat_same,size=1,replace=False)[0]
+            #else: 
+                #add a random number to the category modulo n classes to ensure 2nd image has
+                # ..different category
+                #category_2 = (category + rng.randint(1,n_classes)) % n_classes
+                #category_2 = rng.choice(cat_diff,size=1,replace=False)[0]
+                
+            #pairs[2][i,:,:,:] = X[category_2,idx_2]
+        return pairs, targets
