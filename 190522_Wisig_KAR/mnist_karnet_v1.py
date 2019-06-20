@@ -1,5 +1,6 @@
 from keras.datasets import mnist
 from keras.utils import to_categorical
+from karnet_v1 import KARnet
 
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
 
