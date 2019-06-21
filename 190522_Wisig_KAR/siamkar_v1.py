@@ -70,14 +70,14 @@ siamese_net.summary()
 
 
 
-class Siamese_Loader:
+class SiamTri_Loader:
     """For loading batches and testing tasks to a siamese net"""
     def __init__(self, data_list, data_subsets = ["train", "val"]):
         self.data = {}
         self.categories = {}
         self.info = {}
         
-        X,c,Xval,cval = data_list
+        X,c,Xval,cval,Y,Yval = data_list
 
         self.data["train"] = X
         self.data["val"] = Xval
@@ -137,15 +137,16 @@ class Siamese_Loader:
     def get_score(self,model,pairs):
         probs = model.predict(pairs)
         return probs
-    def train(self, model, epochs, verbosity):
+    def train(self, model, epochs,batch_size, verbosity):
         model.fit_generator(self.generate(batch_size),steps_per_epoch=epochs//batch_size)
 
-class SiamKar_Loader(Siamese_Loader):
+class SiamKar_Loader(SiamTri_Loader):
     def __init__(self,data_list,kar,data_subsets = ["train", "val"]):
         super(SiamKar_Loader, self).__init__(data_list)
         self.kar = kar
+        self.kar_fc = self.dist_kar()
 
-        X,c,Xval,cval = data_list
+        X,c,Xval,cval,Y,Yval = data_list
 
         self.data["train"] = X
         self.data["val"] = Xval
@@ -154,14 +155,14 @@ class SiamKar_Loader(Siamese_Loader):
 
     def dist_kar(self):
         kar_x = np.squeeze(self.data["train"]).reshape([-1,500*30*6])
-        bias = np.ones(kar_x.shape[0],1)
+        bias = np.ones([kar_x.shape[0],1])
         x_calc = kar_x
         for i in range(len(self.kar.W)-1):
             x_calc = 1*self.kar.f(np.hstack([bias,x_calc]).dot(self.kar.W[i]))
         kar_fc = x_calc
         return(kar_fc)
 
-    def get_batch(self,batch_size,s='train'):
+    def get_batch(self,batch_size,dist_rate,s='train'):
         """Create batch of n pairs, half same class, half different class"""
         X=self.data[s]
         c=self.categories[s]
@@ -179,6 +180,8 @@ class SiamKar_Loader(Siamese_Loader):
             cat_key = get_key(category,c)
             cat_same = list(set(c[cat_key]) - set([category]))
             cat_diff = list(set(range(n_classes)) - set(cat_same) - set([category]))
+            cat_diff_s = np.random.choice(cat_diff,int(dist_rate*len(cat_diff)))
+            
             idx_1 = rng.randint(0, n_examples)
             # anker
             category = categories[i]
@@ -190,14 +193,14 @@ class SiamKar_Loader(Siamese_Loader):
             # diff class
 
             # Kar distance
-            kar_fc = dist_kar()
-            kar_ank = kar_fc[category]
-            kar_diff = kar_fc[cat_diff]
+            
+            kar_ank = self.kar_fc[category]
+            kar_diff = self.kar_fc[cat_diff_s]
             dist_diff = [np.linalg.norm([kar_diff[i] - kar_ank],ord=2) for i in range(len(kar_diff))]
             # select hard samples
             dist25p = np.percentile(dist_diff, 25, interpolation='nearest')
             hard_samples = dist_diff < dist25p
-            cat_diff_hard = list(np.array(cat_diff)[hard_samples])
+            cat_diff_hard = list(np.array(cat_diff_s)[hard_samples])
 
             category_d = rng.choice(cat_diff_hard,size=1,replace=False)[0]
             pairs[2][i,:,:,:] = X[category_d, idx_1].reshape(w, h, ch)
