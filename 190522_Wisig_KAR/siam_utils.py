@@ -10,7 +10,8 @@ from sklearn.utils import shuffle
 from scipy.optimize import brentq
 from scipy.interpolate import interp1d
 from sklearn.metrics import roc_curve
-
+from datetime import datetime 
+import socket
 
 # function to return key for any value 
 def get_key(val,my_dict): 
@@ -21,7 +22,7 @@ def get_key(val,my_dict):
     return "key doesn't exist"
 
 
-def ReadData(PATH,n_splits):
+def ReadData(PATH,n_splits,rseed):
     print("loading data from {}".format(PATH))
     list_csi = []
     list_lab = []
@@ -57,7 +58,7 @@ def ReadData(PATH,n_splits):
     arr_csi = np.array(list_csi).swapaxes(0,1).reshape([50*len(file_list),10,500,30,6])
     arr_lab = np.array(list_lab).swapaxes(0,1).reshape([50*len(file_list),10])
 
-    skf = StratifiedKFold(n_splits,random_state=10)
+    skf = StratifiedKFold(n_splits,random_state=rseed)
     data_list = []
 
     arr_csi1 = arr_csi.reshape([-1,500,30,6])
@@ -87,12 +88,13 @@ def ReadData(PATH,n_splits):
         data_list.append([X,c,Xval,cval,Y,Yval])
     
     return(data_list)
-
-def eer_graphs(dist_truth,dist_score,pos_label):
+    
+def eer_graphs(dist_truth,dist_score,pos_label,save_path):
     fpr, tpr, thresholds = roc_curve(dist_truth, dist_score,pos_label=pos_label)
     eer = brentq(lambda x : 1. - x - interp1d(fpr, tpr)(x), 0., 1.)
 
     # ROC
+    fig = plt.figure()
     plt.plot(fpr, tpr, '.-')#, label=self.model_name)
     plt.plot([0, 1], [0, 1], 'k--', label="random guess")
 
@@ -100,7 +102,10 @@ def eer_graphs(dist_truth,dist_score,pos_label):
     plt.ylabel('True Positive Rate (Recall)')
     plt.title('Receiver Operating Characteristic curve')
     plt.legend()
+    fig.savefig(save_path + '_roc.png')
     plt.show()
+    #fig.savefig(res_path + 'fig_loss_' + timenow + '_' + str(splits) + '.png')
+    plt.close(fig)
 
     # EER
     #thres_mask = thresholds <= 5*np.median(dist_score)
@@ -108,7 +113,8 @@ def eer_graphs(dist_truth,dist_score,pos_label):
     th_mask = thresholds#[thres_mask]
     fpr_mask= fpr#[thres_mask]
     tpr_mask = tpr#[thres_mask]
-
+    
+    fig = plt.figure()
     plt.plot(th_mask,fpr_mask,color='blue', label="FPR")
     plt.plot(th_mask,1-tpr_mask,color='red',label="FNR")
     plt.plot(th_mask,fpr_mask + (1-tpr_mask),color='green',label="TER")
@@ -119,11 +125,13 @@ def eer_graphs(dist_truth,dist_score,pos_label):
     plt.ylabel('Error Rates (%)')
     plt.title('Equal Error Rate')
     plt.legend()
+    fig.savefig(save_path + '_eer.png')
     plt.show()
+    plt.close(fig)
 
     return(eer)
     
-def make_val_triplets(x,y):
+def make_val_triplets(x,y,c):
     n_samples = x.shape[0]
     xa = []
     xp = []
@@ -135,7 +143,8 @@ def make_val_triplets(x,y):
                 xa.append(x[i])
                 xp.append(x[j])
                 p_idxs.append(j)
-        n_idxs = list(set(np.arange(0,n_samples)) - set(p_idxs))
+        anc_cat = get_key(i,c)
+        n_idxs = list(set(np.arange(0,n_samples)) - set(c[anc_cat]))
         n_rsamp = np.random.choice(n_idxs,size=len(p_idxs),replace=False)
         xn.append(x[n_rsamp])
     
@@ -144,3 +153,37 @@ def make_val_triplets(x,y):
     arr_xn = np.vstack(xn).squeeze()
     
     return([arr_xa,arr_xp,arr_xn])
+
+def make_val_pairs(x,y,c):
+    [arr_xa,arr_xp,arr_xn] = make_val_triplets(x,y,c)
+    pairs_ank = np.tile(arr_xa,(2,1,1,1))
+    pairs_pn = np.vstack([arr_xp,arr_xn])
+
+    return([pairs_ank,pairs_pn])
+
+def gen_val_triplets(x,y,c):
+    n_samples = x.shape[0]
+
+    #while(i<=n_samples):
+    for i in np.arange(0,n_samples-1,1):
+        xa = []
+        xp = []
+        xn = []
+        p_idxs = []
+        for j in np.arange(i+1,n_samples,1):
+            if(y[i]==y[j]):
+                xa.append(x[i])
+                xp.append(x[j])
+                p_idxs.append(j)
+        anc_cat = get_key(i,c)
+        n_idxs = list(set(np.arange(0,n_samples)) - set(c[anc_cat]))
+        n_rsamp = np.random.choice(n_idxs,size=len(p_idxs),replace=False)
+        xn.append(x[n_rsamp])
+        
+        if len(xa):
+            arr_xa = np.array(xa).squeeze(axis=1)
+            arr_xp = np.array(xp).squeeze(axis=1)
+            arr_xn = np.vstack(xn).squeeze(axis=1)
+            yield([arr_xa,arr_xp,arr_xn])
+        else:
+            pass
