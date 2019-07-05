@@ -1,0 +1,45 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{bromley1994signature}
+Bromley, J., Guyon, I., LeCun, Y., S{\"a}ckinger, E., Shah, R.: Signature
+  verification using a" siamese" time delay neural network. In: Advances in
+  neural information processing systems. pp. 737--744 (1994)
+
+\bibitem{koch2015siamese}
+Koch, G., Zemel, R., Salakhutdinov, R.: Siamese neural networks for one-shot
+  image recognition. In: ICML deep learning workshop. vol.~2 (2015)
+
+\bibitem{lang1990time}
+Lang, K.J., Waibel, A.H., Hinton, G.E.: A time-delay neural network
+  architecture for isolated word recognition. Neural networks  \textbf{3}(1),
+  23--43 (1990)
+
+\bibitem{lecun1998gradient}
+LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., et~al.: Gradient-based learning
+  applied to document recognition. Proceedings of the IEEE  \textbf{86}(11),
+  2278--2324 (1998)
+
+\bibitem{moon2017air}
+Moon, H.C., Jang, S.I., Oh, K., Toh, K.A.: An in-air signature verification
+  system using wi-fi signals. In: Proceedings of the 2017 4th International
+  Conference on Biomedical and Bioinformatics Engineering. pp. 133--138. ACM
+  (2017)
+
+\bibitem{schroff2015facenet}
+Schroff, F., Kalenichenko, D., Philbin, J.: Facenet: A unified embedding for
+  face recognition and clustering. In: Proceedings of the IEEE conference on
+  computer vision and pattern recognition. pp. 815--823 (2015)
+
+\bibitem{toh2018learning}
+Toh, K.A.: Learning from the kernel and the range space. In: 2018 IEEE/ACIS
+  17th International Conference on Computer and Information Science (ICIS).
+  pp.~1--6. IEEE (2018)
+
+\bibitem{toh2018gradient}
+Toh, K.A., Lin, Z., Li, Z., Oh, B., Sun, L.: Gradient-free learning based on
+  the kernel and the range space. arXiv preprint arXiv:1810.11581  (2018)
+
+\end{thebibliography}
