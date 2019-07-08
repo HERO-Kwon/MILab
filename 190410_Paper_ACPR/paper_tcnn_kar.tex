@@ -85,22 +85,25 @@ $\mathnormal{R}_{c} = \mathbf{H}_{c}\mathnormal{T}_{c} +\mathnormal{N}$ where th
 where $\mid\mathnormal{h}_{c}\mid$ and $\theta$ represent the amplitude and the phase of the sub-carrier, respectively.
 %[From HC's ELM end]
 
-\subsection{ConvNet with triplet loss}
+\subsection{the kernel and the range space learning}
 
-% description of siamese net
-In \cite{bromley1994signature}, LeCun et al. Introduced Siamese nets as parts of their handwritten signature verification system. 
-A siamese neural network consists of twin networks which accept distinct inputs but are joined by an energy function at the top.\cite{koch2015siamese}
-% differences in feature extractor
-They proposed a feature extractor based on Time Delay Neural Networks\cite{lang1990time} and feature matcher based on cosine distance of feature vector. Apart from this work based on ConvNet as feature extractor and L1 distance as feature matcher.
-In this paper, we propose a for signature verification system that is applicable for WIFI CSI signal, which is more complex and larger than handwritten images. 
-% advantages of using Convnet filter
-Based on Convnets as feature extractor, we are able to make feature vector from CSI signal reflecting local connectivity between signals at a near frequency range and closer measurement time. 
-The proposed method achieved better performance because it is applicable to all points of CSI signals. This is due to the weight sharing the property of the Convnet filter.
+Multilayer feedforward neural networks has been widely used to feature extractor and classifier.
+For traning the feedforward multilayer networks, non-gradient learning method by using linear matrix equation has invented recently. \cite{wang2018review}
 
+This model avoids the problems of the deep learning model such as vanishing gradient and local minima. And except for the number of layers and neurons used in the network, there are few parameters for the network configuration.
+
+More recently, a new learning framework has been developed to train the weights of the deep networks by a series of kernel and range space manipulations \cite{toh2018gradient,toh2018learning}.
+This method allows to quickly learn the weights of the deep network with little  system resources.
+we adopted this method to mining negative samples for the anker signal.
+
+%% Methods
 \section{Proposed System}
 
-In this section, we propose a direction-free identify verification system based on the Wi-Fi based in-air handwritten signature (will be called Wi-Fi signature signals hereafter). An overview of the proposed system utilizing the ConvNet with triplet loss is shown in Fig.1.
-Essentially, the Wi-Fi signature signals are preprocessed to create the input data for our network. Subsequently, the ConvNet structure is trained to minimize distance from anchor to positive input while maximize distance from anchor to negative inputs. The following subsections detail the data preprocessing and the proposed method.
+In this section, we propose a direction-free identify verification system based on the Wi-Fi based in-air handwritten signature (will be called Wi-Fi signature signals hereafter). An overview of the proposed system utilizing the ConvNet \cite{lecun1998gradient} and the kernel and the range space projection learning (KAR space learning) is shown in Fig.1.
+Essentially, the Wi-Fi signature signals are preprocessed to create the input data for our network. Subsequently, the training dataset is moved to KAR space learning. it mines the hard positve and negative samples for given anchor signal from training dataset whtout using gradient.
+ConvNet structure extract feature vectors from given triplet using convnet filters.
+ConvNet training is achived by triplet loss, which is L2 distance of given feature vectors of the triplet. 
+The following subsections detail the proposed method.
 
 % Figure 1
 \begin{figure}
@@ -108,48 +111,41 @@ Essentially, the Wi-Fi signature signals are preprocessed to create the input da
     \caption{Structure of the network} \label{fig1}
 \end{figure}
 
-\subsection{Data Preprocessing}
 
-Since every Wi-Fi signature signal has different data size, we firstly adopted the gradient operation with respect to the time instance to measure the short time energy. Data points with the highest short-time energy within the time period are then manually selected as the starting and the ending points of the in-air signature action. Subsequently, the Fast Fourier Transform based re-sampling method \cite{moon2017air} is implemented to unify the length of the signals. As a result, three-dimensional Wi-Fi signature signals with unified data size are obtained as the input of the ConvNet structure in the network.
+% Methods: Triplet loss
+\subsection{Triplet loss}
 
-% Methods 
-% Section: Feature Extraction
-\subsection{ConvNets with triplet loss}
-
-To design the proposed networks, we firstly need to select the feature extracting networks which convert the input data into a vector. In this work, we utilize the ConvNet structure \cite{lecun1998gradient} as a feature extractor since the three-dimensional data format of our preprocessed input signal can be regarded as an image data format with multiple channels. 
-
-Our ConvNet structure (See Fig~\ref{fig1} (b)) for the network consists of $i$ convolutional layers $\mathbf{C}_{i}$ and one fully-connected layer $\mathbf{F}$. The number of convolutional filters to be trained in each layer is empirically chosen as $\{64, 128, ...,  2^{6+i}\}$, with fixed filter size of $3\times3$ and stride of 1. The Rectiﬁed Linear (ReLU) function as an activation function and the max-pooling layers are applied between each convolutional layers. The features from the last convolutional layer are directly flattened into a single vector without activation function and the Max-pooling layer followed by the fully-connected layer.
-%Since the networks utilize three ConvNet structures which ties the weights each other, noting here that three structures described in Fig~\ref{fig1} (b) are actually the same model.
-
-In our proposed networks, we utilize the $L_2$ distance to calculate the triplet loss. For the $i_{th}$ signal as anchor input $\mathbf{I}_{i,anc}$, positive input $\mathbf{I}_{i,pos}$ is belong to the same class for anchor input while negative input $\mathbf{I}_{i,neg}$ is from another class.
+Our proposed networks utilizes the $L_2$ distance to calculate the triplet loss. For the $i_{th}$ signal as anchor input $\mathbf{I}_{i,anc}$, positive input $\mathbf{I}_{i,pos}$ is belong to the same class for anchor input while negative input $\mathbf{I}_{i,neg}$ is from another class.
 Let $\mathbf{x}_{i,anc}\in{\mathrm{R}}^{d\times1}$, $\mathbf{x}_{i,pos}\in{\mathrm{R}}^{d\times1}$ and $\mathbf{x}_{i,neg}\in{\mathrm{R}}^{d\times1}$ be three feature vectors extracted from the ConvNet structure. Then the loss for the triplet inputs can be calculated as follows:
 \begin{equation}
 loss = \sum_i^N { \left[ {\left\| {{\mathbf{x}_{i,anc}} - {\mathbf{x}_{i,pos}}} \right\|_2^2} -
 {\left\| {{\mathbf{x}_{i,anc}} - {\mathbf{x}_{i,neg}}} \right\|_2^2}  + \alpha \right]_+},
 \end{equation} 
-where $\alpha$ is the margin to make distance between positive and negative pairs, N is size of the mini-batch. 
+where $\alpha$ is the margin to make distance between positive and negative pairs, N is size of the mini-batch.
++ sign means greater between zero or calculated loss.
 
-% KAR learning
-\subsection{Triplet selection by the kernel and the range space learning}
+% Methods: KAR learning
+
+\subsection{Triplet mining by the kernel and the range space learning}
 
 % importance of selecting hard pos/neg
 in \cite{schroff2015facenet}, when training triplet loss networks, it is important to take hard positive and hard negative sample for faster convergence of the loss function.
 
 % methods of KAR learning
-since we don't know which is the hard sample before training entire network, we make multilayer feedforward neural network instead to select the hard positive and the hard negative.
-we adopted gradient-free learning to train this network. by the kernel and the range (KAR) space projection learning \cite{toh2018learning,toh2018gradient}.
+since we don't know which is the hard sample before training entire network, we make multilayer feedforward neural network to select the hard positive and the hard negative.
+we adopted gradient-free, the kernel and the range (KAR) space projection learning to train multilayer feedforward neural network. \cite{toh2018learning,toh2018gradient}.
 
 % training KARnet
-first, let the training dataset $\mathbf{X}\in{\mathrm{R}}^{m \times (n+1)}$ and one-hot encoded target $\mathbf{Y}\in{\mathrm{R}}^{m \times n}$. 
+first, multilayer neural network structure is shown below:
 
-set multilayer neural network structure 
 \begin{equation}
-\mathbf{Y} = \sigma\left(\left[\mathbf{1},\sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(i-1)}\right)\right]\mathbf{W}_{i}\right),
+\mathbf{G} = \sigma\left(\left[\mathbf{1},\sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(i-1)}\right)\right]\mathbf{W}_{i}\right),
 \end{equation}
 
-where $\mathbf{W}_{1}\in{\mathrm{R}}^{(n+1) \times h_{1}}$,$\mathbf{W}_{2}\in{\mathrm{R}}^{(h_{1}+1) \times h_{2}}$,$\dots,\mathbf{W}_{i}\in{\mathrm{R}}^{(h_{(i-1)}+1) \times n}$,
-$\mathbf{1}=\left[1,\dots,1\right]^{T}\in{\mathrm{R}}^{m \times 1}$
-and $\sigma(.)$ is activation function.
+let the training dataset $\mathbf{X}\in{\mathrm{R}}^{m \times (n+1)}$ and $\mathbf{G}\in{\mathrm{R}}^{m \times n}$ is network outputs.
+
+network learning is archived using one-hot encoded target $\mathbf{Y}\in{\mathrm{R}}^{m \times n}$ instead of $\mathbf{G}$.
+
 
 the weight matrix $\mathbf{W}_{1}\dots\mathbf{W}_{i}$ can be separated into weights and bias term,
 $\mathbf{W}_{2}\dots\mathbf{W}_{i}$ = 
@@ -159,7 +155,12 @@ $\begin{bmatrix}
 \dots
 \begin{bmatrix}
 \mathbf{w}_{i}^{T}\\\mathnormal{W}_{i}
-\end{bmatrix}$
+\end{bmatrix}$.
+
+where $\mathbf{W}_{1}\in{\mathrm{R}}^{(n+1) \times h_{1}}$,$\mathbf{W}_{2}\in{\mathrm{R}}^{(h_{1}+1) \times h_{2}}$,$\dots,\mathbf{W}_{i}\in{\mathrm{R}}^{(h_{(i-1)}+1) \times n}$,
+$\mathbf{1}=\left[1,\dots,1\right]^{T}\in{\mathrm{R}}^{m \times 1}$
+and $\sigma(.)$ is activation function.
+
 
 after assign random weights to $\mathbf{W}_{1}\dots\mathbf{W}_{i}$ , we can get $\mathbf{W}_{1}$. the equation can be solved as follows:
 
@@ -168,38 +169,48 @@ after assign random weights to $\mathbf{W}_{1}\dots\mathbf{W}_{i}$ , we can get 
 \sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(i-1)}\right)
 \end{equation}
 
-%\begin{equation}
-\begin{multline*}
+
+%\begin{multline*}
+\begin{equation}
+\begin{aligned}
 \Rightarrow
 \biggl[\sigma^{-1}\biggl(
 \dots
 \biggl[\sigma^{-1}\biggl(
     \left[\sigma^{-1}\left(\mathbf{Y}\right)-\mathbf{1}\cdot\mathbf{w}_{i}^{T}\right]\mathnormal{W}_{i}^\dagger
-\biggr)\\
+\biggr)
 - \mathbf{1}\cdot\mathbf{w}_{(i-1)}^{T}\biggr]\mathnormal{W}_{(i-1)}^{\dagger}
-\dots\biggr) 
+\dots\biggr)\\
 - \mathbf{1}\cdot\mathbf{w}_{2}^{T}\biggr]\mathnormal{W}_{2}^{\dagger} 
 = \sigma\left(\mathbf{X}\mathbf{W}_{1}\right)
-\end{multline*}
-%\end{equation}
+%\end{multline*}
+\end{aligned}
+\end{equation}
 
-\begin{multline*}
+
+%\begin{multline*}
+\begin{equation}
+\begin{aligned}
 \Rightarrow
 \mathbf{X}^{\dagger}\sigma^{-1}\biggl(
 \biggl[\sigma^{-1}\biggl(
 \dots
 \biggl[\sigma^{-1}\biggl(
     \left[\sigma^{-1}\left(\mathbf{Y}\right)-\mathbf{1}\cdot\mathbf{w}_{i}^{T}\right]\mathnormal{W}_{i}^\dagger
-\biggr)\\
+\biggr)
 - \mathbf{1}\cdot\mathbf{w}_{(i-1)}^{T}\biggr]\mathnormal{W}_{(i-1)}^{\dagger}
-\dots\biggr)
+\dots\biggr)\\
 - \mathbf{1}\cdot\mathbf{w}_{2}^{T}\biggr]\mathnormal{W}_{2}^{\dagger}
 = \mathbf{W}_{1}
-\end{multline*}
+\end{aligned}
+\end{equation}
+%\end{multline*}
 
 after getting $\mathbf{W}_{1}$, $\mathbf{W}_{2}$ can also be optimized
 
-\begin{multline*}
+\begin{equation}
+\begin{aligned}
+%\begin{multline*}
 \Rightarrow
 \left(\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right)^{\dagger}
 \biggl(\dots
@@ -207,9 +218,11 @@ after getting $\mathbf{W}_{1}$, $\mathbf{W}_{2}$ can also be optimized
     \left[\sigma^{-1}\left(\mathbf{Y}\right)-\mathbf{1}\cdot\mathbf{w}_{i}^{T}\right]\mathnormal{W}_{i}^\dagger
 \biggr)
 - \mathbf{1}\cdot\mathbf{w}_{(i-1)}^{T}\biggr]\mathnormal{W}_{(i-1)}^{\dagger}
-\dots\biggr)\\ 
+\dots\biggr)\\
 = \mathbf{W}_{2}
-\end{multline*}
+%\end{multline*}
+\end{aligned}
+\end{equation}
 
 Repeat this process recursively until all weight maxtrix values are obtained.
 finally, $\mathbf{W}_{i}$ can be obtained as follows:
@@ -218,10 +231,24 @@ finally, $\mathbf{W}_{i}$ can be obtained as follows:
     \mathbf{W}_{i} = \left[\mathbf{1},\sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(i-1)}\right)\right]^{\dagger}\sigma^{-1}\left(\mathbf{Y}\right),
 \end{equation}
 
+when anker signal is set, negative samples can be mined if the distance of network output $\mathbf{G}$ is above the threshold.
+
+% Methods: ConvNets
+\subsection{ConvNet Structures}
+
+To design the proposed networks, we firstly need to select the feature extracting networks which convert the input data into a vector. In this work, we utilize the ConvNet structure \cite{lecun1998gradient} as a feature extractor since the three-dimensional data format of our preprocessed input signal can be regarded as an image data format with multiple channels. 
+
+Our ConvNet structure (See Fig~\ref{fig1} (b)) for the network consists of $i$ convolutional layers $\mathbf{C}_{i}$ and one fully-connected layer $\mathbf{F}$. The number of convolutional filters to be trained in each layer is empirically chosen as $\{64, 128, ...,  2^{6+i}\}$, with fixed filter size of $3\times3$ and stride of 1. The Rectiﬁed Linear (ReLU) function as an activation function and the max-pooling layers are applied between each convolutional layers. The features from the last convolutional layer are directly flattened into a single vector without activation function and the Max-pooling layer followed by the fully-connected layer.
+%Since the networks utilize three ConvNet structures which ties the weights each other, noting here that three structures described in Fig~\ref{fig1} (b) are actually the same model.
+
+
 \section{Experiments}
+
 % Dataset
 \subsubsection{Dataset}
  To evaluate validation performance of proposed system, Wi-Fi CSI signature dataset from \cite{moon2017air} was used.
+ % pre-processing
+ Since every Wi-Fi signature signal has different data size, we firstly adopted the gradient operation with respect to the time instance to measure the short time energy. Data points with the highest short-time energy within the time period are then manually selected as the starting and the ending points of the in-air signature action. Subsequently, the Fast Fourier Transform based re-sampling method \cite{moon2017air} is implemented to unify the length of the signals. As a result, three-dimensional Wi-Fi signature signals with unified data size are obtained as the input of the ConvNet structure in the network.
  % description
  we utilized 2000 Wi-Fi CSI signature signals (4 directions $\times$ 50 identities $\times$ 10 samples) which is dimension of (500 packets $\times$ 30 subcarriers $\times$ 6 antennas). 
  
@@ -230,8 +257,8 @@ finally, $\mathbf{W}_{i}$ can be obtained as follows:
 % network parameters
 
 % Network Learning
-\subsubsection{Loss and Backpropagation}
- We impose a regularized cross-entropy objective on our binary classifier.
+\subsubsection{ConvNet structure}
+ We impose a triplet loss objective on our classifier.
 This objective is combined with standard backpropagation algorithm, where the gradient is additive across the twin networks due to the tied weights.
  We initialized all network weights in the convolutional layers from a normal distribution with zero-mean and a standard deviation of 10−2. Biases were also initialized from a normal distribution, but with mean 0.5 and standard deviation 10−2.
 

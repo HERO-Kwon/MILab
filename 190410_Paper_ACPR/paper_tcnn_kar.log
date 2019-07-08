@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  5 JUL 2019 15:57
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  8 JUL 2019 15:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -229,10 +229,10 @@ File: fig1_network_structure.pdf Graphic file (type pdf)
 <use fig1_network_structure.pdf>
  [2] [3] [4] (./paper_tcnn_kar.bbl) [5] (./paper_tcnn_kar.aux) ) 
 Here is how much of TeX's memory you used:
- 1682 strings out of 492933
- 20254 string characters out of 6136537
+ 1680 strings out of 492933
+ 20217 string characters out of 6136537
  101978 words of memory out of 5000000
- 5727 multiletter control sequences out of 15000+600000
+ 5725 multiletter control sequences out of 15000+600000
  7368 words of font info for 36 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  28i,11n,21p,708b,211s stack positions out of 5000i,500n,10000p,200000b,80000s
