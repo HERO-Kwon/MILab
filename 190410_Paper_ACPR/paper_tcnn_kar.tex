@@ -49,41 +49,27 @@ The abstract should briefly summarize the contents of the paper in
 \section{Introduction}
 
 \subsection{Motivation}
-i. Pros of In-Air WIFI CSI signature system
-1) Cheap: Use commercial device
-2) Easy: No additional devices is needed
-3) Secure: Hard to forgery
-ii. Cons of In-Air WIFI CSI signature system
-1) Setting direction problem
-a) Different direction -> Different feature is needed
-b) Hard to set exactly same direction as authentication before
-Size of signature can varies
 
 \subsection{Contribution}
-- Overcome cons of WIFI signature system
-- Robust to signal direction, size
 
 \section{Related Works}
 
-\subsection{WIFI CSI}
-- An In-Air Signature Verification System Using Wi-Fi Signals 
 
-% Meaning of CSI
-%[From Halperin paper]
-CSI captures signal strength and phase information for OFDM subcarriers and between each pair of transmit-receive antennas.
-It runs on a commodity 802.11n NIC, and records Channel State Information (CSI) based on the 802.11 standard.
-The CSI contains information about the channel between sender and receiver at the level of individual data subcarriers, for each pair of transmit and receive antennas.
-%[From Halperin End]
+\subsection{ConvNets with triplet input}
+ConvNets with triplet input is widely used in face recognition \cite{schroff2015facenet} and person re-id \cite{cheng2016person,chen2017beyond}.
+The distinction between classes may be ambiguous in the above tasks. This is because the targets may be looking in different directions or taking different positions.
+Triplet ConvNets works by extract feature vectors which expand margins between same class and different class,so it has good ability to distinguish between classes. 
 
-% Structure of CSI
-%[From HC's ELM paper]
-In a frequency domain, the CSI of sub-carrier $\mathbf{c}$ between transmitter(Tx) and receiver(Rx) can be modeled as 
-$\mathnormal{R}_{c} = \mathbf{H}_{c}\mathnormal{T}_{c} +\mathnormal{N}$ where the $\mathnormal{R}_{c}$ and $\mathnormal{T}_{c}$  denote the received and the transmitted signal vector of dimension $\mathnormal{r}$ and $\mathnormal{t}$, respectively. The $\mathnormal{N}$ is the additive channel noise and $\mathbf{H}_{c}$ is the $\mathnormal{r}\times\mathnormal{t}$ channel matrix. The CSI of sub-carrier $\mathnormal{c}$ can be modeled as follows:
-\begin{equation}
-    \mathnormal{h}_{c} = \mid\mathnormal{h}_{c}\mid\mathnormal{e}^{\angle\theta},
-\end{equation}
-where $\mid\mathnormal{h}_{c}\mid$ and $\theta$ represent the amplitude and the phase of the sub-carrier, respectively.
-%[From HC's ELM end]
+but loss function depends on the distance between each triplet samples, loss can be down to 0, when negative class distance is much more greater than positive distance. also, outliers affects a lot to training.
+so it is important to optimize the training process when traning triplet ConvNets.
+
+There are many ways to optimize training. in \cite{schroff2015facenet}, they selects appropriate samples from large mini-batch before each traning iteration.
+in \cite{cheng2016person}, they adopt second margin to triplet loss and expand intra-class distance.
+in \cite{chen2017beyond}, they made quadruplet loss, which makes the distance between the same classes, 
+regardless of class, is less than the distance between the different classes. 
+
+in this paper, we adopt the kernel and the range space learning to select good samples for training triplet ConvNets.
+it has advantage for reducing computing resources, speed up training, and optimize training.
 
 \subsection{the kernel and the range space learning}
 
@@ -119,10 +105,12 @@ Our proposed networks utilizes the L-2 distance to calculate the triplet loss fo
 positive input is drawn from the same identity for anchor signal and negative input is chosen from another identity for the anchor.
 Generated triplet $\left\{\mathbf{I}_{i,anc},\mathbf{I}_{i,pos},\mathbf{I}_{i,neg}\right\}$ is the input to the ConvNet structure.
 Let $\mathbf{x}_{i,anc}\in{\mathrm{R}}^{d\times1}$, $\mathbf{x}_{i,pos}\in{\mathrm{R}}^{d\times1}$ and $\mathbf{x}_{i,neg}\in{\mathrm{R}}^{d\times1}$ be three feature vectors extracted from the ConvNet structure. The triplet loss for the inputs can be calculated as follows:
+
 \begin{equation}
-loss = \sum_i^N { \left[ {\left\| {{\mathbf{x}_{i,anc}} - {\mathbf{x}_{i,pos}}} \right\|_2^2} -
-{\left\| {{\mathbf{x}_{i,anc}} - {\mathbf{x}_{i,neg}}} \right\|_2^2}  + \alpha \right]_+},
+    loss = \sum_i^N { \left[ {\left\| {{\mathbf{x}_{i,anc}} - {\mathbf{x}_{i,pos}}} \right\|_2^2} -
+    {\left\| {{\mathbf{x}_{i,anc}} - {\mathbf{x}_{i,neg}}} \right\|_2^2}  + \alpha \right]_+},
 \end{equation} 
+
 where $\alpha$ is the margin between distances from anchor to positive and anchor to negative, N is size of the mini-batch. (+) means greater number between zero or calculated loss.
 
 % Methods: KAR learning

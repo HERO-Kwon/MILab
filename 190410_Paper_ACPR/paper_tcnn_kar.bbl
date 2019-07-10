@@ -3,6 +3,17 @@
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
 
+\bibitem{chen2017beyond}
+Chen, W., Chen, X., Zhang, J., Huang, K.: Beyond triplet loss: a deep
+  quadruplet network for person re-identification. In: Proceedings of the IEEE
+  Conference on Computer Vision and Pattern Recognition. pp. 403--412 (2017)
+
+\bibitem{cheng2016person}
+Cheng, D., Gong, Y., Zhou, S., Wang, J., Zheng, N.: Person re-identification by
+  multi-channel parts-based cnn with improved triplet loss function. In:
+  Proceedings of the iEEE conference on computer vision and pattern
+  recognition. pp. 1335--1344 (2016)
+
 \bibitem{lecun1998gradient}
 LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., et~al.: Gradient-based learning
   applied to document recognition. Proceedings of the IEEE  \textbf{86}(11),
