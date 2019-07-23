@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  23 JUL 2019 10:58
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  23 JUL 2019 15:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Git/MILab/190410_Paper_ACPR/paper_tcnn_kar
-(d:/Git/MILab/190410_Paper_ACPR/paper_tcnn_kar.tex
+**d:/Git/MILab/190410_Paper_ACPR/paper_v2
+(d:/Git/MILab/190410_Paper_ACPR/paper_v2.tex
 LaTeX2e <2018-12-01>
 (./llncs.cls
 Document Class: llncs 2018/03/10 v2.20 
@@ -202,8 +202,8 @@ Package amsmath Warning: Unable to redefine math accent \vec.
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
-) (./paper_tcnn_kar.aux)
-\openout1 = `paper_tcnn_kar.aux'.
+) (./paper_v2.aux)
+\openout1 = `paper_v2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -222,41 +222,39 @@ LaTeX Font Info:    ... okay on input line 16.
  [1
 
 ] [2]
-Overfull \hbox (5.44048pt too wide) in paragraph at lines 108--111
+Overfull \hbox (5.44048pt too wide) in paragraph at lines 106--109
 \TU/lmr/m/n/10 where $\OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 R[]$\TU/lmr/m/n/10 ,$\OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 R[]$\TU/lmr/m/n/10 ,$[] \OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 R[]$\TU/lmr/m/n/10 ,$\OT1/cmr/bx/n/10 1 \OT1/cmr/m/n/10 = [][] [] 
  []
 
 [3]
-File: fig1_tcnn_kar_v2.pdf Graphic file (type pdf)
-<use fig1_tcnn_kar_v2.pdf>
- [4] [5]
+File: fig1_tcnn_kar_v3.pdf Graphic file (type pdf)
+<use fig1_tcnn_kar_v3.pdf>
+ [4] [5] [6]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 274.
+               Default added (so using `htbp') on input line 267.
 
-[6]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 295.
+               Default added (so using `htbp') on input line 288.
 
 [7]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 326.
+               Default added (so using `htbp') on input line 319.
 
 File: normalized_loss_curve_ma30.eps Graphic file (type eps)
 <normalized_loss_curve_ma30.eps>
-(./paper_tcnn_kar.bbl [8]
-Underfull \vbox (badness 1112) has occurred while \output is active []
-
- [9]) [10] (./paper_tcnn_kar.aux) ) 
+File: fig_roc.pdf Graphic file (type pdf)
+<use fig_roc.pdf>
+[8] [9] (./paper_v2.bbl [10]) [11] (./paper_v2.aux) ) 
 Here is how much of TeX's memory you used:
- 1701 strings out of 492933
- 20514 string characters out of 6136537
+ 1712 strings out of 492933
+ 20638 string characters out of 6136537
  102978 words of memory out of 5000000
- 5742 multiletter control sequences out of 15000+600000
+ 5752 multiletter control sequences out of 15000+600000
  7988 words of font info for 38 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 28i,11n,21p,616b,312s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,11n,21p,992b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on paper_tcnn_kar.pdf (10 pages).
+Output written on paper_v2.pdf (11 pages).

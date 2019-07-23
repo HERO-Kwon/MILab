@@ -15,15 +15,15 @@
 
 \begin{document}
 %
-\title{Deep triplet network adopting kernel and the range space learning for Wi-Fi signature verification}
+\title{Deep Triplet Network adopting the Kernel and the Range Space Learning for Wi-Fi Handwritten Signature Verification}
 %
-\titlerunning{Triplet ConvNets with KAR learning for Wi-Fi signature verification}
+\titlerunning{Triplet Network adopting KAR Learning for Wi-Fi Signature Verification}
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
 \author{Young-Woong Kwon \and Jooyoung Kim \and Kar-Ann Toh}
 %
-\authorrunning{F. Author et al.}
+\authorrunning{Y. Kwon et al.}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
@@ -35,34 +35,33 @@ School of Electrical and Electronic Engineering, Yonsei University, 50 Yonsei-ro
 %
 \begin{abstract}
 %The abstract should briefly summarize the contents of the paper in 15--250 words.
-In this paper, we proposed a novel identity verification system based on Wi-Fi signature signals. 
-In order to train the triplet network effectively, triplet input is mined from Wi-Fi signature signals by the kernel and the range space learning. Subsequently, ConvNet structure is adopted for feature extractor which generates feature vectors from input triplets. Finally, the triplet network is trained by matching between extracted feature vectors based on L-2 distance comparison. Our networks show good feature extracting performance, especially in low-dimension outputs and shows encouraging experimental results in terms of verification accuracy.
+In this paper, we propose an identity verification system based on the handwritten signature signals captured by the Wi-Fi CSI signal using triplet network. 
+To refine the triplet inputs for the faster loss convergence, the kernel and the range space learning is adopted to mine the distinctive triple inputs from the training Wi-Fi signature signals. 
+Subsequently, the triplet network utilizing the ConvNet structure is trained with the mined triplet inputs based on L-2 distance comparison. 
+Our experiments on an in-house Wi-Fi handwritten signature signal dataset show encouraging verification accuracy with faster training loss convergence compare to the basic triplet network and the Siamese network.
 
-\keywords{Wi-Fi CSI signal \and in-air signature verification \and ConvNet \and triplet loss \and kernel and the range space learning.}
+\keywords{Wi-Fi signature signal \and in-air handwritten signature verification \and the Kernel and the Range space projection learning \and triplet network}
 \end{abstract}
 %
 %
 %
 \section{Introduction}
 
-Along with the development of computer technology, researchers have investigated into using various handwritten signatures for identity verification in the past few decades.
-Among those handwritten signatures verification methods \cite{sanmorino2012survey}, it has been shown that In-air signature/gesture \cite{jeon2012system}, \cite{malik20183dairsig}, \cite{galbally2015line} has the potential to be used as a identifier. However, they adopted a depth camera or mobile sensor came with an additional cost which limited the use in commodity applications.
-Recently, In-air signature verification using Wi-Fi CSI signal has developed \cite{moon2017air}.
-signature verification system using commodity Wi-Fi devices has advantages: 
-1) Cheap: Use commercial device, 2) Easy: User-friendly, 3) Secure: Hard to forgery.
-\cite{al2016wiger}, \cite{li2016wifinger} uses Wi-Fi CSI signal for in-air gesture classification, but their work is limited in a preset hand gesture. \cite{zhou2016device} used deep learning methods which have good ability to extract features.
-In this work, we focus particularly on the in-air signature verification using commodity Wi-Fi devices.
-We propose a novel yet simple feature extraction method for Wi-Fi CSI signature identity verification. Based on ConvNet with Triplet loss and KAR learning, we extract distinctive features from Wi-Fi CSi signatures. The proposed method achieved promising verification performance with the advantages of no additional devices.
+In recent years, several behavioral biometric traits for identity authentication are investigated since they are free from the physical characteristic which user owns~\cite{bailador2011analysis}. Among the behavioral biometrics, the signature based user authentication~\cite{galbally2015line,sanmorino2012survey} is taking considerable interest with the development of the in-air signature recognition systems~\cite{galbally2015line,jeon2012system,malik20183dairsig}. 
+With the help of sensors such as a depth camera~\cite{malik20183dairsig} or mobile sensor~\cite{jeon2012system}, the in-air signature recognition systems could have less spatial limitation in the signature acquisition process compare to other contact-based authentication systems. 
 
-The main contributions of this paper can be summarized as follows:
+Recently, the commercial Wi-Fi device is also proposed to be utilized as a in-air signature acquisition sensor due to its easy accessible property \cite{moon2017air}. By capturing the Wi-Fi CSI signal to observe the distinctive motions, the Wi-Fi based in-air signature recognition system showed reasonable user verification performance~\cite{moon2017air}. However, the previous works on Wi-Fi signal based user authentication systems~\cite{hong2016wfid,moon2017air} utilized the conventional feature extraction method such as the Principal Components Analysis. Since the conventional feature extraction method is not enough to extract the direction- or pose-invariant features from the acquired in-air data, more recently, some studies attempted to implement the deep learning algorithms in Wi-Fi signal based user authentication systems for the better verification performance ~\cite{shi2017smart,pokkunuru2018neuralwave}. 
 
+In this paper, we utilize the deep triplet network for identity verification based on Wi-Fi CSI signature signal. To achieve not only the promising verification accuracy but also the fast training loss convergence speed for the commercial use, we adopt the kernel and the range (KAR) space leaning~\cite{toh100,toh2018learning,toh2018analytic,toh2018gradient} to mine the distinctive triplet inputs for training the triplet network. Subsequently, the triplet network utilizing the ConvNet structure as a feature extractor is trained using the mined triplet inputs based on L-2 distance comparison.
+The main contributions of our work can be summarized as follows:
 \begin{itemize}
-    \item Proposal of a system for identity verification based on the multiple-direction Wi-Fi signature signals.
-    \item Effective ConvNet learning thanks to mining triplet input by KAR space projection learning.
-    \item Experimental studies on in-house Wi-Fi signature signal dataset collected from 50 subjects.
+\item Proposal of a system for identity verification based on the Wi-Fi handwritten signature signals using deep triplet network.
+\item Adopted the KAR space learning to mine the distinctive triplet inputs which boosted the convergence speed of the training loss in triplet network.
+\item Provision of the experimental study on an in-house Wi-Fi handwritten signature signal dataset collected from 50 subjects.
 \end{itemize}
 
-The paper is organized as follows: our proposed method will be discussed in Section 2. Section 3 describes our experimental results and analysis. Some concluding remarks are given in Section 4.
+The paper is organized as follows: the related works including triplet network and KAR space learning will be introduced in Section 2 for immediate reference. Our proposed method will be discussed in Section 3. Section 4 describes our experimental results and analysis. Some concluding remarks will be followed in Section 5.
+
 
 \section{Related Works}
 
@@ -80,7 +79,6 @@ There are many ways to optimize training. In \cite{schroff2015facenet}, selects 
 Following in \cite{chen2017beyond}, quadruplet loss function makes the distance between the same classes is less than the distance between any different classes. 
 
 In this paper, we adopt multilayer feedforward networks trained by the kernel and the range space learning to select good triplet input for training the triplet network. It has advantage for reducing computing resources as well as boosting the training optimization.
-
 % Rel works: KAR learning
 \subsection{kernel and the range space learning}
 
@@ -245,15 +243,10 @@ We used the sigmoid activation at ConvNet output and L-2 normalize output vector
 
 % Dataset
 \subsubsection{Dataset}
- In order to evaluate the verification performance of proposed system, Wi-Fi CSI signature dataset from \cite{moon2017air} was used.
- 
- % description
- Wi-Fi CSI dataset consists of 2000 Wi-Fi CSI signature signals (4 directions $\times$ 50 identities $\times$ 10 samples) each signal is size of (500 packets $\times$ 30 subcarriers $\times$ 6 antennas). 
- 
+ In order to evaluate the verification performance of proposed system, Wi-Fi CSI signature dataset from \cite{moon2017air} was used. Wi-Fi CSI dataset consists of 2000 Wi-Fi CSI signature signals (4 directions $\times$ 50 identities $\times$ 10 samples) each signal is size of (500 packets $\times$ 30 subcarriers $\times$ 6 antennas). Since the Wi-Fi signature signals in CSI packets in 2.4Ghz has firmware issues in their phase \cite{wang2015understanding}. we used only absolute value.
+
  % pre-processing
- Since every Wi-Fi signature signal has different data size, we firstly adopted the gradient operation with respect to the time instance to measure the short time energy. Data points with the highest short-time energy within the time period are then manually selected as the starting and the ending points of the in-air signature action.
- 
- Subsequently, the Fast Fourier Transform based re-sampling method \cite{moon2017air} is implemented to unify the length of the signals. As a result, three-dimensional Wi-Fi signature signals with unified data size are obtained as the input of the ConvNet structure in the network.
+ Since every Wi-Fi signature signal has different data size, we firstly adopted the gradient operation with respect to the time instance to measure the short time energy. Data points with the highest short-time energy within the time period are then manually selected as the starting and the ending points of the in-air signature action. Subsequently, the Fast Fourier Transform based re-sampling method \cite{moon2017air} is implemented to unify the length of the signals. As a result, three-dimensional Wi-Fi signature signals with unified data size are obtained as the input of the ConvNet structure in the network.
 
 \subsubsection{Experimental Settings}
 
@@ -346,7 +339,11 @@ This shows that KAR learning not only helps ConvNet to train faster, but also ma
     \includegraphics[width=\textwidth]{normalized_loss_curve_ma30.eps}
     \caption{Training Loss Curve of the Proposed Method} \label{fig2}
 \end{figure}
-
+% Figure 3
+\begin{figure}
+    \includegraphics[width=\textwidth]{fig_roc.pdf}
+    \caption{ROC Curve of the Proposed Method} \label{fig3}
+\end{figure}
 
 \section{Conclusion}
 In this paper, we proposed a novel identity verification system based on Wi-Fi signature signals. 

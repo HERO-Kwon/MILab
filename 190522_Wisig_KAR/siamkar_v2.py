@@ -8,12 +8,13 @@ from keras.losses import binary_crossentropy
 from siam_utils import get_key
 import numpy.random as rng
 import numpy as np
+from keras.utils.multi_gpu_utils import multi_gpu_model
 
-fc_size = 128
+fc_size = 512
 
 def triplet_loss(y_true, y_pred):
     #fc_size = 128
-    alpha = 0.005
+    alpha = 0.05
     a_pred = y_pred[:, 0:fc_size]
     p_pred = y_pred[:, fc_size:2*fc_size]
     n_pred = y_pred[:, 2*fc_size:3*fc_size]
@@ -166,7 +167,7 @@ siamese_net = Model(inputs=[left_input,right_input],outputs=prediction)
 
 class SiamTri_Loader:
     """For loading batches and testing tasks to a siamese net"""
-    def __init__(self, data_list,lr,data_subsets = ["train", "val"]):
+    def __init__(self, data_list,lr,host,data_subsets = ["train", "val"]):
         self.data = {}
         self.categories = {}
         self.info = {}
@@ -177,11 +178,15 @@ class SiamTri_Loader:
         self.data["val"] = Xval_d
         self.categories["train"] = c_d
         self.categories["val"] = cval_d
+        self.host = host
         self.lr = lr
-        self.net = siamtri_net
+        
+        if(host=='pregpu-2k80'):
+            self.net = multi_gpu_model(siamtri_net, gpus=2)
+        else:
+            self.net = siamtri_net
         self.net.compile(loss=triplet_loss,optimizer=Adam(self.lr))
         self.net.summary()
-
 
     def get_batch(self,batch_size,s):
         """Create batch of n pairs, half same class, half different class"""
@@ -241,14 +246,14 @@ class SiamTri_Loader:
         model.fit_generator(self.generate(batch_size),steps_per_epoch=epochs//batch_size)
 
 class SiamKar_Loader(SiamTri_Loader):
-    def __init__(self,data_list,kar,dist_rate,lr,data_subsets = ["train", "val"]):
-        super(SiamKar_Loader, self).__init__(data_list,lr)
+    def __init__(self,data_list,kar,lr,host,data_subsets = ["train", "val"]):
+        super(SiamKar_Loader, self).__init__(data_list,lr,host)
         #super(SiamKar_Loader, self).__init__(net)
         #super(SiamKar_Loader, self).__init__(lr)
         #super(SiamKar_Loader, self).__init__(alpha)
         self.kar = kar
         self.kar_fc = self.dist_kar()
-        self.dist_rate = dist_rate
+        #self.dist_rate = dist_rate
         #self.lr = lr
         #self.alpha = alpha
         X_d,c_d,Xval_d,cval_d,Y_d,Yval_d = data_list
@@ -261,6 +266,7 @@ class SiamKar_Loader(SiamTri_Loader):
         #self.net = Super().net#siamtri_net
         #self.net.compile(loss=triplet_loss,optimizer=Adam(self.lr))
         #self.net.summary()
+
 
     def dist_kar(self):
         kar_x = np.squeeze(self.data["train"]).reshape([-1,500*30*6])
@@ -290,7 +296,7 @@ class SiamKar_Loader(SiamTri_Loader):
             cat_key = get_key(category,c)
             cat_same = list(set(c[cat_key]) - set([category]))
             cat_diff = list(set(range(n_classes)) - set(cat_same) - set([category]))
-            cat_diff_s = np.random.choice(cat_diff,int(self.dist_rate*len(cat_diff)))
+            #cat_diff_s = np.random.choice(cat_diff,int(self.dist_rate*len(cat_diff)))
             
             idx_1 = rng.randint(0, n_examples)
             # anker
@@ -301,6 +307,9 @@ class SiamKar_Loader(SiamTri_Loader):
             pairs[1][i,:,:,:] = X[category_s, idx_1].reshape(w, h, ch)
             
             # diff class
+            category_d  = rng.choice(cat_diff,size=1,replace=False)[0]
+            diff_key = get_key(category_d,c)
+            cat_diff_s = c[diff_key]
             
             # Kar distance
             if(s=='train'):
@@ -309,14 +318,14 @@ class SiamKar_Loader(SiamTri_Loader):
                 dist_diff = np.linalg.norm([kar_diff - kar_ank],ord=2,axis=-1).squeeze()
                 # select hard samples
                 dist_hard = np.percentile(dist_diff, 25, interpolation='nearest')
-                hard_samples = dist_diff < dist_hard
+                hard_samples = dist_diff <= dist_hard
                 
                 cat_diff_hard = list(np.array(cat_diff_s)[hard_samples])
 
                 category_d = rng.choice(cat_diff_hard,size=1,replace=False)[0]
                 pairs[2][i,:,:,:] = X[category_d, idx_1].reshape(w, h, ch)
             else:
-                category_d = rng.choice(cat_diff,size=1,replace=False)[0]
+                #category_d = rng.choice(cat_diff,size=1,replace=False)[0]
                 pairs[2][i,:,:,:] = X[category_d, idx_1].reshape(w, h, ch)
 
             #pick images of same class for 1st half, different for 2nd
@@ -334,7 +343,7 @@ class SiamKar_Loader(SiamTri_Loader):
 
 class Siamese_Loader:
     """For loading batches and testing tasks to a siamese net"""
-    def __init__(self, data_list, lr,data_subsets = ["train", "val"]):
+    def __init__(self, data_list, lr,host,data_subsets = ["train", "val"]):
         self.data = {}
         self.categories = {}
         self.info = {}
@@ -348,7 +357,10 @@ class Siamese_Loader:
         
         self.lr = lr
 
-        self.net = siamese_net
+        if(host=='pregpu-2k80'):
+            self.net = multi_gpu_model(siamese_net, gpus=2)
+        else:
+            self.net = siamese_net
         self.net.compile(loss="binary_crossentropy",optimizer=Adam(self.lr))
         self.net.count_params()
     def get_batch(self,batch_size,s):
