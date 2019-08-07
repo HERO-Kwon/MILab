@@ -49,7 +49,7 @@ def ReadData(PATH,n_splits,rseed):
         label_table = pd.Series(np.arange(len(uniq_label)),index=uniq_label)
         data_y = np.array([label_table[num] for num in lab_read]).reshape([-1,10])
         
-        # use half of the dataset
+        # use all of the dataset
         #idx_half = (data_y[:,0] < 50)
         
         list_csi.append(data_x)#[idx_half])

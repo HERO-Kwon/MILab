@@ -49,7 +49,7 @@ Our experiments on an in-house Wi-Fi handwritten signature signal dataset show e
 %
 \section{Introduction}
 
-In recent years, several behavioral biometric traits for identity authentication have been investigated in view of their rigid physical body independence~\cite{bailador2011analysis}. Among the behavioral biometrics, the signature-based user authentication~\cite{sanmorino2012survey,galbally2015line} is taking considerable interest with the development of the in-air signature recognition systems~\cite{jeon2012system,sesa2012information,malik20183dairsig}. % more in-air ref
+In recent years, several behavioral biometric traits for identity authentication have been investigated in view of their rigid physical body independence~\cite{bailador2011analysis}. Among the behavioral biometrics, the signature-based user authentication~\cite{sanmorino2012survey,galbally2015line} is taking considerable interest with the development of the in-air signature recognition systems~\cite{jeon2012system,sesa2012information,malik20183dairsig}.
 With the help of sensors such as the depth camera~\cite{malik20183dairsig} or mobile sensor~\cite{jeon2012system}, the in-air signature recognition system has lower spatial constraint in the signature acquisition process than contact-based authentication systems. 
 
 Recently, the commercial Wi-Fi device has been adopted for in-air signature authentication due to its easy accessible property \cite{moon2017air}. Based on the distortion of the  Wi-Fi CSI signal according to the user gestures, the in-air signature recognition system showed reasonable user verification performance~\cite{moon2017air}. 
@@ -223,7 +223,7 @@ For the proposed system and the deep learning based methods, we utilized same Co
 
 \subsection{Results and discussion}
 
-Case I: Table~\ref{tab3} shows the best average EER performance from five runs of two-fold cross-validation test and the parameter condition. Among the linear methods, the SVM with RBF kernel function showed best verification performance of 24.31\% EER followed by the SVM with Linear kernel function. However, all three deep learning based methods showed better performance than the SVM with RBF kernel function since the deep learning based methods can utilize the original size (500 $\times$ 30 $\times$ 6) of the input data in the training stage.
+Case I: Table~\ref{tab3} shows the best average EER performance from five runs of two-fold cross-validation test and the parameter condition. Among the linear methods, the SVM with RBF kernel function showed best verification performance of 24.31\% EER followed by the SVM with Linear kernel function. However, all three deep learning based methods showed better performance than the SVM with RBF kernel function since the deep learning based methods can utilize the original size (500$\times$30$\times$6) of the input data in the training stage.
 
 Among the deep learning based methods, the Siamese network which is also a metric learning system but utilize two inputs and uses the contrastive loss function for training showed the worst verification performance of 23.53\% EER. The best best average test EER performance was obtained from the proposed system with 19.35\% EER and the baseline triplet network without input mining showed slightly worse performance of 20.34\% EER.
 

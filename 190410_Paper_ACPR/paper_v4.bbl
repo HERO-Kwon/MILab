@@ -54,20 +54,20 @@ LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., et~al.: Gradient-based learning
 
 \bibitem{malik20183dairsig}
 Malik, J., Elhayek, A., Ahmed, S., Shafait, F., Malik, M., Stricker, D.:
-  3dairsig: A framework for enabling in-air signatures using a multi-modal
+  {3DAirSig}: A framework for enabling in-air signatures using a multi-modal
   depth sensor. Sensors  \textbf{18}(11), ~3872 (2018)
 
 \bibitem{moon2017air}
 Moon, H.C., Jang, S.I., Oh, K., Toh, K.A.: An in-air signature verification
-  system using wi-fi signals. In: Proceedings of the 2017 4th International
+  system using {Wi-Fi} signals. In: Proceedings of the 2017 4th International
   Conference on Biomedical and Bioinformatics Engineering. pp. 133--138. ACM
   (2017)
 
 \bibitem{pokkunuru2018neuralwave}
 Pokkunuru, A., Jakkala, K., Bhuyan, A., Wang, P., Sun, Z.: Neuralwave:
-  Gait-based user identification through commodity wifi and deep learning. In:
-  IECON 2018-44th Annual Conference of the IEEE Industrial Electronics Society.
-  pp. 758--765. IEEE (2018)
+  Gait-based user identification through commodity {WiFi} and deep learning.
+  In: IECON 2018-44th Annual Conference of the IEEE Industrial Electronics
+  Society. pp. 758--765. IEEE (2018)
 
 \bibitem{sanmorino2012survey}
 Sanmorino, A., Yazid, S.: A survey for handwritten signature verification. In:
@@ -86,8 +86,8 @@ Sesa-Nogueras, E., Faundez-Zanuy, M., Mekyska, J.: An information analysis of
 
 \bibitem{shi2017smart}
 Shi, C., Liu, J., Liu, H., Chen, Y.: Smart user authentication through
-  actuation of daily activities leveraging wifi-enabled iot. In: Proceedings of
-  the 18th ACM International Symposium on Mobile Ad Hoc Networking and
+  actuation of daily activities leveraging {WiFi-enabled IoT}. In: Proceedings
+  of the 18th ACM International Symposium on Mobile Ad Hoc Networking and
   Computing. p.~5. ACM (2017)
 
 \bibitem{toh2003fingerprint}
