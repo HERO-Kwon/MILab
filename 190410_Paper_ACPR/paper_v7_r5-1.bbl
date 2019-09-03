@@ -33,6 +33,10 @@ Galbally, J., Diaz-Cabrera, M., Ferrer, M.A., Gomez-Barrero, M., Morales, A.,
 \bibitem{goodfellow2016deep}
 Goodfellow, I., Bengio, Y., Courville, A.: Deep learning. MIT press (2016)
 
+\bibitem{hermans2017defense}
+Hermans, A., Beyer, L., Leibe, B.: In defense of the triplet loss for person
+  re-identification. arXiv preprint arXiv:1703.07737  (2017)
+
 \bibitem{hoffer2015deep}
 Hoffer, E., Ailon, N.: Deep metric learning using triplet network. In:
   International Workshop on Similarity-Based Pattern Recognition. pp. 84--92.
@@ -123,12 +127,6 @@ Wang, F., Zuo, W., Lin, L., Zhang, D., Zhang, L.: Joint learning of
   single-image and cross-image representations for person re-identification.
   In: Proceedings of the IEEE Conference on Computer Vision and Pattern
   Recognition. pp. 1288--1296 (2016)
-
-\bibitem{wang2015understanding}
-Wang, W., Liu, A.X., Shahzad, M., Ling, K., Lu, S.: Understanding and modeling
-  of wifi signal based human activity recognition. In: Proceedings of the 21st
-  annual international conference on mobile computing and networking. pp.
-  65--76. ACM (2015)
 
 \bibitem{weinberger2006distance}
 Weinberger, K.Q., Blitzer, J., Saul, L.K.: Distance metric learning for large

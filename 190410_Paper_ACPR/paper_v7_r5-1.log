@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  30 JUL 2019 14:35
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  3 SEP 2019 09:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Git/MILab/190410_Paper_ACPR/paper_v4
-(d:/Git/MILab/190410_Paper_ACPR/paper_v4.tex
+**d:/Git/MILab/190410_Paper_ACPR/paper_v7_r5-1
+(d:/Git/MILab/190410_Paper_ACPR/paper_v7_r5-1.tex
 LaTeX2e <2018-12-01>
 (./llncs.cls
 Document Class: llncs 2018/03/10 v2.20 
@@ -229,8 +229,8 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 (c:/texlive/2018/texmf-dist/tex/latex/subfigure/subfigure.cfg)
 \subfig@top=\skip52
 \subfig@bottom=\skip53
-) (./paper_v4.aux)
-\openout1 = `paper_v4.aux'.
+) (./paper_v7_r5-1.aux)
+\openout1 = `paper_v7_r5-1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
@@ -256,46 +256,50 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 ] [2]
-Overfull \hbox (5.02382pt too wide) in paragraph at lines 101--105
+Overfull \hbox (5.02382pt too wide) in paragraph at lines 92--96
 \TU/lmr/m/n/10 where $\OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$\TU/lmr/m/n/10 ,$\OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$\TU/lmr/m/n/10 ,$[] \OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$\TU/lmr/m/n/10 ,$\OT1/cmr/bx/n/10 1 \OT1/cmr/m/n/10 = [][] [] 
  []
 
 File: fig1_tcnn_kar_v5.pdf Graphic file (type pdf)
 <use fig1_tcnn_kar_v5.pdf>
-[3] [4] [5]
+[3] [4]
+Overfull \hbox (16.35117pt too wide) in paragraph at lines 151--155
+\TU/lmr/bx/n/10 selected anchor input sample $\OT1/cmr/bx/n/10 x[]$\TU/lmr/bx/n/10 , the $\OML/cmm/m/it/10 i[]$ \TU/lmr/bx/n/10 triplet input $[]$
+ []
+
+[5]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 189.
+               Default added (so using `htbp') on input line 177.
 
-[6]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 204.
+               Default added (so using `htbp') on input line 191.
 
-[7]
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 254 replaced by U+FFFD.
+[6] [7]
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
 File: fig_roc_v11.eps Graphic file (type eps)
 <fig_roc_v11.eps>
 File: normalized_loss_curve_ma30_v2.eps Graphic file (type eps)
 <normalized_loss_curve_ma30_v2.eps>
- [8] [9] (./paper_v4.bbl [10
+ [8] [9] (./paper_v7_r5-1.bbl [10
 
-]) [11] (./paper_v4.aux) ) 
+]) [11] (./paper_v7_r5-1.aux) ) 
 Here is how much of TeX's memory you used:
  2168 strings out of 492933
- 26122 string characters out of 6136537
- 108051 words of memory out of 5000000
+ 26174 string characters out of 6136537
+ 114051 words of memory out of 5000000
  6183 multiletter control sequences out of 15000+600000
  10060 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 28i,9n,27p,1098b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,9n,27p,1146b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on paper_v4.pdf (11 pages).
+Output written on paper_v7_r5-1.pdf (11 pages).
