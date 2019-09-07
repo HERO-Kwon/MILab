@@ -1,0 +1,256 @@
+\label{chp:Method}
+\section{Overview of the Proposed System}
+In this chapter, we present the overall architecture of the proposed in-air signature identification system called SigniFi. We first describe the system setup and the data acquisition method of the proposed system in Section \ref{sec:System}, and \ref{sec:data_acquisition}, respectively. Subsequently, we introduce the proposed methodology of the system for identification in Section \ref{sec:methodology}. Each section is described in detail in the following sections.
+
+\section{System Setup}
+\label{sec:System}
+The proposed system utilizes commercial Wi-Fi devices (e.g. Intel 5300 NIC and IpTime A1004) for data collection. A VPCSB16FK VAIO laptop with Intel Core i5-2410M 2.3GHz 64bit CPU and 8Gb memory (Fig. \ref{fig:Devices_Laptop}) was utilized as the signal receiver. The receiver uses the Linux 802.11n CSI tool \cite{Halperin2011} with an Intel 5300 network interface controller (NIC) to collect the channel state information (CSI) of Wi-Fi signals. To the best of our knowledge, there are two CSI analysis tools for commercial Wi-Fi devices. The Linux 802.11n CSI tool is one of the tools which is mainly used for CSI based human activity recognition system. The Atheros CSI tool \cite{Xie2015} is another CSI analysis tool which works with Atheros NIC, such as the AR9590 and the AR9565. Both the CSI tools operate on the Linux operating system based on the IEEE 802.11n standard \cite{IEEE802} and are publicly accessible. However, the Atheros NIC tool requires at least two computers to monitor the CSI of Wi-Fi signals. Hence, in the proposed system, we adopted the Linux CSI tool with the Intel 5300 NIC (Fig. \ref{fig:Devices_NIC}).
+
+%\begin{figure}[!ht]
+%	
+%	\begin{minipage}{.6\linewidth}
+%		\centering
+%		\subfloat[The VPCSB16FK VAIO Latptop]{\label{fig:Devices_Laptop}\includegraphics[scale=.7]{Laptop.eps}}
+%	\end{minipage}
+%	\begin{minipage}{.4\linewidth}
+%		\centering
+%		\subfloat[The Intel 5300 NIC]{\label{fig:Devices_NIC}\includegraphics[scale=.02]{NIC.eps}}
+%	\end{minipage}\par\medskip
+%	\centering
+%	\subfloat[The ipTIME A1004]{\label{fig:Devices_ipTIME}\includegraphics[scale=1.7]{ipTIME.eps}}
+%	
+%	\caption{Images of VPCSB16FK VAIO laptop, Intel 5300 NIC, and ipTIME A1004}
+%	\label{fig:Devices}
+%\end{figure}
+
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{.6\linewidth}
+		\centering
+		\includegraphics[scale=.07]{Laptop.eps}
+		\caption{The VPCSB16FK VAIO laptop}\label{fig:Devices_Laptop}
+	\end{subfigure} %
+	\hfill
+	\begin{subfigure}[t]{.37\linewidth}
+		\centering
+		\includegraphics[scale=.12]{NIC.eps}
+		\caption{The Intel 5300 NIC}\label{fig:Devices_NIC}
+	\end{subfigure} %
+	
+	\begin{subfigure}[t]{.3\linewidth}
+		\centering
+		\includegraphics[scale=1.7]{ipTIME.eps}
+		\caption{The ipTIME A1004}\label{fig:Devices_ipTIME}
+	\end{subfigure}
+	
+	
+	\RawCaption{\caption{Images of VPCSB16FK VAIO laptop, Intel 5300 NIC, and ipTIME A1004 \cite{A1004}}
+		\label{fig:Devices}}
+\end{figure}
+
+The Linux 802.11n CSI tool was designed to report 30 subcarriers for each 802.11n packet according to \cite{Halperin2011}.  The subcarriers are evenly spaced within a 20MHz channel and within a 40MHz channel. The tool was implemented on the Ubuntu 12.04.05 LTS desktop and the receiver was set to receive each CSI packet for every 0.00001 second in order to gather as many packets as possible. In addition, we developed a program based on the Linux CSI tool to automate the data collection process utilizing the MATLAB graphical user interface (GUI). Three external antennas at the receiver were deployed to cover signals from multiple paths and to improve the signal reception quality.
+
+An IpTime A1004 router was used as the transmitter (Fig \ref{fig:Devices_ipTIME}). The router supports IEEE 802.11n standard and two 2.4GHz antennas. The router was set to transmit signals in the 2.4GHz frequency band under the IEEE 802.11n standard without authentication or Wi-Fi security setting.
+
+\section{Data Acquisition}
+\label{sec:data_acquisition}
+The Linux CSI tool provides the CSI collection routines that use text-based user interface. In this interface, a set of commands should be typed on a computer keyboard by the users to control the data collection process for each sample. Consequently, this type of user interface requires the users to be familiar with the commands and spend a lot of time to control the data collection process. Furthermore, movement for typing the commands by experimenters can negatively affect the CSI data by interfering the data collection during the experiment.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.4]{GUI.eps}
+	\end{center}
+	\caption{The GUI of the data collection tool }
+	\label{GUI}
+\end{figure}
+
+To enhance the data collection process, a graphical user interface (GUI) was built over the CSI tool (Fig. \ref{GUI}). In the GUI, users can control program using a mouse or the touch screen other than typing commands on the keyboard. This can ease the burden of learning the necessary commands to control program and save time for typing the commands. By adopting the GUI, it was empirically proved that the data collection time for each subject reduces by about 10$\sim$15 minutes. 
+
+In the proposed system, the GUI for the Linux CSI tool was designed using MATLAB \cite{MATLAB}. The GUI development environment (GUIDE) in MATLAB \cite{MATLAB:GUI} is a built-in tool for GUI creation. GUIDE provides the graphical editor for creating visual interfaces, such as menus, toolbars, buttons and so on. It automatically generates MATLAB codes for the layout designed by developer. 
+
+To further facilitate the data collection process, several functions are added onto the GUI. Firstly, the CSI tool was automated to collect 10 samples for each experimental scenario. Specifically, for each sample, it was programmed to beep three times before starting the process of data collection to announce the start of an experiment to the participant. Afterwards, it starts to collect the data for 10 seconds. Secondly, in case of data collection error, the recollection button was implemented to collect the data again. Thirdly, it informs which data is being collected using text display. Finally, the CSI tool was set to automatically name the collected data. 
+
+\section{Proposed Methodology}
+\label{sec:methodology}
+In this section, we present the overall architecture of the proposed in-air signature identification system called SigniFi. SigniFi has five main processing stages as shown in Fig. \ref{fig:flowchart}. At the data acquisition stage, the in-air signature data is captured via a receiver and recorded using a laptop.
+Then, the acquired data is averaged and normalized in the preprocessing stage. The data acquisition and preprocessing stages are explained in Section \ref{sec:data_acquisition}, and \ref{sec:Preprocessing}, respectively. Subsequently, features are extracted, and further processed at the post-processing stage. Finally, the processed features are fed into the matching stage for identification. The feature extraction, the post processing and the matching stages are described in detail in the following sections.
+
+\begin{landscape}
+	\begin{figure}
+		\begin{center}
+			\includegraphics[scale=0.5]{Flowchart_Identification.pdf}
+		\end{center}
+		\caption{Overview of the proposed system}
+		\label{fig:flowchart}
+	\end{figure}
+\end{landscape}
+
+\subsection{Preprocessing}
+\label{sec:Preprocessing}
+Our system only extracts the CSI magnitude value from the acquired data. The acquired data tend to contain missing values. At the same time, the number of captured packets varies by data. In addition, the large number of CSI streams increases the computational complexity. To deal with these issues, the CSI streams are averaged into fewer number of streams. Subsequently, a linear-interpolation is performed to fill up the missing values. Finally, the length of the CSI stream is normalized using a Fourier transform based sampling method and the max pooling operation is performed to reduce variances and generalize the data. 
+
+\subsubsection{Averaging}
+The acquired data contains 30 subcarrier-streams for each transmitter-receiver pair. Under 2$\times$3 MIMO configuration, there are in total 180 subcarrier-streams for each data. In order to reduce the computational cost, the subcarrier-streams of each $M_{r}\times M_{t}$ transmitter-receiver pair are averaged into one stream as shown in Fig. \ref{fig:Averaging} . The $M_{r}$, and $M_{t}$ denote the number of antennas at the receiver, and the transmitter, respecitvely. Let $\textbf{h}^{(p)}_{\scalebox{1}{$\scriptscriptstyle M_{r}, M_{t}$}}$ be the one of captured CSI packets from a $M_{r}\times M_{t}$ transmitter-receiver pair. Then, the amplitude of the CSI of subcarrier $f_{c}$ is $|h^{(p)}_{\scalebox{.7}{$\scriptscriptstyle M_{r}, M_{t}$}}(f_{c})|$ where $c=\{1,2,\hdots,C\}$ is the subcarrier index, and $p=\{1,2,\hdots,P\}$ is the packet index. Finally, an averaged CSI amplitude of $C$ subcarriers can be expressed as follows:
+
+\begin{equation}
+\tilde{h}^{(p)}_{\scalebox{.7}{$\scriptscriptstyle M_{r}, M_{t}$}}=
+\frac{1}{C}\sum^{C}_{c=1}
+|h^{(p)}_{\scalebox{.7}{$\scriptscriptstyle M_{r}, M_{t}$}}(f_{c})|. 
+\label{eq:avg}
+\end{equation}
+Then, the averaged stream can be expressed in a vector form   $\tilde{\textbf{h}}_{\scalebox{.7}{$\scriptscriptstyle M_{r}, M_{t}$}}$=\Big[$\tilde{h}^{(1)}_{\scalebox{.7}{$\scriptscriptstyle M_{r}, M_{t}$}}$, $\tilde{h}^{(2)}_{\scalebox{.7}{$\scriptscriptstyle M_{r}, M_{t}$}}$, $\hdots$, $\tilde{h}^{(P)}_{\scalebox{.7}{$\scriptscriptstyle M_{r}, M_{t}$}}$\Big]. Note that only the amplitude of the CSI is utilized in the proposed system. 
+
+%Then, the averaged stream is defined as a vector $\tilde{\textbf{h}}_{\scalebox{.7}{$\scriptscriptstyle M_{r}, M_{t}$}}\in\mathbb{R}^{1\times P}$. Note that only the amplitude of CSI is utilized in the proposed system. 
+
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[scale=0.5]{Averaging_v2.pdf}
+	\end{center}
+	\caption{The CSI stream averaging scheme. $P\times C$ CSI amplitude streams are averaged into a $P$ dimensional stream. $\tilde{h}$ denotes the averaged CSI.} 
+	\label{fig:Averaging}
+\end{figure}
+
+\subsubsection{Interpolation}
+\label{sec:Interpolation}
+When signals are transmitted through the Wi-Fi channel, where multiple devices and users share the same resource, time delay in packet transmission and packet loss could happen. The packet loss causes discontinuity in the received signals. Hence, even though our system is set to transmit signals at every 0.00001 seconds, the total number of collected packets may differ. In order to fill up the gaps, we use a one-dimensional linear interpolation to preserve the continuity of the received signals using two packet values.
+
+\subsubsection{Re-sampling}
+\label{sec:resampling}
+Since the collected signature data has different lengths, they are re-sampled uniformly based on the Fast Fourier Transform (FFT) and the inverse FFT \cite{Python:Resampling} to normalize the length of the data. In the proposed system the length of re-sampled data $P'$ is chosen to be smaller than the original length of data $P$.
+
+\subsubsection{Max Pooling}
+Pooling operation summarizes the local information of certain region in the data by sliding over the data. Typically, pooling operation calculates the maximum or average value of a neighborhood. Our proposed system employs the max pooling for data generalization. 
+
+Finally, the input CSI streams preprocessed at the previous stages can be packed into a matrix $\tilde{\textbf{H}}\in \mathbb{R}^{S\times P'}$:
+\begin{equation}
+\tilde{\textbf{H}}=
+\begin{bmatrix}
+\tilde{\textbf{h}}_{1}\\ 
+\tilde{\textbf{h}}_{2}\\
+\vdots\\
+\tilde{\textbf{h}}_{s}
+\end{bmatrix},
+\end{equation}
+where $\tilde{\textbf{h}}_{s}\in \mathbb{R}^{1\times P'}$. For the ease of notation, the stream index $(M_{r}, M_{t})$ is replaced by $s=\{1,2,\dots, S\}$, where $S$ is the maximum number of streams. The superscript $P'$ denotes the length of the re-sampled packet. 
+
+
+\subsection{Feature Extraction}
+
+Our system adopts the feature extraction method proposed in \cite{Kim2016}. Fig. \ref{fig:Feature} shows an overview of the feature extraction method. First, a shifting operation is applied to the Wi-Fi signal by matrix projection. Then, the difference between the shifted signal and the original signal is computed to extract the high frequency component information. The difference signal is then fed into a sigmoid function to further enhance the contrast in the signal. Finally, the discrete Fourier transform is applied to the resulting signal to extract the magnitude of the frequency components. The following subsections explain the details of the proposed feature extraction scheme. 
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[scale=0.6]{Feature_Extraction.pdf}
+	\end{center}
+	\caption{The illustration of feature extraction. For the visual simplicity, only one averaged stream is used for explanation. }
+	\label{fig:Feature}
+\end{figure}
+
+
+\subsubsection{Shift and Subtraction}
+\label{sec:shift_subtract}
+In the static environment, the Wi-Fi signals show a generally stable pattern except for some minor noises caused by the external sensing conditions. This static pattern can be considered as the DC component of the signal \cite{Wang2015}. A slight change in the experimental environment can lead to a large variation in the DC component. To extract the Wi-Fi signal fluctuations caused by a person's in-air signature, it is important to reduce the impact of the DC component in the signal for robust identification. The proposed method utilizes a shift plus a subtraction operation to extract the fluctuation information in the signal: (1) shifts the preprocessed input signals horizontally by $k$ positions using a shifting matrix (cf. Sec. \ref{sec:Shift}), and (2) subtracts the shifted signals from the input signals. The shifted signal $\textbf{O}_{k}\in \mathbb{R}^{S\times P'}$ can be expressed as follows:
+\begin{align}
+\textbf{O}_{k}&=\tilde{\textbf{H}}\cdot \textbf{U}_{k}\\[1.8em]
+&=
+\begin{bmatrix}
+\bovermat{$\textbf{0}_{S \times k}$}{\vspace{0.2cm}0 \hspace{0.3cm} 0\hspace{0.3cm}\cdots \hspace{0.3cm}0}&\bovermat{$\tilde{\textbf{H}}_{S \times (P'-k)}$}{\vspace{0.2cm}\tilde{h}^{(1)}_{1} \hspace{0.3cm} \tilde{h}^{(2)}_{1} \hspace{0.3cm} \cdots \hspace{0.3cm} \tilde{h}^{(P'-k)}_{1}}\\%[0.01em]
+%
+{0 \hspace{0.3cm} 0\hspace{0.3cm}\cdots \hspace{0.3cm}0}&{\tilde{h}^{(1)}_{2} \hspace{0.3cm} \tilde{h}^{(2)}_{2} \hspace{0.3cm} \cdots \hspace{0.3cm} \tilde{h}^{(P'-k)}_{2}}\\
+%
+\hspace{0.5cm} \vdots&\vdots \hspace{0.4cm} \ddots \hspace{0.4cm}\vdots\\
+%
+{0 \hspace{0.3cm} 0\hspace{0.3cm}\cdots \hspace{0.3cm}0}&{\tilde{h}^{(1)}_{S} \hspace{0.3cm} \tilde{h}^{(2)}_{S} \hspace{0.3cm} \cdots \hspace{0.3cm} \tilde{h}^{(P'-k)}_{S}}\nonumber
+%RIGHT BRACKET
+\end{bmatrix},\!\!\!
+%
+%\begin{array}{l}
+%\MyLBrace{3.5ex}{13} \\
+%\\
+%\end{array}
+\end{align}
+where $\tilde{\textbf{H}}\in \mathbb{R}^{S\times P'}$ is the matrix of preprocessed CSI streams, and $\textbf{U}_{k}\in\mathbb{Z^{*}}^{P' \times P'}$ is the shift matrix as illustrated in equation \ref{eq:shift_matrix}. $\textbf{0}_{S \times k}$ is a matrix of "0"s, and $\tilde{\textbf{H}}_{S \times (P'-k)}$ is the preprocessed data matrix that is size of ${S \times (P'-k)}$. The variable $k$ is the shifting parameter that can be tuned. During the shifting operation, the last $k$ columns of the shifted signal matrix are discarded by overflow.
+The horizontal difference signal can then be obtained by 
+\begin{align}
+\textbf{Q}_{k}&=\tilde{\textbf{H}} - \textbf{O}_{k}\\[2em]
+&\approx
+\begin{bmatrix}
+\bovermat{$\textbf{0}_{S \times k}$}{\vspace{0.2cm}0 \hspace{0.3cm} 0\hspace{0.3cm}\cdots \hspace{0.3cm}0}&\bovermat{$\textbf{Q}_{S \times (P'-k)}$}{\vspace{0.2cm}\tilde{h}^{(k+1)}_{1}-\tilde{h}^{(1)}_{1} \hspace{0.3cm} \tilde{h}^{(k+2)}_{1}-\tilde{h}^{(2)}_{1} \hspace{0.3cm} \cdots \hspace{0.3cm} \tilde{h}^{(P')}_{1}-\tilde{h}^{(P'-k)}_{1}}\\[0.5em]
+%
+{0 \hspace{0.3cm} 0\hspace{0.3cm}\cdots \hspace{0.3cm}0}&{\tilde{h}^{(k+1)}_{2}-\tilde{h}^{(1)}_{2} \hspace{0.3cm} \tilde{h}^{(k+2)}_{2}-\tilde{h}^{(2)}_{2} \hspace{0.3cm} \cdots \hspace{0.3cm} \tilde{h}^{(P')}_{2}-\tilde{h}^{(P'-k)}_{2}}\\
+%
+\hspace{0.5cm} \vdots& \vdots \kern 6em \ddots \kern 7em \vdots\\
+%
+{0 \hspace{0.3cm} 0\hspace{0.3cm}\cdots \hspace{0.3cm}0}&{\tilde{h}^{(k+1)}_{S}-\tilde{h}^{(1)}_{S} \hspace{0.3cm} \tilde{h}^{(k+2)}_{S}-\tilde{h}^{(2)}_{S} \hspace{0.3cm} \cdots \hspace{0.3cm} \tilde{h}^{(P')}_{S}-\tilde{h}^{(P'-k)}_{S}}\nonumber
+%RIGHT BRACKET
+\end{bmatrix}.\!\!\!
+%
+%\begin{array}{l}
+%\MyLBrace{3.5ex}{13} \\
+%\\
+%\end{array}
+\end{align}
+Note that the first $k$ columns of the difference signal matrix are filled with zeros. 
+
+\subsubsection{Contrast Enhancement using the Sigmoid Function}
+To enhance the contrast information in the difference signal $\textbf{Q}_{k}$, a sigmoid function is applied. This operation also has an effect of normalizing the data into a range of [0,1]. The Sigmoid function is defined as follows:
+\begin{equation}
+\sigma (x) = \frac{1}{1+e^{-x}}.
+\end{equation}
+For a given resulting difference matrix $\textbf{Q}_{k}$, the output of the Sigmoid function is given by
+\begin{equation}
+\textbf{G} = \sigma \big(\textbf{Q}_{k}\big),
+\end{equation}
+where $\textbf{G}\in\mathbb{R}^{S \times P'}$. The sigmoid operation is element-wise for the entire matrix $\textbf{Q}_{k}$.
+
+\subsubsection{Fourier Magnitude Spectrum}
+The collected Wi-Fi signal captures the dynamics of the in-air signature with regard to the time variance. Therefore, the starting and the ending points of the in-air signature can change from sample to sample. To extract translation invariant features from the signal, the Fourier transform is calculated for each stream of $\textbf{G}$ as follows:
+\begin{equation}
+f^{(\nu)}_{s} = \sum_{p=0}^{P'-1} g^{(p)}_{s}\cdot e^{-j2\pi ap/P'},
+\end{equation}
+where $g^{(p)}_{s}\in\mathbb{R}^{P'}$ denotes $p$-th element of one of streams in $\textbf{G}$. The index $\nu$ is the frequency component index, and the index $s=\{1,2,\hdots,S\}$ is the CSI streams index.
+
+Then, Fourier magnitude spectrum can be calculated as follows:
+\begin{equation}
+|f^{(\nu)}_{s}| = \sqrt{\textrm{Re}(f^{(\nu)}_{s})^{2}+\textrm{Im}(f^{(\nu)}_{s})^{2}},
+\end{equation}
+where $\textrm{Re}(f^{(\nu)}_{s})$ and $\textrm{Im}(f^{(\nu)}_{s})$ represent the real and imaginary parts of $f^{(\nu)}_{s}$, respectively.
+
+\subsection{Post Processing}
+In this section, we illustrate the sequence of post-processing to further improve the identification performance. Firstly, the Fourier spectrum features are smoothed by a moving average filter. The resulting features are then weighted by the energy of the CSI streams. These two processes are described in detail below.
+ 
+\subsubsection{Moving Average}
+To reduce noises in the extracted Fourier magnitude spectrum, the features are smoothed by a moving average filter. The moving average filtering can be expressed as follows:
+\begin{equation}
+\tilde{f}^{(\nu)}_{s}=\frac{1}{W}\sum_{i=0}^{W-1}|f^{(\nu+i)}_{s}|,
+\end{equation}
+where $\tilde{f}^{(\nu)}_{s}$ denotes the filtered feature, and $W$ is the size of moving average window. the $i$ is the index of the element inside the window. 
+
+\subsubsection{Energy based Weights}
+\label{sec:energy}
+One observation is that some CSI streams show relatively high fluctuations, while the others have more stable patterns for the same in-air signature. To emphasize on the  fluctuation information caused by the in-air signature, the extracted features are weighted by the energy of the CSI stream. The energy of the $s$-th stream is calculated from the averaged CSI stream $\tilde{\textbf{h}}_{s}$ as follows:
+\begin{align}
+e_{s}=\sum_{p=1}^{P'}||\tilde{h}^{(p)}_{s}||^{2},
+\end{align} 
+where $\tilde{h}^{(p)}_{s}$ is the $p$-th averaged CSI amplitude of $\tilde{\textbf{h}}_{s}$ (cf. Eq.\ref{eq:avg}).
+Then, the energy based weight can be computed by
+\begin{equation}
+w_{s}=\frac{e_{s}}{E},
+\label{eq:weight}
+\end{equation}
+where $E$ is the total energy of CSI streams. In equation \ref{eq:weight}, the weights are normalized by the total energy $E$ given by:
+\begin{equation}
+E=\sum_{s=1}^{S}e_{s}.
+\end{equation}    
+Fianlly, the weighted feature of $s$-th stream $\boldsymbol{\xi}_{w_{s}}$ is computed as follows:
+\begin{equation}
+\boldsymbol{\xi}_{w_{s}}=w_{s}\tilde{\textbf{f}}_{s},
+\end{equation}
+where $\tilde{\textbf{f}}_{s}=\big[\tilde{f}^{(1)}_{s}, \tilde{f}^{(2)}_{s}, \hdots, \tilde{f}^{(P')}_{s}\big]$. 
+
+\newpage
+\subsection{Person Identification using the Support Vector Machine}
+In order to make a decision regarding the identity of a person, we use the support vector machine (SVM) classifier with the radial basis function (RBF) kernel. The input of the SVM is a concatenated vector form of the post-processed weighted features  $\boldsymbol{\xi}_{w}=[\boldsymbol{\xi}_{w_{1}}, \boldsymbol{\xi}_{w_{2}}, \hdots , \boldsymbol{\xi}_{w_{S}}]$.
+

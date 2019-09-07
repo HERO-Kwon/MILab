@@ -1,0 +1,362 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{26}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Bailador, Sanchez-Avila, Guerra-Casanova, and
+  de~Santos~Sierra}{Bailador et~al\mbox{.}}{2011}]%
+        {bailador2011analysis}
+\bibfield{author}{\bibinfo{person}{Gonzalo Bailador}, \bibinfo{person}{Carmen
+  Sanchez-Avila}, \bibinfo{person}{Javier Guerra-Casanova}, {and}
+  \bibinfo{person}{Alberto de Santos~Sierra}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Analysis of pattern recognition techniques for
+  in-air signature biometrics}.
+\newblock \bibinfo{journal}{\emph{Pattern Recognition}} \bibinfo{volume}{44},
+  \bibinfo{number}{10-11} (\bibinfo{year}{2011}), \bibinfo{pages}{2468--2478}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Chen, Chen, Zhang, and Huang}{Chen
+  et~al\mbox{.}}{2017}]%
+        {chen2017beyond}
+\bibfield{author}{\bibinfo{person}{Weihua Chen}, \bibinfo{person}{Xiaotang
+  Chen}, \bibinfo{person}{Jianguo Zhang}, {and} \bibinfo{person}{Kaiqi Huang}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Beyond triplet loss: a deep quadruplet network for
+  person re-identification}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{403--412}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Cheng, Gong, Zhou, Wang, and Zheng}{Cheng
+  et~al\mbox{.}}{2016}]%
+        {cheng2016person}
+\bibfield{author}{\bibinfo{person}{De Cheng}, \bibinfo{person}{Yihong Gong},
+  \bibinfo{person}{Sanping Zhou}, \bibinfo{person}{Jinjun Wang}, {and}
+  \bibinfo{person}{Nanning Zheng}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Person re-identification by multi-channel
+  parts-based cnn with improved triplet loss function}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the iEEE conference on computer
+  vision and pattern recognition}}. \bibinfo{pages}{1335--1344}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ding, Lin, Wang, and Chao}{Ding
+  et~al\mbox{.}}{2015}]%
+        {ding2015deep}
+\bibfield{author}{\bibinfo{person}{Shengyong Ding}, \bibinfo{person}{Liang
+  Lin}, \bibinfo{person}{Guangrun Wang}, {and} \bibinfo{person}{Hongyang
+  Chao}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Deep feature learning with relative distance
+  comparison for person re-identification}.
+\newblock \bibinfo{journal}{\emph{Pattern Recognition}} \bibinfo{volume}{48},
+  \bibinfo{number}{10} (\bibinfo{year}{2015}), \bibinfo{pages}{2993--3003}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Galbally, Diaz-Cabrera, Ferrer, Gomez-Barrero,
+  Morales, and Fierrez}{Galbally et~al\mbox{.}}{2015}]%
+        {galbally2015line}
+\bibfield{author}{\bibinfo{person}{Javier Galbally}, \bibinfo{person}{Moises
+  Diaz-Cabrera}, \bibinfo{person}{Miguel~A Ferrer}, \bibinfo{person}{Marta
+  Gomez-Barrero}, \bibinfo{person}{Aythami Morales}, {and}
+  \bibinfo{person}{Julian Fierrez}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{On-line signature recognition through the
+  combination of real dynamic data and synthetically generated static data}.
+\newblock \bibinfo{journal}{\emph{Pattern Recognition}} \bibinfo{volume}{48},
+  \bibinfo{number}{9} (\bibinfo{year}{2015}), \bibinfo{pages}{2921--2934}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Goodfellow, Bengio, and Courville}{Goodfellow
+  et~al\mbox{.}}{2016}]%
+        {goodfellow2016deep}
+\bibfield{author}{\bibinfo{person}{Ian Goodfellow}, \bibinfo{person}{Yoshua
+  Bengio}, {and} \bibinfo{person}{Aaron Courville}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Deep learning}}.
+\newblock \bibinfo{publisher}{MIT press}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hermans, Beyer, and Leibe}{Hermans
+  et~al\mbox{.}}{2017}]%
+        {hermans2017defense}
+\bibfield{author}{\bibinfo{person}{Alexander Hermans}, \bibinfo{person}{Lucas
+  Beyer}, {and} \bibinfo{person}{Bastian Leibe}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{In defense of the triplet loss for person
+  re-identification}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1703.07737}}
+  (\bibinfo{year}{2017}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hoffer and Ailon}{Hoffer and Ailon}{2015}]%
+        {hoffer2015deep}
+\bibfield{author}{\bibinfo{person}{Elad Hoffer} {and} \bibinfo{person}{Nir
+  Ailon}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Deep metric learning using triplet network}. In
+  \bibinfo{booktitle}{\emph{International Workshop on Similarity-Based Pattern
+  Recognition}}. Springer, \bibinfo{pages}{84--92}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Jeon, Oh, and Toh}{Jeon et~al\mbox{.}}{2012}]%
+        {jeon2012system}
+\bibfield{author}{\bibinfo{person}{Je-Hyoung Jeon}, \bibinfo{person}{Beom-Seok
+  Oh}, {and} \bibinfo{person}{Kar-Ann Toh}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{A system for hand gesture based signature
+  recognition}. In \bibinfo{booktitle}{\emph{2012 12th International Conference
+  on Control Automation Robotics \& Vision (ICARCV)}}. IEEE,
+  \bibinfo{pages}{171--175}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Koch, Zemel, and Salakhutdinov}{Koch
+  et~al\mbox{.}}{2015}]%
+        {koch2015siamese}
+\bibfield{author}{\bibinfo{person}{Gregory Koch}, \bibinfo{person}{Richard
+  Zemel}, {and} \bibinfo{person}{Ruslan Salakhutdinov}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Siamese neural networks for one-shot image
+  recognition}. In \bibinfo{booktitle}{\emph{ICML deep learning workshop}},
+  Vol.~\bibinfo{volume}{2}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{LeCun, Bottou, Bengio, Haffner,
+  et~al\mbox{.}}{LeCun et~al\mbox{.}}{1998}]%
+        {lecun1998gradient}
+\bibfield{author}{\bibinfo{person}{Yann LeCun}, \bibinfo{person}{L{\'e}on
+  Bottou}, \bibinfo{person}{Yoshua Bengio}, \bibinfo{person}{Patrick Haffner},
+  {et~al\mbox{.}}} \bibinfo{year}{1998}\natexlab{}.
+\newblock \showarticletitle{Gradient-based learning applied to document
+  recognition}.
+\newblock \bibinfo{journal}{\emph{Proc. IEEE}} \bibinfo{volume}{86},
+  \bibinfo{number}{11} (\bibinfo{year}{1998}), \bibinfo{pages}{2278--2324}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Malik, Elhayek, Ahmed, Shafait, Malik, and
+  Stricker}{Malik et~al\mbox{.}}{2018}]%
+        {malik20183dairsig}
+\bibfield{author}{\bibinfo{person}{Jameel Malik}, \bibinfo{person}{Ahmed
+  Elhayek}, \bibinfo{person}{Sheraz Ahmed}, \bibinfo{person}{Faisal Shafait},
+  \bibinfo{person}{Muhammad Malik}, {and} \bibinfo{person}{Didier Stricker}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{{3DAirSig}: A Framework for Enabling In-Air
+  Signatures Using a Multi-Modal Depth Sensor}.
+\newblock \bibinfo{journal}{\emph{Sensors}} \bibinfo{volume}{18},
+  \bibinfo{number}{11} (\bibinfo{year}{2018}), \bibinfo{pages}{3872}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Moon, Jang, Oh, and Toh}{Moon
+  et~al\mbox{.}}{2017}]%
+        {moon2017air}
+\bibfield{author}{\bibinfo{person}{Han-Cheol Moon}, \bibinfo{person}{Se-In
+  Jang}, \bibinfo{person}{Kangrok Oh}, {and} \bibinfo{person}{Kar-Ann Toh}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{An In-Air Signature Verification System Using
+  {Wi-Fi} Signals}. In \bibinfo{booktitle}{\emph{Proceedings of the 2017 4th
+  International Conference on Biomedical and Bioinformatics Engineering}}. ACM,
+  \bibinfo{pages}{133--138}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Pokkunuru, Jakkala, Bhuyan, Wang, and
+  Sun}{Pokkunuru et~al\mbox{.}}{2018}]%
+        {pokkunuru2018neuralwave}
+\bibfield{author}{\bibinfo{person}{Akarsh Pokkunuru}, \bibinfo{person}{Kalvik
+  Jakkala}, \bibinfo{person}{Arupjyoti Bhuyan}, \bibinfo{person}{Pu Wang},
+  {and} \bibinfo{person}{Zhi Sun}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{NeuralWave: Gait-Based User Identification Through
+  Commodity {WiFi} and Deep Learning}. In \bibinfo{booktitle}{\emph{IECON
+  2018-44th Annual Conference of the IEEE Industrial Electronics Society}}.
+  IEEE, \bibinfo{pages}{758--765}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Sanmorino and Yazid}{Sanmorino and
+  Yazid}{2012}]%
+        {sanmorino2012survey}
+\bibfield{author}{\bibinfo{person}{Ahmad Sanmorino} {and}
+  \bibinfo{person}{Setiadi Yazid}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{A survey for handwritten signature verification}.
+  In \bibinfo{booktitle}{\emph{2012 2nd International Conference on Uncertainty
+  Reasoning and Knowledge Engineering}}. IEEE, \bibinfo{pages}{54--57}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Schroff, Kalenichenko, and Philbin}{Schroff
+  et~al\mbox{.}}{2015}]%
+        {schroff2015facenet}
+\bibfield{author}{\bibinfo{person}{Florian Schroff}, \bibinfo{person}{Dmitry
+  Kalenichenko}, {and} \bibinfo{person}{James Philbin}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Facenet: A unified embedding for face recognition
+  and clustering}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE
+  conference on computer vision and pattern recognition}}.
+  \bibinfo{pages}{815--823}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Sesa-Nogueras, Faundez-Zanuy, and
+  Mekyska}{Sesa-Nogueras et~al\mbox{.}}{2012}]%
+        {sesa2012information}
+\bibfield{author}{\bibinfo{person}{Enric Sesa-Nogueras},
+  \bibinfo{person}{Marcos Faundez-Zanuy}, {and}
+  \bibinfo{person}{Ji{\v{r}}{\'\i} Mekyska}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{An information analysis of in-air and on-surface
+  trajectories in online handwriting}.
+\newblock \bibinfo{journal}{\emph{Cognitive Computation}} \bibinfo{volume}{4},
+  \bibinfo{number}{2} (\bibinfo{year}{2012}), \bibinfo{pages}{195--205}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Shi, Liu, Liu, and Chen}{Shi
+  et~al\mbox{.}}{2017}]%
+        {shi2017smart}
+\bibfield{author}{\bibinfo{person}{Cong Shi}, \bibinfo{person}{Jian Liu},
+  \bibinfo{person}{Hongbo Liu}, {and} \bibinfo{person}{Yingying Chen}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Smart user authentication through actuation of
+  daily activities leveraging {WiFi-enabled IoT}}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 18th ACM International Symposium
+  on Mobile Ad Hoc Networking and Computing}}. ACM, \bibinfo{pages}{5}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Toh}{Toh}{2018a}]%
+        {toh2018analytic}
+\bibfield{author}{\bibinfo{person}{Kar{-}Ann Toh}.} \bibinfo{year}{November,
+  2018}\natexlab{a}.
+\newblock \showarticletitle{Analytic Network Learning}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1811.08227}}
+  (\bibinfo{year}{November, 2018}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Toh}{Toh}{2003}]%
+        {toh2003fingerprint}
+\bibfield{author}{\bibinfo{person}{K-A Toh}.} \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Fingerprint and speaker verification decisions
+  fusion}. In \bibinfo{booktitle}{\emph{12th International Conference on Image
+  Analysis and Processing, 2003. Proceedings.}} IEEE,
+  \bibinfo{pages}{626--631}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Toh}{Toh}{2018b}]%
+        {toh100}
+\bibfield{author}{\bibinfo{person}{Kar-Ann Toh}.}
+  \bibinfo{year}{2018}\natexlab{b}.
+\newblock \showarticletitle{Kernel and Range Approach to Analytic Network
+  Learning}.
+\newblock \bibinfo{journal}{\emph{International Journal of Networked and
+  Distributed Computing}} \bibinfo{volume}{7}, \bibinfo{number}{1}
+  (\bibinfo{date}{December} \bibinfo{year}{2018}), \bibinfo{pages}{20--28}.
+\newblock
+\showISSN{2211-7946}
+\urldef\tempurl%
+\url{https://doi.org/10.2991/ijndc.1970.1.7.3}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Toh}{Toh}{2018c}]%
+        {toh2018learning}
+\bibfield{author}{\bibinfo{person}{Kar-Ann Toh}.}
+  \bibinfo{year}{2018}\natexlab{c}.
+\newblock \showarticletitle{Learning from the kernel and the range space}. In
+  \bibinfo{booktitle}{\emph{2018 IEEE/ACIS 17th International Conference on
+  Computer and Information Science (ICIS)}}. IEEE, \bibinfo{pages}{1--6}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Toh and Eng}{Toh and Eng}{2008}]%
+        {toh2008between}
+\bibfield{author}{\bibinfo{person}{Kar-Ann Toh} {and} \bibinfo{person}{How-Lung
+  Eng}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Between classification-error approximation and
+  weighted least-squares learning}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Pattern Analysis and
+  Machine Intelligence}} \bibinfo{volume}{30}, \bibinfo{number}{4}
+  (\bibinfo{year}{2008}), \bibinfo{pages}{658--669}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Toh, Lin, Li, Oh, and Sun}{Toh
+  et~al\mbox{.}}{2018}]%
+        {toh2018gradient}
+\bibfield{author}{\bibinfo{person}{Kar-Ann Toh}, \bibinfo{person}{Zhiping Lin},
+  \bibinfo{person}{Zhengguo Li}, \bibinfo{person}{Beomseok Oh}, {and}
+  \bibinfo{person}{Lei Sun}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Gradient-Free Learning Based on the Kernel and the
+  Range Space}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1810.11581}}
+  (\bibinfo{year}{2018}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wang, Zuo, Lin, Zhang, and Zhang}{Wang
+  et~al\mbox{.}}{2016}]%
+        {wang2016joint}
+\bibfield{author}{\bibinfo{person}{Faqiang Wang}, \bibinfo{person}{Wangmeng
+  Zuo}, \bibinfo{person}{Liang Lin}, \bibinfo{person}{David Zhang}, {and}
+  \bibinfo{person}{Lei Zhang}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Joint learning of single-image and cross-image
+  representations for person re-identification}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE Conference on Computer
+  Vision and Pattern Recognition}}. \bibinfo{pages}{1288--1296}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Weinberger, Blitzer, and Saul}{Weinberger
+  et~al\mbox{.}}{2006}]%
+        {weinberger2006distance}
+\bibfield{author}{\bibinfo{person}{Kilian~Q Weinberger}, \bibinfo{person}{John
+  Blitzer}, {and} \bibinfo{person}{Lawrence~K Saul}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Distance metric learning for large margin nearest
+  neighbor classification}. In \bibinfo{booktitle}{\emph{Advances in neural
+  information processing systems}}. \bibinfo{pages}{1473--1480}.
+\newblock
+
+
+\end{thebibliography}

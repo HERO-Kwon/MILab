@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  3 SEP 2019 09:00
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  5 SEP 2019 01:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -229,77 +229,85 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 (c:/texlive/2018/texmf-dist/tex/latex/subfigure/subfigure.cfg)
 \subfig@top=\skip52
 \subfig@bottom=\skip53
+) (c:/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
+\multirow@colwidth=\skip54
+\multirow@cntb=\count133
+\multirow@dima=\skip55
+\bigstrutjot=\dimen138
 ) (./paper_v7_r5-1.aux)
 \openout1 = `paper_v7_r5-1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Try loading font information for U+msa on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Try loading font information for U+msa on input line 37.
  (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 36.
+LaTeX Font Info:    Try loading font information for U+msb on input line 37.
  (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 ] [2]
-Overfull \hbox (5.02382pt too wide) in paragraph at lines 92--96
+Overfull \hbox (5.02382pt too wide) in paragraph at lines 93--97
 \TU/lmr/m/n/10 where $\OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$\TU/lmr/m/n/10 ,$\OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$\TU/lmr/m/n/10 ,$[] \OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 W[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$\TU/lmr/m/n/10 ,$\OT1/cmr/bx/n/10 1 \OT1/cmr/m/n/10 = [][] [] 
  []
 
 File: fig1_tcnn_kar_v5.pdf Graphic file (type pdf)
 <use fig1_tcnn_kar_v5.pdf>
 [3] [4]
-Overfull \hbox (16.35117pt too wide) in paragraph at lines 151--155
+Overfull \hbox (16.35117pt too wide) in paragraph at lines 152--156
 \TU/lmr/bx/n/10 selected anchor input sample $\OT1/cmr/bx/n/10 x[]$\TU/lmr/bx/n/10 , the $\OML/cmm/m/it/10 i[]$ \TU/lmr/bx/n/10 triplet input $[]$
  []
 
 [5]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `htbp') on input line 177.
+               Default added (so using `htbp') on input line 178.
 
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `htbp') on input line 191.
 
 [6] [7]
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 239 replaced by U+FFFD.
-File: fig_roc_v11.eps Graphic file (type eps)
-<fig_roc_v11.eps>
+Invalid UTF-8 byte or sequence at line 242 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 242 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 242 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 242 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 242 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 242 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 242 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 242 replaced by U+FFFD.
+File: fig_roc_v12.eps Graphic file (type eps)
+<fig_roc_v12.eps>
 File: normalized_loss_curve_ma30_v2.eps Graphic file (type eps)
 <normalized_loss_curve_ma30_v2.eps>
- [8] [9] (./paper_v7_r5-1.bbl [10
+ [8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-]) [11] (./paper_v7_r5-1.aux) ) 
+ [9] [10] (./paper_v7_r5-1.bbl [11
+
+]) [12] (./paper_v7_r5-1.aux) ) 
 Here is how much of TeX's memory you used:
- 2168 strings out of 492933
- 26174 string characters out of 6136537
- 114051 words of memory out of 5000000
- 6183 multiletter control sequences out of 15000+600000
+ 2221 strings out of 492933
+ 26982 string characters out of 6136537
+ 113051 words of memory out of 5000000
+ 6232 multiletter control sequences out of 15000+600000
  10060 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 28i,9n,27p,1146b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,10n,27p,1146b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on paper_v7_r5-1.pdf (11 pages).
+Output written on paper_v7_r5-1.pdf (12 pages).

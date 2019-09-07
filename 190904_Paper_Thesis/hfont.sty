@@ -1,0 +1,24 @@
+%%
+%% This is `hfont.sty' written by koaunghi.un@zdv.uni-tuebingen.de.
+%%
+%% 이 파일은 우리말 문서에 적용되는 판짜기를 쓰지 않고, 단순히
+%% 우리말을 포함하는 외국어 문서를 처리할 수 있는 기능만을 제공합니다.
+%% hangul.sty에서 사용하는 선택 사항을 이 꾸러미에서 모두 인식하기는 하나
+%% 선택 사항이 제공하는 기능은 적용되지 않습니다.
+%%
+
+\NeedsTeXFormat{LaTeX2e}
+\def\filedate{2005/04/13}
+\def\fileversion{1.0}
+\def\filename{hfont.sty}
+
+\ProvidesPackage{hfont}[\filedate\space Document Package for HLaTeX]
+\typeout{Korean Font package '\filename' <\filedate>}
+
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hangul}}
+\ProcessOptions
+\@namedef{hfont.sty}{\endinput}
+
+\RequirePackage{hangul}
+
+%% End of `hfont.sty'.

@@ -1,0 +1,90 @@
+This is BibTeX, Version 0.99d (TeX Live 2018/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: bdml_v0.aux
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: bib_conf.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty publisher in chen2017beyond
+Warning--empty address in chen2017beyond
+Warning--empty publisher in cheng2016person
+Warning--empty address in cheng2016person
+Warning--empty address in goodfellow2016deep
+Warning--no number and no volume in hermans2017defense
+Warning--page numbers missing in both pages and numpages fields in hermans2017defense
+Warning--empty publisher in hoffer2015deep
+Warning--empty address in hoffer2015deep
+Warning--empty publisher in jeon2012system
+Warning--empty address in jeon2012system
+Warning--empty publisher in koch2015siamese
+Warning--empty address in koch2015siamese
+Warning--page numbers missing in both pages and numpages fields in koch2015siamese
+Warning--empty publisher in moon2017air
+Warning--empty address in moon2017air
+Warning--empty publisher in pokkunuru2018neuralwave
+Warning--empty address in pokkunuru2018neuralwave
+Warning--empty publisher in sanmorino2012survey
+Warning--empty address in sanmorino2012survey
+Warning--empty publisher in schroff2015facenet
+Warning--empty address in schroff2015facenet
+Warning--empty publisher in shi2017smart
+Warning--empty address in shi2017smart
+Warning--no number and no volume in toh2018analytic
+Warning--page numbers missing in both pages and numpages fields in toh2018analytic
+Warning--empty publisher in toh2003fingerprint
+Warning--empty address in toh2003fingerprint
+Warning--empty publisher in toh2018learning
+Warning--empty address in toh2018learning
+Warning--no number and no volume in toh2018gradient
+Warning--page numbers missing in both pages and numpages fields in toh2018gradient
+Warning--empty publisher in wang2016joint
+Warning--empty address in wang2016joint
+Warning--empty publisher in weinberger2006distance
+Warning--empty address in weinberger2006distance
+You've used 26 entries,
+            5719 wiz_defined-function locations,
+            1438 strings with 19702 characters,
+and the built_in function-call counts, 32652 in all, are:
+= -- 4061
+> -- 1200
+< -- 0
++ -- 400
+- -- 400
+* -- 2319
+:= -- 3253
+add.period$ -- 130
+call.type$ -- 26
+change.case$ -- 191
+chr.to.int$ -- 24
+cite$ -- 62
+duplicate$ -- 2905
+empty$ -- 2021
+format.name$ -- 478
+if$ -- 7950
+int.to.chr$ -- 4
+int.to.str$ -- 1
+missing$ -- 116
+newline$ -- 238
+num.names$ -- 206
+pop$ -- 1142
+preamble$ -- 1
+purify$ -- 421
+quote$ -- 0
+skip$ -- 1018
+stack$ -- 0
+substring$ -- 2450
+swap$ -- 312
+text.length$ -- 19
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 602
+warning$ -- 36
+while$ -- 190
+width$ -- 0
+write$ -- 476
+(There were 36 warnings)

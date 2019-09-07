@@ -1,0 +1,260 @@
+%\parskip 0.1in
+\textheight 192mm %7.4 in
+\textwidth 135mm  %5.8 in % \textwidth 145mm
+
+\oddsidemargin 220mm%                     Calculations to
+\advance\oddsidemargin by -\textwidth%      center text
+\divide\oddsidemargin by 2%                horizontally
+\advance\oddsidemargin by -1in%            onto A4 sheet
+\evensidemargin \oddsidemargin
+
+\floatsep 6pt plus 2pt minus 4pt \textfloatsep 30pt plus 20pt minus 10pt
+
+\newcommand{\bp}[2]{\begin{minipage}[#1]{#2}}
+\newcommand{\ep}{\end{minipage}}
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\arr}[4]{ \left\{ \begin{array}{ll} #1, & \mbox{#2} \\ #3, & \mbox{#4} \end{array} \right. }
+\newcommand{\bigsize}{\fontsize{16pt}{20pt}\selectfont}
+
+%%%%% Title
+\def\maketitle
+{
+    \begingroup
+    \def\thefootnote{\fnsymbol{footnote}}
+    \def\@makefnmark{\hbox
+    to\z@{$\m@th^{\@thefnmark}$\hss}}
+    \if@twocolumn
+    \twocolumn[\@maketitle]
+    \else \newpage
+    \global\@topnum\z@
+    \@maketitle \fi\thispagestyle{empty}\@thanks
+    \endgroup
+    \setcounter{footnote}{0}%
+    \let\maketitle\relax
+    \let\@maketitle\relax
+    \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax
+}
+
+%%%%% Title
+\def\@maketitle
+{
+    \newpage
+    \null
+    \begin{center}
+    %%{\LARGE \bf \@title \par}
+    {\huge \@title \par}
+
+    %%\vskip 6em
+    \vskip 4cm%8em
+
+    \Large
+    A Masters Thesis
+    \vskip 1.5mm % 1.0em
+    Submitted to the School of Electrical and Electronic Engineering
+    \vskip 1.5mm % 1.0em
+    and the Graduate School of Yonsei University
+    \vskip 1.5mm %1.0em
+    in partial fulfillment of the
+    \vskip 1.5mm %1.0em
+    requirements for the degree of
+    \vskip 1.5mm %1.0em
+    Master of Science in Electrical and Electronic Engineering
+
+    %%\vskip 4em
+    \vskip 4.5cm%8em
+
+    %%{\LARGE %\bf
+    %%{\LARGE %\bf
+    {\bigsize
+    \begin{tabular}[t]{c}\@author
+    \end{tabular}\par}
+
+    \vskip 1.5cm %\vskip 3em
+
+    %%{\LARGE \@date}
+    {\Large \@date}
+    \end{center}
+
+    %\vskip 1.5em
+}
+
+%%%%% Cover
+\def\makecover
+{
+    \begingroup
+    \def\thefootnote{\fnsymbol{footnote}}
+    \def\@makefnmark{\hbox
+    to\z@{$\m@th^{\@thefnmark}$\hss}}
+    \if@twocolumn
+    \twocolumn[\@makecover]
+    \else \newpage
+    \global\@topnum\z@
+    \@makecover \fi\thispagestyle{empty}\@thanks
+    \endgroup
+    \setcounter{footnote}{0}%
+    \let\makecover\relax
+    \let\@makecover\relax
+    \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax
+}
+
+%%%%% Cover
+\def\makecover
+{
+    \newpage
+    \thispagestyle{empty}
+    \null
+    \begin{center}
+        \vskip 8em
+
+        %%{\LARGE \bf \@title \par}
+        {\huge \@title \par}%{\Large \@title \par}
+
+        \vskip 4cm %\vskip 8em
+
+        {
+        %%\LARGE %\bf
+        \bigsize%\Large
+
+        \begin{tabular}[t]{c}\@author
+        \end{tabular}\par
+        }
+
+        \vskip 5.5cm %\vskip 8em
+
+        %%\LARGE
+        %%\large
+        \bigsize
+        The Graduate School
+        \vskip 2mm%1.0em
+        Yonsei University
+        \vskip 2mm%1.0em
+        School of Electrical and Electronic Engineering
+
+        \vskip 1.0em
+    \end{center}
+
+    \vskip 1.5em
+}
+
+%%%%% Signature
+\def\signaturepage
+{
+    \newpage
+    \thispagestyle{empty}
+
+    %%\vskip 10em
+    \vskip 1em
+
+    %%\huge
+    %%\LARGE
+    \Large
+    \begin{center}
+    This certifies that the masters thesis of \\
+    Han-Cheol Moon is approved.
+    \end{center}
+
+    \vskip 3cm%4em \LARGE
+    %%\vskip 1em \Large
+    \large
+    \begin{flushright}
+    \begin{tabular}{c}
+    \\
+    \\
+    \hline
+    \large Thesis Supervisor: Prof. Kar-Ann Toh\\
+    \\
+    \\
+    \hline
+    \large Thesis Committee Member: Prof. Jaihie Kim\\
+    \\
+    \\
+    \hline
+    \large Thesis Committee Member: Prof. Andrew Beng Jin Teoh\\
+    \\
+    \\
+    \end{tabular}
+    \end{flushright}
+
+    %%\vskip 4em
+    \vskip 5cm%\vskip 0em
+
+
+    \begin{center}
+    %%\LARGE The Graduate School \vskip 0.5em Yonsei University \vskip
+    \Large The Graduate School \vskip 0.5em Yonsei University \vskip
+    0.5em April 2018
+    \end{center}
+    \normalsize
+}
+
+%%%%% Abbreviations
+\def\abbreviations
+{
+    \newpage
+
+    \vspace* {12.0mm}
+
+    \section*{\Huge \bf List of Abbreviations}
+
+    \vspace* {10.0mm}
+}
+\def\endabbreviations{}
+
+%%%%% Abstract
+\def\abstract
+{
+    \newpage
+
+    %%\vspace* {12.0mm}
+    \vspace* {6.0mm}
+
+    \section*{\Huge \bf Abstract}
+
+    %%\vspace* {20.0mm} %\hspace* {12.omm}
+    \vspace* {3.0mm} %\hspace* {12.omm}
+}
+\def\endabstract{}
+
+%%%%% Appendix
+\def\appendix
+{
+    \newpage
+
+    \vspace* {12.0mm}
+
+    \section*{\Huge \bf Appendix}
+
+    \vspace* {10.0mm} %\hspace* {12.omm}
+}
+\def\endappendix{}
+
+\def\theappendix{\Alph{appendix}.}
+
+\def\acknowledgement{\chapter*{감사의 글}\thispagestyle{empty}\pagestyle{empty}}
+
+%%%%% Appendix Edit
+%\newif\ifappendixin
+%\makeatletter
+%  \renewcommand{\appendix}{\par
+%    \@ifundefined{appendixin}{\appendixintrue}{\appendixinfalse}
+%    \setcounter{chapter}{0}%
+%    \setcounter{section}{0}%
+%    \setcounter{subsection}{0}%
+%    \setcounter{figure}{0}%
+%    \def\@chapapp{\appendixname}%
+%    \def\thechapter{\Alph{chapter}}%
+%    %\def\thesection{\Alph{chapter}.(\roman{section})}%
+%    \def\thesection{\Alph{chapter}.\arabic{section}}%
+%    \renewcommand\section{%
+%                \@startsection {section}{1}{\z@}%
+%                {-3.5ex \@plus -1ex \@minus -.2ex}%
+%                {2.3ex \@plus.2ex}%
+%                {\normalfont\Large\bfseries}}
+%    \renewcommand\thefigure{%
+%                \ifnum \c@section>\z@ \Alph{chapter}.\fi \@arabic\c@figure}
+%    \renewcommand\theequation{%
+%                \ifnum \c@section>\z@ \Alph{chapter}.\fi \@arabic\c@equation}
+%    \renewcommand\thetable{%
+%                \ifnum \c@section>\z@ \Alph{chapter}.\fi \@arabic\c@table}
+%} \makeatother
