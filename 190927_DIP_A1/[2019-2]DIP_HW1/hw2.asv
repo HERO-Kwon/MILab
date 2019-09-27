@@ -1,0 +1,29 @@
+
+%2-1 Load image and Display histogram
+% load image
+im = im2double(imread('input3.png'));
+% histogram
+figure(1);
+imhist(im);
+title(['2-1. Histogram of Input Image']);
+
+%2-2 implement histogram equalization function;
+
+% double: 64bit
+L = 64;
+size_im = size(im);
+MN = size_im(1) * size_im(2);
+
+
+hist = imhist(im);
+L = length(hist);
+pdf = hist ./ MN;
+cdf = cumsum(pdf);
+s_arr =(L-1).*cdf;
+heq = round(s_arr);
+
+output = zeros(size(im));
+for i = 0:L-1
+    mask = (im >= i/L) & (im <= (i+1)/L)
+    
+end
