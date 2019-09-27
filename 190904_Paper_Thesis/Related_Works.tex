@@ -1,0 +1,64 @@
+\label{chp:Preliminary}
+%3.1 Deep Metric Learning
+\section{Deep Metric Learning}
+% What is metric running?
+Metric learning aims to learn a distance function that places similar data close together in a feature space and dissimilar data away from each other.
+By metric learning, multi-dimensional input data is converted to low-level feature vectors to measure the distance between data for a specific task.
+% Recent Trends
+Metric running has been used for computer vision tasks such as image classification and content-based image retrieval~\cite{yang2006distance}. Previously, features are extracted using HOG, LBP, and so on. Simailarity measured based on these features.
+In recent years, deep learning-based methods have been widely used, as they have enabled feature extraction and metric running in one framework~\cite{yi2014deep}.
+The features for image classification are automatically learned by the deep learning network.
+% Target Model
+Deep Learning-based models include the Siamise network and the Triplet network, which are described below.
+
+%3.1.1 Triplet network
+\subsection{Triplet network}
+% Triplet Network
+Triplet network is also a metric running model~\cite{weinberger2006distance} which receives triplet data as its inputs and aims to learn distance metric of the data in feature space~\cite{yang2006distance}.
+Triplet network receives triplet data pairs as input.
+% Recent Trends : person re-id tasks
+Triplet network is widely used for person re-identification tasks which aims to identify individuals in several images. 
+Person re-identification handles similar objectives with the biometric identification task, but it is more challanging due to the low quality and high variety of its target images~\cite{yi2014deep}. Since person re-identification task usually deals with images taken from low-resolution devices such as surveilance cameras. Also, different occasions such as the clothes, poses, and angle of the target person makes it difficult to identify.
+
+% training triplet network
+Input triplet data is composed of anchor(reference), positive(similar) and negative(dissimilar) samples. The training of the triplet network is making feature vectors to be placed in the appropriate feature space, making the positive(similar) data is close to the anchor(reference) and the negative(dissimilar) data is kept away from the anchor.
+% optimize training
+Since myriad triplet pairs may exist for the training set, training from all possible pairs may time-consuming and unnecessary. Optimizing training becomes necessary as it mines the learning-efficient triplet out of large possible inputs.
+\cite{cheng2016person,ding2015deep,wang2016joint} generates triplet only for small number of classes, which randomly selected in iteration.
+Rescently, in \cite{schroff2015facenet} used triplet mining stratege for faster convergence speed. They selects inputs from large mini-batch at each training iteration using the network during training.
+However, to make such a large-sized mini-batch, a lot of training data is needed for every iteration. Real-world data obtained from in-house experiments is not suitable for this training stratege since it is usually small in size and consists of dozens of classes.
+In order to optimize input triplet data with relatively small sized data, we adopt the kernel and range space manipulation method for the training.
+
+%3.1.2 Siamese
+\subsection{Siamese networks}
+% structure
+A Siamese neural networks consists of twin networks which accept distinct inputs but are joined by an energy function at the top~\cite{koch2015siamese}. By using a constrative loss function, Siamese networks classifies the two input if the entered two samples are of the same class or of the other class.
+% history of siamese net
+In~\cite{bromley1994signature}, LeCun et al. Introduced Siamese networks as parts of their handwritten signature verification system.
+% another research which used Siamese Nets
+In a recent related study, pedestrian tracking~\cite{Leal-Taixe_2016_CVPR_Workshops}, object cosegmedtation~\cite{mukherjee2018object} showed that Siamese Networks can be used for image classification tasks and~\cite{maheshwary2018matching} captures semantics from job resumes.
+
+%3.2. KAR
+\section{the Kernel and the Range space learning}
+% MLP and gradient
+Multi Layer Perceptron (MLP) neural networks has been widely used in machine running. In general, MLP is trained by the gradient descent method and backpropagation~\cite{goodfellow2016deep}.
+Since the learning parameters such as learning rate or momentum value have a great impact on the performance of the gradient descent method, it is important to set these parameters carefully.
+However, finding the appropriate values for these parameters through the trial and error is a time-consuming task.
+
+% KAR
+Recently, gradient-free learning framework for MLP has developed. By using this novel framework, the MLP is trained based on the kernel and range (KAR) space manipulation~\cite{toh2018analytic,toh100,toh2018learning,toh2018gradient}.
+Since this learning framework stands on linear algebra and pseudo-inverse, no parameters and no iteration are need to train the network.
+
+% KAR learning method
+Given $m$ samples, let the training dataset is denoted by $\mathbf{X}\in{\mathbb{R}}^{m \times (n+1)}$ and the network output is denoted by $\tilde{Y}$. Then the MLP networks composed of $n-1$ hidden layers $\{ h_{1},\dotsc,h_{n-1} \}$ can be represented by the following equation:
+\begin{equation}
+    \tilde{Y}=\sigma\left(\left[\mathbf{1},\sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(n-1)}\right)\right]\mathbf{W}_{n}\right),
+\end{equation}
+where $\mathbf{W}_{1}\in{\mathbb{R}}^{(n+1) \times h_{1}}$,$\mathbf{W}_{2}\in{\mathbb{R}}^{(h_{1}+1) \times h_{2}}$,$\dots,\mathbf{W}_{n}\in{\mathbb{R}}^{(h_{(n-1)}+1) \times n}$,$\mathbf{1}=\left[1,\dots,1\right]^{T}\\
+\in{\mathbb{R}}^{m \times 1}$ and $\sigma(.)$ is activation function.
+We can train this network by adopting the one-hot encoded target matrix $\tilde{Y}\in{\mathbb{R}}^{m \times n}$ instead of network output $\tilde{Y}$, The trained weight matrices $\mathbf{W}_{i}$ using KAR space manipulation learning can be obtained as below~\cite{toh2018gradient}:
+\begin{IEEEeqnarray}{rCl}
+    \mathbf{W}_{i}&=&\left[\mathbf{1},\sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(i-1)}\right)\right]^{\dagger}\sigma^{-1}\left(\mathbf{Y}\right), \nonumber \\ i&=&1,\dotsc,n.
+\end{IEEEeqnarray}
+
+

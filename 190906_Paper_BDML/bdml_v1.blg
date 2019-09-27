@@ -50,45 +50,45 @@ Warning--empty publisher in wang2016joint
 Warning--empty address in wang2016joint
 Warning--empty publisher in weinberger2006distance
 Warning--empty address in weinberger2006distance
-You've used 30 entries,
+You've used 31 entries,
             5719 wiz_defined-function locations,
-            1456 strings with 20212 characters,
-and the built_in function-call counts, 36717 in all, are:
-= -- 4540
-> -- 1333
+            1463 strings with 20340 characters,
+and the built_in function-call counts, 37975 in all, are:
+= -- 4743
+> -- 1371
 < -- 0
-+ -- 442
-- -- 444
-* -- 2598
-:= -- 3681
-add.period$ -- 152
-call.type$ -- 30
-change.case$ -- 216
-chr.to.int$ -- 28
-cite$ -- 70
-duplicate$ -- 3287
-empty$ -- 2288
-format.name$ -- 530
-if$ -- 8910
++ -- 455
+- -- 460
+* -- 2678
+:= -- 3801
+add.period$ -- 157
+call.type$ -- 31
+change.case$ -- 222
+chr.to.int$ -- 29
+cite$ -- 71
+duplicate$ -- 3388
+empty$ -- 2360
+format.name$ -- 550
+if$ -- 9238
 int.to.chr$ -- 4
 int.to.str$ -- 1
-missing$ -- 129
-newline$ -- 269
-num.names$ -- 238
-pop$ -- 1286
+missing$ -- 133
+newline$ -- 277
+num.names$ -- 246
+pop$ -- 1319
 preamble$ -- 1
-purify$ -- 482
+purify$ -- 497
 quote$ -- 0
-skip$ -- 1149
+skip$ -- 1184
 stack$ -- 0
-substring$ -- 2757
-swap$ -- 351
+substring$ -- 2852
+swap$ -- 362
 text.length$ -- 19
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 678
+type$ -- 694
 warning$ -- 40
-while$ -- 220
+while$ -- 231
 width$ -- 0
-write$ -- 544
+write$ -- 561
 (There were 40 warnings)

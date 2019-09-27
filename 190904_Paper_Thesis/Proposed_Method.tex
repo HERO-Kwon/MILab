@@ -58,7 +58,12 @@ The hard positive sample is the samples which is likely to be misclassified as a
 In other words, the distance between feature vectors of anchor and hard positive sample is larger than other positive samples.
 On the other hand, the hard negative sample is likely to be misclassified as a positive sample since the distance between feature vectors of anchor and this hard negative sample is smaller than other negative samples.
 Hard triplet input is made by combining hard positive and hard negative samples for selected anchor samples. By using hard triplet as input to the triplet network, it is easier to satisfy the conditions of~\ref{triplet_condition}. However, we don't know which sample is the hard sample before training the triplet network.
-
+% figure
+\begin{figure*}[!ht]
+    \includegraphics[width=\textwidth]
+        {fig_hardsample_v1.pdf}
+    \caption{Selection of hard samples.} \label{fig2}
+\end{figure*}
 % functions
 To make the hard triplet input before tranining the triplet network, we propose training a small sub-network before triplet network.
 This small sub-network is made of Multi Layer Perceptron (MLP) and we adopt the Kernel And the Range (KAR) space learning to train the MLP sub-network. As the KAR space learning has no backpropagation and no iterative learning process, we can train this sub-network with the single shot utilizing the entire training dataset $X$. 
@@ -87,7 +92,7 @@ Since the three-dimensional formats of our input signature signal can be conside
 \begin{figure*}[!ht]
     \includegraphics[width=\textwidth]
         {fig_convnet_v1.pdf}
-    \caption{ConvNet structure.} \label{fig2}
+    \caption{ConvNet structure.} \label{fig3}
 \end{figure*}
 % Structure
 Our ConvNet model is consists of three filters and output fully-connected (FC) layer as seen in (item (b) in Fig.~\ref{fig1}). The depth of 3x3 sized ConvNet filters are empirically chosen as (64,128,256) with stride 1 and ReLU activation function. The size of FC layer is 16. Output FC layers are go through sigmoid activation function and normalized using $L2$ distance.
