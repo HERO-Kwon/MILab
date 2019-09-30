@@ -21,6 +21,107 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{fahmy2010online}
+M.~M. Fahmy, ``Online handwritten signature verification system based on dwt
+  features extraction and neural network classification,'' \emph{Ain Shams
+  Engineering Journal}, vol.~1, no.~1, pp. 59--70, 2010.
+
+\bibitem{galbally2015line}
+J.~Galbally, M.~Diaz-Cabrera, M.~A. Ferrer, M.~Gomez-Barrero, A.~Morales, and
+  J.~Fierrez, ``On-line signature recognition through the combination of real
+  dynamic data and synthetically generated static data,'' \emph{Pattern
+  Recognition}, vol.~48, no.~9, pp. 2921--2934, 2015.
+
+\bibitem{sanmorino2012survey}
+A.~Sanmorino and S.~Yazid, ``A survey for handwritten signature verification,''
+  in \emph{the 2nd International Conference on Uncertainty Reasoning and
+  Knowledge Engineering}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2012,
+  pp. 54--57.
+
+\bibitem{sesa2012information}
+E.~Sesa-Nogueras, M.~Faundez-Zanuy, and J.~Mekyska, ``An information analysis
+  of in-air and on-surface trajectories in online handwriting,''
+  \emph{Cognitive Computation}, vol.~4, no.~2, pp. 195--205, 2012.
+
+\bibitem{hutton2004biometrics}
+D.~Hutton, ``Biometrics: Identity verification in a networked world,''
+  \emph{Kybernetes}, 2004.
+
+\bibitem{bailador2011analysis}
+G.~Bailador, C.~Sanchez-Avila, J.~Guerra-Casanova, and A.~de~Santos~Sierra,
+  ``Analysis of pattern recognition techniques for in-air signature
+  biometrics,'' \emph{Pattern Recognition}, vol.~44, no. 10-11, pp. 2468--2478,
+  2011.
+
+\bibitem{jeon2012system}
+J.-H. Jeon, B.-S. Oh, and K.-A. Toh, ``A system for hand gesture based
+  signature recognition,'' in \emph{the 12th International Conference on
+  Control Automation Robotics \& Vision (ICARCV)}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2012, pp. 171--175.
+
+\bibitem{malik20183dairsig}
+J.~Malik, A.~Elhayek, S.~Ahmed, F.~Shafait, M.~Malik, and D.~Stricker,
+  ``{3DAirSig}: A framework for enabling in-air signatures using a multi-modal
+  depth sensor,'' \emph{Sensors}, vol.~18, no.~11, p. 3872, 2018.
+
+\bibitem{ketabdar2012magnetic}
+H.~Ketabdar, P.~Moghadam, B.~Naderi, and M.~Roshandel, ``Magnetic signatures in
+  air for mobile devices,'' in \emph{Proceedings of the 14th international
+  conference on Human-computer interaction with mobile devices and services
+  companion}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2012, pp. 185--188.
+
+\bibitem{hong2016wfid}
+F.~Hong, X.~Wang, Y.~Yang, Y.~Zong, Y.~Zhang, and Z.~Guo, ``Wfid: Passive
+  device-free human identification using {WiFi} signal,'' in \emph{Proceedings
+  of the 13th International Conference on Mobile and Ubiquitous Systems:
+  Computing, Networking and Services}.\hskip 1em plus 0.5em minus 0.4em\relax
+  ACM, 2016, pp. 47--56.
+
+\bibitem{liu2015tracking}
+J.~Liu, Y.~Wang, Y.~Chen, J.~Yang, X.~Chen, and J.~Cheng, ``Tracking vital
+  signs during sleep leveraging off-the-shelf wifi,'' in \emph{Proceedings of
+  the 16th ACM International Symposium on Mobile Ad Hoc Networking and
+  Computing}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2015, pp. 267--276.
+
+\bibitem{yousefi2017survey}
+S.~Yousefi, H.~Narui, S.~Dayal, S.~Ermon, and S.~Valaee, ``A survey on behavior
+  recognition using wifi channel state information,'' \emph{IEEE Communications
+  Magazine}, vol.~55, no.~10, pp. 98--104, 2017.
+
+\bibitem{abdelnasser2015wigest}
+H.~Abdelnasser, M.~Youssef, and K.~A. Harras, ``Wigest: A ubiquitous wifi-based
+  gesture recognition system,'' in \emph{2015 IEEE Conference on Computer
+  Communications (INFOCOM)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2015,
+  pp. 1472--1480.
+
+\bibitem{nandakumar2014wi}
+R.~Nandakumar, B.~Kellogg, and S.~Gollakota, ``Wi-fi gesture recognition on
+  existing devices,'' \emph{arXiv preprint arXiv:1411.5394}, 2014.
+
+\bibitem{moon2017air}
+H.-C. Moon, S.-I. Jang, K.~Oh, and K.-A. Toh, ``An in-air signature
+  verification system using {Wi-Fi} signals,'' in \emph{Proceedings of the 4th
+  International Conference on Biomedical and Bioinformatics Engineering}.\hskip
+  1em plus 0.5em minus 0.4em\relax ACM, 2017, pp. 133--138.
+
+\bibitem{pokkunuru2018neuralwave}
+A.~Pokkunuru, K.~Jakkala, A.~Bhuyan, P.~Wang, and Z.~Sun, ``Neuralwave:
+  Gait-based user identification through commodity {WiFi} and deep learning,''
+  in \emph{IECON 2018-44th Annual Conference of the IEEE Industrial Electronics
+  Society}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2018, pp. 758--765.
+
+\bibitem{shi2017smart}
+C.~Shi, J.~Liu, H.~Liu, and Y.~Chen, ``Smart user authentication through
+  actuation of daily activities leveraging {WiFi-enabled IoT},'' in
+  \emph{Proceedings of the 18th ACM International Symposium on Mobile Ad Hoc
+  Networking and Computing}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2017,
+  p.~5.
+
+\bibitem{toh2018gradient}
+K.-A. Toh, Z.~Lin, Z.~Li, B.~Oh, and L.~Sun, ``Gradient-free learning based on
+  the kernel and the range space,'' \emph{arXiv preprint arXiv:1810.11581},
+  2018.
+
 \bibitem{yang2006distance}
 L.~Yang and R.~Jin, ``Distance metric learning: A comprehensive survey,''
   \emph{Michigan State Universiy}, vol.~2, no.~2, p.~4, 2006.
@@ -98,17 +199,6 @@ K.-A. Toh, ``Kernel and range approach to analytic network learning,''
 ------, ``Learning from the kernel and the range space,'' in \emph{the
   IEEE/ACIS 17th International Conference on Computer and Information Science
   (ICIS)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2018, pp. 1--6.
-
-\bibitem{toh2018gradient}
-K.-A. Toh, Z.~Lin, Z.~Li, B.~Oh, and L.~Sun, ``Gradient-free learning based on
-  the kernel and the range space,'' \emph{arXiv preprint arXiv:1810.11581},
-  2018.
-
-\bibitem{moon2017air}
-H.-C. Moon, S.-I. Jang, K.~Oh, and K.-A. Toh, ``An in-air signature
-  verification system using {Wi-Fi} signals,'' in \emph{Proceedings of the 4th
-  International Conference on Biomedical and Bioinformatics Engineering}.\hskip
-  1em plus 0.5em minus 0.4em\relax ACM, 2017, pp. 133--138.
 
 \bibitem{wang2015understanding}
 W.~Wang, A.~X. Liu, M.~Shahzad, K.~Ling, and S.~Lu, ``Understanding and
