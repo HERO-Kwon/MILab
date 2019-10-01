@@ -1,13 +1,13 @@
 \section{Background}
 % signature
-Signatures written on paper have long been used as an identification tool, and various methods for verify individuals have been developed~\cite{fahmy2010online,galbally2015line,sanmorino2012survey,sesa2012information}.
+Signatures written on paper have long been used as an identification tool, and various methods for verifying individuals have been developed~\cite{fahmy2010online,galbally2015line,sanmorino2012survey,sesa2012information}.
 % biometric
 As mobile devices increase, identity verification using biometrics traits is becoming more widely used.
-Compared to the use of complex passwords, using biometric systems to user verification has advantages of increased security, convinience and accountability~\cite{hutton2004biometrics}.
+Compared to the use of complex passwords, using biometric systems to user verification has advantages of increased security, convenience, and accountability~\cite{hutton2004biometrics}.
 % camera sensor
-With the development of various sensors such as depth camera and mobile camera, in-air signature have also become available~\cite{bailador2011analysis}. However, they had to use a special sensor prepared for signature. ~\cite{jeon2012system,malik20183dairsig} used depth camera, \cite{ketabdar2012magnetic} used mobile device to record position of hand.
+With the development of various sensors such as depth camera and mobile camera, in-air signature has also become available~\cite{bailador2011analysis}. However, they had to use a special sensor prepared for signature. ~\cite{jeon2012system,malik20183dairsig} used depth camera, \cite{ketabdar2012magnetic} used mobile device to record position of hand.
 % WiFI CSI
-On the other hand, there are studies that use Wi-Fi CSI signals to identify the biometric characteristics of the human body. Since they use commercial devices that are already widespread, they do not need any special input devices.
+On the other hand, some studies use Wi-Fi CSI signals to identify the biometric characteristics of the human body. Since they use commercial devices that are already widespread, they do not need any special input devices.
 ~\cite{hong2016wfid,liu2015tracking,yousefi2017survey} studied CSI signals to identify the various biometrics characteristics of the body. ~\cite{abdelnasser2015wigest,nandakumar2014wi} used CSI signals to enable users to recognize their gestures.
 % CSI signature
 Recently, a study was conducted to identify signatures written in the air using CSI signals~\cite{moon2017air}. However, in this study, only the signals entered in one direction were recognized. Due to the nature of the in-air signature, which is difficult to specify the direction in which the signal is input, a verification system is required regardless of the direction in which the signal is entered.
@@ -18,8 +18,14 @@ We used deep learning technology to create a system that can be identity-recogni
 The deep learning model used a triplet network to increase the accuracy of feature extraction while allowing accurate classification, and also improved the model's convergence speed using the kernel and range space running~\cite{toh2018gradient}.
 
 %\newpage
-\section{Motivation and Contributions}
-...
 \newpage
+\section{Motivation and Contributions}
+The main contributions of our work can be summarized as follows:
+\begin{itemize}
+\item Proposal of a system for identity verification based on the Wi-Fi handwritten signature signals using a deep triplet network.
+\item Adopted the kernel and the range (KAR) space learning to mine the distinctive triplet inputs which boost the convergence speed of the training loss in the triplet network.
+\item Provision of an experimental study using an in-house Wi-Fi handwritten signature dataset collected from 50 subjects.
+\end{itemize}
+
 \section{Organization of Thesis}
-..
+The paper is organized as follows: related works including the triplet network and KAR space learning are introduced in Section 2 for immediate reference. Our proposed method is discussed in Section 3. Section 4 describes our experimental results and analysis. Some concluding remarks are given in Section 5.

@@ -207,6 +207,16 @@ W.~Wang, A.~X. Liu, M.~Shahzad, K.~Ling, and S.~Lu, ``Understanding and
   computing and networking}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2015,
   pp. 65--76.
 
+\bibitem{hoffer2015deep}
+E.~Hoffer and N.~Ailon, ``Deep metric learning using triplet network,'' in
+  \emph{International Workshop on Similarity-Based Pattern Recognition}.\hskip
+  1em plus 0.5em minus 0.4em\relax Springer, 2015, pp. 84--92.
+
+\bibitem{lecun1998gradient}
+Y.~LeCun, L.~Bottou, Y.~Bengio, P.~Haffner \emph{et~al.}, ``Gradient-based
+  learning applied to document recognition,'' \emph{Proceedings of the IEEE},
+  vol.~86, no.~11, pp. 2278--2324, 1998.
+
 \bibitem{duda2012pattern}
 R.~O. Duda, P.~E. Hart, and D.~G. Stork, \emph{Pattern classification}.\hskip
   1em plus 0.5em minus 0.4em\relax John Wiley \& Sons, 2012.
@@ -229,10 +239,5 @@ K.-A. Toh, ``Fingerprint and speaker verification decisions fusion,'' in
 K.-A. Toh and H.-L. Eng, ``Between classification-error approximation and
   weighted least-squares learning,'' \emph{IEEE Transactions on Pattern
   Analysis and Machine Intelligence}, vol.~30, no.~4, pp. 658--669, 2008.
-
-\bibitem{hoffer2015deep}
-E.~Hoffer and N.~Ailon, ``Deep metric learning using triplet network,'' in
-  \emph{International Workshop on Similarity-Based Pattern Recognition}.\hskip
-  1em plus 0.5em minus 0.4em\relax Springer, 2015, pp. 84--92.
 
 \end{thebibliography}
