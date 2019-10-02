@@ -1,189 +1,191 @@
 \begin{thebibliography}{10}
 
 \bibitem{bailador2011analysis}
-G.~Bailador, C.~Sanchez-Avila, J.~Guerra-Casanova, and A.~de~Santos~Sierra.
+Gonzalo Bailador, Carmen Sanchez-Avila, Javier Guerra-Casanova, and Alberto
+  de~Santos~Sierra.
 \newblock Analysis of pattern recognition techniques for in-air signature
   biometrics.
 \newblock {\em Pattern Recognition}, 44(10-11):2468--2478, 2011.
 
+\bibitem{fahmy2010online}
+Maged~MM Fahmy.
+\newblock Online handwritten signature verification system based on dwt
+  features extraction and neural network classification.
+\newblock {\em Ain Shams Engineering Journal}, 1(1):59--70, 2010.
+
+\bibitem{sanmorino2012survey}
+Ahmad Sanmorino and Setiadi Yazid.
+\newblock A survey for handwritten signature verification.
+\newblock In {\em the 2nd International Conference on Uncertainty Reasoning and
+  Knowledge Engineering}, pages 54--57. IEEE, 2012.
+
+\bibitem{galbally2015line}
+Javier Galbally, Moises Diaz-Cabrera, Miguel~A Ferrer, Marta Gomez-Barrero,
+  Aythami Morales, and Julian Fierrez.
+\newblock On-line signature recognition through the combination of real dynamic
+  data and synthetically generated static data.
+\newblock {\em Pattern Recognition}, 48(9):2921--2934, 2015.
+
+\bibitem{jeon2012system}
+Je-Hyoung Jeon, Beom-Seok Oh, and Kar-Ann Toh.
+\newblock A system for hand gesture based signature recognition.
+\newblock In {\em the 12th International Conference on Control Automation
+  Robotics \& Vision (ICARCV)}, pages 171--175. IEEE, 2012.
+
+\bibitem{malik20183dairsig}
+Jameel Malik, Ahmed Elhayek, Sheraz Ahmed, Faisal Shafait, Muhammad Malik, and
+  Didier Stricker.
+\newblock {3DAirSig}: A framework for enabling in-air signatures using a
+  multi-modal depth sensor.
+\newblock {\em Sensors}, 18(11):3872, 2018.
+
+\bibitem{ketabdar2012magnetic}
+Hamed Ketabdar, Peyman Moghadam, Babak Naderi, and Mehran Roshandel.
+\newblock Magnetic signatures in air for mobile devices.
+\newblock In {\em Proceedings of the 14th international conference on
+  Human-computer interaction with mobile devices and services companion}, pages
+  185--188. ACM, 2012.
+
+\bibitem{sesa2012information}
+Enric Sesa-Nogueras, Marcos Faundez-Zanuy, and Ji{\v{r}}{\'\i} Mekyska.
+\newblock An information analysis of in-air and on-surface trajectories in
+  online handwriting.
+\newblock {\em Cognitive Computation}, 4(2):195--205, 2012.
+
+\bibitem{moon2017air}
+Han-Cheol Moon, Se-In Jang, Kangrok Oh, and Kar-Ann Toh.
+\newblock An in-air signature verification system using {Wi-Fi} signals.
+\newblock In {\em Proceedings of the 4th International Conference on Biomedical
+  and Bioinformatics Engineering}, pages 133--138. ACM, 2017.
+
+\bibitem{shi2017smart}
+Cong Shi, Jian Liu, Hongbo Liu, and Yingying Chen.
+\newblock Smart user authentication through actuation of daily activities
+  leveraging {WiFi-enabled IoT}.
+\newblock In {\em Proceedings of the 18th ACM International Symposium on Mobile
+  Ad Hoc Networking and Computing}, page~5. ACM, 2017.
+
+\bibitem{pokkunuru2018neuralwave}
+Akarsh Pokkunuru, Kalvik Jakkala, Arupjyoti Bhuyan, Pu~Wang, and Zhi Sun.
+\newblock Neuralwave: Gait-based user identification through commodity {WiFi}
+  and deep learning.
+\newblock In {\em IECON 2018-44th Annual Conference of the IEEE Industrial
+  Electronics Society}, pages 758--765. IEEE, 2018.
+
+\bibitem{toh100}
+Kar-Ann Toh.
+\newblock Kernel and range approach to analytic network learning.
+\newblock {\em International Journal of Networked and Distributed Computing},
+  7(1):20--28, December 2018.
+
+\bibitem{toh2018learning}
+Kar-Ann Toh.
+\newblock Learning from the kernel and the range space.
+\newblock In {\em the IEEE/ACIS 17th International Conference on Computer and
+  Information Science (ICIS)}, pages 1--6. IEEE, 2018.
+
+\bibitem{toh2018analytic}
+Kar{-}Ann Toh.
+\newblock Analytic network learning.
+\newblock {\em arXiv preprint arXiv:1811.08227}, November, 2018.
+
+\bibitem{toh2018gradient}
+Kar-Ann Toh, Zhiping Lin, Zhengguo Li, Beomseok Oh, and Lei Sun.
+\newblock Gradient-free learning based on the kernel and the range space.
+\newblock {\em arXiv preprint arXiv:1810.11581}, 2018.
+
+\bibitem{weinberger2006distance}
+Kilian~Q Weinberger, John Blitzer, and Lawrence~K Saul.
+\newblock Distance metric learning for large margin nearest neighbor
+  classification.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1473--1480, 2006.
+
+\bibitem{hoffer2015deep}
+Elad Hoffer and Nir Ailon.
+\newblock Deep metric learning using triplet network.
+\newblock In {\em International Workshop on Similarity-Based Pattern
+  Recognition}, pages 84--92. Springer, 2015.
+
 \bibitem{chen2017beyond}
-W.~Chen, X.~Chen, J.~Zhang, and K.~Huang.
+Weihua Chen, Xiaotang Chen, Jianguo Zhang, and Kaiqi Huang.
 \newblock Beyond triplet loss: a deep quadruplet network for person
   re-identification.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 403--412, 2017.
 
 \bibitem{cheng2016person}
-D.~Cheng, Y.~Gong, S.~Zhou, J.~Wang, and N.~Zheng.
+De~Cheng, Yihong Gong, Sanping Zhou, Jinjun Wang, and Nanning Zheng.
 \newblock Person re-identification by multi-channel parts-based cnn with
   improved triplet loss function.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 1335--1344, 2016.
 
 \bibitem{ding2015deep}
-S.~Ding, L.~Lin, G.~Wang, and H.~Chao.
+Shengyong Ding, Liang Lin, Guangrun Wang, and Hongyang Chao.
 \newblock Deep feature learning with relative distance comparison for person
   re-identification.
 \newblock {\em Pattern Recognition}, 48(10):2993--3003, 2015.
 
-\bibitem{duda2012pattern}
-R.~O. Duda, P.~E. Hart, and D.~G. Stork.
-\newblock {\em Pattern classification}.
-\newblock John Wiley \& Sons, 2012.
-
-\bibitem{fahmy2010online}
-M.~M. Fahmy.
-\newblock Online handwritten signature verification system based on dwt
-  features extraction and neural network classification.
-\newblock {\em Ain Shams Engineering Journal}, 1(1):59--70, 2010.
-
-\bibitem{galbally2015line}
-J.~Galbally, M.~Diaz-Cabrera, M.~A. Ferrer, M.~Gomez-Barrero, A.~Morales, and
-  J.~Fierrez.
-\newblock On-line signature recognition through the combination of real dynamic
-  data and synthetically generated static data.
-\newblock {\em Pattern Recognition}, 48(9):2921--2934, 2015.
-
-\bibitem{goodfellow2016deep}
-I.~Goodfellow, Y.~Bengio, and A.~Courville.
-\newblock {\em Deep learning}.
-\newblock MIT press, 2016.
-
-\bibitem{hermans2017defense}
-A.~Hermans, L.~Beyer, and B.~Leibe.
-\newblock In defense of the triplet loss for person re-identification.
-\newblock {\em arXiv preprint arXiv:1703.07737}, 2017.
-
-\bibitem{hoffer2015deep}
-E.~Hoffer and N.~Ailon.
-\newblock Deep metric learning using triplet network.
-\newblock In {\em International Workshop on Similarity-Based Pattern
-  Recognition}, pages 84--92. Springer, 2015.
-
-\bibitem{jeon2012system}
-J.-H. Jeon, B.-S. Oh, and K.-A. Toh.
-\newblock A system for hand gesture based signature recognition.
-\newblock In {\em the 12th International Conference on Control Automation
-  Robotics \& Vision (ICARCV)}, pages 171--175. IEEE, 2012.
-
-\bibitem{ketabdar2012magnetic}
-H.~Ketabdar, P.~Moghadam, B.~Naderi, and M.~Roshandel.
-\newblock Magnetic signatures in air for mobile devices.
-\newblock In {\em Proceedings of the 14th international conference on
-  Human-computer interaction with mobile devices and services companion}, pages
-  185--188. ACM, 2012.
-
-\bibitem{koch2015siamese}
-G.~Koch, R.~Zemel, and R.~Salakhutdinov.
-\newblock Siamese neural networks for one-shot image recognition.
-\newblock In {\em ICML deep learning workshop}, volume~2, 2015.
-
-\bibitem{lecun1998gradient}
-Y.~LeCun, L.~Bottou, Y.~Bengio, P.~Haffner, et~al.
-\newblock Gradient-based learning applied to document recognition.
-\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
-
-\bibitem{malik20183dairsig}
-J.~Malik, A.~Elhayek, S.~Ahmed, F.~Shafait, M.~Malik, and D.~Stricker.
-\newblock {3DAirSig}: A framework for enabling in-air signatures using a
-  multi-modal depth sensor.
-\newblock {\em Sensors}, 18(11):3872, 2018.
-
-\bibitem{moon2017air}
-H.-C. Moon, S.-I. Jang, K.~Oh, and K.-A. Toh.
-\newblock An in-air signature verification system using {Wi-Fi} signals.
-\newblock In {\em Proceedings of the 4th International Conference on Biomedical
-  and Bioinformatics Engineering}, pages 133--138. ACM, 2017.
-
-\bibitem{pokkunuru2018neuralwave}
-A.~Pokkunuru, K.~Jakkala, A.~Bhuyan, P.~Wang, and Z.~Sun.
-\newblock Neuralwave: Gait-based user identification through commodity {WiFi}
-  and deep learning.
-\newblock In {\em IECON 2018-44th Annual Conference of the IEEE Industrial
-  Electronics Society}, pages 758--765. IEEE, 2018.
-
-\bibitem{sanmorino2012survey}
-A.~Sanmorino and S.~Yazid.
-\newblock A survey for handwritten signature verification.
-\newblock In {\em the 2nd International Conference on Uncertainty Reasoning and
-  Knowledge Engineering}, pages 54--57. IEEE, 2012.
-
 \bibitem{schroff2015facenet}
-F.~Schroff, D.~Kalenichenko, and J.~Philbin.
+Florian Schroff, Dmitry Kalenichenko, and James Philbin.
 \newblock Facenet: A unified embedding for face recognition and clustering.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 815--823, 2015.
 
-\bibitem{sesa2012information}
-E.~Sesa-Nogueras, M.~Faundez-Zanuy, and J.~Mekyska.
-\newblock An information analysis of in-air and on-surface trajectories in
-  online handwriting.
-\newblock {\em Cognitive Computation}, 4(2):195--205, 2012.
-
-\bibitem{shi2017smart}
-C.~Shi, J.~Liu, H.~Liu, and Y.~Chen.
-\newblock Smart user authentication through actuation of daily activities
-  leveraging {WiFi-enabled IoT}.
-\newblock In {\em Proceedings of the 18th ACM International Symposium on Mobile
-  Ad Hoc Networking and Computing}, page~5. ACM, 2017.
-
-\bibitem{toh2018analytic}
-K.~Toh.
-\newblock Analytic network learning.
-\newblock {\em arXiv preprint arXiv:1811.08227}, November, 2018.
-
-\bibitem{toh2003fingerprint}
-K.-A. Toh.
-\newblock Fingerprint and speaker verification decisions fusion.
-\newblock In {\em 12th International Conference on Image Analysis and
-  Processing, 2003. Proceedings.}, pages 626--631. IEEE, 2003.
-
-\bibitem{toh100}
-K.-A. Toh.
-\newblock Kernel and range approach to analytic network learning.
-\newblock {\em International Journal of Networked and Distributed Computing},
-  7(1):20--28, December 2018.
-
-\bibitem{toh2018learning}
-K.-A. Toh.
-\newblock Learning from the kernel and the range space.
-\newblock In {\em the IEEE/ACIS 17th International Conference on Computer and
-  Information Science (ICIS)}, pages 1--6. IEEE, 2018.
-
-\bibitem{toh2008between}
-K.-A. Toh and H.-L. Eng.
-\newblock Between classification-error approximation and weighted least-squares
-  learning.
-\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  30(4):658--669, 2008.
-
-\bibitem{toh2018gradient}
-K.-A. Toh, Z.~Lin, Z.~Li, B.~Oh, and L.~Sun.
-\newblock Gradient-free learning based on the kernel and the range space.
-\newblock {\em arXiv preprint arXiv:1810.11581}, 2018.
-
-\bibitem{turk1991eigenfaces}
-M.~Turk and A.~Pentland.
-\newblock Eigenfaces for recognition.
-\newblock {\em Journal of cognitive neuroscience}, 3(1):71--86, 1991.
-
-\bibitem{vapnik2013nature}
-V.~Vapnik.
-\newblock {\em The nature of statistical learning theory}.
-\newblock Springer science \& business media, 2013.
-
 \bibitem{wang2016joint}
-F.~Wang, W.~Zuo, L.~Lin, D.~Zhang, and L.~Zhang.
+Faqiang Wang, Wangmeng Zuo, Liang Lin, David Zhang, and Lei Zhang.
 \newblock Joint learning of single-image and cross-image representations for
   person re-identification.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 1288--1296, 2016.
 
-\bibitem{weinberger2006distance}
-K.~Q. Weinberger, J.~Blitzer, and L.~K. Saul.
-\newblock Distance metric learning for large margin nearest neighbor
-  classification.
-\newblock In {\em Advances in neural information processing systems}, pages
-  1473--1480, 2006.
+\bibitem{hermans2017defense}
+Alexander Hermans, Lucas Beyer, and Bastian Leibe.
+\newblock In defense of the triplet loss for person re-identification.
+\newblock {\em arXiv preprint arXiv:1703.07737}, 2017.
+
+\bibitem{goodfellow2016deep}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock {\em Deep learning}.
+\newblock MIT press, 2016.
+
+\bibitem{lecun1998gradient}
+Yann LeCun, L{\'e}on Bottou, Yoshua Bengio, Patrick Haffner, et~al.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
+
+\bibitem{duda2012pattern}
+Richard~O Duda, Peter~E Hart, and David~G Stork.
+\newblock {\em Pattern classification}.
+\newblock John Wiley \& Sons, 2012.
+
+\bibitem{turk1991eigenfaces}
+Matthew Turk and Alex Pentland.
+\newblock Eigenfaces for recognition.
+\newblock {\em Journal of cognitive neuroscience}, 3(1):71--86, 1991.
+
+\bibitem{vapnik2013nature}
+Vladimir Vapnik.
+\newblock {\em The nature of statistical learning theory}.
+\newblock Springer science \& business media, 2013.
+
+\bibitem{toh2003fingerprint}
+K-A Toh.
+\newblock Fingerprint and speaker verification decisions fusion.
+\newblock In {\em 12th International Conference on Image Analysis and
+  Processing, 2003. Proceedings.}, pages 626--631. IEEE, 2003.
+
+\bibitem{toh2008between}
+Kar-Ann Toh and How-Lung Eng.
+\newblock Between classification-error approximation and weighted least-squares
+  learning.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  30(4):658--669, 2008.
+
+\bibitem{koch2015siamese}
+Gregory Koch, Richard Zemel, and Ruslan Salakhutdinov.
+\newblock Siamese neural networks for one-shot image recognition.
+\newblock In {\em ICML deep learning workshop}, volume~2, 2015.
 
 \end{thebibliography}
