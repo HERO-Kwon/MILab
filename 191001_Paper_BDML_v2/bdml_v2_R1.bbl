@@ -1,15 +1,8 @@
 \begin{thebibliography}{10}
 
-\bibitem{bailador2011analysis}
-Gonzalo Bailador, Carmen Sanchez-Avila, Javier Guerra-Casanova, and Alberto
-  de~Santos~Sierra.
-\newblock Analysis of pattern recognition techniques for in-air signature
-  biometrics.
-\newblock {\em Pattern Recognition}, 44(10-11):2468--2478, 2011.
-
 \bibitem{fahmy2010online}
-Maged~MM Fahmy.
-\newblock Online handwritten signature verification system based on dwt
+Maged~M.M. Fahmy.
+\newblock Online handwritten signature verification system based on {DWT}
   features extraction and neural network classification.
 \newblock {\em Ain Shams Engineering Journal}, 1(1):59--70, 2010.
 
@@ -46,17 +39,28 @@ Hamed Ketabdar, Peyman Moghadam, Babak Naderi, and Mehran Roshandel.
   Human-computer interaction with mobile devices and services companion}, pages
   185--188. ACM, 2012.
 
-\bibitem{sesa2012information}
-Enric Sesa-Nogueras, Marcos Faundez-Zanuy, and Ji{\v{r}}{\'\i} Mekyska.
-\newblock An information analysis of in-air and on-surface trajectories in
-  online handwriting.
-\newblock {\em Cognitive Computation}, 4(2):195--205, 2012.
-
 \bibitem{moon2017air}
 Han-Cheol Moon, Se-In Jang, Kangrok Oh, and Kar-Ann Toh.
 \newblock An in-air signature verification system using {Wi-Fi} signals.
 \newblock In {\em Proceedings of the 4th International Conference on Biomedical
   and Bioinformatics Engineering}, pages 133--138. ACM, 2017.
+
+\bibitem{zhu2000biometric}
+Yong Zhu, Tieniu Tan, and Yunhong Wang.
+\newblock Biometric personal identification based on handwriting.
+\newblock In {\em Proceedings 15th International Conference on Pattern
+  Recognition. ICPR-2000}, volume~2, pages 797--800. IEEE, 2000.
+
+\bibitem{jain2002line}
+Anil~K Jain, Friederike~D Griess, and Scott~D Connell.
+\newblock On-line signature verification.
+\newblock {\em Pattern recognition}, 35(12):2963--2972, 2002.
+
+\bibitem{sesa2012information}
+Enric Sesa-Nogueras, Marcos Faundez-Zanuy, and Ji{\v{r}}{\'\i} Mekyska.
+\newblock An information analysis of in-air and on-surface trajectories in
+  online handwriting.
+\newblock {\em Cognitive Computation}, 4(2):195--205, 2012.
 
 \bibitem{shi2017smart}
 Cong Shi, Jian Liu, Hongbo Liu, and Yingying Chen.
@@ -67,7 +71,7 @@ Cong Shi, Jian Liu, Hongbo Liu, and Yingying Chen.
 
 \bibitem{pokkunuru2018neuralwave}
 Akarsh Pokkunuru, Kalvik Jakkala, Arupjyoti Bhuyan, Pu~Wang, and Zhi Sun.
-\newblock Neuralwave: Gait-based user identification through commodity {WiFi}
+\newblock {NeuralWave}: Gait-based user identification through commodity {WiFi}
   and deep learning.
 \newblock In {\em IECON 2018-44th Annual Conference of the IEEE Industrial
   Electronics Society}, pages 758--765. IEEE, 2018.
@@ -94,13 +98,6 @@ Kar-Ann Toh, Zhiping Lin, Zhengguo Li, Beomseok Oh, and Lei Sun.
 \newblock Gradient-free learning based on the kernel and the range space.
 \newblock {\em arXiv preprint arXiv:1810.11581}, 2018.
 
-\bibitem{weinberger2006distance}
-Kilian~Q Weinberger, John Blitzer, and Lawrence~K Saul.
-\newblock Distance metric learning for large margin nearest neighbor
-  classification.
-\newblock In {\em Advances in neural information processing systems}, pages
-  1473--1480, 2006.
-
 \bibitem{hoffer2015deep}
 Elad Hoffer and Nir Ailon.
 \newblock Deep metric learning using triplet network.
@@ -116,7 +113,7 @@ Weihua Chen, Xiaotang Chen, Jianguo Zhang, and Kaiqi Huang.
 
 \bibitem{cheng2016person}
 De~Cheng, Yihong Gong, Sanping Zhou, Jinjun Wang, and Nanning Zheng.
-\newblock Person re-identification by multi-channel parts-based cnn with
+\newblock Person re-identification by multi-channel parts-based {CNN} with
   improved triplet loss function.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 1335--1344, 2016.
@@ -126,12 +123,6 @@ Shengyong Ding, Liang Lin, Guangrun Wang, and Hongyang Chao.
 \newblock Deep feature learning with relative distance comparison for person
   re-identification.
 \newblock {\em Pattern Recognition}, 48(10):2993--3003, 2015.
-
-\bibitem{schroff2015facenet}
-Florian Schroff, Dmitry Kalenichenko, and James Philbin.
-\newblock Facenet: A unified embedding for face recognition and clustering.
-\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
-  Pattern Recognition}, pages 815--823, 2015.
 
 \bibitem{wang2016joint}
 Faqiang Wang, Wangmeng Zuo, Liang Lin, David Zhang, and Lei Zhang.
@@ -144,6 +135,12 @@ Faqiang Wang, Wangmeng Zuo, Liang Lin, David Zhang, and Lei Zhang.
 Alexander Hermans, Lucas Beyer, and Bastian Leibe.
 \newblock In defense of the triplet loss for person re-identification.
 \newblock {\em arXiv preprint arXiv:1703.07737}, 2017.
+
+\bibitem{schroff2015facenet}
+Florian Schroff, Dmitry Kalenichenko, and James Philbin.
+\newblock Facenet: A unified embedding for face recognition and clustering.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 815--823, 2015.
 
 \bibitem{goodfellow2016deep}
 Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
@@ -165,16 +162,11 @@ Matthew Turk and Alex Pentland.
 \newblock Eigenfaces for recognition.
 \newblock {\em Journal of cognitive neuroscience}, 3(1):71--86, 1991.
 
-\bibitem{vapnik2013nature}
-Vladimir Vapnik.
-\newblock {\em The nature of statistical learning theory}.
-\newblock Springer science \& business media, 2013.
-
-\bibitem{toh2003fingerprint}
-K-A Toh.
-\newblock Fingerprint and speaker verification decisions fusion.
-\newblock In {\em 12th International Conference on Image Analysis and
-  Processing, 2003. Proceedings.}, pages 626--631. IEEE, 2003.
+\bibitem{boser1992training}
+Bernhard~E Boser, Isabelle~M Guyon, and Vladimir~N Vapnik.
+\newblock A training algorithm for optimal margin classifiers.
+\newblock In {\em Proceedings of the fifth annual workshop on Computational
+  learning theory}, pages 144--152. ACM, 1992.
 
 \bibitem{toh2008between}
 Kar-Ann Toh and How-Lung Eng.

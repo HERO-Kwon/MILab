@@ -148,11 +148,12 @@ Young-Woong Kwon, Jooyoung Kim and Kar-Ann Toh\\
 
 \maketitle
 \begin{abstract}
-\textbf{Due to its simplicity and accessibility, Wi-Fi in-air handwritten signature possesses advantages over other signatures on paper. However, identy verification using Wi-Fi in-air signature is a challenging task since the signal can be written in any directions.}
+Attributed to the omnipresence of the radio signals for communications, sensing and recognition utilizing the Wi-Fi signals has significant advantage  in terms of accessibility over conventional sensing means such as the camera. However, utilizing the raw Wi-Fi signals to capture in-air handwritten signatures for identity verification is yet a challenging task.
 In this paper, we propose a system for identity verification based on the handwritten signature signals captured by the Wi-Fi Channel State Information (CSI). 
+A triplet network is adopted to learn the correlation between the captured signals and the user identities.
 To facilitate a fast converging loss model, a kernel and the range space learning is initially adopted for mining the triplet inputs. 
-Subsequently, the triplet network is trained on a ConvNet structure using the mined triplet inputs. 
-Our experiments on an in-house Wi-Fi handwritten signature signal dataset show encouraging verification accuracy with faster training loss convergence comparing with the baseline triplet network and the Siamese network.
+Subsequently, the triplet network is trained on a ConvNet structure based on the mined triplet inputs. 
+Our experiments on a Wi-Fi dataset collected in-house show encouraging verification accuracy with faster training loss convergence comparing with that of the baseline triplet network and the Siamese network.
 \end{abstract}
 
 
@@ -195,8 +196,8 @@ Our experiments on an in-house Wi-Fi handwritten signature signal dataset show e
 
 %Intro
 \section{Introduction}
-Over recent years, several behavioral biometric traits attracted attention in view of their rigid physical body independence~\cite{bailador2011analysis}. Among these behavioral biometrics, the signature-based user authentication~\cite{fahmy2010online,sanmorino2012survey,galbally2015line} has attracted considerable interest with the development of in-air signature recognition systems~\cite{jeon2012system,malik20183dairsig,ketabdar2012magnetic}.
-With the help of sensors such as the depth camera~\cite{jeon2012system,malik20183dairsig} or a mobile sensor~\cite{ketabdar2012magnetic}, the in-air signature recognition system has lower the spatial constraint in the process of signature acquisition comparing with contact-based authentication systems~\cite{jeon2012system,malik20183dairsig,ketabdar2012magnetic,sesa2012information}.
+Over recent years, several behavioral biometric traits have attracted attention in view of their rigid physical body independence. Among these behavioral biometrics, the signature-based user authentication~\cite{fahmy2010online,sanmorino2012survey,galbally2015line} has attracted considerable interest with the development of in-air signature recognition systems~\cite{jeon2012system,malik20183dairsig,ketabdar2012magnetic,moon2017air}.
+With the help of sensors such as the depth camera~\cite{jeon2012system,malik20183dairsig} or a mobile sensor~\cite{ketabdar2012magnetic}, the in-air signature recognition system has lower the spatial constraint in the process of signature acquisition comparing with contact-based authentication systems~\cite{zhu2000biometric,jain2002line,sesa2012information}.
 
 Recently, the commercial Wi-Fi device has been adopted for in-air signature authentication due to its easy accessible property \cite{moon2017air}. Based on the distortion of the  Wi-Fi CSI signal according to the user's gestures, the in-air signature recognition system showed reasonable user verification performance~\cite{moon2017air}. More recently, some studies attempted to implement the deep learning algorithms in Wi-Fi signal-based user authentication systems to improve the verification performance ~\cite{shi2017smart,pokkunuru2018neuralwave}. 
 
@@ -206,7 +207,7 @@ The main contributions of our work can be summarized as follows:
 \begin{itemize}
 \item Proposal of a system for identity verification based on the Wi-Fi handwritten signature signals using a deep triplet network.
 \item Adopted the kernel and the range (KAR) space learning in order to mine the distinctive triplet inputs which boost the convergence speed of the training loss in the triplet network.
-\item Provision of an experimental study using an in-house Wi-Fi handwritten signature dataset collected from 50 subjects.
+\item Provision of an experimental study using Wi-Fi handwritten signature dataset which was collected in-house based on 50 subjects.
 \end{itemize}
 
 The paper is organized as follows: related works including the triplet network and KAR space learning are introduced in Section 2 for immediate reference. Our proposed method is discussed in Section 3. Section 4 describes our experimental results and analysis. Some concluding remarks are given in Section 5.
@@ -215,10 +216,10 @@ The paper is organized as follows: related works including the triplet network a
 \section{Related works}
 \subsection{Triplet network}
 % triplet network
-The triplet network is considered a metric learning based model~\cite{weinberger2006distance} which aims to learn useful representations by means of distance comparison~\cite{hoffer2015deep}. 
-It is often seen in person re-identification~\cite{chen2017beyond,cheng2016person,ding2015deep,schroff2015facenet,wang2016joint} where the individual identities are matched based on discriminative image features. The main difference between person identification and re-identification is that the later is a more challenging task where images of the same person taken from different cameras or under different occasions are to be associated. In order to address our challenging Wi-Fi based verification task, we adopt a triplet network which optimizes the input data space so that data points with the same identity are closer to each other than those with different identities~\cite{hermans2017defense}.
+The triplet network is considered a metric learning based model which aims to learn useful representations by means of distance comparison~\cite{hoffer2015deep}. 
+It is often seen in person re-identification~\cite{chen2017beyond,cheng2016person,ding2015deep,wang2016joint} where the individual identities are matched based on discriminative image features. The main difference between person identification and re-identification is that the later is a more challenging task where images of the same person taken from different cameras or under different occasions are to be associated. In order to address our challenging Wi-Fi based verification task, we adopt a triplet network which optimizes the input data space so that data points with the same identity are closer to each other than those with different identities~\cite{hermans2017defense}.
 
-The triplet network receives triplet pairs of data as its input. These data triplets are constructed based on a combination of the input data. Since not all triplet samples contribute to the desired classification, recent attention~\cite{schroff2015facenet} has been paid to the choice of relevant input pairs for training. In order to optimize the training process which utilizes only some parts of the triplet pairs, several researches~\cite{cheng2016person,ding2015deep,wang2016joint} generated triplets from a small number of classes (persons) in each iteration. Recently, \cite{schroff2015facenet} adopted a triplet mining process to speed up the training convergence. They utilized a large mini-batch at each training iteration and selected the triplets based on network training instead of random sampling. However, this strategy needed a few thousands of exemplar mini-batches in every training iteration for triplet pairs selection. This results in a heavy computational load in training. In order to make use of the small sample training size as well as to speed up the triplet training process, we adopt the kernel and the range space method for the learning.
+The triplet network receives triplet pairs of data as its input. These data triplets are constructed based on a combination of the input data. Since not all triplet samples contribute to the desired classification, recent attention has been paid to the choice of relevant input pairs for training. In order to optimize the training process which utilizes only some parts of the triplet pairs, several researches~\cite{cheng2016person,ding2015deep,wang2016joint} generated triplets from a small number of classes (persons) in each iteration. In~\cite{schroff2015facenet}, a triplet mining process was implemented to speed up the training convergence. They utilized a large mini-batch at each training iteration and selected the triplets based on network training instead of random sampling. However, this strategy needed a few thousands of exemplar mini-batches in every training iteration for triplet pairs selection. This results in a heavy computational load in training. In order to make use of the small sample training size as well as to speed up the triplet training process, we adopt the kernel and the range space method for the learning.
 
 % Rel works: KAR learning
 \subsection{Kernel and the range space learning}\label{kar}
@@ -308,7 +309,7 @@ The ConvNet structure using equation~\eqref{triplet} is trained to maximize the 
 \subsection{Experimental settings}
 
 \subsubsection{Performance evaluation:}
-The proposed system is evaluated under two cases: i) case I on comparison between the proposed system and other handcraft or deep learning-based methods based on the verification accuracy, and case II on detailed comparison between the proposed system and the deep learning-based methods using the receiver operating characteristic (ROC) curve and training loss curve. For both cases, Wi-Fi signal measurements based on a single-orientation and 4-orientations of the user are recorded. For Case I, existing handcraft methods such as the least squares error estimation (LSE)~\cite{duda2012pattern}, the principal components analysis (PCA)~\cite{turk1991eigenfaces} with LSE, the support vector machine (SVM)~\cite{vapnik2013nature} with different kernel functions, the total error rate minimization which adopted the reduced multivariate polynomial model as basis function (TER-RM2) \cite{toh2003fingerprint,toh2008between}, the deep learning-based Siamese network \cite{koch2015siamese}, and the baseline triplet network \cite{hoffer2015deep} are included for performance benchmarking. The Siamese network and the baseline triplet network utilized the same ConvNet structures with the proposed system and only differed in their input data style and loss function.
+The proposed system is evaluated under two cases: i) case I on comparison between the proposed system and other handcraft or deep learning-based methods based on the verification accuracy, and case II on detailed comparison between the proposed system and the deep learning-based methods using the receiver operating characteristic (ROC) curve and training loss curve. For both cases, Wi-Fi signal measurements based on a single-orientation and 4-orientations of the user are recorded. For Case I, existing handcraft methods such as the least squares error estimation (LSE)~\cite{duda2012pattern}, the principal components analysis (PCA)~\cite{turk1991eigenfaces} with LSE, the support vector machine (SVM)~\cite{boser1992training} with different kernel functions, the total error rate minimization which adopted the reduced multivariate polynomial model as basis function (TER-RM2) \cite{toh2008between}, the deep learning-based Siamese network \cite{koch2015siamese}, and the baseline triplet network \cite{hoffer2015deep} are included for performance benchmarking. The Siamese network and the baseline triplet network utilized the same ConvNet structures with the proposed system and only differed in their input data style and loss function.
 
 The verification performance of the proposed system and the compared methods are evaluated in terms of the Equal Error Rate (EER, \%) which are taken from averaging the results of five runs of two-fold cross-validation tests. Due to the memory constraint caused by the large data size, the deep learning-based methods utilized randomly sampled 9,500 negative pairs in the validation stage, which is the same number as the number of positive pairs.
 
@@ -332,7 +333,7 @@ For the proposed system and the deep learning-based methods, we utilized the sam
 \centering
     \caption{The structure of ConvNet model. For the convolution layer, the kernel is specified as (m$\times$m) sized filter $\times$ (\# of filters) / (\# of stride). For the max-pooling layer, (p$\times$p) sized pooling windows / \# of stride. The input sizes are denoted as rows $\times$ cols $\times$ \# of filters.}
     \label{tab1}
-    \begin{tabular}{|l|c|l|l|} \hline
+    \begin{tabular}{|l|l|l|l|} \hline
      Layer     & Activation & Kernel / Stride & Input Size \\ \hline
      Conv 1    & ReLU       & (3$\times$3)$\times$64/1      & 500$\times$30$\times$6   \\ \hline
      MaxPool 1 &            & (2$\times$2)/1         & 500$\times$30$\times$64  \\ \hline
@@ -393,9 +394,9 @@ Our experiments on an in-house Wi-Fi handwritten signature dataset showed not on
 This research was supported by Basic Science Research
 Program through the National Research Foundation of Korea
 (NRF) funded by the Ministry of Education, Science and
-Technology.
+Technology (NRF-2018R1D1A1A09081956).
 
-\noindent(NRF-2018R1D1A1A09081956)
+%\noindent(NRF-2018R1D1A1A09081956)
 
 %
 % The following two commands are all you need in the

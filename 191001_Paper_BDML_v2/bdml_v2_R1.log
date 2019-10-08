@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  2 OCT 2019 12:34
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  8 OCT 2019 19:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Git/MILab/191001_Paper_BDML_v2/bdml_v2
-(d:/Git/MILab/191001_Paper_BDML_v2/bdml_v2.tex
+**d:/Git/MILab/191001_Paper_BDML_v2/bdml_v2_R1
+(d:/Git/MILab/191001_Paper_BDML_v2/bdml_v2_R1.tex
 LaTeX2e <2018-12-01>
 (./sig-alternate-05-2015.cls (c:/texlive/2018/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
@@ -241,8 +241,8 @@ Package: IEEEtrantools 2015/08/26 V1.5 by Michael Shell
 \@IEEEeqncolcnt=\count121
 \@IEEEsubeqnnumrollback=\count122
 \IEEEPARstartletwidth=\dimen141
-) (./bdml_v2.aux)
-\openout1 = `bdml_v2.aux'.
+) (./bdml_v2_R1.aux)
+\openout1 = `bdml_v2_R1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
@@ -281,109 +281,101 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 149.
  Excluding 'CCSXML' comment.
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 187.
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 189.
  (c:/texlive/2018/texmf-dist/tex/latex/ae/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 187.
- [1
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 189.
+
+Overfull \hbox (2.59694pt too wide) in paragraph at lines 199--201
+\T1/aer/m/n/9 pen-dence. Among these be-hav-ioral bio-met-rics, the signature-
+ []
+
+[1
 
 
 ]
-Overfull \hbox (6.16576pt too wide) detected at line 236
+Overfull \hbox (6.16576pt too wide) detected at line 238
 \OT1/cmr/bx/n/9 G \OT1/cmr/m/n/9 = \OML/cmm/m/it/9 ^^[ [] ;
  []
 
 
-Overfull \hbox (28.62921pt too wide) in paragraph at lines 236--239
-\T1/aer/m/n/9 where $\OT1/cmr/bx/n/9 W[] \OMS/cmsy/m/n/9 2 \U/msb/m/n/9 R[]$\T1/aer/m/n/9 ,$\OT1/cmr/bx/n/9 W[] \OMS/cmsy/m/n/9 2 \U/msb/m/n/9 R[]$\T1/aer/m/n/9 ,$[] \OML/cmm/m/it/9 ; \OT1/cmr/bx/n/9 W[] \OMS/cmsy/m/n/9 2 \U/msb/m/n/9 R[]$
- []
-
-
-Overfull \hbox (14.81393pt too wide) in alignment at lines 239--241
+Overfull \hbox (14.81393pt too wide) in alignment at lines 241--243
  [] [] [] [][]
  []
 
 File: fig1_tcnn_kar_v6.pdf Graphic file (type pdf)
 <use fig1_tcnn_kar_v6.pdf>
 
-Overfull \hbox (26.71774pt too wide) detected at line 272
+Overfull \hbox (26.71774pt too wide) detected at line 274
 \OML/cmm/m/it/9 f [] \OT1/cmr/m/n/9 = \OML/cmm/m/it/9 ^^[ [] :
  []
 
 [2]
 Missing character: There is no ﬁ in font aer9!
 
-Overfull \hbox (30.02347pt too wide) in paragraph at lines 293--295
-\T1/aer/m/n/9 the triplet net-work. For the $\OML/cmm/m/it/9 i[]$ \T1/aer/m/n/9 net-work in-put $[]$,
- []
-
-
-Overfull \hbox (21.48375pt too wide) detected at line 297
+Overfull \hbox (21.48375pt too wide) detected at line 299
 \OML/cmm/m/it/9 loss \OT1/cmr/m/n/9 = [] \OML/cmm/m/it/9 max [] ;
  []
 
-
-Underfull \vbox (badness 3838) has occurred while \output is active []
-
-
-Overfull \hbox (4.07506pt too wide) in paragraph at lines 310--311
+[3]
+Overfull \hbox (4.07506pt too wide) in paragraph at lines 312--313
 \T1/aer/m/n/9 tween the pro-posed sys-tem and the deep learning-based meth-
  []
 
-[3]
-Overfull \hbox (5.5419pt too wide) in paragraph at lines 315--328
+
+Overfull \hbox (5.5419pt too wide) in paragraph at lines 317--330
 []\T1/aer/m/n/9 The mul-ti-layer feed-for-ward net-work struc-ture of KAR space
  []
 
 
-Overfull \hbox (24.33253pt too wide) in paragraph at lines 334--346
+Overfull \hbox (24.3326pt too wide) in paragraph at lines 336--348
  [][] 
  []
 
 
-Overfull \hbox (3.45418pt too wide) in paragraph at lines 329--347
+Overfull \hbox (3.45418pt too wide) in paragraph at lines 331--349
 []\T1/aer/m/n/9 For the pro-posed sys-tem and the deep learning-based meth-
  []
 
 
-Overfull \hbox (11.59962pt too wide) in paragraph at lines 350--367
+Overfull \hbox (11.59962pt too wide) in paragraph at lines 352--369
 \T1/aer/m/n/9 the worst ver-i-fi-ca-tion per-for-mance of 23.53% EER. The Siamese
  []
 
-Invalid UTF-8 byte or sequence at line 374 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 374 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 374 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 374 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 374 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 374 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 374 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 376 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 376 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 376 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 376 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 376 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 376 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 376 replaced by U+FFFD.
 File: fig_roc_v14.eps Graphic file (type eps)
 <fig_roc_v14.eps>
 File: normalized_loss_curve_ma30_v2.eps Graphic file (type eps)
 <normalized_loss_curve_ma30_v2.eps>
 
-Overfull \hbox (36.22087pt too wide) in paragraph at lines 374--378
+Overfull \hbox (36.22087pt too wide) in paragraph at lines 376--380
  [] 
  []
 
 
-Overfull \hbox (36.22087pt too wide) in paragraph at lines 374--378
+Overfull \hbox (36.22087pt too wide) in paragraph at lines 376--380
  [] 
  []
 
-[4] (./bdml_v2.bbl [5]
+[4] (./bdml_v2_R1.bbl [5]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-) [6] (./bdml_v2.aux) ) 
+) [6] (./bdml_v2_R1.aux) ) 
 Here is how much of TeX's memory you used:
- 3034 strings out of 492933
+ 3033 strings out of 492933
  40074 string characters out of 6136537
- 128071 words of memory out of 5000000
- 7000 multiletter control sequences out of 15000+600000
+ 127071 words of memory out of 5000000
+ 6999 multiletter control sequences out of 15000+600000
  45543 words of font info for 64 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 39i,11n,36p,1328b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,11n,36p,1313b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on bdml_v2.pdf (6 pages).
+Output written on bdml_v2_R1.pdf (6 pages).
