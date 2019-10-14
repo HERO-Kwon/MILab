@@ -98,6 +98,11 @@ Kar-Ann Toh, Zhiping Lin, Zhengguo Li, Beomseok Oh, and Lei Sun.
 \newblock Gradient-free learning based on the kernel and the range space.
 \newblock {\em arXiv preprint arXiv:1810.11581}, 2018.
 
+\bibitem{lecun1998gradient}
+Yann LeCun, L{\'e}on Bottou, Yoshua Bengio, Patrick Haffner, et~al.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
+
 \bibitem{hoffer2015deep}
 Elad Hoffer and Nir Ailon.
 \newblock Deep metric learning using triplet network.
@@ -146,11 +151,6 @@ Florian Schroff, Dmitry Kalenichenko, and James Philbin.
 Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
 \newblock {\em Deep learning}.
 \newblock MIT press, 2016.
-
-\bibitem{lecun1998gradient}
-Yann LeCun, L{\'e}on Bottou, Yoshua Bengio, Patrick Haffner, et~al.
-\newblock Gradient-based learning applied to document recognition.
-\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
 
 \bibitem{duda2012pattern}
 Richard~O Duda, Peter~E Hart, and David~G Stork.

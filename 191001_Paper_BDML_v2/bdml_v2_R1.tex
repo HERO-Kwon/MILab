@@ -54,7 +54,8 @@
 \usepackage{IEEEtrantools}
 
 \begin{document}
-
+%noindent all
+\setlength\parindent{0pt}
 % Copyright
 \setcopyright{acmcopyright}
 %\setcopyright{acmlicensed}
@@ -131,7 +132,7 @@
 %
 % 1st. author
 %\alignauthor
-Young-Woong Kwon, Jooyoung Kim and Kar-Ann Toh\\
+Young-Woong Kwon, Jooyoung Kim, and Kar-Ann Toh\\
        \affaddr{School of Electrical and Electronic Engineering}\\
        \affaddr{Yonsei University}\\
        \affaddr{Seoul, Korea}\\
@@ -201,16 +202,18 @@ With the help of sensors such as the depth camera~\cite{jeon2012system,malik2018
 
 Recently, the commercial Wi-Fi device has been adopted for in-air signature authentication due to its easy accessible property \cite{moon2017air}. Based on the distortion of the  Wi-Fi CSI signal according to the user's gestures, the in-air signature recognition system showed reasonable user verification performance~\cite{moon2017air}. More recently, some studies attempted to implement the deep learning algorithms in Wi-Fi signal-based user authentication systems to improve the verification performance ~\cite{shi2017smart,pokkunuru2018neuralwave}. 
 
-In this paper, we utilize a deep triplet network for identity verification based on the Wi-Fi CSI signature signal. To achieve not only the desired verification accuracy but also a fast training speed, we adopt the kernel and the range (KAR) space learning~\cite{toh100,toh2018learning,toh2018analytic,toh2018gradient} in order to mine the distinctive triplet inputs. Subsequently, the triplet network which utilizes the ConvNet structure as a feature extractor is trained based on the $L2$ distance comparison.
+In this paper, we utilize a deep triplet network for identity verification based on the Wi-Fi CSI signature signal. To achieve not only the desired verification accuracy but also a fast training speed, we adopt the kernel and the range (KAR) space learning~\cite{toh100,toh2018learning,toh2018analytic,toh2018gradient} in order to mine the distinctive triplet inputs. Subsequently, the triplet network which utilizes the ConvNet~\cite{lecun1998gradient} structure as a feature extractor is trained based on the $L2$ distance comparison.
 
 The main contributions of our work can be summarized as follows:
 \begin{itemize}
 \item Proposal of a system for identity verification based on the Wi-Fi handwritten signature signals using a deep triplet network.
-\item Adopted the kernel and the range (KAR) space learning in order to mine the distinctive triplet inputs which boost the convergence speed of the training loss in the triplet network.
-\item Provision of an experimental study using Wi-Fi handwritten signature dataset which was collected in-house based on 50 subjects.
+\item Adopted the kernel and the range (KAR) space learning in order to mine the distinctive triplet inputs which boosted the convergence speed of the training loss in the triplet network.
+\item Provision of an experimental study using a Wi-Fi handwritten signature dataset which was collected in-house based on 50 subjects.
 \end{itemize}
 
 The paper is organized as follows: related works including the triplet network and KAR space learning are introduced in Section 2 for immediate reference. Our proposed method is discussed in Section 3. Section 4 describes our experimental results and analysis. Some concluding remarks are given in Section 5.
+
+\clearpage
 
 % related works
 \section{Related works}
@@ -228,26 +231,35 @@ Generally, the multilayer feedforward neural networks is trained based on the gr
 However, setting the learning parameters such as the learning rate and the learning momentum is a time consuming task.
 
 Recently, a gradient-free learning framework based on the kernel and the range (KAR) space manipulation has been developed for multilayer network learning~\cite{toh100,toh2018learning,toh2018analytic,toh2018gradient}.
-The learning method is grounded on linear algebra with neither learning parameters nor iteration is needed in training.
+The learning method is grounded on linear algebra without needing any training iteration.
 
 % Karnet structure and mining samples.
 Given $m$ training samples. Let $\mathbf{X}\in{\mathbb{R}}^{m \times (n+1)}$ denotes the training data set and $\mathbf{G}\in{\mathbb{R}}^{m \times n}$ denotes the network output.
-Then the multilayer neural network can be written in equation form as follows:
+Then the multilayer neural network can be written as follows:
+\begingroup\makeatletter\def\f@size{8}\check@mathfonts
 \begin{equation}
     \mathbf{G}=\sigma\left(\left[\mathbf{1},\sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(n-1)}\right)\right]\mathbf{W}_{n}\right),
 \end{equation}
-where $\mathbf{W}_{1}\in{\mathbb{R}}^{(n+1) \times h_{1}}$,$\mathbf{W}_{2}\in{\mathbb{R}}^{(h_{1}+1) \times h_{2}}$,$\dots,\\\mathbf{W}_{n}\in{\mathbb{R}}^{(h_{(n-1)}+1) \times n}$ are the network weight matrices, $\mathbf{1}=\left[1,\dots,1\right]^{T}\in{\mathbb{R}}^{m \times 1}$ is the bias vector, and $\sigma(.)$ is the activation function.
+\endgroup
+where
+\begin{tiny}
+$\mathbf{W}_{1}\in{\mathbb{R}}^{(n+1) \times h_{1}}$,$\mathbf{W}_{2}\in{\mathbb{R}}^{(h_{1}+1) \times h_{2}}$,$\dots,\mathbf{W}_{n}\in{\mathbb{R}}^{(h_{(n-1)}+1) \times n}$
+\end{tiny}
+are the network weight matrices,
+$\mathbf{1}=\left[1,\dots,1\right]^{T}\in{\mathbb{R}}^{m \times 1}$
+ is the bias vector, and $\sigma(.)$ is the activation function.
 By adopting an one-hot encoded target $\mathbf{Y}\in{\mathbb{R}}^{m \times n}$, training of the weight matrices $\mathbf{W}_{i}$ using the KAR space method~\cite{toh2018gradient} can be computed as follows:
+\begingroup\makeatletter\def\f@size{8}\check@mathfonts
 \begin{IEEEeqnarray}{rCl}
     \mathbf{W}_{i}&=&\left[\mathbf{1},\sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(i-1)}\right)\right]^{\dagger}\sigma^{-1}\left(\mathbf{Y}\right), \nonumber \\ i&=&1,\dotsc,n.
 \end{IEEEeqnarray}
-
+\endgroup
 %% Methods
 \section{Proposed System}
 
 % Methods: System overview(Fig.1)
 In this section, we propose an identity verification system based on the Wi-Fi in-air handwritten signature (which will be called Wi-Fi signature hereafter) using the triplet network~\cite{hoffer2015deep}. Fig.1 shows an overview of the proposed system utilizing the kernel and the range (KAR) space learning~\cite{toh2018learning,toh2018gradient} for mining the triplet inputs.
-Essentially, the KAR space projection learning is utilized to learn the triplet input data by mining the hard positive and the hard negative samples from each of the given anchor sample (see item (a) in Fig.~\ref{fig1}). The hard positive and the hard negative samples refer to positive and negative class samples which are likely to be misclassified by the network.
+Essentially, the KAR space projection learning is utilized to learn the triplet input data by mining those hard positive and the hard negative samples from each of the given anchor sample (see item (a) in Fig.~\ref{fig1}). The hard positive and the hard negative samples refer to positive and negative class samples which are likely to be misclassified by the network.
 Subsequently, the ConvNet structure in the triplet network (see item (b) in Fig.~\ref{fig1}) is trained with the mined triplet data based on a triplet loss function using the $L2$ distance comparison (see item (c) in Fig.~\ref{fig1}).
 The following subsections describe the details of the triplet mining using KAR space learning and the triplet network.
 
@@ -268,10 +280,12 @@ A hard positive sample is defined as a sample whose distance to the anchor sampl
 
 In this work, we propose to adopt the kernel and the range (KAR) space learning (see Section~\ref{kar} for details) as a pretraining network to mine the hard positive/negative samples from the given anchor sample. Since the KAR space learning has no iterative learning process, we can mine the triplet samples without using the time consuming backpropagation training process.
  
-By training the network with the single shot KAR space learning, we can map the $L2$ distance between every sample by using the output vector of the KAR space network. Given a set of training data which is packed in matrix $\mathbf{X}$, the network output can be written as:
+By training the network with the single shot KAR space learning, we can map the $L2$ distance among the samples by using the output vector of the KAR space network. Given a set of training data which is packed in matrix $\mathbf{X}$, the network output can be written as:
+\begingroup\makeatletter\def\f@size{8}\check@mathfonts
 \begin{equation}
     f\left(\mathbf{X}\right)=\sigma\left(\left[\mathbf{1},\sigma\left(\dots\left[\mathbf{1},\sigma\left(\left[\mathbf{1},\sigma\left(\mathbf{X}\cdot\mathbf{W}_{1}\right)\right]\mathbf{W}_{2}\right)\right]\dots\mathbf{W}_{(n-1)}\right)\right]\mathbf{W}_{n}\right).
 \end{equation}
+\endgroup
 After training based on the KAR space projection, the given anchor sample $\mathbf{x}_{anc}$ can be used as the reference to decide whether the network output of a sample is far away from this anchor sample. In other words, a hard positive sample $\mathbf{x}_{pos}$ and a hard negative sample $\mathbf{x}_{neg}$ with respect to the anchor sample $\mathbf{x}_{anc}$ can each be determined based on:
 \begin{equation}
     {\left\| {{f\left(\mathbf{x}_{anc}\right)} - {f\left(\mathbf{x}_{pos}\right)}} \right\|_2^2} \geq \mathrm{t}_{pos}, \label{pos}
@@ -286,17 +300,19 @@ where $\mathrm{t}_{pos}$ and $\mathrm{t}_{neg}$ respectively denote the threshol
 
 The next step is to design a feature extractor which converts the  triplet input data into feature vectors. In this work, we utilize the ConvNet structure~\cite{lecun1998gradient} as a feature extractor since the three dimensional data format of our preprocessed input signal can be regarded as an image data format with multiple channels. 
 
-Our ConvNet design (item (b) in Fig~\ref{fig1}) consists of three convolutional layers and one fully-connected layer. The number of convolutional filters to be trained in each layer is empirically chosen as $\{64, 128, 256\}$, with fixed filter size of $3\times3$, each of stride 1. The Rectiﬁed Linear (ReLU) activation function and the Max-pooling layer are applied between each convolutional layer. Subsequently, the extracted features from the last convolutional layer are flattened into a vector before feeding into the fully-connected network.
+Our ConvNet design (item (b) in Fig~\ref{fig1}) consists of three convolutional layers and one fully-connected layer. The number of convolutional filters to be trained in each layer is empirically chosen as $\{64, 128, 256\}$, with fixed filter size of $3\times3$, each of stride 1. The Rectified Linear (ReLU) activation function and the Max-pooling layer are applied between each convolutional layer. Subsequently, the extracted features from the last convolutional layer are flattened into a vector before feeding into the fully-connected network.
 The output vectors from the fully-connected layer are finally transformed using the sigmoid function followed by a $L2$ normalization.
 
 % Methods: Triplet loss
 \subsection{The triplet loss}
 
-The triplet loss function was first seen in \cite{hoffer2015deep} for training the triplet network. For the $i^{th}$ network input $\{\mathbf{x}_{anc,i}, \mathbf{x}_{pos,i}, \\ \mathbf{x}_{neg,i}\}$, an anchor sample $\mathbf{x}_{anc,i}$ is randomly selected among the training data set. The positive and negative samples (respectively $x_{pos,i}$ and $x_{neg,i}$) are then determined and being selected for training the ConvNet based on the feature vectors $\left\{\mathbf{v}_{anc,i},\mathbf{v}_{pos,i},\mathbf{v}_{neg,i}\right\}$, for i=1,...,N.
+The triplet loss function was first seen in \cite{hoffer2015deep} for training the triplet network. For the $i^{th}$ network input $\{\mathbf{x}_{anc,i}, \mathbf{x}_{pos,i}, \\ \mathbf{x}_{neg,i}\}$, an anchor sample $\mathbf{x}_{anc,i}$ is randomly selected among the training data set. The positive and negative samples (respectively $\mathbf{x}_{pos,i}$ and $\mathbf{x}_{neg,i}$) are then determined and being selected for training the ConvNet based on the feature vectors $\left\{\mathbf{v}_{anc,i},\mathbf{v}_{pos,i},\mathbf{v}_{neg,i}\right\}$, for i=1,...,N.
 The triplet loss function is formulated based on a summation of the difference between the positive distance (the $L2$ distance between the anchor vector and the positive vector) and the negative distance (the $L2$ distance between the anchor vector and the negative vector) as follows:
+\begin{scriptsize}
 \begin{equation}
     loss = \sum_i^N max\left({ \left[ {\left\| {{\mathbf{v}_{anc,i}} - {\mathbf{v}_{pos,i}}} \right\|_2^2} - {\left\| {{\mathbf{v}_{anc,i}} - {\mathbf{v}_{neg,i}}} \right\|_2^2}  + \alpha \right]},0 \right),\label{triplet}
 \end{equation}
+\end{scriptsize}
 where $N$ denotes the size of the mini-batch, ${\left\| . \right\|_2^2}$ denotes the $L2$ distance and $\alpha$ denotes the preset margin.
 The ConvNet structure using equation~\eqref{triplet} is trained to maximize the gap between the positive distance and the negative distance which should be larger than the margin $\alpha$.
 
@@ -309,12 +325,12 @@ The ConvNet structure using equation~\eqref{triplet} is trained to maximize the 
 \subsection{Experimental settings}
 
 \subsubsection{Performance evaluation:}
-The proposed system is evaluated under two cases: i) case I on comparison between the proposed system and other handcraft or deep learning-based methods based on the verification accuracy, and case II on detailed comparison between the proposed system and the deep learning-based methods using the receiver operating characteristic (ROC) curve and training loss curve. For both cases, Wi-Fi signal measurements based on a single-orientation and 4-orientations of the user are recorded. For Case I, existing handcraft methods such as the least squares error estimation (LSE)~\cite{duda2012pattern}, the principal components analysis (PCA)~\cite{turk1991eigenfaces} with LSE, the support vector machine (SVM)~\cite{boser1992training} with different kernel functions, the total error rate minimization which adopted the reduced multivariate polynomial model as basis function (TER-RM2) \cite{toh2008between}, the deep learning-based Siamese network \cite{koch2015siamese}, and the baseline triplet network \cite{hoffer2015deep} are included for performance benchmarking. The Siamese network and the baseline triplet network utilized the same ConvNet structures with the proposed system and only differed in their input data style and loss function.
+The proposed system is evaluated under two cases: Case I on comparison between the proposed system and other handcraft or deep learning-based methods based on the verification error rate. Case II on comparing between the proposed system and the deep learning-based methods using the receiver operating characteristic (ROC) curve and training loss curve. For both cases, Wi-Fi signal measurements based on a single-orientation and 4-orientations of the user are recorded. For Case I, existing handcraft methods such as the least squares error estimation (LSE)~\cite{duda2012pattern}, the principal components analysis (PCA)~\cite{turk1991eigenfaces} with LSE, the support vector machine (SVM)~\cite{boser1992training} with different kernel functions, the total error rate minimization which adopted the reduced multivariate polynomial model as basis function (TER-RM2) \cite{toh2008between}, the deep learning-based Siamese network \cite{koch2015siamese}, and the baseline triplet network \cite{hoffer2015deep} are included for performance benchmarking. The Siamese network and the baseline triplet network utilized the same ConvNet structures with the proposed system and only differed in their input data style and loss function.
 
 The verification performance of the proposed system and the compared methods are evaluated in terms of the Equal Error Rate (EER, \%) which are taken from averaging the results of five runs of two-fold cross-validation tests. Due to the memory constraint caused by the large data size, the deep learning-based methods utilized randomly sampled 9,500 negative pairs in the validation stage, which is the same number as the number of positive pairs.
 
 \subsubsection{Network Structure and Parameter Settings:}
-The multilayer feedforward network structure of KAR space learning is specified in Table~\ref{tab2}. With input data, size of 500$\times$30$\times$6, we set two network layers where the size of the each layer is 1024 and 16, respectively. Each layer is initialized with uniform distribution over [0, 1). We used $\sigma = {tan}^{-1}$ as the activation function following \cite{toh2018analytic}.
+The multilayer feedforward network structure of KAR space learning is specified in Table~\ref{tab2}. The weights of each layer have been initialized with values of uniform distribution in [0, 1). We used $\sigma = {tan}^{-1}$ as the activation function following \cite{toh2018analytic}.
 \begin{table}
 \centering
     \caption{The network structure of KAR space learning.}
@@ -330,11 +346,12 @@ The multilayer feedforward network structure of KAR space learning is specified 
 
 For the proposed system and the deep learning-based methods, we utilized the same ConvNet structure as specified in Table~\ref{tab1}. We trained the network starting with a learning rate of 0.00005 and a mini-batch size of 32. We optimized the loss by the Adam optimizer with $L2$ penalty of 0.0002 except for the output layer. The output layer was regularized using an $L2$ penalty of 0.0001. We initialized all network weights in the convolutional layers with normal distribution of zero-mean and standard deviation 0.01. The biases were also initialized with a normal distribution of 0.5 mean and standard deviation 0.01. For the triplet networks, the hyper-parameter regulating triplet loss is empirically set at 0.1. The training epochs were set at 1,500 for all three deep learning-based algorithms. For the linear methods such as LSE, SVM and TER, the input signals were resized to 500 $\times$ 30 by averaging along the subcarrier axes due to limitation of hardware memory. For the PCA-LSE, the input dimension was reduced to 40.
 \begin{table}
+\begin{small}
 \centering
     \caption{The structure of ConvNet model. For the convolution layer, the kernel is specified as (m$\times$m) sized filter $\times$ (\# of filters) / (\# of stride). For the max-pooling layer, (p$\times$p) sized pooling windows / \# of stride. The input sizes are denoted as rows $\times$ cols $\times$ \# of filters.}
     \label{tab1}
     \begin{tabular}{|l|l|l|l|} \hline
-     Layer     & Activation & Kernel / Stride & Input Size \\ \hline
+     Layer     & Activation & Kernel/Stride & Input Size \\ \hline
      Conv 1    & ReLU       & (3$\times$3)$\times$64/1      & 500$\times$30$\times$6   \\ \hline
      MaxPool 1 &            & (2$\times$2)/1         & 500$\times$30$\times$64  \\ \hline
      Conv 2    & ReLU       & (3$\times$3)$\times$128/1     & 250$\times$15$\times$64 \\ \hline
@@ -345,17 +362,18 @@ For the proposed system and the deep learning-based methods, we utilized the sam
      $L2$ Norm  &            &                 & 1$\times$1$\times$16    \\ \hline
      Concat    &            &                 & 1$\times$1$\times$16    \\ \hline
     \end{tabular}
+\end{small}
 \end{table}
 
 \subsection{Results and discussion}
 
-Case I: Table~\ref{tab3} shows the average of EER performance from five runs of two-fold cross-validation tests under the optimal parameter setting. For 1-orientation inputs, SVM showed the best verification accuracy of 1.55\% EER. However, For 4-orientation inputs, all three deep learning-based methods showed better performance than hand-craft methods. This is, perhaps, due to the utilization of the original size (500$\times$30$\times$6) of the input data in the training stage for the deep learning based methods. The test EER performance of the proposed system is 19.35\%. The baseline triplet network without input mining showed slightly worse performance of 20.34\% EER. The Siamese network showed the worst verification performance of 23.53\% EER. The Siamese network is also a metric learning system, but differs from our system in that it receives two inputs and uses the contrastive loss function for training. 
+Case I: Table~\ref{tab3} shows the average of EER performance from five runs of two-fold cross-validation tests under the optimal parameter setting. For 1-orientation inputs, the SVM with Linear kernel shows the best verification accuracy of 1.55\% EER. However, For 4-orientation inputs, all three deep learning-based methods show better performance than hand-craft methods. This is, perhaps, due to the utilization of the original size (500$\times$30$\times$6) of the input data in the training stage for the deep learning based methods. The test EER performance of the proposed system is 19.35\%. The baseline triplet network without input mining showed slightly worse performance of 20.34\% EER. The Siamese network showed the worst verification performance of 23.53\% EER. The Siamese network is also a metric learning system, but differs from our system in that it receives two inputs and uses the contrastive loss function for training. 
 \begin{table*}
 \centering
-    \caption{Performance benchmarking with respect to the best EER (\%) averaged from five runs of two-fold cross-validation tests.}
+    \caption{Performance in terms of EER (\%) averaged from five runs of two-fold cross-validation tests.}
     \label{tab3}
     \begin{tabular}{|l|c|c|l|} \hline
-    \multirow{2}{*}{Methology} & \multicolumn{2}{|c|}{Best EER (\%)} & \multirow{2}{*}{Parameter setting} \\ \cline{2-3}           & 1-orientation & 4-orientation     &    \\ \hline
+    \multirow{2}{*}{Methology} & \multicolumn{2}{|c|}{Equal Error Rate (\%)} & \multirow{2}{*}{Parameter setting} \\ \cline{2-3}           & 1-orientation & 4-orientation     &    \\ \hline
     LSE                                    & 35.40 & 48.44           &                           \\  \hline
     PCA-LSE                                & 16.87 & 30.79           & Reduced dimension=40        \\  \hline
     SVM(Linear)                            & 1.55 & 28.23            & c=1                        \\  \hline
@@ -372,20 +390,22 @@ Case II: Fig.~\ref{fig2} (a) shows the ROC curves of the three compared deep lea
 \begin{figure}%[!ht]
 \centering
     \begin{center}
-    \subfigure[][ROC Curve]{
-        \includegraphics[height=6.4cm]{fig_roc_v14.eps}}
-    \subfigure[][Normalized training loss curve]{
-        \includegraphics[height=6.4cm]{normalized_loss_curve_ma30_v2.eps}}
+    \subfigure[][ROC Curves]{
+        \includegraphics[height=6.4cm]{fig_roc_v15.eps}}
+    \subfigure[][Normalized training loss trends]{
+        \includegraphics[height=6.4cm]{Normalized_loss_curve_ma30_v2.eps}}
     \caption{(a) Receiver Operating Characteristic (ROC) Curves and 
-    (b) normalized training loss trends}
+    (b) Normalized training loss trends}
     \label{fig2}
     \end{center}
  \end{figure}
 
+\newpage
+
 \section{Conclusion}
 In this paper, we proposed a system for identity verification based on the handwritten signature signals captured by the Wi-Fi Channel State Information (CSI). 
-The kernel and the range space learning was adopted for mining the triplet inputs for fast loss convergence. 
-Subsequently, the triplet network utilizing the ConvNet structure was trained with the mined triplet inputs based on the $L2$ distance comparison. 
+A triplet network adopting the ConvNet structure was used to learn the Wi-Fi information. In order to facilitate a fast training convergence, the inputs were first mined by a recent kernel and range space learning for samples which were likely to be misclassified. 
+Subsequently, the network was trained with the mined triplet inputs based on the $L2$ distance comparison. 
 Our experiments on an in-house Wi-Fi handwritten signature dataset showed not only an encouraging verification accuracy but also a faster training loss convergence compared with the baseline triplet network and the Siamese network.
 %\end{document}  % This is where a 'short' article might terminate
 
