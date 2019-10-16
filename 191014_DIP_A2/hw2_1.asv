@@ -1,47 +1,61 @@
 im = im2double(imread('input1.jpg'));
-im = im(:,:,1) .* 255;
+im = im(:,:,1);
 
 std_list=[7, 12, 17];
 filter_list = [1, 3, 5];
 
 figure(1);
 subplot(2,2,1);
-imshow(im ./ 255);
-title('input image');
+imshow(im);
+title('input');
 im_Trs = cell(3,1);
 for i = 1:length(std_list)
     im_Tr = GaussianNoise(im, std_list(i));
     im_Trs{i} = im_Tr;
     subplot(2,2,i+1);
-    imshow(im_Tr ./ 255);
-    title(['Noise: std = ',num2str(std_list(i))]);
+    imshow(im_Tr);
+    title(['std = ',num2str(std_list(i))]);
 end
 
 figure(2);
+subplot(2,2,1);
+imshow(im);
+title('input');
+im_Tr1s = cell(3,1);
+for i = 1:length(std_list)
+    im_Tr1 = imnoise(im, 'gaussian',0,std_list(i));
+    im_Tr1s{i} = im_Tr1;
+    subplot(2,2,i+1);
+    imshow(im_Tr1);
+    title(['std = ',num2str(std_list(i))]);
+end
+
+
+figure(3);
 g_filters = cell(3,1);
 for i = 1:length(filter_list)
     g_filter = GaussianFilter(im,filter_list(i));
     g_filters{i} = g_filter;
     subplot(2,2,i);
     imshow(g_filter,[min(min(g_filter)),max(max(g_filter))]);
-    title(['Filter: std = ',num2str(filter_list(i))]);
+    title(['std = ',num2str(filter_list(i))]);
 end
 
-
+im_Trs = im_Tr1s;
 
 for i = 1:length(std_list)
     im_Tr = im_Trs{i};
     
-    figure(2+i);
+    figure(3+i);
     subplot(2,2,1);
-    imshow(im_Tr ./ 255);
-    title(['Noise: std = ',num2str(std_list(i))]);
+    imshow(im_Tr);
+    title(['noise std = ',num2str(std_list(i))]);
     for j = 1:length(filter_list)
         g_filter = g_filters{j};
         w = conv2(im_Tr,g_filter,'same');
         
         subplot(2,2,j+1);
-        imshow(w ./ 255);
-        title(['Filter: std = ',num2str(filter_list(j))]);
+        imshow(w);
+        title(['std = ',num2str(filter_list(j))]);
     end
 end
