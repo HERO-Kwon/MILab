@@ -1,8 +1,0 @@
-function output = GaussianNoise (I,SIGMA) %
-% Complete the remaining part
-%v = var(I(:)) / sqrt(SIGMA);
-%output = I + sqrt(v).*randn(size(I));
-output = I + SIGMA.*randn(size(I));
-%output = imnoise(I, 'gaussian',0,SIGMA*SIGMA);
-end 
-
