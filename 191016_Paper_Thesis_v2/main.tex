@@ -1,0 +1,171 @@
+\documentclass[a4paper,11pt]{report}
+
+\usepackage{coverstory,times,epsfig,calc}
+\usepackage{amsmath,amssymb}
+\usepackage{cite}
+\usepackage{caption}
+\usepackage{floatrow}   
+\usepackage{subcaption}
+\usepackage{graphicx,xcolor} 
+\usepackage{lscape}
+\usepackage{hyperref}
+\usepackage{epsfig} % for postscript graphics files
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{tabu}
+\usepackage{floatrow}
+\usepackage{url}
+\usepackage{easybmat}
+\usepackage{kotex}
+\usepackage{IEEEtrantools}
+
+\floatsetup[table]{capposition=top}
+\setcounter{secnumdepth}{3}
+%\usepackage{hhline}
+%\usepackage{multirow}
+%\usepackage{rotating}
+%\usepackage{booktabs}
+%\usepackage[hang,flushmargin]{footmisc}
+%\usepackage{float}
+%\usepackage{amsbsy}
+%\usepackage{url}
+%\usepackage{pifont}
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{longtable}
+%\usepackage{grad,times,graphicx,calc}
+
+%\usepackage{fancyhdr}
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%APPENDIX EDIT
+\newenvironment{myEnumerate}{
+\begin{enumerate}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}}
+{\end{enumerate}
+}
+%\Urlmuskip=0mu plus 1mu
+\newif\ifappendixin
+\makeatletter
+  \renewcommand{\appendix}{\par
+    \@ifundefined{appendixin}{\appendixintrue}{\appendixinfalse}
+    \setcounter{chapter}{0}%
+    \setcounter{section}{0}%
+    \setcounter{subsection}{0}%
+    \setcounter{figure}{0}%
+    \def\@chapapp{\appendixname}%
+    \def\thechapter{\Alph{chapter}}%
+    %\def\thesection{\Alph{chapter}.(\roman{section})}%
+    \def\thesection{\Alph{chapter}.\arabic{section}}%
+    \renewcommand\section{%
+                \@startsection {section}{1}{\z@}%
+                {-3.5ex \@plus -1ex \@minus -.2ex}%
+                {2.3ex \@plus.2ex}%
+                {\normalfont\Large\bfseries}}
+    \renewcommand\thefigure{%
+                \ifnum \c@section>\z@ \Alph{chapter}.\fi \@arabic\c@figure}
+    \renewcommand\theequation{%
+                \ifnum \c@section>\z@ \Alph{chapter}.\fi \@arabic\c@equation}
+    \renewcommand\thetable{%
+                \ifnum \c@section>\z@ \Alph{chapter}.\fi \@arabic\c@table}
+}
+
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%APPENDIX EDIT
+\renewcommand{\baselinestretch}{1}
+\renewcommand{\arraystretch}{1.3}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{conjecture}{Conjecture}
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand\MyLBrace[2]{\left.\rule{0pt}{#1}\right\}\text{#2}}
+\newcommand\bovermat[2]{%
+	\makebox[0pt][l]{$\smash{\overbrace{\phantom{%
+					\begin{matrix}#2\end{matrix}}}^{\text{#1}}}$}#2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Improving the Triplet Network for Wi-Fi Based Handwritten Signature Verification}
+
+\author{Young-Woong Kwon}
+\date{October 2019}
+
+\begin{document}
+\makecover
+\maketitle
+
+\signaturepage
+
+\pagestyle{plain}
+\baselineskip 8.5mm
+\input{thanks} \pagestyle{plain}
+%\acknowledgement
+%\input{thanks2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% �������
+%\pagenumbering{roman} % Page Numbering style
+\setcounter{page}{0}
+\tableofcontents
+\listoffigures
+\addcontentsline{toc}{chapter}{\protect\numberline{}
+    \hspace*{-0.29in} List of Figures}
+\listoftables
+\addcontentsline{toc}{chapter}{\protect\numberline{}
+    \hspace*{-0.29in} List of Tables}
+
+\begin{abstract}
+\addcontentsline{toc}{chapter}{\protect\numberline{}
+    \hspace*{-0.29in} Abstract}
+\input{abstract}
+\end{abstract}
+
+\chapter{Introduction}\label{chapter:Introduction}
+\input{Introduction}
+%
+
+\chapter{Preliminaries}\label{chapter:Preliminaries}
+\input{Preliminaries}
+
+\chapter{Related Works}\label{chapter:Related Works}
+\input{Related_Works}
+
+%\chapter{System Setup and Data Acquisition}\label{chapter:System Setup and Data Acquisition}
+%\input{Setup}
+
+\chapter{The proposed System}\label{chapter:The proposed System}
+\input{Proposed_Method}
+
+\chapter{Experiments}\label{chapter:Experiments}
+\input{Experiments}
+
+\chapter{Conclusions and Future Works}\label{chapter:Conclusions and Future Works}
+\input{Conclusion}
+
+%\begin{appendix}
+%\input{appendix}
+%\end{appendix}
+
+%\bibliography{main}
+%\addcontentsline{toc}{chapter}{\protect\numberline{}
+%    \hspace*{-0.29in} Bibliography}
+%\input{bibliography}
+
+\addcontentsline{toc}{chapter}{\protect\numberline{}
+    \hspace*{-0.29in} Bibliography}
+%\bibliographystyle{IEEEtran}
+\bibliographystyle{unsrt}
+\bibliography{bib_thesis_HERO}
+
+\clearpage
+\addcontentsline{toc}{chapter}{\protect\numberline{}
+    \hspace*{-0.29in} Summary (in Korean)}
+\input{abstract_kor}
+
+%\newpage % Response Note %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{response}
+
+\end{document}
