@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
 The style file: unsrt.bst
 Database file #1: bib_thesis_HERO.bib
-You've used 37 entries,
+You've used 41 entries,
             1791 wiz_defined-function locations,
-            649 strings with 10603 characters,
-and the built_in function-call counts, 10402 in all, are:
-= -- 982
-> -- 406
-< -- 18
-+ -- 150
-- -- 113
-* -- 630
-:= -- 1504
-add.period$ -- 124
-call.type$ -- 37
-change.case$ -- 34
+            667 strings with 11492 characters,
+and the built_in function-call counts, 11627 in all, are:
+= -- 1096
+> -- 462
+< -- 21
++ -- 170
+- -- 129
+* -- 701
+:= -- 1676
+add.period$ -- 138
+call.type$ -- 41
+change.case$ -- 36
 chr.to.int$ -- 0
-cite$ -- 37
-duplicate$ -- 529
-empty$ -- 1035
-format.name$ -- 113
-if$ -- 2458
+cite$ -- 41
+duplicate$ -- 593
+empty$ -- 1152
+format.name$ -- 129
+if$ -- 2754
 int.to.chr$ -- 0
-int.to.str$ -- 37
-missing$ -- 40
-newline$ -- 188
-num.names$ -- 37
-pop$ -- 162
+int.to.str$ -- 41
+missing$ -- 46
+newline$ -- 208
+num.names$ -- 41
+pop$ -- 187
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 290
+skip$ -- 326
 stack$ -- 0
-substring$ -- 705
-swap$ -- 198
-text.length$ -- 18
+substring$ -- 777
+swap$ -- 225
+text.length$ -- 21
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 104
-width$ -- 39
-write$ -- 413
+while$ -- 114
+width$ -- 43
+write$ -- 458

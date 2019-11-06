@@ -1,24 +1,24 @@
 \section{Background}
 % signature
-Written signatures have long been used as an identification tool and various methods for verifying individuals base on them have been developed~\cite{fahmy2010online,galbally2015line,sanmorino2012survey,sesa2012information}.
+Handwritten signatures have long been used as an identification tool and various methods for verifying individuals based on them have been developed~\cite{fahmy2010online,galbally2015line,sanmorino2012survey,sesa2012information}.
 % biometric
-The use of biometric identity verification is growing with the popularity of mobile devices. Biometric identity verification systems are more secure, convinient, and provide greater accountability than traditional complex passwords~\cite{hutton2004biometrics}.
+The use of biometric identity verification is growing with the popularity of mobile devices. Biometric identity verification systems are more secure, convinient, and provide greater accountability than traditional passwords~\cite{hutton2004biometrics,jain2006biometrics,ross2006handbook}.
 % camera sensor
 In-air signatures have become possible with the development of specialized sensors, such as depth cameras and magnetic sensors~\cite{bailador2011analysis, jeon2012system,ketabdar2012magnetic,malik20183dairsig}.
 % WiFI CSI
-In-air signatures can be made using Wi-fi Channel State Information ("CSI") signals. Typically people make a certain gesture when signing their signature on a piece of paper. With in-air signatures, people simply make the same gesture in the air. Their movements are detected by Wi-fi receivers with appropriate software installed. The software detects changes in the Wi-fi signals caused by hand movements. This technique uses widespread devices, so it does not require the use of any special input devices. 
+Recently, the in-air signatures can also be acquired using the Wi-fi Channel State Information (``CSI'') signals. Typically the user makes a certain gesture when signing their signature on a piece of paper. With in-air signatures, the user simply makes the same gesture in the air. Their movements are detected by Wi-fi receivers with appropriate software installed. The software detects changes in the Wi-fi signals caused by the hand movements. This technique uses the existing widespread Wi-Fi devices, so it does not require the use of any special input devices. 
 \cite{abdelnasser2015wigest,nandakumar2014wi} used CSI signals to recognize users' gestures and~\cite{moon2017air} used them to specifically identify signatures written in the air. 
-However, due to limitations of the traditional feature extractor,~\cite{moon2017air} was only able to identify in-air signatures entering from the specific direction. This makes the user difficult to input their signatures.
+However, due to limitations of the traditional feature extractor,~\cite{moon2017air} was only able to identify in-air signatures entering from a specific direction. This makes the user difficult to input their signatures.
 % Deep learning
-Recent studies have been conducted on the feasibility of using deep learning technology to characterize CSI signals. Deep learning-based models are popular often studied as solutions to this situaiton because of their automated feature extractors and the fact that they have superior classification capabilities than traditional models. Deep learning has been used to recognize users based on their body shape~\cite{pokkunuru2018neuralwave} and behavior~\cite{shi2017smart}.
+Recent studies have been conducted on the feasibility of using deep learning to characterize the CSI signals. Deep learning-based models are popular because of their automated feature extractors and the fact that they have superior classification capabilities than traditional models. Deep learning has been used to recognize users based on their vital sign~\cite{zhang2017pulseprint,szankin2018long} and behavior~\cite{shi2017smart,pokkunuru2018neuralwave}.
 % our methods
-In this thesis, deep learning technology was used to create a Wi-Fi CSI system that can recognize a user's identity with multi-direction in-air signatures.
-The deep learning model tested in this study used a triplet network to increase classification and feature extraction accuracy, and to improve the model's convergence speed using the kernel and range space learning techniques~\cite{toh2018gradient}.
+In this thesis, the deep learning technology is used to create a Wi-Fi CSI system that can recognize a user's identity with multi-direction in-air signatures.
+The deep learning model tested in this study is a triplet network where our task is to improve the model's convergence speed using the kernel and range space learning technique~\cite{toh2018gradient}.
 
 %\newpage
 \newpage
 \section{Motivation and Contributions}
-The main contributions of this thesis were
+The main contributions of this thesis
 \begin{itemize}
 \item Proposing a system to verify user identities using Wi-Fi handwritten signature signals using a deep triplet network;
 \item Using the kernel and range (KAR) space learning to mine distinctive triplet inputs which boost convergence speed and reduce triplet network training loss; and
@@ -26,4 +26,4 @@ The main contributions of this thesis were
 \end{itemize}
 
 \section{Paper Organization}
-The rest of this paper is organized as follows.  Section 2 discusses related works about triplet networks and KAR space learning. Section 3 discusses the proposed system. Section 4 describes this thesis's experimental and analysis results. Section 5 concludes the thesis. 
+The rest of this thesis is organized as follows.  Section 2 discusses related works about triplet networks and KAR space learning. Section 3 discusses the proposed system. Section 4 describes this thesis's experimental and analysis results. Section 5 concludes the thesis. 

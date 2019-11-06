@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  17 OCT 2019 09:06
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  25 OCT 2019 21:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -936,50 +936,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  [4
 
-] (./abstract.tex [5]) [6]
+] (./abstract.tex) [5] [6]
 Chapter 1.
 (./Introduction.tex [7
 
 ] [8]) [9]
 Chapter 2.
-(./Preliminaries.tex) [10
+(./Related_Works.tex [10
 
-]
-Chapter 3.
-(./Related_Works.tex [11
-
-] [12]
+] [11]
 Overfull \hbox (0.23427pt too wide) in paragraph at lines 49--53
 \TU/lmr/m/n/10.95 where $[][] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 R[]$\TU/lmr/m/n/10.95 ,$[][] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 R[]$\TU/lmr/m/n/10.95 ,$[] \OML/cmm/m/it/10.95 ; [][] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 R[]$\TU/lmr/m/n/10.95 ,$[] \OT1/cmr/m/n/10.95 = [][] [] 
  []
 
-) [13]
-Chapter 4.
+) [12]
+Chapter 3.
 (./Proposed_Method.tex
 File: fig_system_overview_v1.pdf Graphic file (type pdf)
 <use fig_system_overview_v1.pdf>
- [14
+ [13
 
-] [15]
-File: fig_hardsample_v1.pdf Graphic file (type pdf)
-<use fig_hardsample_v1.pdf>
- [16] [17] [18]
+] [14]
+File: fig_hardsample_v2.pdf Graphic file (type pdf)
+<use fig_hardsample_v2.pdf>
+ [15] [16] [17]
 File: fig_convnet_v1.pdf Graphic file (type pdf)
 <use fig_convnet_v1.pdf>
-) [19] [20]
-Chapter 5.
+) [18]
+Chapter 4.
 (./Experiments.tex
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 21.
+               Default added (so using `tbp') on input line 20.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 36.
+               Default added (so using `tbp') on input line 35.
 
-[21
+[19
 
-] [22] [23]
+] [20] [21]
 File: fig_roc_v15.eps Graphic file (type eps)
 <fig_roc_v15.eps>
 File: normalized_loss_curve_ma30_v3.eps Graphic file (type eps)
@@ -987,11 +983,11 @@ File: normalized_loss_curve_ma30_v3.eps Graphic file (type eps)
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 99.
+               Default added (so using `tbp') on input line 98.
 
 File: fclayer_v1.eps Graphic file (type eps)
 <fclayer_v1.eps>
-[24]
+[22]
 File: fig_2d_triKAR_10_v1.eps Graphic file (type eps)
 <fig_2d_triKAR_10_v1.eps>
 File: fig_2d_tribase_10_v1.eps Graphic file (type eps)
@@ -999,29 +995,29 @@ File: fig_2d_tribase_10_v1.eps Graphic file (type eps)
 File: fig_2d_siam_10_v1.eps Graphic file (type eps)
 <fig_2d_siam_10_v1.eps>
 )
-Overfull \hbox (16.40474pt too wide) in paragraph at lines 127--144
-\TU/lmr/m/n/10.95 space was projecgted onto two-dimensional Euclidean space using PCA (Figs. []5.6[], []5.4[],
+Overfull \hbox (16.40474pt too wide) in paragraph at lines 126--144
+\TU/lmr/m/n/10.95 space was projecgted onto two-dimensional Euclidean space using PCA (Figs. []4.6[], []4.4[],
  []
 
-[25] [26] [27] [28] [29] [30]
-Chapter 6.
-(./Conclusion.tex) (./main.bbl [31
+[23] [24] [25] [26] [27] [28]
+Chapter 5.
+(./Conclusion.tex) (./main.bbl [29
 
-] [32
+] [30
 
-] [33] [34]
-Underfull \hbox (badness 1275) in paragraph at lines 122--126
+] [31] [32]
+Underfull \hbox (badness 1275) in paragraph at lines 149--153
 []\TU/lmr/m/n/10.95 Shengyong Ding, Liang Lin, Guangrun Wang, and Hongyang Chao.
  []
 
-[35] [36]) [37] (./abstract_kor.tex
+[33] [34] [35]) [36] (./abstract_kor.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
- [38
+ [37
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
@@ -1029,7 +1025,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 171.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C4666D41B95858040086322A9327286D.
+(rerunfilecheck)             Checksum: 3FFF079B47D4BAF538847BDCC048DA20.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1038,12 +1034,12 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
  ) 
 Here is how much of TeX's memory you used:
- 27237 strings out of 492933
- 477049 string characters out of 6136537
- 583018 words of memory out of 5000000
+ 27234 strings out of 492933
+ 477000 string characters out of 6136537
+ 582797 words of memory out of 5000000
  31001 multiletter control sequences out of 15000+600000
  541373 words of font info for 96 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 59i,11n,82p,990b,2522s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,11n,82p,994b,2522s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (42 pages).
+Output written on main.pdf (41 pages).

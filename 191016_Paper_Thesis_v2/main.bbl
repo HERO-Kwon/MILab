@@ -30,6 +30,17 @@ DM~Hutton.
 \newblock Biometrics: Identity verification in a networked world.
 \newblock {\em Kybernetes}, 2004.
 
+\bibitem{jain2006biometrics}
+Anil~K Jain, Ruud Bolle, and Sharath Pankanti.
+\newblock {\em Biometrics: personal identification in networked society},
+  volume 479.
+\newblock Springer Science \& Business Media, 2006.
+
+\bibitem{ross2006handbook}
+Arun~A Ross, Karthik Nandakumar, and Anil~K Jain.
+\newblock {\em Handbook of multibiometrics: human recognition systems}.
+\newblock Springer, 2006.
+
 \bibitem{bailador2011analysis}
 Gonzalo Bailador, Carmen Sanchez-Avila, Javier Guerra-Casanova, and Alberto
   de~Santos~Sierra.
@@ -74,12 +85,21 @@ Han-Cheol Moon, Se-In Jang, Kangrok Oh, and Kar-Ann Toh.
 \newblock In {\em Proceedings of the 4th International Conference on Biomedical
   and Bioinformatics Engineering}, pages 133--138. ACM, 2017.
 
-\bibitem{pokkunuru2018neuralwave}
-Akarsh Pokkunuru, Kalvik Jakkala, Arupjyoti Bhuyan, Pu~Wang, and Zhi Sun.
-\newblock Neuralwave: Gait-based user identification through commodity {WiFi}
-  and deep learning.
-\newblock In {\em IECON 2018-44th Annual Conference of the IEEE Industrial
-  Electronics Society}, pages 758--765. IEEE, 2018.
+\bibitem{zhang2017pulseprint}
+Qingxue Zhang, Dian Zhou, and Xuan Zeng.
+\newblock Pulseprint: Single-arm-ecg biometric human identification using deep
+  learning.
+\newblock In {\em 2017 IEEE 8th Annual Ubiquitous Computing, Electronics and
+  Mobile Communication Conference (UEMCON)}, pages 452--456. IEEE, 2017.
+
+\bibitem{szankin2018long}
+Maciej Szankin, Alicja Kwasniewska, Tejaswini Sirlapu, Mingshan Wang, Jacek
+  Ruminski, Rey Nicolas, and Marko Bartscherer.
+\newblock Long distance vital signs monitoring with person identification for
+  smart home solutions.
+\newblock In {\em 2018 40th Annual International Conference of the IEEE
+  Engineering in Medicine and Biology Society (EMBC)}, pages 1558--1561. IEEE,
+  2018.
 
 \bibitem{shi2017smart}
 Cong Shi, Jian Liu, Hongbo Liu, and Yingying Chen.
@@ -87,6 +107,13 @@ Cong Shi, Jian Liu, Hongbo Liu, and Yingying Chen.
   leveraging {WiFi-enabled IoT}.
 \newblock In {\em Proceedings of the 18th ACM International Symposium on Mobile
   Ad Hoc Networking and Computing}, page~5. ACM, 2017.
+
+\bibitem{pokkunuru2018neuralwave}
+Akarsh Pokkunuru, Kalvik Jakkala, Arupjyoti Bhuyan, Pu~Wang, and Zhi Sun.
+\newblock Neuralwave: Gait-based user identification through commodity {WiFi}
+  and deep learning.
+\newblock In {\em IECON 2018-44th Annual Conference of the IEEE Industrial
+  Electronics Society}, pages 758--765. IEEE, 2018.
 
 \bibitem{toh2018gradient}
 Kar-Ann Toh, Zhiping Lin, Zhengguo Li, Beomseok Oh, and Lei Sun.

@@ -2,8 +2,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces KAR space learning network structure.\relax }}{23}{table.caption.8}% 
-\contentsline {table}{\numberline {5.2}{\ignorespaces ConvNet model structuer.\relax }}{23}{table.caption.9}% 
-\contentsline {table}{\numberline {5.3}{\ignorespaces Average EER of five-runs of two-fold cross-validation tests.\relax }}{24}{table.caption.10}% 
+\contentsline {table}{\numberline {4.1}{\ignorespaces KAR space learning network structure.\relax }}{21}{table.caption.8}% 
+\contentsline {table}{\numberline {4.2}{\ignorespaces ConvNet model structuer.\relax }}{21}{table.caption.9}% 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Average EER of five-runs of two-fold cross-validation tests.\relax }}{22}{table.caption.10}% 
 \addvspace {10\p@ }

@@ -5,15 +5,14 @@ The Wi-Fi CSI signature dataset~\cite{moon2017air} at position 1 was used to tes
 
 \section{Experimental Parameters}
 %performance
-The proposed method's performance, convergence speed, and degradation were compared to those of other traditional methods.
-To compare the proposed method's feature extraction performance to that of traditional and deep-learning based methods, feature space was visualized as a 2D Euclidean plane using principal component analysis ("PCA"). 
+To compare the proposed method's feature extraction performance to that of traditional and deep-learning based methods, feature space was visualized as a 2D Euclidean plane using principal component analysis (``PCA''). 
 % handcraft
 The proposed method's and traditional methods and deep-learning based methods.
-For handcraft methods' least square estimations ("LSE")~\cite{duda2012pattern}, PCA with LSE~\cite{turk1991eigenfaces}, support vector machine~\cite{vapnik2013nature} and the total error minimization with reduced multivariate polynomials~\cite{toh2003fingerprint,toh2008between} were compared. Parameters were selected that performed optimally in each traditional method. For LSE,SVM, and TER, the input signatures were reduced to 500$\times$30 by averaging the subcarrier axis. For PCA-LSE, the input signature dimension was reduced to 40 following~\cite{moon2017air}. For SVM with a Gaussian kernel function ("RBF"), the kernel's parameters $c$ and $\gamma$ were chosen by a grid search over the range $c\in\{0.01,1,10\}$ and $\gamma\in\{0.01/3000, 0.1/3000, 1/3000, 10/3000, 100/3000\}$. For TER, the parameter M was chosen from among $M\in\{1,2,3\}$ and $\tau=\eta=0.5$ following~\cite{toh2008between}.
+For handcraft methods' least square estimations (``LSE'')~\cite{duda2012pattern}, PCA with LSE~\cite{turk1991eigenfaces}, support vector machine~\cite{vapnik2013nature} and the total error minimization with reduced multivariate polynomials~\cite{toh2003fingerprint,toh2008between} were compared. Parameters were selected that performed optimally in each traditional method. For LSE,SVM, and TER, the input signatures were reduced to 500$\times$30 by averaging the subcarrier axis. For PCA-LSE, the input signature dimension was reduced to 40 following~\cite{moon2017air}. For SVM with a Gaussian kernel function (``RBF''), the kernel's parameters $c$ and $\gamma$ were chosen by a grid search over the range $c\in\{0.01,1,10\}$ and $\gamma\in\{0.01/3000, 0.1/3000, 1/3000, 10/3000, 100/3000\}$. For TER, the parameter M was chosen from among $M\in\{1,2,3\}$ and $\tau=\eta=0.5$ following~\cite{toh2008between}.
 For comparison with deep-learning based methods, Siamese network~\cite{koch2015siamese} and baseline triplet network~\cite{hoffer2015deep} were used.
 The proposed method was compared to Siamese networks~\cite{koch2015siamese} and baseline triplet networks~\cite{hoffer2015deep} as deep learning based methods.
 %protocols
-Verification performance was evaluated in terms of the equal error rate ("EER"). Random five-runs of two-fold cross-validation tests were conducted.
+Verification performance was evaluated in terms of the equal error rate (``EER''). Random five-runs of two-fold cross-validation tests were conducted.
 Due to hardware memory limitations, the number of negative pairs used was reduced to the number of positive data pairs used for calculating the EER for a total of 18,620 pairs.
 % KAR structure
 The structure of the KAR learning MLP sub-networks in the proposed system is shown in~\ref{kar_structure}. The two layers' sizes were set to 1,024 and 16. The size of the second layer was equal to the number of feature vectors of the proposed ConvNet. The weights in the layers were initialized in a normal distribution between 0 and 1 before training.
@@ -79,7 +78,7 @@ Deep learning based methods out-performed the traditional methods because they u
 \end{table}
 
 %roc
-The proposed method had the widest area under the receiver operating characteristic ("ROC") curve (Fig.~\ref{fig_roc}).
+The proposed method had the widest area under the receiver operating characteristic (``ROC'') curve (Fig.~\ref{fig_roc}).
 \begin{figure*}[!ht]
     \includegraphics[width=\textwidth]{fig_roc_v15.eps}
     \caption{Normalized training loss curve.} \label{fig_roc}

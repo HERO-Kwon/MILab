@@ -3,14 +3,14 @@
 \section{Preprocessing}
 \label{sec:preprocessing}
 Wi-Fi signature data must be pre-processed to be used as an input in the proposed system.
-First, data must be simplified. In this study, only the magnitude of the complex signal was utilized due to device firmware issues with the phase value of the 2.4Ghz Wi-Fi signal~\cite{wang2015understanding}.
+In this study, only the magnitude of the complex signal was utilized due to device firmware issues with the phase value of the 2.4Ghz Wi-Fi signal~\cite{wang2015understanding}.
 Second, the data must be made to be the same size. All signals have different lengths, so equal length sampling was used to ensure that all data had the same length.
 Third, outliers must be addressed. Wi-Fi signals are interrupted by other electromagnetic radiation of which burst noise~\cite{wang2015understanding} can have significant effects. Thus, only data within one standard deviation of the median were analyzed to minimize the effects of burst noise.
 % 4.3. Proposed Methodology
 \section{Proposed Methodology}
 \label{sec:methodology}
 %purpose
-This thesis proposed an identity verification system based on the Wi-Fi signals produced by in-air handwritten signatures ("Wi-Fi signature"). 
+This thesis proposed an identity verification system based on the Wi-Fi signals produced by in-air handwritten signatures (``Wi-Fi signature''). 
 %function
 Triplet networks which utilized ConvNet as the feature extractor were used to learn the direction-invariant deep representations of in-air signatures~\cite{hoffer2015deep}. KAR space learning was used to mine triplet inputs to achieve faster loss convergence~\cite{toh2018learning,toh2018gradient}. 
 % figure
@@ -51,14 +51,14 @@ Note that if $dist\{f(x_0),f(x_-)\}$ is much larger than $dist\{f(x_0),f(x_+)\} 
 % purpose
 To train the triplet network faster, a sub-network for mining the hard positive and negative samples from the training dataset was trained.
 % hard sample
-The hard positive sample is likely to be misclassified as a negative sample by the triplet network (Fig.~ref{fig2}).
+The hard positive sample is likely to be misclassified as a negative sample by the triplet network (Fig.~\ref{fig2}).
 The distance between the feature vectors of the anchor and hard positive samples is larger than other positive samples.
 The hard negative sample is likely to be misclassified as a positive sample because the distance between the feature vectors of the anchor and the hard negative sample is smaller than the difference between the feature vectors of the anchor and other negative samples.
 Hard triplet inputs are made by combining hard positive and hard negative samples with selected anchor samples. Using hard triplets as triplet network inputs more easily, satisfies~\ref{triplet_condition}. However, before training the triplet network, it is impossible to identify hard samples.
 % figure
 \begin{figure*}[!ht]
     \includegraphics[width=\textwidth]
-        {fig_hardsample_v1.pdf}
+        {fig_hardsample_v2.pdf}
     \caption{Selection of hard samples.} \label{fig2}
 \end{figure*}
 % functions
