@@ -19,11 +19,11 @@
 \contentsline {chapter}{\numberline {4}Experiments}{19}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Data set}{19}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Experimental Parameters}{19}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Experimental Results}{22}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}Performance}{22}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}Convergence Speed}{22}{subsection.4.3.2}% 
-\contentsline {subsection}{\numberline {4.3.3}Feature Vector Size Effect}{23}{subsection.4.3.3}% 
-\contentsline {subsection}{\numberline {4.3.4}2D Visualization of the Feature Vectors}{24}{subsection.4.3.4}% 
-\contentsline {chapter}{\numberline {5}Conclusion}{29}{chapter.5}% 
-\contentsline {chapter}{\numberline {} \hspace *{-0.29in} Bibliography}{29}{chapter.5}% 
-\contentsline {chapter}{\numberline {} \hspace *{-0.29in} Summary (in Korean)}{37}{chapter*.18}% 
+\contentsline {section}{\numberline {4.3}Experimental Results}{23}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}Performance}{23}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Convergence Speed}{23}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}Feature Vector Size Effect}{24}{subsection.4.3.3}% 
+\contentsline {subsection}{\numberline {4.3.4}Comaprison between mining algorithms}{25}{subsection.4.3.4}% 
+\contentsline {chapter}{\numberline {5}Conclusion}{28}{chapter.5}% 
+\contentsline {chapter}{\numberline {} \hspace *{-0.29in} Bibliography}{28}{chapter.5}% 
+\contentsline {chapter}{\numberline {} \hspace *{-0.29in} Summary (in Korean)}{36}{chapter*.18}% 
