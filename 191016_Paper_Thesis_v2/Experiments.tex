@@ -2,8 +2,7 @@
 \section{Data set}
 \label{sec:Dataset}
 The Wi-Fi CSI signature dataset~\cite{moon2017air} at position 1 was used to test the proposed system. These dataset contained 10 signatures made by 98 people in each direction for a total of 980 signatures made in each direction, as shown in~\ref{tab_dataset}. The size of each sample had a data resolution of 500 x 30 x 6. 
-\textbf{
-Visualization of CSI signature data is shown in Fig.~\ref{fig_csi}.}
+Visualization of CSI signature data is shown in Fig.~\ref{fig_csi}.
 %fig:csi
 \begin{figure}[!ht]
     \includegraphics[width=\textwidth]{fig_csi_v2.pdf}
@@ -103,8 +102,8 @@ Deep learning based methods out-performed the traditional methods because they u
 %roc
 The proposed method had the widest area under the receiver operating characteristic (``ROC'') curve (Fig.~\ref{fig_roc}).
 \begin{figure*}[!ht]
-    \includegraphics[width=\textwidth]{fig_roc_v15.eps}
-    \caption{Normalized training loss curve.} \label{fig_roc}
+    \includegraphics[width=\textwidth]{fig_roc_v17.eps}
+    \caption{ROC curves} \label{fig_roc}
 \end{figure*}
  %5.3.1. conv speed
 \subsection{Convergence Speed}
@@ -115,10 +114,11 @@ Fig.~\ref{fig_loss} shows the convergence of the normalized loss function during
 \end{figure*}
 %5.3.2. feature vector
 \subsection{Feature Vector Size Effect}
-Fig.~\ref{fclayer} shows the EERs for different sizes of feature vectors in the feature space. 
+Fig.~\ref{fclayer} and~\ref{tab_feature_vectors} shows the EERs for different sizes of feature vectors in the feature space. 
 For metric learning systems, feature vector size is generally positively correlated with system performance.
 The proposed system's performance was negatively correlated with feature vector size.
 \begin{table}[]
+    \caption{Feature Vector Size Effect.}\label{tab_feature_vectors}
     \centering
     \begin{tabular}{|l|l|l|l|l|}
     \hline
@@ -151,18 +151,14 @@ To visualize the proposed system's feature extraction performance, the feature s
 The proposed method used the space most efficiently. The Siamese network linearly arranged feature vectors, making it difficult to distinguish between classes. The baseline triplet network caused many identities to overlap.
 \fi
 %5.3.3. Comparision between mining methods
-\subsection{Comaprison between mining algorithms}
-\textbf{
+\subsection{Comparison between mining algorithms}
 In this section, the proposed system is compared to a triplet network that adopted different mining methods. The methods used for mining are the traditional methods given in Table \ref{tab_dataset}. 
-We also compared Extreme Learning Machine (``ELM'').
-ELM is a fast-learning SLFN network which uses an analistic method for calculating the weight of the network~\cite{huang2006extreme}.
-For the traditional methods, the input signals are resized to 500 × 30 by averaging along the subcarrier axes due to limitation of hardware memory.}
-
-\textbf{
-Table \ref{tab_mining} shows the test EER of proposed and compared triplet mining methods. 
-TER-RM2 showed the best test EER performance in this case. Proposed system (KAR learning) showed slightly worse performance of 16.67\% EER. SVM also showed good performance.
+We also compared Extreme Learning Machine (``ELM'')~\cite{huang2006extreme}.
+ELM is a fast-learning SLFN network which uses an analytic method for calculating the weight of the network.
+For the traditional methods, the input signals are resized to 500 × 30 by averaging along the subcarrier axes due to limitation of hardware memory.
+Table \ref{tab_mining} shows the best test EER of proposed and compared triplet mining methods. TER-RM2 showed slightly worse performance of 16.67\% EER. SVM also showed good performance.
 From this result, it can be seen that the traditional method can increase the accuracy of the triplet network when applied to the triplet mining.
-}
+
 
 \begin{table}[!h]
     \caption{Average EER between mining methods.}\label{tab_mining}
@@ -174,7 +170,7 @@ From this result, it can be seen that the traditional method can increase the ac
     SVM (Linear) &   17.48   &   c=1 \\
     SVM (RBF)    &   17.31   &   c=1, $\gamma$=0.01/3000 \\
     ELM &   17.02   &   layer=[1024,16] \\
-    TER-RM2 &   16.37   &  M=1,$\tau$=$\eta$=0.5   \\     \hline
+    TER-RM2 &   16.79   &  M=2,$\tau$=$\eta$=0.5   \\     \hline
     \textbf{Proposed System} &   \textbf{16.67}   &  \textbf{layer=[1024,64,16]}  \\
      \hline
     \end{tabular}

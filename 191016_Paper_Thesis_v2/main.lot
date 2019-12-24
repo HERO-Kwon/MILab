@@ -6,5 +6,6 @@
 \contentsline {table}{\numberline {4.2}{\ignorespaces KAR space learning network structure.\relax }}{22}{table.caption.10}% 
 \contentsline {table}{\numberline {4.3}{\ignorespaces ConvNet model structuer.\relax }}{22}{table.caption.11}% 
 \contentsline {table}{\numberline {4.4}{\ignorespaces Average EER of five-runs of two-fold cross-validation tests.\relax }}{23}{table.caption.12}% 
-\contentsline {table}{\numberline {4.5}{\ignorespaces Average EER between mining methods.\relax }}{27}{table.caption.17}% 
+\contentsline {table}{\numberline {4.5}{\ignorespaces Feature Vector Size Effect.\relax }}{24}{table.caption.15}% 
+\contentsline {table}{\numberline {4.6}{\ignorespaces Average EER between mining methods.\relax }}{26}{table.caption.17}% 
 \addvspace {10\p@ }

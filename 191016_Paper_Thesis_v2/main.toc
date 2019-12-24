@@ -23,7 +23,7 @@
 \contentsline {subsection}{\numberline {4.3.1}Performance}{23}{subsection.4.3.1}% 
 \contentsline {subsection}{\numberline {4.3.2}Convergence Speed}{23}{subsection.4.3.2}% 
 \contentsline {subsection}{\numberline {4.3.3}Feature Vector Size Effect}{24}{subsection.4.3.3}% 
-\contentsline {subsection}{\numberline {4.3.4}Comaprison between mining algorithms}{25}{subsection.4.3.4}% 
-\contentsline {chapter}{\numberline {5}Conclusion}{28}{chapter.5}% 
-\contentsline {chapter}{\numberline {} \hspace *{-0.29in} Bibliography}{28}{chapter.5}% 
-\contentsline {chapter}{\numberline {} \hspace *{-0.29in} Summary (in Korean)}{36}{chapter*.18}% 
+\contentsline {subsection}{\numberline {4.3.4}Comparison between mining algorithms}{25}{subsection.4.3.4}% 
+\contentsline {chapter}{\numberline {5}Conclusion}{27}{chapter.5}% 
+\contentsline {chapter}{\numberline {} \hspace *{-0.29in} Bibliography}{27}{chapter.5}% 
+\contentsline {chapter}{\numberline {} \hspace *{-0.29in} Summary (in Korean)}{35}{chapter*.18}% 
