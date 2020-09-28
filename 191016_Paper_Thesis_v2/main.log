@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  24 DEC 2019 11:06
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.4.16)  2 JAN 2020 16:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -197,274 +197,170 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 ) (c:/texlive/2018/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-) (c:/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode not found.
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO)
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
-)
-Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
-) (c:/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
-) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-)
-\@linkdim=\dimen129
-\Hy@linkcounter=\count115
-\Hy@pagecounter=\count116
- (c:/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
-)
-\Hy@SavedSpaceFactor=\count117
- (c:/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
-)
-Package hyperref Info: Hyper figures OFF on input line 4519.
-Package hyperref Info: Link nesting OFF on input line 4524.
-Package hyperref Info: Hyper index ON on input line 4527.
-Package hyperref Info: Plain pages OFF on input line 4534.
-Package hyperref Info: Backreferencing OFF on input line 4539.
-Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4772.
-\c@Hy@tempcnt=\count118
- (c:/texlive/2018/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip11
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-LaTeX Info: Redefining \url on input line 5125.
-\XeTeXLinkMargin=\dimen130
-\Fld@menulength=\count119
-\Field@Width=\dimen131
-\Fld@charsize=\dimen132
-Package hyperref Info: Hyper figures OFF on input line 6380.
-Package hyperref Info: Link nesting OFF on input line 6385.
-Package hyperref Info: Hyper index ON on input line 6388.
-Package hyperref Info: backreferencing OFF on input line 6395.
-Package hyperref Info: Link coloring OFF on input line 6400.
-Package hyperref Info: Link coloring with OCG OFF on input line 6405.
-Package hyperref Info: PDF/A mode OFF on input line 6410.
-LaTeX Info: Redefining \ref on input line 6450.
-LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count120
-\c@Item=\count121
-\c@Hfootnote=\count122
-)
-Package hyperref Info: Driver (autodetected): hxetex.
- (c:/texlive/2018/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2018/11/30 v6.88e Hyperref driver for XeTeX
- (c:/texlive/2018/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2018/11/30 v6.88e Hyperref: PDF Unicode definition (HO)
-) (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/stringenc.sty
-Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO)
-)
-\pdfm@box=\box32
-\c@Hy@AnnotLevel=\count123
-\HyField@AnnotCount=\count124
-\Fld@listcount=\count125
-\c@bookmark@seq@number=\count126
- (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 282.
-)
-\Hy@SectionHShift=\skip63
 ) (c:/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
-\multirow@colwidth=\skip64
-\multirow@cntb=\count127
-\multirow@dima=\skip65
-\bigstrutjot=\dimen133
+\multirow@colwidth=\skip63
+\multirow@cntb=\count115
+\multirow@dima=\skip64
+\bigstrutjot=\dimen129
 ) (c:/texlive/2018/texmf-dist/tex/latex/tabu/tabu.sty
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
  (c:/texlive/2018/texmf-dist/tex/latex/tools/array.sty
 Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
-\col@sep=\dimen134
-\ar@mcellbox=\box33
-\extrarowheight=\dimen135
+\col@sep=\dimen130
+\ar@mcellbox=\box32
+\extrarowheight=\dimen131
 \NC@list=\toks23
-\extratabsurround=\skip66
-\backup@length=\skip67
-\ar@cellbox=\box34
+\extratabsurround=\skip65
+\backup@length=\skip66
+\ar@cellbox=\box33
 ) (./varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box35
-\sift@deathcycles=\count128
-\@vwid@loff=\dimen136
-\@vwid@roff=\dimen137
+\@vwid@box=\box34
+\sift@deathcycles=\count116
+\@vwid@loff=\dimen132
+\@vwid@roff=\dimen133
 )
-\c@taburow=\count129
-\tabu@nbcols=\count130
-\tabu@cnt=\count131
-\tabu@Xcol=\count132
-\tabu@alloc=\count133
-\tabu@nested=\count134
-\tabu@target=\dimen138
-\tabu@spreadtarget=\dimen139
-\tabu@naturalX=\dimen140
-\tabucolX=\dimen141
-\tabu@Xsum=\dimen142
-\extrarowdepth=\dimen143
-\abovetabulinesep=\dimen144
-\belowtabulinesep=\dimen145
-\tabustrutrule=\dimen146
+\c@taburow=\count117
+\tabu@nbcols=\count118
+\tabu@cnt=\count119
+\tabu@Xcol=\count120
+\tabu@alloc=\count121
+\tabu@nested=\count122
+\tabu@target=\dimen134
+\tabu@spreadtarget=\dimen135
+\tabu@naturalX=\dimen136
+\tabucolX=\dimen137
+\tabu@Xsum=\dimen138
+\extrarowdepth=\dimen139
+\abovetabulinesep=\dimen140
+\belowtabulinesep=\dimen141
+\tabustrutrule=\dimen142
 \tabu@thebody=\toks24
 \tabu@footnotes=\toks25
-\tabu@box=\box36
-\tabu@arstrutbox=\box37
-\tabu@hleads=\box38
-\tabu@vleads=\box39
-\tabu@cellskip=\skip68
+\tabu@box=\box35
+\tabu@arstrutbox=\box36
+\tabu@hleads=\box37
+\tabu@vleads=\box38
+\tabu@cellskip=\skip67
+) (c:/texlive/2018/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (./easybmat.sty
 Document Style `easybmat' v1.0 <2001/06/13>.
 (./easy.sty
 Document Style `easy' v1.1 <2001/05/31>.
 Package: easy 2001/05/31 v1.1
-\@easy@level=\count135
-\@easy@ncol=\count136
-\@easy@nrow=\count137
-\@easy@cnt=\count138
-\@easy@boxviii=\box40
-\@easy@minxviii=\dimen147
-\@easy@minyviii=\dimen148
-\@easy@maxxviii=\dimen149
-\@easy@maxyviii=\dimen150
-\@easy@boxvii=\box41
-\@easy@minxvii=\dimen151
-\@easy@minyvii=\dimen152
-\@easy@maxxvii=\dimen153
-\@easy@maxyvii=\dimen154
-\@easy@boxvi=\box42
-\@easy@minxvi=\dimen155
-\@easy@minyvi=\dimen156
-\@easy@maxxvi=\dimen157
-\@easy@maxyvi=\dimen158
-\@easy@boxv=\box43
-\@easy@minxv=\dimen159
-\@easy@minyv=\dimen160
-\@easy@maxxv=\dimen161
-\@easy@maxyv=\dimen162
-\@easy@boxiv=\box44
-\@easy@minxiv=\dimen163
-\@easy@minyiv=\dimen164
-\@easy@maxxiv=\dimen165
-\@easy@maxyiv=\dimen166
-\@easy@boxiii=\box45
-\@easy@minxiii=\dimen167
-\@easy@minyiii=\dimen168
-\@easy@maxxiii=\dimen169
-\@easy@maxyiii=\dimen170
-\@easy@boxii=\box46
-\@easy@minxii=\dimen171
-\@easy@minyii=\dimen172
-\@easy@maxxii=\dimen173
-\@easy@maxyii=\dimen174
-\@easy@boxi=\box47
-\@easy@minxi=\dimen175
-\@easy@minyi=\dimen176
-\@easy@maxxi=\dimen177
-\@easy@maxyi=\dimen178
-\@easy@hsizexxx=\dimen179
-\@easy@vsizexxx=\dimen180
-\@easy@hsizexxix=\dimen181
-\@easy@vsizexxix=\dimen182
-\@easy@hsizexxviii=\dimen183
-\@easy@vsizexxviii=\dimen184
-\@easy@hsizexxvii=\dimen185
-\@easy@vsizexxvii=\dimen186
-\@easy@hsizexxvi=\dimen187
-\@easy@vsizexxvi=\dimen188
-\@easy@hsizexxv=\dimen189
-\@easy@vsizexxv=\dimen190
-\@easy@hsizexxiv=\dimen191
-\@easy@vsizexxiv=\dimen192
-\@easy@hsizexxiii=\dimen193
-\@easy@vsizexxiii=\dimen194
-\@easy@hsizexxii=\dimen195
-\@easy@vsizexxii=\dimen196
-\@easy@hsizexxi=\dimen197
-\@easy@vsizexxi=\dimen198
-\@easy@hsizexx=\dimen256
-\@easy@vsizexx=\dimen257
-\@easy@hsizexix=\dimen258
-\@easy@vsizexix=\dimen259
-\@easy@hsizexviii=\dimen260
-\@easy@vsizexviii=\dimen261
-\@easy@hsizexvii=\dimen262
-\@easy@vsizexvii=\dimen263
-\@easy@hsizexvi=\dimen264
-\@easy@vsizexvi=\dimen265
-\@easy@hsizexv=\dimen266
-\@easy@vsizexv=\dimen267
-\@easy@hsizexiv=\dimen268
-\@easy@vsizexiv=\dimen269
-\@easy@hsizexiii=\dimen270
-\@easy@vsizexiii=\dimen271
-\@easy@hsizexii=\dimen272
-\@easy@vsizexii=\dimen273
-\@easy@hsizexi=\dimen274
-\@easy@vsizexi=\dimen275
-\@easy@hsizex=\dimen276
-\@easy@vsizex=\dimen277
-\@easy@hsizeix=\dimen278
-\@easy@vsizeix=\dimen279
-\@easy@hsizeviii=\dimen280
-\@easy@vsizeviii=\dimen281
-\@easy@hsizevii=\dimen282
-\@easy@vsizevii=\dimen283
-\@easy@hsizevi=\dimen284
-\@easy@vsizevi=\dimen285
-\@easy@hsizev=\dimen286
-\@easy@vsizev=\dimen287
-\@easy@hsizeiv=\dimen288
-\@easy@vsizeiv=\dimen289
-\@easy@hsizeiii=\dimen290
-\@easy@vsizeiii=\dimen291
-\@easy@hsizeii=\dimen292
-\@easy@vsizeii=\dimen293
-\@easy@hsizei=\dimen294
-\@easy@vsizei=\dimen295
-\@easy@dash@len=\dimen296
-\@easy@dash@sep=\dimen297
+\@easy@level=\count123
+\@easy@ncol=\count124
+\@easy@nrow=\count125
+\@easy@cnt=\count126
+\@easy@boxviii=\box39
+\@easy@minxviii=\dimen143
+\@easy@minyviii=\dimen144
+\@easy@maxxviii=\dimen145
+\@easy@maxyviii=\dimen146
+\@easy@boxvii=\box40
+\@easy@minxvii=\dimen147
+\@easy@minyvii=\dimen148
+\@easy@maxxvii=\dimen149
+\@easy@maxyvii=\dimen150
+\@easy@boxvi=\box41
+\@easy@minxvi=\dimen151
+\@easy@minyvi=\dimen152
+\@easy@maxxvi=\dimen153
+\@easy@maxyvi=\dimen154
+\@easy@boxv=\box42
+\@easy@minxv=\dimen155
+\@easy@minyv=\dimen156
+\@easy@maxxv=\dimen157
+\@easy@maxyv=\dimen158
+\@easy@boxiv=\box43
+\@easy@minxiv=\dimen159
+\@easy@minyiv=\dimen160
+\@easy@maxxiv=\dimen161
+\@easy@maxyiv=\dimen162
+\@easy@boxiii=\box44
+\@easy@minxiii=\dimen163
+\@easy@minyiii=\dimen164
+\@easy@maxxiii=\dimen165
+\@easy@maxyiii=\dimen166
+\@easy@boxii=\box45
+\@easy@minxii=\dimen167
+\@easy@minyii=\dimen168
+\@easy@maxxii=\dimen169
+\@easy@maxyii=\dimen170
+\@easy@boxi=\box46
+\@easy@minxi=\dimen171
+\@easy@minyi=\dimen172
+\@easy@maxxi=\dimen173
+\@easy@maxyi=\dimen174
+\@easy@hsizexxx=\dimen175
+\@easy@vsizexxx=\dimen176
+\@easy@hsizexxix=\dimen177
+\@easy@vsizexxix=\dimen178
+\@easy@hsizexxviii=\dimen179
+\@easy@vsizexxviii=\dimen180
+\@easy@hsizexxvii=\dimen181
+\@easy@vsizexxvii=\dimen182
+\@easy@hsizexxvi=\dimen183
+\@easy@vsizexxvi=\dimen184
+\@easy@hsizexxv=\dimen185
+\@easy@vsizexxv=\dimen186
+\@easy@hsizexxiv=\dimen187
+\@easy@vsizexxiv=\dimen188
+\@easy@hsizexxiii=\dimen189
+\@easy@vsizexxiii=\dimen190
+\@easy@hsizexxii=\dimen191
+\@easy@vsizexxii=\dimen192
+\@easy@hsizexxi=\dimen193
+\@easy@vsizexxi=\dimen194
+\@easy@hsizexx=\dimen195
+\@easy@vsizexx=\dimen196
+\@easy@hsizexix=\dimen197
+\@easy@vsizexix=\dimen198
+\@easy@hsizexviii=\dimen256
+\@easy@vsizexviii=\dimen257
+\@easy@hsizexvii=\dimen258
+\@easy@vsizexvii=\dimen259
+\@easy@hsizexvi=\dimen260
+\@easy@vsizexvi=\dimen261
+\@easy@hsizexv=\dimen262
+\@easy@vsizexv=\dimen263
+\@easy@hsizexiv=\dimen264
+\@easy@vsizexiv=\dimen265
+\@easy@hsizexiii=\dimen266
+\@easy@vsizexiii=\dimen267
+\@easy@hsizexii=\dimen268
+\@easy@vsizexii=\dimen269
+\@easy@hsizexi=\dimen270
+\@easy@vsizexi=\dimen271
+\@easy@hsizex=\dimen272
+\@easy@vsizex=\dimen273
+\@easy@hsizeix=\dimen274
+\@easy@vsizeix=\dimen275
+\@easy@hsizeviii=\dimen276
+\@easy@vsizeviii=\dimen277
+\@easy@hsizevii=\dimen278
+\@easy@vsizevii=\dimen279
+\@easy@hsizevi=\dimen280
+\@easy@vsizevi=\dimen281
+\@easy@hsizev=\dimen282
+\@easy@vsizev=\dimen283
+\@easy@hsizeiv=\dimen284
+\@easy@vsizeiv=\dimen285
+\@easy@hsizeiii=\dimen286
+\@easy@vsizeiii=\dimen287
+\@easy@hsizeii=\dimen288
+\@easy@vsizeii=\dimen289
+\@easy@hsizei=\dimen290
+\@easy@vsizei=\dimen291
+\@easy@dash@len=\dimen292
+\@easy@dash@sep=\dimen293
 )
 Package: easybmat 2001/05/31 v1.1
-\@bmat@size@rule=\dimen298
-\@bmat@size@dash=\dimen299
+\@bmat@size@rule=\dimen294
+\@bmat@size@dash=\dimen295
 ) (c:/texlive/2018/texmf-dist/tex/latex/cjk-ko/kotex.sty
 Package: kotex 2015/04/19 v1.6 Korean TeX (ko.TeX)
  (c:/texlive/2018/texmf-dist/tex/latex/kotex-utf/kotex.cfg) (c:/texlive/2018/texmf-dist/tex/xetex/xetexko/xetexko.sty
@@ -503,187 +399,187 @@ Reading Unicode east Asian character class data
 \XKlatinnumber=\XeTeXcharclass22
 \XKhanjacombining=\XeTeXcharclass23
 \XK@toks@=\toks26
-\XKdotemphbox=\box48
+\XKdotemphbox=\box47
 ) (c:/texlive/2018/texmf-dist/tex/xetex/xetexko/xetexko-josa.sty
 Package: xetexko-josa 2018/04/06 v2.18 Auto-josa for XeTeX-ko
-\@josa=\count139
+\@josa=\count127
 ) (c:/texlive/2018/texmf-dist/tex/xetex/xetexko/xetexko-font.sty
 Package: xetexko-font 2018/08/08 v2.21 LaTeX Font commands for XeTeX-ko
  (c:/texlive/2018/texmf-dist/tex/latex/fontspec/fontspec.sty (c:/texlive/2018/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (c:/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2019-02-15 L3 programming layer (loader) 
  (c:/texlive/2018/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 Package: expl3 2019-02-15 L3 programming layer (code)
-\c_max_int=\count140
-\l_tmpa_int=\count141
-\l_tmpb_int=\count142
-\g_tmpa_int=\count143
-\g_tmpb_int=\count144
-\g__kernel_prg_map_int=\count145
-\c_log_iow=\count146
-\l_iow_line_count_int=\count147
-\l__iow_line_target_int=\count148
-\l__iow_one_indent_int=\count149
-\l__iow_indent_int=\count150
-\c_zero_dim=\dimen300
-\c_max_dim=\dimen301
-\l_tmpa_dim=\dimen302
-\l_tmpb_dim=\dimen303
-\g_tmpa_dim=\dimen304
-\g_tmpb_dim=\dimen305
-\c_zero_skip=\skip69
-\c_max_skip=\skip70
-\l_tmpa_skip=\skip71
-\l_tmpb_skip=\skip72
-\g_tmpa_skip=\skip73
-\g_tmpb_skip=\skip74
+\c_max_int=\count128
+\l_tmpa_int=\count129
+\l_tmpb_int=\count130
+\g_tmpa_int=\count131
+\g_tmpb_int=\count132
+\g__kernel_prg_map_int=\count133
+\c_log_iow=\count134
+\l_iow_line_count_int=\count135
+\l__iow_line_target_int=\count136
+\l__iow_one_indent_int=\count137
+\l__iow_indent_int=\count138
+\c_zero_dim=\dimen296
+\c_max_dim=\dimen297
+\l_tmpa_dim=\dimen298
+\l_tmpb_dim=\dimen299
+\g_tmpa_dim=\dimen300
+\g_tmpb_dim=\dimen301
+\c_zero_skip=\skip68
+\c_max_skip=\skip69
+\l_tmpa_skip=\skip70
+\l_tmpb_skip=\skip71
+\g_tmpa_skip=\skip72
+\g_tmpb_skip=\skip73
 \c_zero_muskip=\muskip12
 \c_max_muskip=\muskip13
 \l_tmpa_muskip=\muskip14
 \l_tmpb_muskip=\muskip15
 \g_tmpa_muskip=\muskip16
 \g_tmpb_muskip=\muskip17
-\l_keys_choice_int=\count151
-\l__intarray_loop_int=\count152
-\c__intarray_sp_dim=\dimen306
-\g__intarray_font_int=\count153
-\c__fp_leading_shift_int=\count154
-\c__fp_middle_shift_int=\count155
-\c__fp_trailing_shift_int=\count156
-\c__fp_big_leading_shift_int=\count157
-\c__fp_big_middle_shift_int=\count158
-\c__fp_big_trailing_shift_int=\count159
-\c__fp_Bigg_leading_shift_int=\count160
-\c__fp_Bigg_middle_shift_int=\count161
-\c__fp_Bigg_trailing_shift_int=\count162
-\g__fp_array_int=\count163
-\l__fp_array_loop_int=\count164
-\l__sort_length_int=\count165
-\l__sort_min_int=\count166
-\l__sort_top_int=\count167
-\l__sort_max_int=\count168
-\l__sort_true_max_int=\count169
-\l__sort_block_int=\count170
-\l__sort_begin_int=\count171
-\l__sort_end_int=\count172
-\l__sort_A_int=\count173
-\l__sort_B_int=\count174
-\l__sort_C_int=\count175
-\l__tl_analysis_normal_int=\count176
-\l__tl_analysis_index_int=\count177
-\l__tl_analysis_nesting_int=\count178
-\l__tl_analysis_type_int=\count179
-\l__regex_internal_a_int=\count180
-\l__regex_internal_b_int=\count181
-\l__regex_internal_c_int=\count182
-\l__regex_balance_int=\count183
-\l__regex_group_level_int=\count184
-\l__regex_mode_int=\count185
-\c__regex_cs_in_class_mode_int=\count186
-\c__regex_cs_mode_int=\count187
-\l__regex_catcodes_int=\count188
-\l__regex_default_catcodes_int=\count189
-\c__regex_catcode_L_int=\count190
-\c__regex_catcode_O_int=\count191
-\c__regex_catcode_A_int=\count192
-\c__regex_all_catcodes_int=\count193
-\l__regex_show_lines_int=\count194
-\l__regex_min_state_int=\count195
-\l__regex_max_state_int=\count196
-\l__regex_left_state_int=\count197
-\l__regex_right_state_int=\count198
-\l__regex_capturing_group_int=\count266
-\l__regex_min_pos_int=\count267
-\l__regex_max_pos_int=\count268
-\l__regex_curr_pos_int=\count269
-\l__regex_start_pos_int=\count270
-\l__regex_success_pos_int=\count271
-\l__regex_curr_char_int=\count272
-\l__regex_curr_catcode_int=\count273
-\l__regex_last_char_int=\count274
-\l__regex_case_changed_char_int=\count275
-\l__regex_curr_state_int=\count276
-\l__regex_step_int=\count277
-\l__regex_min_active_int=\count278
-\l__regex_max_active_int=\count279
-\l__regex_replacement_csnames_int=\count280
-\l__regex_match_count_int=\count281
-\l__regex_min_submatch_int=\count282
-\l__regex_submatch_int=\count283
-\l__regex_zeroth_submatch_int=\count284
-\g__regex_trace_regex_int=\count285
-\c_empty_box=\box49
-\l_tmpa_box=\box50
-\l_tmpb_box=\box51
-\g_tmpa_box=\box52
-\g_tmpb_box=\box53
-\l__box_top_dim=\dimen307
-\l__box_bottom_dim=\dimen308
-\l__box_left_dim=\dimen309
-\l__box_right_dim=\dimen310
-\l__box_top_new_dim=\dimen311
-\l__box_bottom_new_dim=\dimen312
-\l__box_left_new_dim=\dimen313
-\l__box_right_new_dim=\dimen314
-\l__box_internal_box=\box54
-\l__coffin_internal_box=\box55
-\l__coffin_internal_dim=\dimen315
-\l__coffin_offset_x_dim=\dimen316
-\l__coffin_offset_y_dim=\dimen317
-\l__coffin_x_dim=\dimen318
-\l__coffin_y_dim=\dimen319
-\l__coffin_x_prime_dim=\dimen320
-\l__coffin_y_prime_dim=\dimen321
-\c_empty_coffin=\box56
-\l__coffin_aligned_coffin=\box57
-\l__coffin_aligned_internal_coffin=\box58
-\l_tmpa_coffin=\box59
-\l_tmpb_coffin=\box60
-\g_tmpa_coffin=\box61
-\g_tmpb_coffin=\box62
-\c__coffin_empty_coffin=\box63
-\l__coffin_display_coffin=\box64
-\l__coffin_display_coord_coffin=\box65
-\l__coffin_display_pole_coffin=\box66
-\l__coffin_display_offset_dim=\dimen322
-\l__coffin_display_x_dim=\dimen323
-\l__coffin_display_y_dim=\dimen324
+\l_keys_choice_int=\count139
+\l__intarray_loop_int=\count140
+\c__intarray_sp_dim=\dimen302
+\g__intarray_font_int=\count141
+\c__fp_leading_shift_int=\count142
+\c__fp_middle_shift_int=\count143
+\c__fp_trailing_shift_int=\count144
+\c__fp_big_leading_shift_int=\count145
+\c__fp_big_middle_shift_int=\count146
+\c__fp_big_trailing_shift_int=\count147
+\c__fp_Bigg_leading_shift_int=\count148
+\c__fp_Bigg_middle_shift_int=\count149
+\c__fp_Bigg_trailing_shift_int=\count150
+\g__fp_array_int=\count151
+\l__fp_array_loop_int=\count152
+\l__sort_length_int=\count153
+\l__sort_min_int=\count154
+\l__sort_top_int=\count155
+\l__sort_max_int=\count156
+\l__sort_true_max_int=\count157
+\l__sort_block_int=\count158
+\l__sort_begin_int=\count159
+\l__sort_end_int=\count160
+\l__sort_A_int=\count161
+\l__sort_B_int=\count162
+\l__sort_C_int=\count163
+\l__tl_analysis_normal_int=\count164
+\l__tl_analysis_index_int=\count165
+\l__tl_analysis_nesting_int=\count166
+\l__tl_analysis_type_int=\count167
+\l__regex_internal_a_int=\count168
+\l__regex_internal_b_int=\count169
+\l__regex_internal_c_int=\count170
+\l__regex_balance_int=\count171
+\l__regex_group_level_int=\count172
+\l__regex_mode_int=\count173
+\c__regex_cs_in_class_mode_int=\count174
+\c__regex_cs_mode_int=\count175
+\l__regex_catcodes_int=\count176
+\l__regex_default_catcodes_int=\count177
+\c__regex_catcode_L_int=\count178
+\c__regex_catcode_O_int=\count179
+\c__regex_catcode_A_int=\count180
+\c__regex_all_catcodes_int=\count181
+\l__regex_show_lines_int=\count182
+\l__regex_min_state_int=\count183
+\l__regex_max_state_int=\count184
+\l__regex_left_state_int=\count185
+\l__regex_right_state_int=\count186
+\l__regex_capturing_group_int=\count187
+\l__regex_min_pos_int=\count188
+\l__regex_max_pos_int=\count189
+\l__regex_curr_pos_int=\count190
+\l__regex_start_pos_int=\count191
+\l__regex_success_pos_int=\count192
+\l__regex_curr_char_int=\count193
+\l__regex_curr_catcode_int=\count194
+\l__regex_last_char_int=\count195
+\l__regex_case_changed_char_int=\count196
+\l__regex_curr_state_int=\count197
+\l__regex_step_int=\count198
+\l__regex_min_active_int=\count266
+\l__regex_max_active_int=\count267
+\l__regex_replacement_csnames_int=\count268
+\l__regex_match_count_int=\count269
+\l__regex_min_submatch_int=\count270
+\l__regex_submatch_int=\count271
+\l__regex_zeroth_submatch_int=\count272
+\g__regex_trace_regex_int=\count273
+\c_empty_box=\box48
+\l_tmpa_box=\box49
+\l_tmpb_box=\box50
+\g_tmpa_box=\box51
+\g_tmpb_box=\box52
+\l__box_top_dim=\dimen303
+\l__box_bottom_dim=\dimen304
+\l__box_left_dim=\dimen305
+\l__box_right_dim=\dimen306
+\l__box_top_new_dim=\dimen307
+\l__box_bottom_new_dim=\dimen308
+\l__box_left_new_dim=\dimen309
+\l__box_right_new_dim=\dimen310
+\l__box_internal_box=\box53
+\l__coffin_internal_box=\box54
+\l__coffin_internal_dim=\dimen311
+\l__coffin_offset_x_dim=\dimen312
+\l__coffin_offset_y_dim=\dimen313
+\l__coffin_x_dim=\dimen314
+\l__coffin_y_dim=\dimen315
+\l__coffin_x_prime_dim=\dimen316
+\l__coffin_y_prime_dim=\dimen317
+\c_empty_coffin=\box55
+\l__coffin_aligned_coffin=\box56
+\l__coffin_aligned_internal_coffin=\box57
+\l_tmpa_coffin=\box58
+\l_tmpb_coffin=\box59
+\g_tmpa_coffin=\box60
+\g_tmpb_coffin=\box61
+\c__coffin_empty_coffin=\box62
+\l__coffin_display_coffin=\box63
+\l__coffin_display_coord_coffin=\box64
+\l__coffin_display_pole_coffin=\box65
+\l__coffin_display_offset_dim=\dimen318
+\l__coffin_display_x_dim=\dimen319
+\l__coffin_display_y_dim=\dimen320
 \g__file_internal_ior=\read1
-\l__coffin_bounding_shift_dim=\dimen325
-\l__coffin_left_corner_dim=\dimen326
-\l__coffin_right_corner_dim=\dimen327
-\l__coffin_bottom_corner_dim=\dimen328
-\l__coffin_top_corner_dim=\dimen329
-\l__coffin_scaled_total_height_dim=\dimen330
-\l__coffin_scaled_width_dim=\dimen331
+\l__coffin_bounding_shift_dim=\dimen321
+\l__coffin_left_corner_dim=\dimen322
+\l__coffin_right_corner_dim=\dimen323
+\l__coffin_bottom_corner_dim=\dimen324
+\l__coffin_top_corner_dim=\dimen325
+\l__coffin_scaled_total_height_dim=\dimen326
+\l__coffin_scaled_width_dim=\dimen327
 ) (c:/texlive/2018/texmf-dist/tex/latex/l3kernel/l3xdvipdfmx.def
 File: l3xdvipdfmx.def 2019-02-15 v L3 Experimental driver: xdvipdfmx
-\g__driver_image_int=\count286
-\g__driver_pdf_object_int=\count287
+\g__driver_image_int=\count274
+\g__driver_pdf_object_int=\count275
 ))
 Package: xparse 2018-10-17 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count288
-\g__xparse_grabber_int=\count289
-\l__xparse_m_args_int=\count290
-\l__xparse_mandatory_args_int=\count291
-\l__xparse_v_nesting_int=\count292
+\l__xparse_current_arg_int=\count276
+\g__xparse_grabber_int=\count277
+\l__xparse_m_args_int=\count278
+\l__xparse_mandatory_args_int=\count279
+\l__xparse_v_nesting_int=\count280
 )
 Package: fontspec 2019/02/12 v2.7b Font selection for XeLaTeX and LuaLaTeX
  (c:/texlive/2018/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2019/02/12 v2.7b Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count293
-\l__fontspec_language_int=\count294
-\l__fontspec_strnum_int=\count295
-\l__fontspec_tmp_int=\count296
-\l__fontspec_tmpa_int=\count297
-\l__fontspec_tmpb_int=\count298
-\l__fontspec_tmpc_int=\count299
-\l__fontspec_em_int=\count300
-\l__fontspec_emdef_int=\count301
-\l__fontspec_strong_int=\count302
-\l__fontspec_strongdef_int=\count303
-\l__fontspec_tmpa_dim=\dimen332
-\l__fontspec_tmpb_dim=\dimen333
-\l__fontspec_tmpc_dim=\dimen334
+\l__fontspec_script_int=\count281
+\l__fontspec_language_int=\count282
+\l__fontspec_strnum_int=\count283
+\l__fontspec_tmp_int=\count284
+\l__fontspec_tmpa_int=\count285
+\l__fontspec_tmpb_int=\count286
+\l__fontspec_tmpc_int=\count287
+\l__fontspec_em_int=\count288
+\l__fontspec_emdef_int=\count289
+\l__fontspec_strong_int=\count290
+\l__fontspec_strongdef_int=\count291
+\l__fontspec_tmpa_dim=\dimen328
+\l__fontspec_tmpb_dim=\dimen329
+\l__fontspec_tmpc_dim=\dimen330
  (c:/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
  (c:/texlive/2018/texmf-dist/tex/latex/base/tuenc.def
@@ -698,7 +594,7 @@ LaTeX Info: Redefining \em on input line 4089.
 LaTeX Info: Redefining \emph on input line 4114.
 ))) (c:/texlive/2018/texmf-dist/tex/xetex/xetexko/xetexko-vertical.sty
 Package: xetexko-vertical 2018/04/06 v2.18 Vertical environment for XeTeX-ko
-\verticalem=\dimen335
+\verticalem=\dimen331
 ) (c:/texlive/2018/texmf-dist/tex/latex/cjk-ko/kolabels-utf.sty
 Package: kolabels-utf 2015/03/20 v1.5 UTF-8 Hangul item labels
 ))) (c:/texlive/2018/texmf-dist/tex/latex/IEEEtran/IEEEtrantools.sty
@@ -706,38 +602,60 @@ Package: IEEEtrantools 2015/08/26 V1.5 by Michael Shell
 
 -- See the "IEEEtrantools_doc.txt" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/tools/
-\@IEEEtrantmpdimenA=\dimen336
-\@IEEEtrantmpdimenB=\dimen337
-\@IEEEtrantmpdimenC=\dimen338
-\@IEEEtrantmpcountA=\count304
-\@IEEEtrantmpcountB=\count305
-\@IEEEtrantmpcountC=\count306
+\@IEEEtrantmpdimenA=\dimen332
+\@IEEEtrantmpdimenB=\dimen333
+\@IEEEtrantmpdimenC=\dimen334
+\@IEEEtrantmpcountA=\count292
+\@IEEEtrantmpcountB=\count293
+\@IEEEtrantmpcountC=\count294
 \@IEEEtrantmptoksA=\toks27
-\IEEEnormaljot=\dimen339
-\IEEEquantizedlength=\dimen340
-\IEEEquantizedlengthdiff=\dimen341
-\IEEEquantizedtextheightdiff=\dimen342
-\IEEEilabelindentA=\dimen343
-\IEEEilabelindentB=\dimen344
-\IEEEilabelindent=\dimen345
-\IEEEelabelindent=\dimen346
-\IEEEdlabelindent=\dimen347
-\IEEElabelindent=\dimen348
-\IEEEiednormlabelsep=\dimen349
-\IEEEiedmathlabelsep=\dimen350
-\IEEEiedtopsep=\skip75
-\c@IEEEsubequation=\count307
-\@IEEEeqnnumcols=\count308
-\@IEEEeqncolcnt=\count309
-\@IEEEsubeqnnumrollback=\count310
-\IEEEPARstartletwidth=\dimen351
+\IEEEnormaljot=\dimen335
+\IEEEquantizedlength=\dimen336
+\IEEEquantizedlengthdiff=\dimen337
+\IEEEquantizedtextheightdiff=\dimen338
+\IEEEilabelindentA=\dimen339
+\IEEEilabelindentB=\dimen340
+\IEEEilabelindent=\dimen341
+\IEEEelabelindent=\dimen342
+\IEEEdlabelindent=\dimen343
+\IEEElabelindent=\dimen344
+\IEEEiednormlabelsep=\dimen345
+\IEEEiedmathlabelsep=\dimen346
+\IEEEiedtopsep=\skip74
+\c@IEEEsubequation=\count295
+\@IEEEeqnnumcols=\count296
+\@IEEEeqncolcnt=\count297
+\@IEEEsubeqnnumrollback=\count298
+\IEEEPARstartletwidth=\dimen347
+) (c:/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+ (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+) (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+) (c:/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\c@theorem=\count311
-\c@example=\count312
-\c@lemma=\count313
-\c@corollary=\count314
-\c@definition=\count315
-\c@conjecture=\count316
+\Gm@cnth=\count299
+\Gm@cntv=\count300
+\c@Gm@tempcnt=\count301
+\Gm@bindingoffset=\dimen348
+\Gm@wd@mp=\dimen349
+\Gm@odd@mp=\dimen350
+\Gm@even@mp=\dimen351
+\Gm@layoutwidth=\dimen352
+\Gm@layoutheight=\dimen353
+\Gm@layouthoffset=\dimen354
+\Gm@layoutvoffset=\dimen355
+\Gm@dimlist=\toks28
+)
+\c@theorem=\count302
+\c@example=\count303
+\c@lemma=\count304
+\c@corollary=\count305
+\c@definition=\count306
+\c@conjecture=\count307
  (./main.aux)
 \openout1 = `main.aux'.
 
@@ -755,31 +673,10 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
 LaTeX Font Info:    ... okay on input line 98.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
 LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: floatrow package is loaded.
-Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box67
-Package hyperref Info: Link coloring OFF on input line 98.
- (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
- (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
-)
-\c@section@level=\count317
-)
-LaTeX Info: Redefining \ref on input line 98.
-LaTeX Info: Redefining \pageref on input line 98.
-LaTeX Info: Redefining \nameref on input line 98.
- (./main.out) (./main.out)
-\@outlinefile=\write3
-\openout3 = `main.out'.
-
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
@@ -887,8 +784,42 @@ Package fontspec Info: Font family 'NanumGothic(0)' created for font
 \symmathhangul=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `mathhangul' in version `bold'
 (Font)                  TU/Batang(0)/m/n --> TU/Batang(0)/bx/n on input line 98.
-LaTeX Font Info:    Calculating math sizes for size <16> on input line 99.
 
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(99.58464pt, 398.3386pt, 99.58464pt)
+* v-part:(T,H,B)=(150.79959pt, 543.44766pt, 150.79959pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=398.3386pt
+* \textheight=543.44766pt
+* \oddsidemargin=27.31465pt
+* \evensidemargin=27.31465pt
+* \topmargin=41.5296pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Calculating math sizes for size <16> on input line 99.
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <16> not available
 (Font)              size <17.28> substituted on input line 99.
@@ -909,9 +840,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <16> not available
 (Font)              size <17.28> substituted on input line 99.
 
-(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
-File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
-) [1
+[1
 
 ] [2] (./thanks.tex [3]
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
@@ -921,48 +850,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 ) [0] (./main.toc [1
 
 ])
-\tf@toc=\write4
-\openout4 = `main.toc'.
+\tf@toc=\write3
+\openout3 = `main.toc'.
 
  [2] (./main.lof)
-\tf@lof=\write5
-\openout5 = `main.lof'.
+\tf@lof=\write4
+\openout4 = `main.lof'.
 
  [3
 
 ] (./main.lot)
-\tf@lot=\write6
-\openout6 = `main.lot'.
+\tf@lot=\write5
+\openout5 = `main.lot'.
 
  [4
 
 ] (./abstract.tex) [5] [6]
 Chapter 1.
-(./Introduction.tex [7
+(./Introduction.tex [1
 
-] [8]) [9]
+] [2]) [3]
 Chapter 2.
-(./Related_Works.tex [10
+(./Related_Works.tex [4
 
-] [11]
-Overfull \hbox (0.23427pt too wide) in paragraph at lines 49--53
-\TU/lmr/m/n/10.95 where $[][] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 R[]$\TU/lmr/m/n/10.95 ,$[][] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 R[]$\TU/lmr/m/n/10.95 ,$[] \OML/cmm/m/it/10.95 ; [][] \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 R[]$\TU/lmr/m/n/10.95 ,$[] \OT1/cmr/m/n/10.95 = [][] [] 
- []
-
-) [12]
+] [5]) [6]
 Chapter 3.
 (./Proposed_Method.tex
 File: fig_system_overview_v1.pdf Graphic file (type pdf)
 <use fig_system_overview_v1.pdf>
- [13
+ [7
 
-] [14]
+] [8]
 File: fig_hardsample_v2.pdf Graphic file (type pdf)
 <use fig_hardsample_v2.pdf>
- [15] [16] [17]
+ [9] [10]
 File: fig_convnet_v1.pdf Graphic file (type pdf)
 <use fig_convnet_v1.pdf>
-) [18]
+ [11]) [12]
 Chapter 4.
 (./Experiments.tex
 File: fig_csi_v2.pdf Graphic file (type pdf)
@@ -976,61 +900,50 @@ LaTeX Warning: No positions in optional float specifier.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 57.
 
-[19
+[13
 
-] [20] [21] [22]
+] [14] [15] [16]
 File: fig_roc_v17.eps Graphic file (type eps)
 <fig_roc_v17.eps>
 File: normalized_loss_curve_ma30_v3.eps Graphic file (type eps)
 <normalized_loss_curve_ma30_v3.eps>
-
+ [17]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 120.
 
 File: fclayer_v1.eps Graphic file (type eps)
 <fclayer_v1.eps>
-[23] [24] [25]) [26]
+[18] [19]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [20] [21]
 Chapter 5.
-(./Conclusion.tex) (./main.bbl [27
+(./Conclusion.tex) (./main.bbl [22
 
-] [28
+] [23
 
-] [29] [30]
-Underfull \hbox (badness 1275) in paragraph at lines 149--153
-[]\TU/lmr/m/n/10.95 Shengyong Ding, Liang Lin, Guangrun Wang, and Hongyang Chao.
- []
-
-[31] [32] [33]) [34] (./abstract_kor.tex
+] [24] [25] [26] [27] [28]) [29] (./abstract_kor.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
- [35
+) [30
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
- (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 171.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A70B0C160D4A98E0F4278A56839F54E4.
-
+] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
  ) 
 Here is how much of TeX's memory you used:
- 27231 strings out of 492933
- 476862 string characters out of 6136537
- 586009 words of memory out of 5000000
- 31000 multiletter control sequences out of 15000+600000
- 541373 words of font info for 96 fonts, out of 8000000 for 9000
+ 20688 strings out of 492933
+ 383026 string characters out of 6136537
+ 485055 words of memory out of 5000000
+ 24495 multiletter control sequences out of 15000+600000
+ 541013 words of font info for 95 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  59i,11n,82p,994b,2522s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (39 pages).
+Output written on main.pdf (40 pages).

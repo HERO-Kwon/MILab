@@ -1,5 +1,4 @@
 \documentclass[a4paper,11pt]{report}
-
 \usepackage{coverstory,times,epsfig,calc}
 \usepackage{amsmath,amssymb}
 \usepackage{cite}
@@ -8,7 +7,7 @@
 \usepackage{subcaption}
 \usepackage{graphicx,xcolor} 
 \usepackage{lscape}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \usepackage{epsfig} % for postscript graphics files
 \usepackage{graphicx}
 \usepackage{multirow}
@@ -18,6 +17,7 @@
 \usepackage{easybmat}
 \usepackage{kotex}
 \usepackage{IEEEtrantools}
+\usepackage[a4paper,left=35mm,right=35mm,top=53mm,bottom=53mm]{geometry}
 
 \floatsetup[table]{capposition=top}
 \setcounter{secnumdepth}{3}
@@ -93,7 +93,7 @@
 \title{Improving the Triplet Network for Wi-Fi Based Handwritten Signature Verification}
 
 \author{Young-Woong Kwon}
-\date{October 2019}
+\date{December 2019}
 
 \begin{document}
 \makecover
@@ -107,7 +107,7 @@
 %\acknowledgement
 %\input{thanks2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% �������
-%\pagenumbering{roman} % Page Numbering style
+\pagenumbering{roman} % Page Numbering style
 \setcounter{page}{0}
 \tableofcontents
 \listoffigures
@@ -122,6 +122,10 @@
     \hspace*{-0.29in} Abstract}
 \input{abstract}
 \end{abstract}
+
+\newpage
+\pagenumbering{arabic} % Page Numbering style
+\setcounter{page}{1}
 
 \chapter{Introduction}\label{chapter:Introduction}
 \input{Introduction}
